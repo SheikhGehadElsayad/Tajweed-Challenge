@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مراجعة وتدقيق النطق الصوتي - تجويد تشالنج</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { background: #0b1329; color: #f8fafc; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 20px 15px; }
+        
+        header { width: 100%; max-width: 960px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 2px solid #1e293b; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+        h1 { font-size: 1.5rem; color: #38bdf8; display: flex; align-items: center; gap: 8px; }
+        .header-actions { display: flex; gap: 10px; align-items: center; }
+        .badge { background: #1e293b; padding: 5px 14px; border-radius: 99px; border: 1px solid #334155; font-size: 0.9rem; color: #38bdf8; font-weight: bold; }
+        .btn-game { background: linear-gradient(135deg, #10b981, #059669); color: white; text-decoration: none; padding: 6px 16px; border-radius: 8px; font-size: 0.95rem; font-weight: bold; box-shadow: 0 2px 8px rgba(16,185,129,0.3); }
+        .btn-game:hover { opacity: 0.9; }
+
+        .folder-setup { width: 100%; max-width: 960px; background: #131d38; padding: 12px 18px; border-radius: 12px; border: 2px dashed #0284c7; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .btn-folder { background: #0284c7; color: white; border: none; padding: 8px 18px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 0.95rem; }
+        .btn-folder:hover { background: #0369a1; }
+
+        .main-card { width: 100%; max-width: 960px; background: #131d38; border-radius: 20px; padding: 22px; border: 2px solid #223259; display: flex; flex-direction: column; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        
+        .filter-bar { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 12px; background: #0e172e; padding: 12px 18px; border-radius: 12px; border: 1px solid #1e293b; }
+        .filter-group { display: flex; align-items: center; gap: 8px; }
+        .filter-group label { font-size: 0.92rem; color: #94a3b8; font-weight: bold; }
+        .select-styled { background: #1e293b; color: #f8fafc; border: 1px solid #3b82f6; padding: 6px 12px; border-radius: 8px; font-size: 0.92rem; outline: none; }
+
+        .jump-box { display: flex; align-items: center; gap: 6px; }
+        .input-num { width: 70px; background: #1e293b; color: white; border: 1px solid #475569; padding: 5px 8px; border-radius: 6px; text-align: center; font-weight: bold; }
+
+        .nav-bar { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+        .nav-btn { background: #1e293b; color: white; border: 1px solid #475569; padding: 8px 18px; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 1rem; transition: all 0.2s; }
+        .nav-btn:hover { background: #334155; border-color: #38bdf8; }
+        .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+        
+        .counter-lbl { font-size: 1.1rem; font-weight: 800; color: #38bdf8; }
+
+        .info-panel { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; background: #1e293b; padding: 10px 16px; border-radius: 10px; }
+        .rule-title { font-size: 1rem; font-weight: 800; color: #a7f3d0; display: flex; align-items: center; gap: 8px; }
+        .rule-badge { background: #0284c7; color: white; padding: 3px 12px; border-radius: 6px; font-size: 0.85rem; }
+        .file-name { direction: ltr; font-family: monospace; font-size: 0.85rem; color: #94a3b8; }
+
+        .q-display { width: 100%; background: #ffffff; border-radius: 16px; padding: 15px; display: flex; justify-content: center; align-items: center; min-height: 200px; max-height: 280px; overflow: hidden; margin-bottom: 20px; border: 4px solid #38bdf8; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .q-display img { max-width: 100%; max-height: 250px; object-fit: contain; }
+
+        .audio-section { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 14px; background: #0e172e; padding: 18px; border-radius: 14px; border: 1px solid #1e293b; }
+        .audio-status { font-size: 1rem; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .status-ready { color: #10b981; }
+        .status-missing { color: #f59e0b; }
+
+        .audio-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .btn-play-sheikh { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border: none; padding: 12px 24px; border-radius: 12px; font-size: 1.1rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(2,132,199,0.3); transition: transform 0.1s; }
+        .btn-play-sheikh:hover { transform: scale(1.03); }
+        .btn-play-sheikh:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+        .btn-record-custom { background: #ef4444; color: white; border: none; padding: 12px 20px; border-radius: 12px; font-size: 1.05rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(239,68,68,0.3); }
+        .btn-record-custom:hover { background: #dc2626; }
+        .btn-record-custom.recording { animation: pulse 1s infinite; background: #b91c1c; }
+
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.06); } 100% { transform: scale(1); } }
+
+        .btn-save-custom { background: #10b981; color: white; border: none; padding: 10px 20px; border-radius: 10px; font-weight: bold; font-size: 1rem; cursor: pointer; display: none; }
+        .btn-delete-audio { background: #64748b; color: white; border: none; padding: 10px 16px; border-radius: 10px; font-weight: bold; font-size: 0.9rem; cursor: pointer; display: none; }
+
+        .audio-player { width: 100%; max-width: 480px; height: 38px; }
+
+        .audit-feedback { width: 100%; margin-top: 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.9rem; color: #cbd5e1; border-top: 1px solid #1e293b; padding-top: 12px; }
+        .keyboard-hint { color: #94a3b8; font-size: 0.85rem; }
+        .keyboard-hint kbd { background: #334155; color: #f8fafc; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.8rem; }
+    
+        .btn-flag { background: #475569; color: white; border: 2px solid #64748b; padding: 10px 20px; border-radius: 12px; font-weight: 800; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+        .btn-flag:hover { background: #ef4444; border-color: #f87171; }
+        .btn-flag.flagged { background: #dc2626; border-color: #fca5a5; color: white; box-shadow: 0 0 15px rgba(239, 68, 68, 0.6); animation: flagPulse 1.5s infinite; }
+        @keyframes flagPulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+        
+        .flag-tag { background: #ef4444; color: white; padding: 3px 10px; border-radius: 6px; font-weight: bold; font-size: 0.85rem; display: none; }
+        .flag-tag.show { display: inline-block; }
+
+        /* Report Modal */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); display: none; justify-content: center; align-items: center; z-index: 9999; }
+        .modal-box { background: #131d38; border: 2px solid #38bdf8; border-radius: 16px; width: 90%; max-width: 650px; padding: 22px; color: white; box-shadow: 0 10px 40px rgba(0,0,0,0.8); display: flex; flex-direction: column; gap: 14px; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 10px; }
+        .modal-title { font-size: 1.25rem; color: #38bdf8; font-weight: bold; }
+        .btn-close-modal { background: none; border: none; color: #94a3b8; font-size: 1.5rem; cursor: pointer; }
+        .modal-textarea { width: 100%; height: 220px; background: #0b1329; border: 1px solid #334155; border-radius: 10px; color: #f8fafc; padding: 12px; font-family: monospace; font-size: 0.9rem; resize: none; outline: none; }
+        .modal-actions { display: flex; justify-content: space-between; align-items: center; }
+        .btn-copy-report { background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; padding: 10px 22px; border-radius: 10px; font-weight: bold; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        /* Audio Trimmer Styles */
+        .trimmer-panel { background: #0d1933; border: 1.5px solid #3b82f6; border-radius: 12px; padding: 14px 18px; margin-top: 14px; display: flex; flex-direction: column; gap: 12px; }
+        .trimmer-title { font-size: 0.98rem; font-weight: 800; color: #60a5fa; display: flex; align-items: center; justify-content: space-between; }
+        .trimmer-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .trim-box { background: #111e3d; padding: 10px; border-radius: 8px; border: 1px solid #1e293b; display: flex; flex-direction: column; gap: 6px; }
+        .trim-box label { font-size: 0.85rem; color: #94a3b8; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        .trim-input-group { display: flex; align-items: center; gap: 8px; }
+        .trim-num-input { width: 85px; background: #090e1f; border: 1px solid #334155; border-radius: 6px; color: #38bdf8; padding: 4px 8px; font-family: monospace; font-size: 0.95rem; font-weight: bold; text-align: center; }
+        .btn-set-cur { background: #1e293b; color: #cbd5e1; border: 1px solid #475569; border-radius: 6px; padding: 4px 8px; font-size: 0.78rem; cursor: pointer; font-weight: bold; transition: all 0.2s; }
+        .btn-set-cur:hover { background: #334155; color: white; }
+        .trim-slider { width: 100%; cursor: pointer; accent-color: #38bdf8; }
+        .trim-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; border-top: 1px solid #1e293b; padding-top: 10px; }
+        .btn-play-slice { background: linear-gradient(135deg, #0284c7, #2563eb); color: white; border: none; padding: 8px 18px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 0.92rem; }
+        .btn-play-slice:hover { filter: brightness(1.1); }
+        .btn-save-slice { background: linear-gradient(135deg, #059669, #10b981); color: white; border: none; padding: 8px 18px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 0.92rem; }
+        .btn-save-slice:hover { filter: brightness(1.1); }
+        .trim-status-badge { font-size: 0.85rem; font-weight: bold; display: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>📖 مراجعة وتدقيق النطق الصوتي <span>(تجويد تشالنج)</span></h1>
+        <div class="header-actions">
+            <button id="btn-export-report" class="btn-folder" style="background:#8b5cf6; border:none; padding:7px 16px;">📋 تقرير الملاحظات (<span id="flag-counter">0</span>)</button>
+            <span class="badge" id="total-badge">572 مثال قرآني</span>
+            <a href="gehad.html" target="_blank" class="btn-game">🎮 فتح اللعبة</a>
+        </div>
+    </header>
+
+    <div class="folder-setup">
+        <div>
+            <strong style="color:#38bdf8; display:block; font-size:1rem;">📁 لحفظ أي تعديل صوتي بضغطة زر مباشرة في مجلد اللعبة:</strong>
+            <span id="folder-status" style="font-size:0.85rem; color:#cbd5e1;">اضغط على الزر واختر مجلد audio الخاص باللعبة ليتم حفظ أي تعديل تسجله بصوتك فوراً.</span>
+        </div>
+        <button id="btn-select-folder" class="btn-folder">📂 اختيار مجلد audio</button>
+    </div>
+
+    <main class="main-card">
+        <!-- Filter & Search Bar -->
+        <div class="filter-bar">
+            <div class="filter-group">
+                <label for="cat-select">الباب:</label>
+                <select id="cat-select" class="select-styled"></select>
+            </div>
+
+            
+            <div class="filter-group">
+                <label style="color:#f59e0b; cursor:pointer; display:flex; align-items:center; gap:6px; font-size:0.92rem; font-weight:bold;">
+                    <input type="checkbox" id="chk-only-flagged" style="width:16px; height:16px; cursor:pointer;">
+                    🚩 عرض الملاحظات فقط
+                </label>
+            </div>
+
+            <div class="jump-box">
+                <label for="jump-input" style="font-size:0.85rem; color:#94a3b8;">انتقال لرقم:</label>
+                <input type="number" id="jump-input" class="input-num" min="1" value="1">
+                <button id="btn-jump" class="nav-btn" style="padding:4px 10px; font-size:0.85rem;">ذهاب</button>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <button class="nav-btn" id="btn-prev">❮ السابق (السهم الأيمن)</button>
+            <span class="counter-lbl" id="counter-lbl">مثال 1 من 572</span>
+            <button class="nav-btn" id="btn-next">التالي ❯ (السهم الأيسر)</button>
+        </div>
+
+        <!-- Info Panel -->
+        <div class="info-panel">
+            <div class="rule-title">
+                <span id="flag-tag-badge" class="flag-tag">🚩 به ملاحظة</span>
+                <span id="ayah-info-badge" class="rule-badge" style="background:#059669; font-weight: bold;">📖 الآية</span>
+                <span id="cat-badge" class="rule-badge">الباب</span>
+                <span id="prompt-badge" class="rule-badge" style="background:#7c3aed; color:white; font-weight:bold; display:none;"></span>
+                <span id="ans-txt" style="color:#38bdf8;">الحكم: الإظهار</span>
+            </div>
+            <div class="file-name" id="file-lbl">mutamathilayn_Screenshot_1.mp3</div>
+        </div>
+
+        <!-- Quran Example Image -->
+        <div class="q-display">
+            <img id="q-img" src="" alt="مثال القرآن">
+        </div>
+
+        <!-- Audio Player Section -->
+        <div class="audio-section">
+            <div class="audio-status" id="audio-status-box">
+                <span id="audio-icon">🔊</span>
+                <span id="audio-status-txt">جارٍ فحص الملف الصوتي...</span>
+            </div>
+
+            <div class="audio-controls">
+                <button id="btn-play-audio" class="btn-play-sheikh" style="background: linear-gradient(135deg, #0284c7, #0369a1); font-size: 1rem; padding: 10px 20px;">
+                    <span>▶️</span>
+                    <span>استمع للمثال (Space)</span>
+                </button>
+
+                
+                <button id="btn-toggle-flag" class="btn-flag" title="اضغط لتعليم هذا المثال لمراجعته (اختصار: حرف X)">
+                    <span id="flag-btn-icon">🚩</span>
+                    <span id="flag-btn-lbl">تسجيل ملاحظة (X)</span>
+                </button>
+
+                <button id="btn-record-voice" class="btn-record-custom" title="اضغط لتسجيل قراءتك الصحيحة للمثال مباشرة بصوتك المتقن">
+                    <span id="rec-icon">🎙️</span>
+                    <span id="rec-label">تسجيل بديل بصوتك</span>
+                </button>
+
+                <button id="btn-save-voice" class="btn-save-custom">💾 حفظ الصوت الجديد</button>
+                <button id="btn-delete-voice" class="btn-delete-audio">🗑️ مسح الصوت</button>
+            </div>
+
+            <audio id="main-audio" class="audio-player" controls preload="auto"></audio>
+
+            <!-- Audio Trimmer Section -->
+            <div class="trimmer-panel" id="trimmer-panel">
+                <div class="trimmer-title">
+                    <span>✂️ أداة تحديد وقص المقطع المطلوب بنفسك</span>
+                    <span id="trim-duration-badge" style="background:#1e293b; color:#38bdf8; padding:3px 10px; border-radius:6px; font-size:0.85rem; font-family:monospace;">المحدد: 0.00s</span>
+                </div>
+                
+                <div class="trimmer-controls">
+                    <div class="trim-box">
+                        <label>
+                            <span>▶️ بداية المقطع (Start)</span>
+                            <button id="btn-set-start" class="btn-set-cur" title="ضبط البداية عند اللحظة الحالية في المشغل">📍 اللحظة الحالية</button>
+                        </label>
+                        <div class="trim-input-group">
+                            <input type="number" id="trim-start-num" class="trim-num-input" min="0" step="0.05" value="0.00">
+                            <span style="font-size:0.8rem; color:#64748b;">ث</span>
+                            <input type="range" id="trim-start-range" class="trim-slider" min="0" max="10" step="0.01" value="0">
+                        </div>
+                    </div>
+
+                    <div class="trim-box">
+                        <label>
+                            <span>⏹️ نهاية المقطع (End)</span>
+                            <button id="btn-set-end" class="btn-set-cur" title="ضبط النهاية عند اللحظة الحالية في المشغل">📍 اللحظة الحالية</button>
+                        </label>
+                        <div class="trim-input-group">
+                            <input type="number" id="trim-end-num" class="trim-num-input" min="0" step="0.05" value="0.00">
+                            <span style="font-size:0.8rem; color:#64748b;">ث</span>
+                            <input type="range" id="trim-end-range" class="trim-slider" min="0" max="10" step="0.01" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trim-actions">
+                    <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                        <button id="btn-preview-slice" class="btn-play-slice">🎧 استمع للمقطع المحدد فقط</button>
+                        <button id="btn-execute-cut" class="btn-save-slice">✂️ قص وحفظ المقطع في ملفات اللعبة</button>
+                    </div>
+                    <span id="trim-status-msg" class="trim-status-badge"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audit / Keyboard Shortcuts -->
+        <div class="audit-feedback">
+            <div class="keyboard-hint">
+                ⌨️ اختصارات سريعة: <kbd>Space</kbd> استماع | <kbd>X</kbd> تعليم للمراجعة | <kbd>→</kbd> السابق | <kbd>←</kbd> التالي
+            </div>
+            <div id="explanation-lbl" style="color:#94a3b8; font-size:0.85rem;"></div>
+        </div>
+    </main>
+
+    <!-- Report Modal -->
+    <div id="report-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-title">📋 تقرير البطاقات المطلوب تعديل نطقها</div>
+                <button id="btn-close-modal" class="btn-close-modal">&times;</button>
+            </div>
+            <p style="font-size:0.9rem; color:#cbd5e1;">هذه هي قائمة البطاقات التي وضعت عليها علامة أثناء استماعك. اضغط على الزر الأخضر بالأسفل لنسخها ولصقها في المحادثة مباشرة:</p>
+            <textarea id="report-text" class="modal-textarea" readonly></textarea>
+            <div class="modal-actions">
+                <button id="btn-copy-clipboard" class="btn-copy-report">📋 نسخ القائمة للحافظة</button>
+                <button id="btn-clear-all-flags" class="btn-clear-flags">🗑️ مسح جميع العلامات</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load Questions Bank -->
+    <script src="js/gehad.js?v=7"></script>
+    <script>
+        const AYAH_MAP = {"img_0125":{"sName":"آل عمران","surah":3,"ayah":173},"Screenshot_2":{"sName":"الإسراء","surah":17,"ayah":64},"img_0126":{"sName":"الملك","surah":67,"ayah":16},"Screenshot_3":{"sName":"البقرة","surah":2,"ayah":87},"img_0127":{"sName":"النساء","surah":4,"ayah":163},"Screenshot_4":{"sName":"البقرة","surah":2,"ayah":4},"Screenshot_5":{"sName":"الفاتحة","surah":1,"ayah":7},"img_0129":{"sName":"البَقَرَةِ","surah":2,"ayah":65},"Screenshot_6":{"sName":"البقرة","surah":2,"ayah":187},"img_0130":{"sName":"البَقَرَةِ","surah":2,"ayah":196},"Screenshot_7":{"sName":"البقرة","surah":2,"ayah":54},"img_0131":{"sName":"البقرة","surah":2,"ayah":136},"img_0132":{"sName":"قريش","surah":106,"ayah":1},"Screenshot_9":{"sName":"البقرة","surah":2,"ayah":255},"img_0133":{"sName":"البَقَرَةِ","surah":2,"ayah":201},"Screenshot_10":{"sName":"الشعراء","surah":26,"ayah":50},"Screenshot_11":{"sName":"البقرة","surah":2,"ayah":14},"img_0135":{"sName":"قريش","surah":106,"ayah":2},"img_0136":{"sName":"البقرة","surah":2,"ayah":101},"Screenshot_13":{"sName":"سبأ","surah":34,"ayah":51},"img_0137":{"sName":"البقرة","surah":2,"ayah":40},"img_0138":{"sName":"يُوسُفَ","surah":12,"ayah":29},"img_0139":{"sName":"آل عمران","surah":3,"ayah":14},"img_0140":{"sName":"طه","surah":20,"ayah":18},"Screenshot_17":{"sName":"النساء","surah":4,"ayah":65},"img_0141":{"sName":"السجدة","surah":32,"ayah":24},"img_0142":{"sName":"الأنعام","surah":6,"ayah":19},"img_0143":{"sName":"القَصَصِ","surah":28,"ayah":76},"img_0144":{"sName":"البَقَرَةِ","surah":2,"ayah":20},"img_0145":{"sName":"هُودٍ","surah":11,"ayah":77},"img_0146":{"sName":"البقرة","surah":2,"ayah":228},"img_0147":{"sName":"الرَّعۡدِ","surah":13,"ayah":18},"img_0148":{"sName":"الحُجُرَاتِ","surah":49,"ayah":9},"img_0149":{"sName":"المَائـِدَةِ","surah":5,"ayah":52},"img_0150":{"sName":"البقرة","surah":2,"ayah":91},"img_0152":{"sName":"المائدة","surah":5,"ayah":29},"img_0153":{"sName":"النُّورِ","surah":24,"ayah":35},"Screenshot_18":{"sName":"المطففين","surah":83,"ayah":18},"img_0157":{"sName":"البَقَرَةِ","surah":2,"ayah":87},"img_0158":{"sName":"يوسف","surah":12,"ayah":109},"img_0159":{"sName":"آل عمران","surah":3,"ayah":133},"img_0160":{"sName":"البقرة","surah":2,"ayah":54},"img_0161":{"sName":"يونس","surah":10,"ayah":109},"img_0163":{"sName":"يوسف","surah":12,"ayah":11},"img_0164":{"sName":"الأنعام","surah":6,"ayah":68},"img_0165":{"sName":"البقرة","surah":2,"ayah":26},"img_0166":{"sName":"هود","surah":11,"ayah":88},"img_0167":{"sName":"الأعراف","surah":7,"ayah":87},"img_0168":{"sName":"البقرة","surah":2,"ayah":33},"img_0169":{"sName":"الكوثر","surah":108,"ayah":1},"img_0170":{"sName":"طه","surah":20,"ayah":73},"img_0171":{"sName":"آل عمران","surah":3,"ayah":30},"img_0172":{"sName":"الجن","surah":72,"ayah":24},"img_0174":{"sName":"البقرة","surah":2,"ayah":171},"img_0175":{"sName":"البقرة","surah":2,"ayah":22},"img_0176":{"sName":"البقرة","surah":2,"ayah":158},"img_0177":{"sName":"نوح","surah":71,"ayah":27},"img_0178":{"sName":"البقرة","surah":2,"ayah":133},"img_0179":{"sName":"يونس","surah":10,"ayah":2},"img_0180":{"sName":"الجن","surah":72,"ayah":17},"img_0181":{"sName":"آل عمران","surah":3,"ayah":56},"img_0182":{"sName":"البَقَرَةِ","surah":2,"ayah":241},"img_0183":{"sName":"الجَاثِيَةِ","surah":45,"ayah":21},"img_0184":{"sName":"النِّسَاءِ","surah":4,"ayah":1},"img_0185":{"sName":"مريم","surah":19,"ayah":13},"img_0186":{"sName":"الفرقان","surah":25,"ayah":47},"img_0187":{"sName":"النساء","surah":4,"ayah":65},"img_0188":{"sName":"آل عمران","surah":3,"ayah":79},"img_0189":{"sName":"النساء","surah":4,"ayah":86},"img_0190":{"sName":"البَقَرَةِ","surah":2,"ayah":61},"img_0191":{"sName":"المطففين","surah":83,"ayah":18},"img_0192":{"sName":"العاديات","surah":100,"ayah":4},"img_0193":{"sName":"المعارج","surah":70,"ayah":12},"img_0194":{"sName":"الإسراء","surah":17,"ayah":71},"img_0195":{"sName":"عبس","surah":80,"ayah":3},"img_0198":{"sName":"النساء","surah":4,"ayah":2},"img_0200":{"sName":"الذاريات","surah":51,"ayah":27},"img_0201":{"sName":"آل عمران","surah":3,"ayah":91},"img_0202":{"sName":"الكهف","surah":18,"ayah":19},"img_0203":{"sName":"الصافات","surah":37,"ayah":124},"img_0204":{"sName":"البلد","surah":90,"ayah":7},"img_0205":{"sName":"النساء","surah":4,"ayah":176},"img_0206":{"sName":"الفجر","surah":89,"ayah":26},"img_0207":{"sName":"الشعراء","surah":26,"ayah":1},"img_0208":{"sName":"الفاتحة","surah":1,"ayah":6},"img_0209":{"sName":"الفاتحة","surah":1,"ayah":1},"img_0210":{"sName":"الشعراء","surah":26,"ayah":1},"img_0211":{"sName":"الفاتحة","surah":1,"ayah":2},"img_0212":{"sName":"البقرة","surah":2,"ayah":102},"img_0213":{"sName":"البقرة","surah":2,"ayah":25},"img_0214":{"sName":"الفاتحة","surah":1,"ayah":6},"img_0215":{"sName":"مريم","surah":19,"ayah":1},"img_0216":{"sName":"البقرة","surah":2,"ayah":15},"img_0217":{"sName":"البقرة","surah":2,"ayah":126},"img_0218":{"sName":"الفاتحة","surah":1,"ayah":1},"img_0219":{"sName":"الشورى","surah":42,"ayah":2},"img_0220":{"sName":"الفاتحة","surah":1,"ayah":1},"madd_kalimi_muthaqqal_Screenshot_1":{"sName":"الزمر","surah":39,"ayah":64},"madd_kalimi_muthaqqal_Screenshot_2":{"sName":"التوبة","surah":9,"ayah":63},"madd_kalimi_muthaqqal_Screenshot_3":{"sName":"يُونُسَ","surah":10,"ayah":107},"madd_kalimi_muthaqqal_Screenshot_4":{"sName":"البقرة","surah":2,"ayah":208},"madd_kalimi_muthaqqal_Screenshot_6":{"sName":"يونس","surah":10,"ayah":89},"madd_kalimi_muthaqqal_Screenshot_10":{"sName":"الحَجِّ","surah":22,"ayah":36},"madd_kalimi_muthaqqal_Screenshot_11":{"sName":"البقرة","surah":2,"ayah":164},"img_0241":{"sName":"طه","surah":20,"ayah":130},"img_0242":{"sName":"البقرة","surah":2,"ayah":275},"img_0247":{"sName":"النِّسَاءِ","surah":4,"ayah":42},"img_0248":{"sName":"البقرة","surah":2,"ayah":126},"img_0253":{"sName":"الإسراء","surah":17,"ayah":64},"img_0254":{"sName":"البقرة","surah":2,"ayah":87},"img_0255":{"sName":"البقرة","surah":2,"ayah":4},"img_0256":{"sName":"الفاتحة","surah":1,"ayah":7},"img_0257":{"sName":"البَقَرَةِ","surah":2,"ayah":187},"img_0258":{"sName":"البَقَرَةِ","surah":2,"ayah":54},"img_0260":{"sName":"البَقَرَةِ","surah":2,"ayah":255},"img_0261":{"sName":"الشعراء","surah":26,"ayah":50},"img_0262":{"sName":"البَقَرَةِ","surah":2,"ayah":20},"img_0264":{"sName":"سبأ","surah":34,"ayah":51},"madd_tabii_Screenshot_1":{"sName":"البقرة","surah":2,"ayah":2},"madd_tabii_Screenshot_2":{"sName":"التَّوۡبَةِ","surah":9,"ayah":126},"madd_tabii_Screenshot_3":{"sName":"البقرة","surah":2,"ayah":138},"madd_tabii_Screenshot_4":{"sName":"الطارق","surah":86,"ayah":6},"madd_tabii_Screenshot_5":{"sName":"آلِ عِمۡرَانَ","surah":3,"ayah":195},"madd_tabii_Screenshot_6":{"sName":"الأَعۡرَافِ","surah":7,"ayah":65},"madd_tabii_Screenshot_7":{"sName":"البقرة","surah":2,"ayah":182},"madd_tabii_Screenshot_8":{"sName":"البقرة","surah":2,"ayah":136},"madd_tabii_Screenshot_9":{"sName":"الحشر","surah":59,"ayah":7},"madd_tabii_Screenshot_10":{"sName":"التين","surah":95,"ayah":2},"madd_tabii_Screenshot_11":{"sName":"الرعد","surah":13,"ayah":20},"madd_tabii_Screenshot_12":{"sName":"البقرة","surah":2,"ayah":13},"madd_tabii_Screenshot_13":{"sName":"البقرة","surah":2,"ayah":138},"madd_tabii_Screenshot_14":{"sName":"النَّازِعَاتِ","surah":79,"ayah":8},"madd_tabii_Screenshot_15":{"sName":"البَقَرَةِ","surah":2,"ayah":67},"madd_tabii_Screenshot_16":{"sName":"البَقَرَةِ","surah":2,"ayah":243},"madd_tabii_Screenshot_17":{"sName":"النمل","surah":27,"ayah":8},"madd_tabii_Screenshot_18":{"sName":"البقرة","surah":2,"ayah":168},"madd_tabii_Screenshot_19":{"sName":"البَقَرَةِ","surah":2,"ayah":178},"madd_tabii_Screenshot_20":{"sName":"الأنعام","surah":6,"ayah":122},"madd_tabii_Screenshot_21":{"sName":"هود","surah":11,"ayah":44},"madd_tabii_Screenshot_22":{"sName":"البقرة","surah":2,"ayah":234},"madd_tabii_Screenshot_23":{"sName":"البقرة","surah":2,"ayah":127},"madd_tabii_Screenshot_24":{"sName":"هُودٍ","surah":11,"ayah":44},"madd_tabii_Screenshot_25":{"sName":"البَقَرَةِ","surah":2,"ayah":81},"madd_tabii_Screenshot_26":{"sName":"البَقَرَةِ","surah":2,"ayah":216},"madd_tabii_Screenshot_27":{"sName":"الأَنۡعَامِ","surah":6,"ayah":76},"madd_tabii_Screenshot_28":{"sName":"البقرة","surah":2,"ayah":54},"madd_tabii_Screenshot_29":{"sName":"يونس","surah":10,"ayah":50},"madd_tabii_Screenshot_30":{"sName":"آل عمران","surah":3,"ayah":59},"madd_tabii_Screenshot_31":{"sName":"الكَهۡفِ","surah":18,"ayah":17},"madd_tabii_Screenshot_32":{"sName":"البقرة","surah":2,"ayah":259},"madd_tabii_Screenshot_33":{"sName":"البقرة","surah":2,"ayah":233},"madd_tabii_Screenshot_34":{"sName":"البقرة","surah":2,"ayah":51},"madd_tabii_Screenshot_35":{"sName":"النور","surah":24,"ayah":45},"madd_tabii_Screenshot_36":{"sName":"البقرة","surah":2,"ayah":126},"madd_tabii_Screenshot_37":{"sName":"البقرة","surah":2,"ayah":35},"madd_tabii_Screenshot_38":{"sName":"البَقَرَةِ","surah":2,"ayah":112},"madd_tabii_Screenshot_39":{"sName":"البقرة","surah":2,"ayah":98},"mutamathilayn_Screenshot_1":{"sName":"الأنبياء","surah":21,"ayah":87},"mutamathilayn_Screenshot_10":{"sName":"الأنبياء","surah":21,"ayah":87},"mutamathilayn_Screenshot_11":{"sName":"الكهف","surah":18,"ayah":82},"mutamathilayn_Screenshot_12":{"sName":"المطففين","surah":83,"ayah":3},"mutamathilayn_Screenshot_13":{"sName":"البقرة","surah":2,"ayah":16},"mutamathilayn_Screenshot_14":{"sName":"القلم","surah":68,"ayah":6},"mutamathilayn_Screenshot_15":{"sName":"النحل","surah":16,"ayah":76},"mutamathilayn_Screenshot_16":{"sName":"النُّورِ","surah":24,"ayah":33},"mutamathilayn_Screenshot_2":{"sName":"البقرة","surah":2,"ayah":60},"mutamathilayn_Screenshot_3":{"sName":"النساء","surah":4,"ayah":78},"mutamathilayn_Screenshot_4":{"sName":"سَبَإٍ","surah":34,"ayah":30},"mutamathilayn_Screenshot_5":{"sName":"الروم","surah":30,"ayah":28},"mutamathilayn_Screenshot_6":{"sName":"المائدة","surah":5,"ayah":61},"mutamathilayn_Screenshot_7":{"sName":"البقرة","surah":2,"ayah":16},"mutamathilayn_Screenshot_8":{"sName":"آل عمران","surah":3,"ayah":41},"mutamathilayn_Screenshot_9":{"sName":"المائدة","surah":5,"ayah":61},"mutajanisayn_Screenshot_1":{"sName":"آل عمران","surah":3,"ayah":69},"mutajanisayn_Screenshot_17":{"sName":"هود","surah":11,"ayah":42},"mutajanisayn_Screenshot_2":{"sName":"العنكبوت","surah":29,"ayah":38},"mutajanisayn_Screenshot_3":{"sName":"النساء","surah":4,"ayah":64},"mutajanisayn_Screenshot_4":{"sName":"الأعراف","surah":7,"ayah":176},"mutajanisayn_Screenshot_5":{"sName":"الأعراف","surah":7,"ayah":189},"mutajanisayn_Screenshot_6":{"sName":"يُوسُفَ","surah":12,"ayah":80},"mutajanisayn_Screenshot_7":{"sName":"يوسف","surah":12,"ayah":80},"mutajanisayn_Screenshot_8":{"sName":"النمل","surah":27,"ayah":22},"mutajanisayn_Screenshot_9":{"sName":"المائدة","surah":5,"ayah":28},"mutaqaribayn_Screenshot_1":{"sName":"الإسراء","surah":17,"ayah":24},"mutaqaribayn_Screenshot_10":{"sName":"المرسلات","surah":77,"ayah":20},"mutaqaribayn_Screenshot_2":{"sName":"النساء","surah":4,"ayah":40},"mutaqaribayn_Screenshot_3":{"sName":"الفاتحة","surah":1,"ayah":1},"mutaqaribayn_Screenshot_4":{"sName":"الزمر","surah":39,"ayah":50},"mutaqaribayn_Screenshot_5":{"sName":"آل عمران","surah":3,"ayah":181},"madd_harfi_Screenshot_40":{"sName":"الفاتحة","surah":1,"ayah":2},"madd_harfi_Screenshot_1":{"sName":"البقرة","surah":2,"ayah":126},"madd_harfi_Screenshot_2":{"sName":"الفاتحة","surah":1,"ayah":1},"madd_harfi_Screenshot_4":{"sName":"مريم","surah":19,"ayah":1},"madd_harfi_Screenshot_5":{"sName":"البقرة","surah":2,"ayah":102},"madd_harfi_Screenshot_6":{"sName":"الشعراء","surah":26,"ayah":1},"madd_harfi_Screenshot_7":{"sName":"الشعراء","surah":26,"ayah":1},"madd_harfi_Screenshot_8":{"sName":"البقرة","surah":2,"ayah":15},"madd_harfi_Screenshot_10":{"sName":"الفاتحة","surah":1,"ayah":6},"madd_harfi_Screenshot_11":{"sName":"الفاتحة","surah":1,"ayah":1},"madd_harfi_Screenshot_12":{"sName":"الفاتحة","surah":1,"ayah":6},"madd_harfi_Screenshot_13":{"sName":"الفاتحة","surah":1,"ayah":1},"qalqalah_new_Screenshot_1":{"sName":"البقرة","surah":2,"ayah":264},"qalqalah_new_Screenshot_2":{"sName":"القِيَامَةِ","surah":75,"ayah":1},"qalqalah_new_Screenshot_3":{"sName":"قريش","surah":106,"ayah":4},"qalqalah_new_Screenshot_4":{"sName":"العَادِيَاتِ","surah":100,"ayah":5},"qalqalah_new_Screenshot_5":{"sName":"الأعراف","surah":7,"ayah":195},"qalqalah_new_Screenshot_6":{"sName":"العاديات","surah":100,"ayah":3},"qalqalah_new_Screenshot_7":{"sName":"المَسَدِ","surah":111,"ayah":5},"qalqalah_new_Screenshot_8":{"sName":"يُوسُفَ","surah":12,"ayah":80},"qalqalah_new_Screenshot_9":{"sName":"الأَنۡعَامِ","surah":6,"ayah":125},"qalqalah_new_Screenshot_10":{"sName":"البَقَرَةِ","surah":2,"ayah":62},"qalqalah_new_Screenshot_11":{"sName":"الصافات","surah":37,"ayah":19},"qalqalah_new_Screenshot_12":{"sName":"المعارج","surah":70,"ayah":17},"qalqalah_new_Screenshot_13":{"sName":"البقرة","surah":2,"ayah":51},"qalqalah_new_Screenshot_14":{"sName":"العاديات","surah":100,"ayah":4},"qalqalah_new_Screenshot_15":{"sName":"العاديات","surah":100,"ayah":2},"qalqalah_new_Screenshot_16":{"sName":"البقرة","surah":2,"ayah":65},"qalqalah_new_Screenshot_17":{"sName":"البقرة","surah":2,"ayah":61},"qalqalah_new_Screenshot_18":{"sName":"يُوسُفَ","surah":12,"ayah":12},"qalqalah_new_Screenshot_19":{"sName":"الكهف","surah":18,"ayah":68},"qalqalah_new_Screenshot_20":{"sName":"يُوسُفَ","surah":12,"ayah":77},"qalqalah_new_Screenshot_21":{"sName":"البقرة","surah":2,"ayah":21},"qalqalah_new_Screenshot_22":{"sName":"البقرة","surah":2,"ayah":36},"qalqalah_new_Screenshot_23":{"sName":"البقرة","surah":2,"ayah":79},"qalqalah_new_Screenshot_24":{"sName":"القصص","surah":28,"ayah":27},"qalqalah_new_Screenshot_25":{"sName":"الإِخۡلَاصِ","surah":112,"ayah":3},"qalqalah_new_Screenshot_26":{"sName":"الأَنۡعَامِ","surah":6,"ayah":62},"qalqalah_new_Screenshot_27":{"sName":"النَّمۡلِ","surah":27,"ayah":22},"qalqalah_new_Screenshot_28":{"sName":"المَسَدِ","surah":111,"ayah":1},"qalqalah_new_Screenshot_29":{"sName":"البَقَرَةِ","surah":2,"ayah":197},"qalqalah_new_Screenshot_30":{"sName":"البَقَرَةِ","surah":2,"ayah":204},"mutlaq_1":{"sName":"الرَّعۡدِ","surah":13,"ayah":4},"mutlaq_2":{"sName":"التوبة","surah":9,"ayah":109},"mutlaq_3":{"sName":"الأنعام","surah":6,"ayah":99},"mutlaq_4":{"sName":"البَقَرَةِ","surah":2,"ayah":85},"tanween_ikhfaa_Screenshot_1":{"sName":"الأحزاب","surah":33,"ayah":23},"tanween_ikhfaa_Screenshot_10":{"sName":"المسد","surah":111,"ayah":3},"tanween_ikhfaa_Screenshot_11":{"sName":"الأنفال","surah":8,"ayah":4},"tanween_ikhfaa_Screenshot_12":{"sName":"الإنسان","surah":76,"ayah":27},"tanween_ikhfaa_Screenshot_13":{"sName":"النساء","surah":4,"ayah":33},"tanween_ikhfaa_Screenshot_14":{"sName":"النبأ","surah":78,"ayah":34},"tanween_ikhfaa_Screenshot_15":{"sName":"القمر","surah":54,"ayah":52},"tanween_ikhfaa_Screenshot_16":{"sName":"الزخرف","surah":43,"ayah":17},"tanween_ikhfaa_Screenshot_2":{"sName":"الانفطار","surah":82,"ayah":11},"tanween_ikhfaa_Screenshot_3":{"sName":"البقرة","surah":2,"ayah":145},"tanween_ikhfaa_Screenshot_4":{"sName":"إبراهيم","surah":14,"ayah":24},"tanween_ikhfaa_Screenshot_5":{"sName":"الزلزلة","surah":99,"ayah":4},"tanween_ikhfaa_Screenshot_6":{"sName":"الفرقان","surah":25,"ayah":13},"tanween_ikhfaa_Screenshot_7":{"sName":"طه","surah":20,"ayah":102},"tanween_ikhfaa_Screenshot_8":{"sName":"الذاريات","surah":51,"ayah":26},"tanween_ikhfaa_Screenshot_9":{"sName":"يوسف","surah":12,"ayah":18},"noon_ikhfaa_Screenshot_1":{"sName":"الأنبياء","surah":21,"ayah":63},"noon_ikhfaa_Screenshot_10":{"sName":"الفلق","surah":113,"ayah":3},"noon_ikhfaa_Screenshot_2":{"sName":"الإِسۡرَاءِ","surah":17,"ayah":33},"noon_ikhfaa_Screenshot_3":{"sName":"الشمس","surah":91,"ayah":10},"noon_ikhfaa_Screenshot_4":{"sName":"هود","surah":11,"ayah":82},"noon_ikhfaa_Screenshot_5":{"sName":"البقرة","surah":2,"ayah":97},"noon_ikhfaa_Screenshot_6":{"sName":"فصلت","surah":41,"ayah":13},"noon_ikhfaa_Screenshot_7":{"sName":"البقرة","surah":2,"ayah":84},"noon_ikhfaa_Screenshot_8":{"sName":"الأعراف","surah":7,"ayah":4},"noon_ikhfaa_Screenshot_9":{"sName":"الأعراف","surah":7,"ayah":204},"img_0001":{"sName":"عبس","surah":80,"ayah":37},"img_0002":{"sName":"الزلزلة","surah":99,"ayah":6},"img_0003":{"sName":"الغاشية","surah":88,"ayah":8},"img_0004":{"sName":"البينة","surah":98,"ayah":2},"img_0005":{"sName":"النور","surah":24,"ayah":37},"img_0006":{"sName":"القمر","surah":54,"ayah":13},"img_0007":{"sName":"الفجر","surah":89,"ayah":28},"img_0008":{"sName":"النازعات","surah":79,"ayah":11},"img_0009":{"sName":"القيامة","surah":75,"ayah":22},"img_0010":{"sName":"القصص","surah":28,"ayah":46},"img_0011":{"sName":"البقرة","surah":2,"ayah":196},"img_0012":{"sName":"النور","surah":24,"ayah":62},"img_0013":{"sName":"البقرة","surah":2,"ayah":49},"img_0014":{"sName":"البقرة","surah":2,"ayah":60},"img_0015":{"sName":"التوبة","surah":9,"ayah":83},"img_0016":{"sName":"المطففين","surah":83,"ayah":15},"img_0017":{"sName":"ق","surah":50,"ayah":38},"img_0018":{"sName":"النساء","surah":4,"ayah":67},"img_0019":{"sName":"القدر","surah":97,"ayah":5},"img_0020":{"sName":"الرحمن","surah":55,"ayah":70},"img_0021":{"sName":"المدثر","surah":74,"ayah":9},"img_0022":{"sName":"التوبة","surah":9,"ayah":109},"img_0023":{"sName":"الإسراء","surah":17,"ayah":69},"img_0024":{"sName":"العلق","surah":96,"ayah":10},"img_0025":{"sName":"الأعراف","surah":7,"ayah":30},"img_0026":{"sName":"الفجر","surah":89,"ayah":2},"img_0027":{"sName":"الحاقة","surah":69,"ayah":20},"img_0028":{"sName":"فصلت","surah":41,"ayah":8},"img_0029":{"sName":"النازعات","surah":79,"ayah":12},"img_0030":{"sName":"التحريم","surah":66,"ayah":5},"img_0031":{"sName":"الكهف","surah":18,"ayah":79},"img_0032":{"sName":"البَقَرَةِ","surah":2,"ayah":75},"img_0033":{"sName":"الشعراء","surah":26,"ayah":113},"img_0034":{"sName":"البقرة","surah":2,"ayah":255},"img_0035":{"sName":"البقرة","surah":2,"ayah":78},"img_0036":{"sName":"النساء","surah":4,"ayah":140},"img_0037":{"sName":"الأَنۡعَامِ","surah":6,"ayah":26},"img_0038":{"sName":"آلِ عِمۡرَانَ","surah":3,"ayah":104},"img_0039":{"sName":"الحج","surah":22,"ayah":5},"img_0040":{"sName":"الحجر","surah":15,"ayah":82},"img_0041":{"sName":"المائدة","surah":5,"ayah":106},"img_0042":{"sName":"المائدة","surah":5,"ayah":18},"img_0043":{"sName":"هود","surah":11,"ayah":66},"img_0044":{"sName":"الحاقة","surah":69,"ayah":36},"img_0045":{"sName":"النساء","surah":4,"ayah":176},"img_0046":{"sName":"البقرة","surah":2,"ayah":54},"img_0047":{"sName":"البلد","surah":90,"ayah":6},"img_0048":{"sName":"البقرة","surah":2,"ayah":173},"img_0049":{"sName":"الرعد","surah":13,"ayah":17},"img_0050":{"sName":"النحل","surah":16,"ayah":76},"img_0051":{"sName":"الحاقة","surah":69,"ayah":21},"img_0052":{"sName":"الهمزة","surah":104,"ayah":1},"img_0053":{"sName":"الفجر","surah":89,"ayah":19},"img_0054":{"sName":"البقرة","surah":2,"ayah":27},"img_0055":{"sName":"البقرة","surah":2,"ayah":27},"img_0056":{"sName":"مريم","surah":19,"ayah":14},"img_0057":{"sName":"النساء","surah":4,"ayah":114},"img_0058":{"sName":"البلد","surah":90,"ayah":2},"img_0059":{"sName":"النساء","surah":4,"ayah":58},"img_0060":{"sName":"عبس","surah":80,"ayah":16},"img_0061":{"sName":"آل عمران","surah":3,"ayah":119},"img_0062":{"sName":"البقرة","surah":2,"ayah":96},"img_0063":{"sName":"إبراهيم","surah":14,"ayah":25},"img_0064":{"sName":"الفرقان","surah":25,"ayah":18},"img_0065":{"sName":"البقرة","surah":2,"ayah":261},"img_0066":{"sName":"الأنعام","surah":6,"ayah":53},"img_0067":{"sName":"الأنعام","surah":6,"ayah":59},"img_0068":{"sName":"آل عمران","surah":3,"ayah":145},"img_0069":{"sName":"الأنبياء","surah":21,"ayah":94},"img_0070":{"sName":"الأعلى","surah":87,"ayah":9},"img_0071":{"sName":"فاطر","surah":35,"ayah":11},"img_0072":{"sName":"فاطر","surah":35,"ayah":11},"img_0073":{"sName":"البقرة","surah":2,"ayah":107},"img_0074":{"sName":"يوسف","surah":12,"ayah":75},"img_0075":{"sName":"البقرة","surah":2,"ayah":74},"img_0076":{"sName":"النحل","surah":16,"ayah":53},"img_0077":{"sName":"يونس","surah":10,"ayah":105},"img_0078":{"sName":"الشعراء","surah":26,"ayah":106},"img_0079":{"sName":"الإخلاص","surah":112,"ayah":3},"img_0080":{"sName":"الأنفال","surah":8,"ayah":2},"img_0081":{"sName":"النبأ","surah":78,"ayah":9},"img_0082":{"sName":"البقرة","surah":2,"ayah":38},"img_0083":{"sName":"المائدة","surah":5,"ayah":9},"img_0084":{"sName":"الإنسان","surah":76,"ayah":22},"img_0085":{"sName":"يس","surah":36,"ayah":57},"img_0086":{"sName":"هود","surah":11,"ayah":52},"img_0087":{"sName":"النحل","surah":16,"ayah":22},"img_0088":{"sName":"البقرة","surah":2,"ayah":268},"img_0089":{"sName":"الأنعام","surah":6,"ayah":82},"img_0090":{"sName":"البقرة","surah":2,"ayah":134},"img_0091":{"sName":"الأنعام","surah":6,"ayah":107},"img_0092":{"sName":"النور","surah":24,"ayah":61},"img_0093":{"sName":"القمر","surah":54,"ayah":38},"img_0094":{"sName":"الأنعام","surah":6,"ayah":107},"img_0095":{"sName":"التكوير","surah":81,"ayah":22},"img_0096":{"sName":"العلق","surah":96,"ayah":14},"img_0097":{"sName":"الحديد","surah":57,"ayah":12},"img_0098":{"sName":"الأنبياء","surah":21,"ayah":40},"img_0099":{"sName":"الإنسان","surah":76,"ayah":12},"img_0100":{"sName":"النور","surah":24,"ayah":64},"img_0101":{"sName":"الفيل","surah":105,"ayah":4},"img_0102":{"sName":"الزمر","surah":39,"ayah":10},"img_0103":{"sName":"الإنسان","surah":76,"ayah":22},"img_0104":{"sName":"المائدة","surah":5,"ayah":9},"img_0105":{"sName":"المائدة","surah":5,"ayah":3},"img_0106":{"sName":"النور","surah":24,"ayah":61},"img_0107":{"sName":"الغاشية","surah":88,"ayah":22},"img_0108":{"sName":"البقرة","surah":2,"ayah":62},"img_0109":{"sName":"البَقَرَةِ","surah":2,"ayah":29},"img_0110":{"sName":"المائدة","surah":5,"ayah":71},"img_0111":{"sName":"الفاتحة","surah":1,"ayah":7},"img_0112":{"sName":"البقرة","surah":2,"ayah":18},"img_0113":{"sName":"البَقَرَةِ","surah":2,"ayah":230},"img_0114":{"sName":"البَقَرَةِ","surah":2,"ayah":96},"img_0115":{"sName":"المَائـِدَةِ","surah":5,"ayah":113},"img_0116":{"sName":"النُّورِ","surah":24,"ayah":54},"img_0117":{"sName":"الضحى","surah":93,"ayah":11},"img_0118":{"sName":"النَّمۡلِ","surah":27,"ayah":74},"img_0119":{"sName":"آلِ عِمۡرَانَ","surah":3,"ayah":153},"img_0120":{"sName":"البقرة","surah":2,"ayah":35},"img_0121":{"sName":"يُوسُفَ","surah":12,"ayah":33},"img_0122":{"sName":"المسد","surah":111,"ayah":4},"img_0123":{"sName":"الفاتحة","surah":1,"ayah":7},"img_0124":{"sName":"الغاشية","surah":88,"ayah":26},"img_0269":{"sName":"الأعراف","surah":7,"ayah":109},"img_0270":{"sName":"المَائـِدَةِ","surah":5,"ayah":3},"img_0271":{"sName":"البقرة","surah":2,"ayah":239},"img_0272":{"sName":"الأنعام","surah":6,"ayah":17},"img_0273":{"sName":"البقرة","surah":2,"ayah":54},"img_0274":{"sName":"البقرة","surah":2,"ayah":119},"img_0275":{"sName":"الأَعۡرَافِ","surah":7,"ayah":87},"img_0276":{"sName":"البقرة","surah":2,"ayah":286},"img_0277":{"sName":"البقرة","surah":2,"ayah":49},"img_0278":{"sName":"المَائـِدَةِ","surah":5,"ayah":48},"img_0279":{"sName":"البقرة","surah":2,"ayah":153},"img_0280":{"sName":"البقرة","surah":2,"ayah":11},"img_0281":{"sName":"البقرة","surah":2,"ayah":162},"img_0282":{"sName":"الطَّارِقِ","surah":86,"ayah":5},"img_0283":{"sName":"الشعراء","surah":26,"ayah":82},"img_0284":{"sName":"البقرة","surah":2,"ayah":39},"img_0285":{"sName":"البَقَرَةِ","surah":2,"ayah":54},"img_0286":{"sName":"النِّسَاءِ","surah":4,"ayah":13},"img_0287":{"sName":"النِّسَاءِ","surah":4,"ayah":155},"img_0288":{"sName":"البقرة","surah":2,"ayah":17},"img_0289":{"sName":"البقرة","surah":2,"ayah":171},"img_0290":{"sName":"البقرة","surah":2,"ayah":23},"img_0291":{"sName":"البقرة","surah":2,"ayah":2},"img_0292":{"sName":"البقرة","surah":2,"ayah":11},"img_0293":{"sName":"النازعات","surah":79,"ayah":34},"img_0294":{"sName":"البقرة","surah":2,"ayah":20},"img_0295":{"sName":"آلِ عِمۡرَانَ","surah":3,"ayah":160},"img_0296":{"sName":"البَقَرَةِ","surah":2,"ayah":62},"img_0297":{"sName":"البقرة","surah":2,"ayah":19},"img_0298":{"sName":"البقرة","surah":2,"ayah":28},"img_0301":{"sName":"البَقَرَةِ","surah":2,"ayah":173},"img_0302":{"sName":"الأَنۡعَامِ","surah":6,"ayah":7},"img_0303":{"sName":"النبأ","surah":78,"ayah":21},"img_0304":{"sName":"التَّوۡبَةِ","surah":9,"ayah":122},"img_0305":{"sName":"التوبة","surah":9,"ayah":107},"img_0306":{"sName":"المائدة","surah":5,"ayah":106},"img_0307":{"sName":"البقرة","surah":2,"ayah":26},"img_0308":{"sName":"الأَنبِيَاءِ","surah":21,"ayah":28},"img_0309":{"sName":"يوسف","surah":12,"ayah":81},"img_0310":{"sName":"البقرة","surah":2,"ayah":43},"img_0311":{"sName":"البَقَرَةِ","surah":2,"ayah":26},"img_0312":{"sName":"الجِنِّ","surah":72,"ayah":1},"img_0313":{"sName":"البقرة","surah":2,"ayah":6},"img_0314":{"sName":"البَقَرَةِ","surah":2,"ayah":69},"img_0315":{"sName":"البَقَرَةِ","surah":2,"ayah":274},"img_0316":{"sName":"البَقَرَةِ","surah":2,"ayah":36},"img_0317":{"sName":"البَقَرَةِ","surah":2,"ayah":11},"img_0318":{"sName":"هُودٍ","surah":11,"ayah":81},"img_0319":{"sName":"الفَجۡرِ","surah":89,"ayah":4},"img_0320":{"sName":"هُودٍ","surah":11,"ayah":81},"img_0321":{"sName":"القَمَرِ","surah":54,"ayah":16},"img_0322":{"sName":"سَبَإٍ","surah":34,"ayah":12},"img_0323":{"sName":"يُوسُفَ","surah":12,"ayah":99},"img_0268":{"sName":"آل عمران","surah":3,"ayah":55},"lam_allah_new_Screenshot_1":{"sName":"يوسف","surah":12,"ayah":73},"lam_allah_new_Screenshot_2":{"sName":"البقرة","surah":2,"ayah":61},"lam_allah_new_Screenshot_3":{"sName":"الأنفال","surah":8,"ayah":32},"lam_allah_new_Screenshot_5":{"sName":"النساء","surah":4,"ayah":157},"lam_allah_new_Screenshot_6":{"sName":"الفاتحة","surah":1,"ayah":1},"lam_allah_new_Screenshot_7":{"sName":"البقرة","surah":2,"ayah":67},"lam_allah_new_Screenshot_8":{"sName":"آل عمران","surah":3,"ayah":26},"lam_allah_new_Screenshot_9":{"sName":"الفاتحة","surah":1,"ayah":1},"lam_allah_new_Screenshot_10":{"sName":"البقرة","surah":2,"ayah":8},"lam_allah_new_Screenshot_11":{"sName":"الفاتحة","surah":1,"ayah":1},"lam_allah_new_Screenshot_12":{"sName":"البقرة","surah":2,"ayah":154},"hamzat_wasl_dropped_Screenshot_1":{"sName":"الانفطار","surah":82,"ayah":9},"hamzat_wasl_dropped_Screenshot_2":{"sName":"يوسف","surah":12,"ayah":73},"hamzat_wasl_dropped_Screenshot_4":{"sName":"المعارج","surah":70,"ayah":9},"hamzat_wasl_dropped_Screenshot_5":{"sName":"الفاتحة","surah":1,"ayah":4},"hamzat_wasl_dropped_Screenshot_6":{"sName":"الفاتحة","surah":1,"ayah":6},"hamzat_wasl_dropped_Screenshot_7":{"sName":"الدخان","surah":44,"ayah":44},"hamzat_wasl_dropped_Screenshot_8":{"sName":"العصر","surah":103,"ayah":1},"hamzat_wasl_dropped_Screenshot_9":{"sName":"غافر","surah":40,"ayah":7},"hamzat_wasl_damma_Screenshot_1":{"sName":"البقرة","surah":2,"ayah":58},"hamzat_wasl_damma_Screenshot_14":{"sName":"البقرة","surah":2,"ayah":104},"hamzat_wasl_damma_Screenshot_2":{"sName":"البقرة","surah":2,"ayah":23},"hamzat_wasl_damma_Screenshot_3":{"sName":"البقرة","surah":2,"ayah":54},"hamzat_wasl_damma_Screenshot_4":{"sName":"البقرة","surah":2,"ayah":9},"hamzat_wasl_damma_Screenshot_5":{"sName":"إبراهيم","surah":14,"ayah":26},"hamzat_wasl_damma_Screenshot_6":{"sName":"الأنعام","surah":6,"ayah":10},"hamzat_wasl_damma_Screenshot_7":{"sName":"البقرة","surah":2,"ayah":34},"hamzat_wasl_fatha_Screenshot_1":{"sName":"المائدة","surah":5,"ayah":65},"hamzat_wasl_fatha_Screenshot_2":{"sName":"البقرة","surah":2,"ayah":35},"hamzat_wasl_fatha_Screenshot_4":{"sName":"الفاتحة","surah":1,"ayah":2},"hamzat_wasl_fatha_Screenshot_5":{"sName":"الفاتحة","surah":1,"ayah":7},"hamzat_wasl_fatha_Screenshot_6":{"sName":"الفاتحة","surah":1,"ayah":1},"hamzat_wasl_fatha_Screenshot_7":{"sName":"البَقَرَةِ","surah":2,"ayah":249},"hamzat_wasl_fatha_Screenshot_8":{"sName":"البَقَرَةِ","surah":2,"ayah":19},"hamzat_wasl_kasra_Screenshot_1":{"sName":"البقرة","surah":2,"ayah":36},"hamzat_wasl_kasra_Screenshot_10":{"sName":"المائدة","surah":5,"ayah":24},"hamzat_wasl_kasra_Screenshot_11":{"sName":"الأنعام","surah":6,"ayah":135},"hamzat_wasl_kasra_Screenshot_12":{"sName":"البقرة","surah":2,"ayah":16},"hamzat_wasl_kasra_Screenshot_13":{"sName":"البقرة","surah":2,"ayah":194},"hamzat_wasl_kasra_Screenshot_2":{"sName":"البَقَرَةِ","surah":2,"ayah":60},"hamzat_wasl_kasra_Screenshot_3":{"sName":"البقرة","surah":2,"ayah":199},"hamzat_wasl_kasra_Screenshot_4":{"sName":"الفاتحة","surah":1,"ayah":6},"hamzat_wasl_kasra_Screenshot_5":{"sName":"الفاتحة","surah":1,"ayah":6},"hamzat_wasl_kasra_Screenshot_6":{"sName":"البَقَرَةِ","surah":2,"ayah":36},"hamzat_wasl_kasra_Screenshot_7":{"sName":"البقرة","surah":2,"ayah":175},"hamzat_wasl_kasra_Screenshot_8":{"sName":"الفجر","surah":89,"ayah":28},"hamzat_wasl_kasra_Screenshot_9":{"sName":"المائدة","surah":5,"ayah":24},"lam_qamariyyah_Screenshot_1":{"sName":"النساء","surah":4,"ayah":28},"lam_qamariyyah_Screenshot_2":{"sName":"الرحمن","surah":55,"ayah":4},"lam_qamariyyah_Screenshot_3":{"sName":"الرحمن","surah":55,"ayah":7},"lam_qamariyyah_Screenshot_4":{"sName":"الرحمن","surah":55,"ayah":24},"lam_qamariyyah_Screenshot_5":{"sName":"الرحمن","surah":55,"ayah":14},"lam_qamariyyah_Screenshot_6":{"sName":"الرحمن","surah":55,"ayah":12},"lam_qamariyyah_Screenshot_7":{"sName":"الرحمن","surah":55,"ayah":9},"lam_shamsiyyah_Screenshot_1":{"sName":"التغابن","surah":64,"ayah":9},"lam_shamsiyyah_Screenshot_2":{"sName":"البقرة","surah":2,"ayah":116},"lam_shamsiyyah_Screenshot_3":{"sName":"النساء","surah":4,"ayah":59},"lam_shamsiyyah_Screenshot_4":{"sName":"الرحمن","surah":55,"ayah":31},"lam_shamsiyyah_Screenshot_5":{"sName":"الأنعام","surah":6,"ayah":73},"lam_shamsiyyah_Screenshot_6":{"sName":"الرحمن","surah":55,"ayah":37},"lam_shamsiyyah_Screenshot_7":{"sName":"البقرة","surah":2,"ayah":257},"lam_shamsiyyah_Screenshot_8":{"sName":"النَّجۡمِ","surah":53,"ayah":1},"img_0128":{"sName":"الأَنۡعَامِ","surah":6,"ayah":74},"img_0134":{"sName":"البقرة","surah":2,"ayah":31},"img_0151":{"sName":"النساء","surah":4,"ayah":112},"img_0154":{"sName":"الحاقة","surah":69,"ayah":19},"img_0155":{"sName":"الكهف","surah":18,"ayah":62},"img_0156":{"sName":"الأنعام","surah":6,"ayah":25},"img_0162":{"sName":"البقرة","surah":2,"ayah":31},"img_0173":{"sName":"الفجر","surah":89,"ayah":20},"img_0196":{"sName":"الجمعة","surah":62,"ayah":2},"img_0197":{"sName":"يوسف","surah":12,"ayah":108},"img_0199":{"sName":"الروم","surah":30,"ayah":21},"madd_kalimi_muthaqqal_Screenshot_5":{"sName":"الصافات","surah":37,"ayah":1},"madd_kalimi_muthaqqal_Screenshot_7":{"sName":"الأَنۡعَامِ","surah":6,"ayah":80},"madd_kalimi_muthaqqal_Screenshot_8":{"sName":"الفاتحة","surah":1,"ayah":7},"madd_kalimi_muthaqqal_Screenshot_9":{"sName":"الحاقة","surah":69,"ayah":1},"madd_kalimi_muthaqqal_Screenshot_12":{"sName":"عبس","surah":80,"ayah":33},"madd_kalimi_muthaqqal_Screenshot_13":{"sName":"النازعات","surah":79,"ayah":34},"madd_kalimi_muthaqqal_Screenshot_14":{"sName":"المائدة","surah":5,"ayah":2},"madd_kalimi_mukhaffaf_Screenshot_1":{"sName":"يونس","surah":10,"ayah":91},"madd_kalimi_mukhaffaf_Screenshot_14":{"sName":"يونس","surah":10,"ayah":51},"img_0237":{"sName":"الفاتحة","surah":1,"ayah":5},"img_0238":{"sName":"البقرة","surah":2,"ayah":22},"img_0239":{"sName":"البُرُوجِ","surah":85,"ayah":14},"img_0240":{"sName":"الماعون","surah":107,"ayah":7},"img_0243":{"sName":"الماعون","surah":107,"ayah":2},"img_0244":{"sName":"الرَّحۡمَٰن","surah":55,"ayah":9},"img_0245":{"sName":"النَّاسِ","surah":114,"ayah":3},"img_0246":{"sName":"الْفَاتِحَةِ","surah":1,"ayah":6},"img_0249":{"sName":"الصَّافَّاتِ","surah":37,"ayah":61},"img_0250":{"sName":"الرحمن","surah":55,"ayah":1},"img_0251":{"sName":"الرَّحۡمَٰن","surah":55,"ayah":5},"img_0252":{"sName":"قُرَيۡشٍ","surah":106,"ayah":4},"img_0259":{"sName":"قريش","surah":106,"ayah":2},"img_0263":{"sName":"قُرَيۡشٍ","surah":106,"ayah":3},"img_0265":{"sName":"قُرَيۡشٍ","surah":106,"ayah":1},"madd_harfi_Screenshot_9":{"sName":"الشُّورَىٰ","surah":42,"ayah":1},"img_0299":{"sName":"المرسلات","surah":77,"ayah":1},"img_0300":{"sName":"البقرة","surah":2,"ayah":25},"lam_allah_new_Screenshot_4":{"sName":"يونس","surah":10,"ayah":10},"hamzat_wasl_dropped_Screenshot_3":{"sName":"النازعات","surah":79,"ayah":4},"hamzat_wasl_fatha_Screenshot_3":{"sName":"البقرة","surah":2,"ayah":185},"lam_qamariyyah_Screenshot_18":{"sName":"الرحمن","surah":55,"ayah":2}};
+                let allQuestions = [];
+        let filteredQuestions = [];
+        let currentIndex = 0;
+        let dirHandle = null;
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let recordedBlob = null;
+        let isRecording = false;
+
+        function initData() {
+            allQuestions = [];
+            const catSelect = document.getElementById('cat-select');
+            catSelect.innerHTML = '<option value="ALL">-- كل الأبواب (جميع الأمثلة) --</option>';
+
+            for (let catKey in TAJWEED_BANK) {
+                const catObj = TAJWEED_BANK[catKey];
+                if (catObj && catObj.questions && catObj.questions.length > 0) {
+                    const opt = document.createElement('option');
+                    opt.value = catKey;
+                    opt.textContent = `${catObj.title || catKey} (${catObj.questions.length})`;
+                    catSelect.appendChild(opt);
+
+                    catObj.questions.forEach((q) => {
+                        allQuestions.push({
+                            ...q,
+                            categoryKey: catKey,
+                            categoryTitle: catObj.title || catKey,
+                            globalIndex: allQuestions.length + 1
+                        });
+                    });
+                }
+            }
+            applyFilters();
+        }
+
+        function getAudioFileName(q) {
+            if (q.src) {
+                const parts = q.src.split('/');
+                const fullName = parts[parts.length - 1];
+                const baseName = fullName.substring(0, fullName.lastIndexOf('.')) || fullName;
+                return `${baseName}.mp3`;
+            }
+            return `${q.id}.mp3`;
+        }
+
+        function applyFilters() {
+            const selectedCat = document.getElementById('cat-select').value;
+            filteredQuestions = allQuestions.filter(q => {
+                if (selectedCat !== 'ALL' && q.categoryKey !== selectedCat) return false;
+                return true;
+            });
+
+            currentIndex = 0;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            if (filteredQuestions.length === 0) {
+                document.getElementById('counter-lbl').textContent = 'لا توجد أمثلة مطابقة';
+                return;
+            }
+
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex >= filteredQuestions.length) currentIndex = filteredQuestions.length - 1;
+
+            const q = filteredQuestions[currentIndex];
+            const audioFileName = getAudioFileName(q);
+
+            document.getElementById('counter-lbl').textContent = `مثال ${currentIndex + 1} من ${filteredQuestions.length} (رقم عام: ${q.globalIndex} من ${allQuestions.length})`;
+            document.getElementById('cat-badge').textContent = q.categoryTitle;
+            const cardBase = audioFileName.replace(/\.[^.]+$/, '');
+            const ayahData = AYAH_MAP[cardBase];
+            const ayahBadge = document.getElementById('ayah-info-badge');
+            if (ayahBadge) {
+                if (ayahData) {
+                    ayahBadge.textContent = '📖 سورة ' + ayahData.sName + ' [الآية ' + ayahData.ayah + ']';
+                    ayahBadge.style.display = 'inline-block';
+                } else {
+                    ayahBadge.style.display = 'none';
+                }
+            }
+            const promptBadge = document.getElementById('prompt-badge');
+            if (promptBadge) {
+                if (q.prompt) {
+                    promptBadge.textContent = '❓ ' + q.prompt;
+                    promptBadge.style.display = 'inline-block';
+                } else {
+                    promptBadge.style.display = 'none';
+                }
+            }
+            document.getElementById('ans-txt').textContent = `الحكم: ${q.ans || ''}`;
+            document.getElementById('file-lbl').textContent = audioFileName;
+            document.getElementById('q-img').src = q.src || '';
+            document.getElementById('explanation-lbl').textContent = q.explanation ? `💡 ${q.explanation}` : '';
+
+            document.getElementById('btn-prev').disabled = (currentIndex === 0);
+            document.getElementById('btn-next').disabled = (currentIndex === filteredQuestions.length - 1);
+            document.getElementById('jump-input').value = currentIndex + 1;
+            document.getElementById('jump-input').max = filteredQuestions.length;
+
+            // Reset recording UI
+            recordedBlob = null;
+            document.getElementById('btn-save-voice').style.display = 'none';
+
+            probeAudio(audioFileName);
+        }
+
+        function probeAudio(fileName) {
+            const audioPlayer = document.getElementById('main-audio');
+            const playBtn = document.getElementById('btn-play-audio');
+            const deleteBtn = document.getElementById('btn-delete-voice');
+            const statusBox = document.getElementById('audio-status-box');
+            const statusTxt = document.getElementById('audio-status-txt');
+            const audioIcon = document.getElementById('audio-icon');
+
+            audioPlayer.pause();
+            const audioPath = `audio/${fileName}?t=${Date.now()}`;
+            
+            statusTxt.textContent = 'جارٍ فحص الصوت...';
+            statusBox.className = 'audio-status';
+            playBtn.disabled = true;
+
+            audioPlayer.oncanplay = () => {
+                statusTxt.textContent = '✅ الصوت يعمل في اللعبة (اضغط Space للاستماع، أو X لتسجيل ملاحظة)';
+                statusBox.className = 'audio-status status-ready';
+                audioIcon.textContent = '🔊';
+                playBtn.disabled = false;
+                deleteBtn.style.display = dirHandle ? 'inline-block' : 'none';
+            };
+
+            audioPlayer.onerror = () => {
+                statusTxt.textContent = '⚠️ لم يتم العثور على الملف الصوتي لهذا المثال (audio/' + fileName + ')';
+                statusBox.className = 'audio-status status-missing';
+                audioIcon.textContent = '🎙️';
+                playBtn.disabled = true;
+                deleteBtn.style.display = 'none';
+            };
+
+            audioPlayer.src = audioPath;
+            audioPlayer.load();
+        }
+
+        // Folder Connection
+        document.getElementById('btn-select-folder').addEventListener('click', async () => {
+            try {
+                if ('showDirectoryPicker' in window) {
+                    dirHandle = await window.showDirectoryPicker();
+                    document.getElementById('folder-status').textContent = `✅ متصل بنجاح بمجلد: "${dirHandle.name}". أي تسجيل جديد سيُحفظ فوراً في اللعبة!`;
+                    document.getElementById('folder-status').style.color = '#10b981';
+                    document.getElementById('btn-select-folder').textContent = '✔️ مجلد اللعبة متصل';
+                    document.getElementById('btn-select-folder').style.background = '#10b981';
+                    updateDisplay();
+                } else {
+                    alert('المتصفح لا يدعم الوصول المباشر، سيتم تنزيل التسجيل كملف MP3 يدوي عند الحفظ.');
+                }
+            } catch(e) {
+                console.log(e);
+            }
+        });
+
+        // Recording Logic
+        const recBtn = document.getElementById('btn-record-voice');
+        recBtn.addEventListener('click', async () => {
+            if (!isRecording) {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    audioChunks = [];
+                    let options = { mimeType: 'audio/webm' };
+                    if (!MediaRecorder.isTypeSupported('audio/webm')) options = { mimeType: 'audio/mp4' };
+
+                    mediaRecorder = new MediaRecorder(stream, options);
+                    mediaRecorder.ondataavailable = e => { if (e.data.size > 0) audioChunks.push(e.data); };
+                    mediaRecorder.onstop = () => {
+                        recordedBlob = new Blob(audioChunks, { type: mediaRecorder.mimeType });
+                        const audioUrl = URL.createObjectURL(recordedBlob);
+                        const player = document.getElementById('main-audio');
+                        player.src = audioUrl;
+                        player.play();
+                        document.getElementById('btn-play-audio').disabled = false;
+                        document.getElementById('btn-save-voice').style.display = 'inline-block';
+                        document.getElementById('audio-status-txt').textContent = '🎙️ تم التسجيل! استمع له ثم اضغط "حفظ الصوت الجديد" ليحل محله فوراً.';
+                        document.getElementById('audio-status-box').className = 'audio-status status-ready';
+                    };
+
+                    mediaRecorder.start();
+                    isRecording = true;
+                    recBtn.classList.add('recording');
+                    document.getElementById('rec-icon').textContent = '⏹️';
+                    document.getElementById('rec-label').textContent = 'إيقاف التسجيل';
+                    document.getElementById('audio-status-txt').textContent = '🔴 جارٍ التسجيل الآن... اقرأ الكلمة بنطقك المتقن ثم اضغط إيقاف.';
+                } catch(err) {
+                    alert('يرجى السماح بالوصول للميكروفون لتتمكن من التسجيل.');
+                }
+            } else {
+                mediaRecorder.stop();
+                isRecording = false;
+                recBtn.classList.remove('recording');
+                document.getElementById('rec-icon').textContent = '🎙️';
+                document.getElementById('rec-label').textContent = 'إعادة التسجيل';
+            }
+        });
+
+        // Save Voice
+        document.getElementById('btn-save-voice').addEventListener('click', async () => {
+            if (!recordedBlob) return;
+            const q = filteredQuestions[currentIndex];
+            const fileName = getAudioFileName(q);
+
+            if (dirHandle) {
+                try {
+                    const fileHandle = await dirHandle.getFileHandle(fileName, { create: true });
+                    const writable = await fileHandle.createWritable();
+                    await writable.write(recordedBlob);
+                    await writable.close();
+                    alert(`✅ تم حفظ التسجيل الجديد لمثال (${fileName}) بنجاح! وسيعمل فوراً في اللعبة.`);
+                    document.getElementById('btn-save-voice').style.display = 'none';
+                    probeAudio(fileName);
+                } catch(e) {
+                    alert('تعذر الحفظ المباشر، جاري التنزيل كملف صوتي...');
+                    downloadBlob(recordedBlob, fileName);
+                }
+            } else {
+                downloadBlob(recordedBlob, fileName);
+                alert(`تم تنزيل الملف (${fileName})، يرجى نقله إلى مجلد audio في اللعبة.`);
+            }
+        });
+
+        function downloadBlob(blob, name) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = name;
+            a.click();
+        }
+
+        // Delete Handler
+        document.getElementById('btn-delete-voice').addEventListener('click', async () => {
+            const q = filteredQuestions[currentIndex];
+            const fileName = getAudioFileName(q);
+            if (confirm(`هل تريد مسح هذا الصوت نهائياً لتعيد تسجيله؟`)) {
+                if (dirHandle) {
+                    try {
+                        await dirHandle.removeEntry(fileName);
+                        alert('تم مسح الملف بنجاح.');
+                        probeAudio(fileName);
+                    } catch(e) {
+                        alert('يرجى مسح الملف يدوياً من مجلد audio.');
+                    }
+                }
+            }
+        });
+
+        // Play audio button
+        document.getElementById('btn-play-audio').addEventListener('click', () => {
+            const player = document.getElementById('main-audio');
+            if (player && player.src) {
+                player.currentTime = 0;
+                player.play().catch(e => console.log('Audio error:', e));
+            }
+        });
+
+        // Navigation
+        document.getElementById('btn-prev').addEventListener('click', () => {
+            if (currentIndex > 0) { currentIndex--; updateDisplay(); }
+        });
+
+        document.getElementById('btn-next').addEventListener('click', () => {
+            if (currentIndex < filteredQuestions.length - 1) { currentIndex++; updateDisplay(); }
+        });
+
+        document.getElementById('btn-jump').addEventListener('click', () => {
+            const val = parseInt(document.getElementById('jump-input').value, 10);
+            if (!isNaN(val) && val >= 1 && val <= filteredQuestions.length) {
+                currentIndex = val - 1;
+                updateDisplay();
+            }
+        });
+
+        document.getElementById('cat-select').addEventListener('change', applyFilters);
+
+        // Keyboard navigation
+        window.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
+
+            if (e.code === 'KeyX') {
+                e.preventDefault();
+                toggleCurrentFlag();
+            } else if (e.code === 'Space') {
+                e.preventDefault();
+                const playBtn = document.getElementById('btn-play-audio'); 
+                if (playBtn && !playBtn.disabled) playBtn.click();
+            } else if (e.code === 'ArrowRight') {
+                e.preventDefault();
+                if (currentIndex > 0) { currentIndex--; updateDisplay(); }
+            } else if (e.code === 'ArrowLeft') {
+                e.preventDefault();
+                if (currentIndex < filteredQuestions.length - 1) { currentIndex++; updateDisplay(); }
+            }
+        });
+
+        
+        // === AUDIT & FLAGGING LOGIC (Option 1) ===
+        let flaggedSet = new Set(JSON.parse(localStorage.getItem('tajweed_audio_flags') || '[]'));
+
+        function updateFlagCountUI() {
+            const count = flaggedSet.size;
+            document.getElementById('flag-counter').textContent = count;
+        }
+        updateFlagCountUI();
+
+        function saveFlagsToStorage() {
+            localStorage.setItem('tajweed_audio_flags', JSON.stringify(Array.from(flaggedSet)));
+            updateFlagCountUI();
+        }
+
+        function toggleCurrentFlag() {
+            if (filteredQuestions.length === 0) return;
+            const q = filteredQuestions[currentIndex];
+            const key = getAudioFileName(q);
+
+            if (flaggedSet.has(key)) {
+                flaggedSet.delete(key);
+            } else {
+                flaggedSet.add(key);
+            }
+            saveFlagsToStorage();
+            updateDisplay();
+        }
+
+        document.getElementById('btn-toggle-flag').addEventListener('click', toggleCurrentFlag);
+
+        // Update Flag UI in updateDisplay
+        const origUpdateDisplay = updateDisplay;
+        updateDisplay = function() {
+            origUpdateDisplay();
+            if (filteredQuestions.length === 0) return;
+            const q = filteredQuestions[currentIndex];
+            const key = getAudioFileName(q);
+            const isFlagged = flaggedSet.has(key);
+
+            const flagBtn = document.getElementById('btn-toggle-flag');
+            const flagTag = document.getElementById('flag-tag-badge');
+            const flagIcon = document.getElementById('flag-btn-icon');
+            const flagLbl = document.getElementById('flag-btn-lbl');
+
+            if (isFlagged) {
+                flagBtn.classList.add('flagged');
+                flagIcon.textContent = '❌';
+                flagLbl.textContent = 'إلغاء الملاحظة (X)';
+                flagTag.classList.add('show');
+            } else {
+                flagBtn.classList.remove('flagged');
+                flagIcon.textContent = '🚩';
+                flagLbl.textContent = 'تسجيل ملاحظة (X)';
+                flagTag.classList.remove('show');
+            }
+        };
+
+        // Filter only flagged
+        document.getElementById('chk-only-flagged').addEventListener('change', function() {
+            const onlyFlagged = this.checked;
+            const selectedCat = document.getElementById('cat-select').value;
+            filteredQuestions = allQuestions.filter(q => {
+                if (selectedCat !== 'ALL' && q.categoryKey !== selectedCat) return false;
+                if (onlyFlagged && !flaggedSet.has(getAudioFileName(q))) return false;
+                return true;
+            });
+            currentIndex = 0;
+            updateDisplay();
+        });
+
+        // Export Report Modal
+        const modal = document.getElementById('report-modal');
+        const reportText = document.getElementById('report-text');
+
+        document.getElementById('btn-export-report').addEventListener('click', () => {
+            const arr = Array.from(flaggedSet);
+            if (arr.length === 0) {
+                alert('لم تقم بتعليم أي بطاقة بعد! أثناء الاستماع، اضغط حرف X أو زر (تسجيل ملاحظة) لأي مثال غير مطابق.');
+                return;
+            }
+
+            let report = 'قائمة البطاقات المطلوب مراجعة وتعديل نطقها الصوتي (' + arr.length + ' بطاقة):\n\n';
+            arr.forEach((fileName, idx) => {
+                // find question
+                const q = allQuestions.find(item => getAudioFileName(item) === fileName);
+                const ayahInfo = (typeof AYAH_MAP !== 'undefined' && AYAH_MAP[fileName.replace(/\.[^.]+$/, '')]) || null;
+                const ayahStr = ayahInfo ? (' [سورة ' + ayahInfo.sName + ' : آية ' + ayahInfo.ayah + ']') : '';
+                const catStr = q ? (' - باب: ' + q.categoryTitle) : '';
+                const numStr = q ? ('مثال رقم ' + q.globalIndex) : ('رقم ' + (idx + 1));
+                report += (idx + 1) + '. ' + numStr + ' (' + fileName + ')' + catStr + ayahStr + '\n';
+            });
+
+            reportText.value = report;
+            modal.style.display = 'flex';
+        });
+
+        document.getElementById('btn-close-modal').addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        document.getElementById('btn-copy-clipboard').addEventListener('click', () => {
+            reportText.select();
+            navigator.clipboard.writeText(reportText.value).then(() => {
+                alert('✅ تم نسخ القائمة بنجاح! يمكنك الآن لصقها هنا في المحادثة مباشرة.');
+                modal.style.display = 'none';
+            }).catch(() => {
+                document.execCommand('copy');
+                alert('✅ تم نسخ القائمة!');
+                modal.style.display = 'none';
+            });
+        });
+
+        document.getElementById('btn-clear-all-flags').addEventListener('click', () => {
+            if (confirm('هل أنت متأكد من مسح جميع العلامات المسجلة؟')) {
+                flaggedSet.clear();
+                saveFlagsToStorage();
+                modal.style.display = 'none';
+                applyFilters();
+            }
+        });
+
+        // Close modal on click outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        });
+
+        // Audio Buffer to lossless WAV Encoder
+        function audioBufferToWav(buffer) {
+            const numChannels = buffer.numberOfChannels;
+            const sampleRate = buffer.sampleRate;
+            const format = 1; // PCM
+            const bitDepth = 16;
+            
+            const bytesPerSample = bitDepth / 8;
+            const blockAlign = numChannels * bytesPerSample;
+            const dataLength = buffer.length * blockAlign;
+            const bufferLength = 44 + dataLength;
+            
+            const arrayBuffer = new ArrayBuffer(bufferLength);
+            const view = new DataView(arrayBuffer);
+            
+            function writeString(offset, string) {
+                for (let i = 0; i < string.length; i++) {
+                    view.setUint8(offset + i, string.charCodeAt(i));
+                }
+            }
+            
+            writeString(0, 'RIFF');
+            view.setUint32(4, 36 + dataLength, true);
+            writeString(8, 'WAVE');
+            writeString(12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, format, true);
+            view.setUint16(22, numChannels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, sampleRate * blockAlign, true);
+            view.setUint16(32, blockAlign, true);
+            view.setUint16(34, bitDepth, true);
+            writeString(36, 'data');
+            view.setUint32(40, dataLength, true);
+            
+            let offset = 44;
+            for (let i = 0; i < buffer.length; i++) {
+                for (let ch = 0; ch < numChannels; ch++) {
+                    let sample = buffer.getChannelData(ch)[i];
+                    sample = Math.max(-1, Math.min(1, sample));
+                    view.setInt16(offset, sample < 0 ? sample * 0x8000 : sample * 0x7FFF, true);
+                    offset += 2;
+                }
+            }
+            return new Blob([view], { type: 'audio/wav' });
+        }
+
+        // Trimmer UI Logic
+        const trimStartNum = document.getElementById('trim-start-num');
+        const trimStartRange = document.getElementById('trim-start-range');
+        const trimEndNum = document.getElementById('trim-end-num');
+        const trimEndRange = document.getElementById('trim-end-range');
+        const trimDurationBadge = document.getElementById('trim-duration-badge');
+        const playerAudio = document.getElementById('main-audio');
+
+        function updateTrimDuration() {
+            const s = parseFloat(trimStartNum.value) || 0;
+            const e = parseFloat(trimEndNum.value) || 0;
+            const diff = Math.max(0, e - s);
+            trimDurationBadge.textContent = `المحدد: ${diff.toFixed(2)} ثانية (${s.toFixed(2)}s ➔ ${e.toFixed(2)}s)`;
+        }
+
+        playerAudio.addEventListener('loadedmetadata', () => {
+            const dur = playerAudio.duration || 0;
+            trimStartRange.max = dur;
+            trimEndRange.max = dur;
+            trimStartNum.max = dur;
+            trimEndNum.max = dur;
+            
+            trimStartNum.value = '0.00';
+            trimStartRange.value = 0;
+            trimEndNum.value = dur.toFixed(2);
+            trimEndRange.value = dur;
+            
+            updateTrimDuration();
+        });
+
+        trimStartRange.addEventListener('input', () => {
+            trimStartNum.value = parseFloat(trimStartRange.value).toFixed(2);
+            if (parseFloat(trimStartNum.value) > parseFloat(trimEndNum.value)) {
+                trimEndNum.value = trimStartNum.value;
+                trimEndRange.value = trimStartNum.value;
+            }
+            updateTrimDuration();
+        });
+
+        trimStartNum.addEventListener('input', () => {
+            trimStartRange.value = trimStartNum.value;
+            updateTrimDuration();
+        });
+
+        trimEndRange.addEventListener('input', () => {
+            trimEndNum.value = parseFloat(trimEndRange.value).toFixed(2);
+            if (parseFloat(trimEndNum.value) < parseFloat(trimStartNum.value)) {
+                trimStartNum.value = trimEndNum.value;
+                trimStartRange.value = trimEndNum.value;
+            }
+            updateTrimDuration();
+        });
+
+        trimEndNum.addEventListener('input', () => {
+            trimEndRange.value = trimEndNum.value;
+            updateTrimDuration();
+        });
+
+        document.getElementById('btn-set-start').addEventListener('click', () => {
+            const cur = playerAudio.currentTime || 0;
+            trimStartNum.value = cur.toFixed(2);
+            trimStartRange.value = cur;
+            if (parseFloat(trimEndNum.value) < cur) {
+                trimEndNum.value = (playerAudio.duration || cur).toFixed(2);
+                trimEndRange.value = playerAudio.duration || cur;
+            }
+            updateTrimDuration();
+        });
+
+        document.getElementById('btn-set-end').addEventListener('click', () => {
+            const cur = playerAudio.currentTime || 0;
+            trimEndNum.value = cur.toFixed(2);
+            trimEndRange.value = cur;
+            if (parseFloat(trimStartNum.value) > cur) {
+                trimStartNum.value = '0.00';
+                trimStartRange.value = 0;
+            }
+            updateTrimDuration();
+        });
+
+        let sliceCheckInterval = null;
+        document.getElementById('btn-preview-slice').addEventListener('click', () => {
+            const s = parseFloat(trimStartNum.value) || 0;
+            const e = parseFloat(trimEndNum.value) || 0;
+            if (e <= s) {
+                alert('يرجى تحديد وقت نهاية أكبر من وقت البداية.');
+                return;
+            }
+            if (sliceCheckInterval) clearInterval(sliceCheckInterval);
+            playerAudio.pause();
+            playerAudio.currentTime = s;
+            playerAudio.play();
+            
+            sliceCheckInterval = setInterval(() => {
+                if (playerAudio.currentTime >= e || playerAudio.paused) {
+                    playerAudio.pause();
+                    clearInterval(sliceCheckInterval);
+                    sliceCheckInterval = null;
+                }
+            }, 30);
+        });
+
+        document.getElementById('btn-execute-cut').addEventListener('click', async () => {
+            const s = parseFloat(trimStartNum.value) || 0;
+            const e = parseFloat(trimEndNum.value) || 0;
+            if (e <= s) {
+                alert('يرجى تحديد وقت نهاية أكبر من وقت البداية.');
+                return;
+            }
+            const q = filteredQuestions[currentIndex];
+            const fileName = getAudioFileName(q);
+            const statusMsg = document.getElementById('trim-status-msg');
+            
+            try {
+                statusMsg.style.display = 'inline-block';
+                statusMsg.style.color = '#38bdf8';
+                statusMsg.textContent = '⏳ جارٍ معالجة وقص الصوت بدقة...';
+                
+                let arrayBuf;
+                if (dirHandle) {
+                    try {
+                        const fileHandle = await dirHandle.getFileHandle(fileName);
+                        const file = await fileHandle.getFile();
+                        arrayBuf = await file.arrayBuffer();
+                    } catch(e) {
+                        console.warn('Could not read from dirHandle directly, falling back to fetch/player', e);
+                    }
+                }
+                
+                if (!arrayBuf) {
+                    try {
+                        const resp = await fetch(`audio/${fileName}?t=${Date.now()}`);
+                        if (resp.ok) {
+                            arrayBuf = await resp.arrayBuffer();
+                        }
+                    } catch(e) {
+                        console.warn('fetch failed (likely file:// origin CORS), trying via player src or blob', e);
+                    }
+                }
+
+                if (!arrayBuf && playerAudio.src) {
+                    const resp = await fetch(playerAudio.src);
+                    if (resp.ok) {
+                        arrayBuf = await resp.arrayBuffer();
+                    }
+                }
+
+                if (!arrayBuf) throw new Error('تعذر قراءة ملف الصوت: audio/' + fileName + ' (يرجى التأكد من الضغط على زر "📂 اختيار مجلد audio" أعلى الصفحة للسماح بالوصول المباشر)');
+                
+                const actx = new (window.AudioContext || window.webkitAudioContext)();
+                const decoded = await actx.decodeAudioData(arrayBuf);
+                
+                const sampleRate = decoded.sampleRate;
+                const startSample = Math.max(0, Math.floor(s * sampleRate));
+                const endSample = Math.min(decoded.length, Math.floor(e * sampleRate));
+                const frameCount = endSample - startSample;
+                
+                if (frameCount <= 0) throw new Error('المقطع المحدد فارغ');
+                
+                const sliced = actx.createBuffer(decoded.numberOfChannels, frameCount, sampleRate);
+                for (let ch = 0; ch < decoded.numberOfChannels; ch++) {
+                    const srcData = decoded.getChannelData(ch);
+                    const dstData = sliced.getChannelData(ch);
+                    for (let i = 0; i < frameCount; i++) {
+                        dstData[i] = srcData[startSample + i];
+                    }
+                }
+                
+                const wavBlob = audioBufferToWav(sliced);
+                
+                if (dirHandle) {
+                    const fileHandle = await dirHandle.getFileHandle(fileName, { create: true });
+                    const writable = await fileHandle.createWritable();
+                    await writable.write(wavBlob);
+                    await writable.close();
+                    statusMsg.style.color = '#10b981';
+                    statusMsg.textContent = `✅ تم قص وحفظ المقطع (${(frameCount / sampleRate).toFixed(2)}s) بنجاح في اللعبة!`;
+                    probeAudio(fileName);
+                } else {
+                    downloadBlob(wavBlob, fileName);
+                    statusMsg.style.color = '#f59e0b';
+                    statusMsg.textContent = '📥 تم تنزيل المقطع المقصوص. اختر مجلد audio أعلى الصفحة للحفظ التلقائي المباشر.';
+                }
+            } catch (err) {
+                console.error(err);
+                statusMsg.style.color = '#ef4444';
+                statusMsg.textContent = '❌ حدث خطأ أثناء قص الصوت: ' + err.message;
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', initData);
+    </script>
+</body>
+</html>

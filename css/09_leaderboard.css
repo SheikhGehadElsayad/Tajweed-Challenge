@@ -1,0 +1,22 @@
+﻿/* Rule Stats specific to Report */
+        .rule-stats-container { width: 100%; max-width: 800px; margin-bottom: 2vh; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+        .rule-stat-item { background: white; border: 1px solid #cbd5e1; border-radius: 12px; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; }
+        .rule-stat-name { font-weight: 800; font-size: 0.95rem; color: #334155; }
+        .rule-stat-score { font-weight: 900; font-size: 1rem; color: #0ea5e9; }
+
+        .mistake-card { background: white; border: 2px solid #f87171; border-radius: 16px; padding: 2vh; display: flex; flex-direction: column; gap: 1.5vh; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .mistake-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .mistake-img { max-width: 150px; max-height: 80px; object-fit: contain; border-radius: 8px; border: 1px solid #e2e8f0; background: #f8fafc; }
+        .practice-btn { background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+        .practice-btn:hover { background: #2563eb; }
+
+        /* Leaderboard */
+        .leaderboard-list { width: 100%; max-width: 600px; background: white; border-radius: 16px; border: 2px solid #e2e8f0; overflow: hidden; }
+        .lb-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #e2e8f0; font-weight: 800; }
+        .lb-item:last-child { border-bottom: none; }
+        .lb-rank { font-size: 1.2rem; width: 30px; color: #94a3b8; }
+        .lb-name { flex: 1; font-size: 1.1rem; color: var(--text-main); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .lb-stats { display: flex; gap: 15px; font-size: 1rem; color: #64748b; text-align: right; }
+        .lb-score { color: var(--primary); font-weight: 900; min-width: 50px; }
+
+        

@@ -1,0 +1,690 @@
+/* =========================================================
+   PROGRESSIVE MODE & ROADMAP ENGINE
+   9 Worlds • 46 Gamified Stages
+========================================================= */
+
+const PROGRESSIVE_WORLDS = [
+    {
+        id: 'world_1',
+        catKey: 'image_bank',
+        title: 'Noon & Meem Mushaddad',
+        icon: '💎',
+        color: '#06b6d4',
+        desc: 'Master the 2-count ghunnah on Noon & Meem Mushaddadah',
+        stages: [
+            { id: 'stg_1_1', name: 'Noon Mushaddadah', desc: 'Identify Noon with Shaddah (2-count ghunnah)', subcat: 'Noon Mushaddad', qty: 6 },
+            { id: 'stg_1_2', name: 'Meem Mushaddadah', desc: 'Identify Meem with Shaddah (2-count ghunnah)', subcat: 'Meem Mushaddad', qty: 8 },
+            { id: 'stg_1_3', name: 'Mushaddad Mastery', desc: 'Combined challenge on all Noon & Meem Mushaddadah', subKey: 'Two counts of ghunna', qty: 10 }
+        ]
+    },
+    {
+        id: 'world_2',
+        catKey: 'qalqalah',
+        title: 'Qalqalah',
+        icon: '⚡',
+        color: '#f59e0b',
+        desc: 'Echoing sound on the letters of Qutb Jad (ق، ط، ب، ج، د)',
+        stages: [
+            { id: 'stg_2_1', name: 'General Qalqalah', desc: 'Identify whether the word contains Qalqalah or not', subKey: 'General Qalqalah', qty: 10 },
+            { id: 'stg_2_2', name: 'Minor Qalqalah (Sughra)', desc: 'Qalqalah letter with Sukoon in the middle of a word or sentence', subKey: 'Minor', qty: 10 },
+            { id: 'stg_2_3', name: 'Medium Qalqalah (Wusta)', desc: 'Stopping on an un-doubled Qalqalah letter at the end of a word', subKey: 'Medium', qty: 10 },
+            { id: 'stg_2_4', name: 'Major Qalqalah (Kubra)', desc: 'Stopping on a doubled (mushaddad) Qalqalah letter', subKey: 'Major', qty: 5 }
+        ]
+    },
+    {
+        id: 'world_3',
+        catKey: 'meem_sakinah',
+        title: 'Meem Sakinah',
+        icon: '🌙',
+        color: '#8b5cf6',
+        desc: 'The three rules of Meem Saakinah: Ikhfaa, Idgham, and Izhar Shafawi',
+        stages: [
+            { id: 'stg_3_1', name: 'Ikhfaa Shafawi', desc: 'Meem Saakinah followed by letter Baa (ب)', subKey: 'Oral + Hiding', qty: 8 },
+            { id: 'stg_3_2', name: 'Idgham Shafawi', desc: 'Meem Saakinah followed by another Meem (م)', subKey: 'Oral + Merger', qty: 8 },
+            { id: 'stg_3_3', name: 'Izhar Shafawi', desc: 'Meem Saakinah followed by all other letters', subKey: 'Oral + Clarity', qty: 8 }
+        ]
+    },
+    {
+        id: 'world_4',
+        catKey: 'noon_sakinah_tanween',
+        title: 'Noon Sakinah & Tanween',
+        icon: '📖',
+        color: '#10b981',
+        desc: 'The fundamental rules of Noon Saakinah and Tanween',
+        stages: [
+            { id: 'stg_4_1', name: 'Izhar Halqi', desc: 'Clear pronunciation with throat letters (ء، هـ، ع، ح، غ، خ)', subKey: 'Izhar', qty: 10 },
+            { id: 'stg_4_2', name: 'Idgham with Ghunnah', desc: 'Merging with nasalization in letters Yanmoo (ي، ن، م، و)', subKey: 'Idgham with Ghunnah', qty: 10 },
+            { id: 'stg_4_3', name: 'Idgham without Ghunnah', desc: 'Complete merging without nasal sound in Laam (ل) and Raa (ر)', subKey: 'Idgham without Ghunnah', qty: 10 },
+            { id: 'stg_4_4', name: 'Iqlab', desc: 'Converting Noon or Tanween into a Meem before Baa (ب)', subKey: 'Iqlab', qty: 8 },
+            { id: 'stg_4_5', name: 'Ikhfaa Haqiqi', desc: 'Concealing the Noon sound before the 15 Ikhfaa letters', subKey: 'Ikhfa', qty: 10 },
+            { id: 'stg_4_6', name: 'Izhar Mutlaq', desc: 'Noon Saakinah followed by Waw or Yaa in a single word', subKey: 'Izhar Mutlaq', qty: 4 },
+            { id: 'stg_4_7', name: 'Ikhfaa Ghunnah', desc: 'Distinguish between Heavy and Light Ghunnah of Ikhfaa', subKey: 'Ikhfa Ghunnah', qty: 10 }
+        ]
+    },
+    {
+        id: 'world_5',
+        catKey: 'tafkheem_tarqeeq',
+        title: 'Tafkheem & Tarqeeq',
+        icon: '⚖️',
+        color: '#ec4899',
+        desc: 'Heaviness and Lightness of Arabic letters, Raa, and Laam of Allah',
+        stages: [
+            { id: 'stg_5_1', name: 'Always Heavy Letters', desc: 'The seven permanent heavy letters (خص ضغط قظ)', subKey: 'Always Heavy', qty: 8 },
+            { id: 'stg_5_2', name: 'Heavy Raa (Tafkheem)', desc: 'Cases where letter Raa is pronounced heavy (Fathah, Dammah, etc.)', subKey: 'Heavy Ra', qty: 10 },
+            { id: 'stg_5_3', name: 'Light Raa (Tarqeeq)', desc: 'Cases where letter Raa is pronounced light (Kasrah, etc.)', subKey: 'Light Ra', qty: 8 },
+            { id: 'stg_5_4', name: 'Raa: Both Options', desc: 'Words where Raa can be read with either Tafkheem or Tarqeeq', subKey: 'Ra Both Options', qty: 6 },
+            { id: 'stg_5_5', name: 'Laam of Allah', desc: 'Heaviness or Lightness of the Laam in the Divine Name', subKey: 'Lam of Allah', qty: 10 },
+            { id: 'stg_5_6', name: 'Alif of Madd', desc: 'Alif follows the letter preceding it in heaviness and lightness', subKey: 'Alif', qty: 7 }
+        ]
+    },
+    {
+        id: 'world_6',
+        catKey: 'madd_rules',
+        title: 'Madd Rules',
+        icon: '🌊',
+        color: '#3b82f6',
+        desc: 'Comprehensive rules of Natural, Secondary, and Compulsory Prolongation',
+        stages: [
+            { id: 'stg_6_1', name: 'Natural Madd (Tabee\'ee)', desc: 'The basic two-count prolongation on Alif, Waw, and Yaa', subKey: 'Natural Madd', qty: 10 },
+            { id: 'stg_6_2', name: 'Connected Madd (Muttasil)', desc: 'Madd letter followed by Hamzah in the same word (4-5 counts)', subKey: 'Connected', qty: 10 },
+            { id: 'stg_6_3', name: 'Separated Madd (Munfasil)', desc: 'Madd letter followed by Hamzah in the next word (4-5 counts)', subKey: 'Separated', qty: 10 },
+            { id: 'stg_6_4', name: 'Substitute Madd (Badal)', desc: 'Hamzah precedes the Madd letter in the same word (2 counts)', subKey: 'Substitute', qty: 10 },
+            { id: 'stg_6_5', name: 'Compensatory Madd (\'Iwad)', desc: 'Stopping on Tanween Fath replaced with two-count Alif', subKey: 'Compensatory Madd', qty: 10 },
+            { id: 'stg_6_6', name: 'Temporary Madd (\'Aarid)', desc: 'Temporary Sukoon caused by stopping at the end of a word (2/4/6 counts)', subKey: 'Temporary Madd', qty: 10 },
+            { id: 'stg_6_7', name: 'Soft Madd (Leen)', desc: 'Saakin Waw or Yaa preceded by Fathah before a stopping Sukoon', subKey: 'Soft Madd', qty: 10 },
+            { id: 'stg_6_8', name: 'Minor Sila Madd', desc: 'Pronoun Haa between two vowels without following Hamzah (2 counts)', subKey: 'Minor Sila Madd', qty: 7 },
+            { id: 'stg_6_9', name: 'Major Sila Madd', desc: 'Pronoun Haa followed by Hamzah in the next word (4-5 counts)', subKey: 'Major Sila Madd', qty: 8 },
+            { id: 'stg_6_10', name: 'Compulsory Word Heavy', desc: 'Madd followed by Shaddah in a word (6 counts compulsory)', subKey: 'Permanent Word Based Heavy', qty: 10 },
+            { id: 'stg_6_11', name: 'Compulsory Word Light', desc: 'Madd followed by un-doubled Sukoon in a word (6 counts)', subKey: 'Permanent Word Based Light', qty: 2 },
+            { id: 'stg_6_12', name: 'Compulsory Letter Heavy', desc: 'Disjointed opening letters with Idgham (e.g. Laam in Alif-Laam-Meem)', subKey: 'Permanent Letter Based Heavy', qty: 4 },
+            { id: 'stg_6_13', name: 'Compulsory Letter Light', desc: 'Disjointed opening letters without Idgham (e.g. Qaf, Saad, Noon)', subKey: 'Permanent Letter Based Light', qty: 10 },
+            { id: 'stg_6_14', name: 'Stabilizing Madd (Tamkeen)', desc: 'Two consecutive Yaas or Waws to prevent dropping the elongation', subKey: 'Stabilizing Madd', qty: 4 }
+        ]
+    },
+    {
+        id: 'world_7',
+        catKey: 'hamzat_wasl',
+        title: 'Hamzat Al-Wasl',
+        icon: '🔗',
+        color: '#6366f1',
+        desc: 'Pronunciation and vowelization rules of the connecting Hamzah',
+        stages: [
+            { id: 'stg_7_1', name: 'Dropped in Connection', desc: 'Dropped in speech when reading through from the preceding word', subKey: 'Dropped', qty: 8 },
+            { id: 'stg_7_2', name: 'Start with Fathah', desc: 'Always begins with Fathah in the definite article (Al-)', subKey: 'Start with fatha', qty: 8 },
+            { id: 'stg_7_3', name: 'Start with Dammah', desc: 'Begins with Dammah in verbs whose 3rd letter has an original Dammah', subKey: 'Start with damma', qty: 8 },
+            { id: 'stg_7_4', name: 'Start with Kasrah', desc: 'Begins with Kasrah in regular verbs and irregular Quranic nouns', subKey: 'Start with kasra', qty: 10 }
+        ]
+    },
+    {
+        id: 'world_8',
+        catKey: 'lam_shamsiyyah_qamariyyah',
+        title: 'Lam Shamsiyyah & Qamariyyah',
+        icon: '☀️',
+        color: '#ea580c',
+        desc: 'Solar and Lunar letters in the definite article (Al-)',
+        stages: [
+            { id: 'stg_8_1', name: 'Lam Shamsiyyah (Solar)', desc: 'Laam merges completely into the following solar letter (with Shaddah)', subKey: 'Lam Shamsiyyah', qty: 8 },
+            { id: 'stg_8_2', name: 'Lam Qamariyyah (Lunar)', desc: 'Laam is clearly articulated before the 14 lunar letters', subKey: 'Lam Qamariyyah', qty: 8 }
+        ]
+    },
+    {
+        id: 'world_9',
+        catKey: 'letter_relations',
+        title: 'Relations Between Letters',
+        icon: '🤝',
+        color: '#14b8a6',
+        desc: 'Mutamathilayn, Mutajanisayn, and Mutaqaribayn letters',
+        stages: [
+            { id: 'stg_9_1', name: 'Identical (Mutamathilayn)', desc: 'Two identical letters meeting (same articulation point & characteristics)', subKey: 'Identical', qty: 10 },
+            { id: 'stg_9_2', name: 'Homogeneous (Mutajanisayn)', desc: 'Letters sharing the same articulation point but differing in characteristics', subKey: 'Similar', qty: 8 },
+            { id: 'stg_9_3', name: 'Close (Mutaqaribayn)', desc: 'Letters close in articulation point or characteristics', subKey: 'Close', qty: 6 }
+        ]
+    }
+];
+
+let currentProgressiveStageInfo = null;
+
+function getAllProgressiveStages() {
+    const list = [];
+    PROGRESSIVE_WORLDS.forEach((world, worldIdx) => {
+        world.stages.forEach((stage, stageIdx) => {
+            list.push({
+                worldIdx,
+                stageIdx,
+                world,
+                stage,
+                id: stage.id,
+                globalIdx: list.length
+            });
+        });
+    });
+    return list;
+}
+
+// Backwards-compatibility alias for legacy bindings
+const LEVELS_CONFIG = getAllProgressiveStages().map((s, idx) => ({
+    id: idx + 1,
+    title: `${s.world.title} - ${s.stage.name}`,
+    desc: s.stage.desc,
+    stageInfo: s
+}));
+
+function getProgressionData() {
+    if (typeof window.StudentEngine !== 'undefined') {
+        const prog = window.StudentEngine.getStudentProgress();
+        return {
+            completedStages: prog.completedStages || {},
+            unlockedStageId: prog.unlockedStageId || 'stg_1_1'
+        };
+    }
+    try {
+        const raw = localStorage.getItem('tajweed_progressive_progress');
+        if (raw) {
+            const parsed = JSON.parse(raw);
+            if (parsed && typeof parsed === 'object') {
+                return {
+                    completedStages: parsed.completedStages || {},
+                    unlockedStageId: parsed.unlockedStageId || 'stg_1_1'
+                };
+            }
+        }
+    } catch(e) {}
+    return {
+        completedStages: {},
+        unlockedStageId: 'stg_1_1'
+    };
+}
+
+function saveProgressionData(data) {
+    if (typeof window.StudentEngine !== 'undefined') {
+        const active = window.StudentEngine.getActiveStudent();
+        if (active) {
+            if (!active.progress) active.progress = {};
+            active.progress.completedStages = data.completedStages || {};
+            active.progress.unlockedStageId = data.unlockedStageId || 'stg_1_1';
+            window.StudentEngine.save();
+        }
+    }
+    try {
+        localStorage.setItem('tajweed_progressive_progress', JSON.stringify(data));
+    } catch(e) {}
+}
+
+function getUnlockedLevel() {
+    const allStages = getAllProgressiveStages();
+    const data = getProgressionData();
+    const idx = allStages.findIndex(s => s.id === data.unlockedStageId);
+    return idx >= 0 ? (idx + 1) : 1;
+}
+
+function setUnlockedLevel(lvl) {
+    const allStages = getAllProgressiveStages();
+    const target = allStages[lvl - 1];
+    if (target) {
+        const data = getProgressionData();
+        data.unlockedStageId = target.id;
+        saveProgressionData(data);
+    }
+}
+
+function resetProgressiveData() {
+    const active = typeof window.StudentEngine !== 'undefined' ? window.StudentEngine.getActiveStudent() : null;
+    const name = active ? active.name : 'Student';
+    if (confirm(`Are you sure you want to reset roadmap progress for ${name}? All stars and unlocked stages will be reset to Stage 1.`)) {
+        if (typeof window.StudentEngine !== 'undefined') {
+            window.StudentEngine.resetAllProgress();
+        }
+        localStorage.removeItem('tajweed_progressive_progress');
+        localStorage.removeItem('tajweed_unlocked_level');
+        if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
+        renderProgressiveMap();
+        if (typeof showToast === 'function') showToast(`Progress reset for ${name}! Starting from Stage 1.`);
+    }
+}
+
+function getProgressiveStagePool(world, stage) {
+    const cat = TAJWEED_BANK[world.catKey];
+    if (!cat || !cat.questions) return [];
+    if (stage.subcat) {
+        return cat.questions.filter(q => q.subcat === stage.subcat).map(q => ({
+            ...q,
+            categoryId: world.catKey,
+            categoryTitle: world.title
+        }));
+    }
+    if (stage.subKey) {
+        return getSubQuestions(world.catKey, stage.subKey, cat.questions).map(q => ({
+            ...q,
+            categoryId: world.catKey,
+            categoryTitle: world.title
+        }));
+    }
+    return cat.questions.map(q => ({
+        ...q,
+        categoryId: world.catKey,
+        categoryTitle: world.title
+    }));
+}
+
+function renderProgressiveMap() {
+    const mapContainer = document.getElementById('map-container');
+    if (!mapContainer) return;
+    mapContainer.innerHTML = '';
+
+    const progData = getProgressionData();
+    const allStages = getAllProgressiveStages();
+    const activeStudent = (typeof window.StudentEngine !== 'undefined') ? window.StudentEngine.getActiveStudent() : null;
+
+    // Auto-fill student name from active student
+    const nameInput = document.getElementById('prog-student-name');
+    if (nameInput && activeStudent) {
+        nameInput.value = activeStudent.name;
+        nameInput.oninput = () => {
+            if (typeof window.StudentEngine !== 'undefined') {
+                window.StudentEngine.updateStudent(activeStudent.id, { name: nameInput.value.trim() });
+            }
+            const nameErr = document.getElementById('prog-name-error');
+            if (nameErr) nameErr.hidden = true;
+        };
+    }
+
+    // Calculate totals
+    let totalStars = 0;
+    let completedCount = 0;
+    Object.values(progData.completedStages).forEach(info => {
+        if (info.stars) totalStars += info.stars;
+        if (info.stars >= 1) completedCount++;
+    });
+
+    const maxStars = allStages.length * 3;
+    const progressPercent = Math.round((completedCount / allStages.length) * 100);
+
+    // Current unlocked global index
+    let currentUnlockedIdx = allStages.findIndex(s => s.id === progData.unlockedStageId);
+    if (currentUnlockedIdx < 0) currentUnlockedIdx = 0;
+
+    // Top Active Student Profile & Dashboard Card
+    const dashboard = document.createElement('div');
+    dashboard.className = 'prog-dashboard';
+    dashboard.innerHTML = `
+        <div class="prog-student-banner" style="display:flex; justify-content:space-between; align-items:center; background:white; padding:12px 18px; border-radius:16px; margin-bottom:15px; border:2px solid ${activeStudent?.color || '#2563eb'}; box-shadow:0 4px 15px rgba(0,0,0,0.05);">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <div style="width:48px; height:48px; border-radius:50%; background:${activeStudent?.color || '#2563eb'}22; border:2px solid ${activeStudent?.color || '#2563eb'}; display:flex; align-items:center; justify-content:center; font-size:1.6rem;">
+                    ${activeStudent?.avatar || '🦁'}
+                </div>
+                <div>
+                    <div style="font-size:0.8rem; font-weight:800; color:#64748b; text-transform:uppercase;">Active Student</div>
+                    <div style="font-size:1.25rem; font-weight:900; color:#0f172a;">${activeStudent?.name || 'Student'}</div>
+                </div>
+            </div>
+            <button type="button" class="btn-secondary" id="btn-switch-student-prog" style="padding:6px 14px; font-size:0.9rem; font-weight:800; border-radius:10px; display:flex; align-items:center; gap:6px;">
+                <span>👥</span> Switch Student
+            </button>
+        </div>
+
+        <div class="prog-dash-stats">
+            <div class="dash-stat-item stars" title="Total Stars Earned">
+                <span class="dash-icon">⭐</span>
+                <div class="dash-stat-val"><strong>${totalStars}</strong> <span class="stat-max">/ ${maxStars}</span></div>
+                <div class="dash-stat-lbl">Stars Earned</div>
+            </div>
+            <div class="dash-stat-item progress" title="Stages Completed">
+                <span class="dash-icon">🏆</span>
+                <div class="dash-stat-val"><strong>${completedCount}</strong> <span class="stat-max">/ ${allStages.length}</span></div>
+                <div class="dash-stat-lbl">Stages Cleared</div>
+            </div>
+        </div>
+        <div class="prog-bar-container" title="Overall Roadmap Progress: ${progressPercent}%">
+            <div class="prog-bar-track">
+                <div class="prog-bar-fill" style="width: ${progressPercent}%;"></div>
+            </div>
+            <div class="prog-bar-label">${progressPercent}% Completed (${completedCount}/${allStages.length} Stages)</div>
+        </div>
+        <div class="prog-dash-actions">
+            <button class="btn-reset-prog" onclick="resetProgressiveData()">🔄 Reset Progress</button>
+        </div>
+    `;
+    mapContainer.appendChild(dashboard);
+
+    // Bind switch student button
+    dashboard.querySelector('#btn-switch-student-prog')?.addEventListener('click', () => {
+        if (typeof window.StudentModal !== 'undefined') {
+            window.StudentModal.open('roster');
+        }
+    });
+
+    // Render Worlds Roadmap
+    PROGRESSIVE_WORLDS.forEach((world, wIdx) => {
+        const worldCard = document.createElement('section');
+        worldCard.className = 'world-card';
+        worldCard.style.setProperty('--world-accent', world.color);
+
+        // Compute world completion
+        let worldCompletedStages = 0;
+        world.stages.forEach(stg => {
+            if (progData.completedStages[stg.id] && progData.completedStages[stg.id].stars >= 1) {
+                worldCompletedStages++;
+            }
+        });
+
+        const isWorldComplete = worldCompletedStages === world.stages.length;
+        const worldStatusBadge = isWorldComplete ?
+            `<span class="world-status-badge completed">✓ World Cleared (${worldCompletedStages}/${world.stages.length})</span>` :
+            `<span class="world-status-badge in-progress">${worldCompletedStages}/${world.stages.length} Cleared</span>`;
+
+        worldCard.innerHTML = `
+            <div class="world-header">
+                <div class="world-meta">
+                    <div class="world-icon-box" style="background: ${world.color}18; border-color: ${world.color};">
+                        <span class="world-icon">${world.icon}</span>
+                    </div>
+                    <div class="world-titles">
+                        <div class="world-tag" style="color:${world.color};">WORLD ${wIdx + 1}</div>
+                        <h2 class="world-title">${world.title}</h2>
+                        <p class="world-desc">${world.desc}</p>
+                    </div>
+                </div>
+                <div class="world-badge-wrap">${worldStatusBadge}</div>
+            </div>
+            <div class="stage-track-wrap">
+                <div class="stage-track" id="track-${world.id}"></div>
+            </div>
+        `;
+
+        const track = worldCard.querySelector(`#track-${world.id}`);
+
+        world.stages.forEach((stg, sIdx) => {
+            const gIdx = allStages.findIndex(s => s.id === stg.id);
+            const isCompleted = progData.completedStages[stg.id] && progData.completedStages[stg.id].stars >= 1;
+            const isCurrent = gIdx === currentUnlockedIdx;
+            const isLocked = gIdx > currentUnlockedIdx;
+
+            const stgData = progData.completedStages[stg.id] || { stars: 0, score: 0 };
+            const stars = stgData.stars || 0;
+
+            const node = document.createElement('div');
+            node.className = `stage-node ${isLocked ? 'locked' : isCompleted ? 'completed' : 'unlocked'}${isCurrent ? ' current-focus' : ''}`;
+            node.setAttribute('data-stage-id', stg.id);
+
+            let starString = '';
+            for (let i = 1; i <= 3; i++) {
+                starString += `<span class="star-icon ${i <= stars ? 'earned' : 'empty'}">★</span>`;
+            }
+
+            const nodeIcon = isLocked ? '🔒' : isCompleted ? '✅' : '▶';
+            const actionText = isLocked ? 'Locked' : isCompleted ? 'Replay 🔄' : 'PLAY ▶';
+
+            node.innerHTML = `
+                <div class="stage-node-left">
+                    <div class="stage-pill">${wIdx + 1}.${sIdx + 1}</div>
+                    <div class="stage-indicator">${nodeIcon}</div>
+                </div>
+                <div class="stage-node-center">
+                    <div class="stage-name">${stg.name}</div>
+                    <div class="stage-subdesc">${stg.desc}</div>
+                    <div class="stage-stars-row">${starString}</div>
+                </div>
+                <div class="stage-node-right">
+                    <button class="stage-action-btn" ${isLocked ? 'disabled' : ''}>${actionText}</button>
+                </div>
+            `;
+
+            if (!isLocked) {
+                node.onclick = () => {
+                    if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
+                    openStageLaunchModal(wIdx, sIdx);
+                };
+            }
+
+            track.appendChild(node);
+        });
+
+        mapContainer.appendChild(worldCard);
+    });
+
+    // Auto scroll to current active stage
+    setTimeout(() => {
+        const currentEl = document.querySelector('.stage-node.current-focus');
+        if (currentEl) {
+            currentEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }, 100);
+}
+
+/**
+ * Modern Stage Launch Dialog allowing dynamic choice of question quantity
+ */
+function openStageLaunchModal(worldIdx, stageIdx) {
+    const world = PROGRESSIVE_WORLDS[worldIdx];
+    if (!world) return;
+    const stage = world.stages[stageIdx];
+    if (!stage) return;
+
+    const pool = getProgressiveStagePool(world, stage);
+    if (!pool || pool.length === 0) {
+        alert("Stage questions could not be loaded.");
+        return;
+    }
+
+    // Default stage quantity
+    const defaultQty = stage.qty || Math.min(pool.length, 6);
+    let chosenQty = defaultQty;
+
+    // Available quantities: [6, 10, 15, 20, 25, 30, 'all'] filtered by <= pool.length
+    const baseOptions = [6, 10, 15, 20, 25, 30];
+    const availableOptions = [];
+
+    // Ensure defaultQty is present
+    if (!baseOptions.includes(defaultQty) && defaultQty <= pool.length) {
+        availableOptions.push(defaultQty);
+    }
+    baseOptions.forEach(opt => {
+        if (opt <= pool.length && !availableOptions.includes(opt)) {
+            availableOptions.push(opt);
+        }
+    });
+    availableOptions.sort((a, b) => a - b);
+
+    // Remove any existing launch dialog
+    const existing = document.getElementById('stage-launch-modal');
+    if (existing) existing.remove();
+
+    const dialog = document.createElement('div');
+    dialog.id = 'stage-launch-modal';
+    dialog.className = 'modal-overlay';
+    dialog.style.display = 'flex';
+    dialog.style.zIndex = '10000';
+
+    dialog.innerHTML = `
+        <div class="modal-content animate-pop" style="max-width: 480px; text-align: center; padding: 24px; border-radius: 20px; border: 3px solid ${world.color};">
+            <div style="font-size: 2.5rem; margin-bottom: 8px;">${world.icon}</div>
+            <div style="font-size: 0.85rem; font-weight: 800; color: ${world.color}; text-transform: uppercase;">World ${worldIdx + 1}: ${world.title}</div>
+            <h2 style="font-size: 1.6rem; font-weight: 900; color: #1e293b; margin: 4px 0 8px 0;">${stage.name}</h2>
+            <p style="font-size: 0.95rem; color: #64748b; font-weight: 700; margin-bottom: 16px;">${stage.desc}</p>
+
+            <div style="background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px; margin-bottom: 20px;">
+                <div style="font-size: 0.95rem; font-weight: 800; color: #334155; margin-bottom: 10px;">
+                    Available Examples in Pool: <span style="color: #2563eb; background: #dbeafe; padding: 2px 10px; border-radius: 999px;">${pool.length} Examples</span>
+                </div>
+                <div style="font-size: 0.85rem; color: #64748b; font-weight: 700; margin-bottom: 10px;">Select number of examples to practice:</div>
+                <div class="stage-qty-chips" style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;" id="stage-chips-wrap">
+                    ${availableOptions.map(opt => `
+                        <button type="button" class="stage-chip-btn ${opt === chosenQty ? 'active' : ''}" data-qty="${opt}" style="padding: 8px 14px; border-radius: 10px; font-weight: 800; font-size: 0.9rem; cursor: pointer; border: 2px solid ${opt === chosenQty ? '#2563eb' : '#cbd5e1'}; background: ${opt === chosenQty ? '#2563eb' : 'white'}; color: ${opt === chosenQty ? 'white' : '#334155'};">
+                            ${opt} Examples ${opt === defaultQty ? '⭐ (Default)' : ''}
+                        </button>
+                    `).join('')}
+                    ${pool.length > 0 ? `
+                        <button type="button" class="stage-chip-btn ${chosenQty === pool.length && !availableOptions.includes(pool.length) ? 'active' : ''}" data-qty="${pool.length}" style="padding: 8px 14px; border-radius: 10px; font-weight: 800; font-size: 0.9rem; cursor: pointer; border: 2px solid #cbd5e1; background: white; color: #334155;">
+                            All (${pool.length}) 🔥
+                        </button>
+                    ` : ''}
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 12px; justify-content: center;">
+                <button type="button" class="btn-secondary" id="btn-cancel-stage-launch" style="flex: 1; padding: 12px; border-radius: 12px; font-weight: 800;">Cancel</button>
+                <button type="button" class="btn-start" id="btn-confirm-stage-launch" style="flex: 2; padding: 12px; font-size: 1.15rem; border-radius: 12px; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; border: none; font-weight: 900; box-shadow: 0 4px 0 #1e40af; cursor: pointer;">
+                    Start Lesson 🚀
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(dialog);
+
+    // Chip click handling
+    dialog.querySelectorAll('.stage-chip-btn').forEach(chip => {
+        chip.onclick = () => {
+            dialog.querySelectorAll('.stage-chip-btn').forEach(c => {
+                c.style.background = 'white';
+                c.style.color = '#334155';
+                c.style.borderColor = '#cbd5e1';
+                c.classList.remove('active');
+            });
+            chip.style.background = '#2563eb';
+            chip.style.color = 'white';
+            chip.style.borderColor = '#2563eb';
+            chip.classList.add('active');
+            chosenQty = parseInt(chip.dataset.qty);
+        };
+    });
+
+    dialog.querySelector('#btn-cancel-stage-launch').onclick = () => dialog.remove();
+    dialog.querySelector('#btn-confirm-stage-launch').onclick = () => {
+        dialog.remove();
+        startProgressiveStage(worldIdx, stageIdx, chosenQty);
+    };
+}
+
+function startProgressiveStage(worldIdx, stageIdx, overrideQty = null) {
+    const world = PROGRESSIVE_WORLDS[worldIdx];
+    if (!world) return;
+    const stage = world.stages[stageIdx];
+    if (!stage) return;
+
+    const activeStudent = (typeof window.StudentEngine !== 'undefined') ? window.StudentEngine.getActiveStudent() : null;
+    let name = activeStudent ? activeStudent.name : (localStorage.getItem('tajweed_player_name') || 'Student');
+    name = name.replace(/\s+/g, ' ');
+
+    const pool = getProgressiveStagePool(world, stage);
+    if (pool.length === 0) {
+        alert("Stage questions could not be loaded.");
+        return;
+    }
+
+    isProgressiveMode = true;
+    isHomeworkMode = false;
+    currentProgressiveStageInfo = {
+        worldIdx,
+        stageIdx,
+        world,
+        stage,
+        stageId: stage.id
+    };
+
+    session.studentName = name;
+    session.studentAvatar = activeStudent ? activeStudent.avatar : (typeof currentStudentAvatar !== 'undefined' ? currentStudentAvatar : null);
+    TIME_LIMIT = 30;
+    hasShield = false;
+
+    const questionCount = overrideQty ? Math.min(overrideQty, pool.length) : (stage.qty || pool.length);
+    let mixed = smartMix(pool);
+    let finalPlaylist = mixed.slice(0, questionCount);
+    initGameSession(false, finalPlaylist);
+}
+
+// Legacy alias
+function startProgressiveLevel(index) {
+    const allStages = getAllProgressiveStages();
+    const stg = allStages[index] || allStages[0];
+    if (stg) {
+        openStageLaunchModal(stg.worldIdx, stg.stageIdx);
+    }
+}
+
+        function generateHWLink() {
+            const selectedCbs = Array.from(document.querySelectorAll('.cat-cb:checked'));
+            const subCbs = Array.from(document.querySelectorAll('.sub-cb:checked'));
+            
+            let hwData = {
+                c: selectedCbs.map(cb => cb.value),
+                s: subCbs.map(cb => cb.value),
+                t: document.getElementById('timer-select').value,
+                q: document.getElementById('custom-qty-input').value
+            };
+            
+            try {
+                const b64 = btoa(JSON.stringify(hwData));
+                const url = new URL(window.location.href);
+                url.search = '?hw=' + b64;
+                
+                const out = document.getElementById('hw-link-out');
+                const copyBtn = document.getElementById('btn-copy-hw');
+                out.value = url.toString();
+                out.style.display = 'block'; copyBtn.style.display = 'block';
+                
+                copyBtn.onclick = () => {
+                    out.select(); document.execCommand('copy');
+                    copyBtn.textContent = 'Copied! ✅';
+                    setTimeout(()=> copyBtn.textContent='Copy', 2000);
+                };
+            } catch(e) { alert("Error generating link."); }
+        }
+
+        function parseURLModes() {
+            const params = new URLSearchParams(window.location.search);
+            if(params.has('hw')) {
+                try {
+                    const data = JSON.parse(atob(params.get('hw')));
+                    document.getElementById('screen-start').classList.add('active');
+                    document.getElementById('screen-splash').classList.remove('active');
+                    
+                    document.getElementById('start-title').textContent = "Homework Assignment 📝";
+                    document.getElementById('btn-start-game').textContent = "START HOMEWORK";
+                    
+                    document.getElementById('cb-all-rules').parentElement.parentElement.parentElement.style.display = 'none';
+                    
+                    data.c.forEach(c => { const el = document.querySelector(`.cat-cb[value="${c}"]`); if(el) el.checked=true; });
+                    data.s.forEach(s => { const el = document.querySelector(`.sub-cb[value="${s}"]`); if(el) el.checked=true; });
+                    document.getElementById('timer-select').value = data.t;
+                    document.getElementById('custom-qty-input').value = data.q;
+                    
+                    isHomeworkMode = true; isProgressiveMode = false;
+                } catch(e) { alert("Invalid homework link."); }
+            } else if(params.has('result')) {
+                try {
+                    const data = JSON.parse(decodeURIComponent(atob(params.get('result'))));
+                    document.getElementById('screen-splash').classList.remove('active');
+                    const rep = document.getElementById('screen-report');
+                    rep.classList.add('active');
+                    
+                    document.getElementById('report-title').innerHTML = `📝 Student Report: <span style="color:#3b82f6">${data.n}</span>`;
+                    document.getElementById('report-subtitle').textContent = `Completed in ${data.t} seconds`;
+                    
+                    document.getElementById('btn-report-home').style.display = 'none';
+                    
+                    let html = `<div style="text-align:center; padding:15px; font-size:1.2rem;">
+                        <strong>Score:</strong> ${data.s} | <strong>Accuracy:</strong> ${data.a}%<br>
+                        <strong>Correct:</strong> ${data.c} | <strong>Incorrect:</strong> ${data.m.length}
+                    </div>`;
+                    
+                    if(data.m.length > 0) {
+                        html += `<h3 style="margin-top:20px; color:#ef4444; font-weight:900;">Mistakes Made:</h3>`;
+                        data.m.forEach(m => {
+                            html += `<div style="padding:10px; border-bottom:1px solid #cbd5e1; font-weight:700;">
+                                Expected: <span style="color:#ef4444;">${m.ans}</span>
+                            </div>`;
+                        });
+                    } else {
+                        html += `<div style="padding:10px; color:#10b981; font-weight:bold; font-size:1.2rem;">Perfect Assignment! 🎉</div>`;
+                    }
+                    
+                    document.getElementById('main-stats-grid').innerHTML = html;
+                    document.getElementById('main-stats-grid').style.display = 'block';
+                    document.getElementById('rule-stats-breakdown').innerHTML = '';
+                } catch(e) { alert("Invalid result link."); }
+            }
+        }
+
+        
+

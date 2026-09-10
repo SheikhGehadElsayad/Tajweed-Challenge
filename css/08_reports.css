@@ -1,0 +1,7 @@
+﻿/* Report & Mistake Cards */
+        .report-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; width: 100%; max-width: 800px; margin-bottom: 2vh; }
+        .stat-box { background: white; padding: 2vh; border-radius: 16px; text-align: center; border: 2px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .stat-val { font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 900; color: var(--text-main); }
+        .stat-lbl { font-size: 0.9rem; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+        
+        

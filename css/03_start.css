@@ -1,0 +1,48 @@
+﻿/* Splash & Start Screens */
+        .start-container { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 100%; text-align: center; background: linear-gradient(135deg, #e8f7f9, #f8fafc); padding: 4vh 4vw; overflow-y: auto; }
+        .splash-layout { display: flex; flex-direction: column; width: 100%; max-width: 900px; gap: 4vh; align-items: center; justify-content: center; height: 100%; }
+        @media (min-width: 768px) { .splash-layout { flex-direction: row; text-align: left; justify-content: space-between; } }
+        
+        .splash-left { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2vh; border-bottom: 2px solid #e2e8f0; text-align: center;}
+        @media (min-width: 768px) { .splash-left { align-items: flex-start; border-bottom: none; border-right: 2px solid #e2e8f0; padding-right: 4vw; text-align: left;} }
+        .splash-right { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2vh; padding: 2vh; }
+
+        .splash-link { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 1.5vh 2vw; border-radius: 99px; text-decoration: none; font-weight: 800; font-size: 1.1rem; width: 100%; max-width: 300px; transition: transform 0.1s, box-shadow 0.1s; }
+        .splash-link:active { transform: scale(0.98); }
+
+        .name-input-group { margin: 1vh 0; display: flex; flex-direction: column; align-items: center; gap: 6px; width: 100%; max-width: 400px; }
+        .name-input { padding: 1.5vh 2vw; font-size: clamp(1.2rem, 2.5vw, 1.8rem); border: 4px solid #cbd5e1; border-radius: 99px; text-align: center; font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--text-main); outline: none; transition: border-color 0.3s; width: 100%; }
+        .name-input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+        .name-input[aria-invalid="true"] { border-color: var(--error); }
+        .name-error { color: var(--error); font-weight: 800; font-size: 0.9rem; margin: 0; min-height: 1.2em;}
+
+        
+/* --- CREATIVE REDESIGN FOR SPLASH --- */
+#screen-splash {
+    background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f1f5f9 100%);
+}
+
+.splash-left h1 {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    animation: floatTitle 3s ease-in-out infinite;
+}
+
+@keyframes floatTitle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+#btn-enter-app {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 10px 25px rgba(16,185,129,0.4), 0 8px 0 #047857;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+#btn-enter-app:active {
+    transform: translateY(8px);
+    box-shadow: 0 2px 10px rgba(16,185,129,0.4), 0 0 0 transparent;
+}
