@@ -138,6 +138,12 @@ window.GC_STATE = {
       this.questions = window.GC_DATA.buildQuestionPool(config);
     }
 
+    // Safety fallback: if pool is empty, build default pool
+    if (!this.questions || this.questions.length === 0) {
+      console.warn('[GC_STATE] Question pool was empty, using default pool fallback.');
+      this.questions = window.GC_DATA.buildQuestionPool({ maxCount: config.maxCount || 24 });
+    }
+
     this.currentIndex = 0;
 
     // Default Team Colors: Team 1 (Blue/Cyan), Team 2 (Red/Rose), Team 3 (Amber), Team 4 (Emerald)

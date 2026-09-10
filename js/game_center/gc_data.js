@@ -73,26 +73,81 @@ window.GC_DATA = {
   buildQuestionPool(config = {}) {
     let pool = [];
 
-    const catsToUse = (config.selectedCats && config.selectedCats.length > 0)
-      ? config.selectedCats
-      : this.categories.map(c => c.id);
+    // 1. If RuleSelectorEngine is available and config provides selectedSubRules, use it as primary builder
+    const rse = (typeof window !== 'undefined' && window.RuleSelectorEngine) ? window.RuleSelectorEngine : (typeof RuleSelectorEngine !== 'undefined' ? RuleSelectorEngine : null);
+    if (rse && typeof rse.buildPool === 'function' && config.selectedSubRules && Object.keys(config.selectedSubRules).length > 0) {
+      try {
+        const rsePool = rse.buildPool(config.selectedSubRules);
+        if (rsePool && rsePool.length > 0) {
+          pool = rsePool.map(q => ({
+            ...q,
+            categoryId: q.categoryId,
+            categoryName: q.categoryTitle || this.getCategoryName(q.categoryId),
+            src: q.src || q.image,
+            image: q.image || q.src
+          }));
+        }
+      } catch (e) {
+        console.warn('RuleSelectorEngine.buildPool failed, falling back to internal logic:', e);
+      }
+    }
 
-    catsToUse.forEach(catId => {
-      const list = this.getCategoryQuestions(catId);
-      const subRuleFilters = (config.selectedSubRules && config.selectedSubRules[catId]) || [];
+    // 2. Fallback if pool is still empty
+    if (pool.length === 0) {
+      const catsToUse = (config.selectedCats && config.selectedCats.length > 0)
+        ? config.selectedCats
+        : this.categories.map(c => c.id);
 
-      list.forEach(q => {
-        const sub = q.subcat || q.subRule;
-        if (subRuleFilters.length === 0 || (sub && subRuleFilters.includes(sub))) {
-          // Clone question to prevent mutation
+      catsToUse.forEach(catId => {
+        const list = this.getCategoryQuestions(catId);
+        const subRuleFilters = (config.selectedSubRules && config.selectedSubRules[catId]) || [];
+        const isAll = subRuleFilters.length === 0 || subRuleFilters.includes('ALL');
+
+        list.forEach(q => {
+          const sub = q.subcat || q.subRule || q.ans;
+          if (isAll || (sub && subRuleFilters.includes(sub))) {
+            pool.push({
+              ...q,
+              categoryId: catId,
+              categoryName: this.getCategoryName(catId),
+              src: q.src || q.image,
+              image: q.image || q.src
+            });
+          }
+        });
+      });
+    }
+
+    // 3. Absolute safety net: If pool is STILL empty, load from all available categories
+    if (pool.length === 0) {
+      this.categories.forEach(cat => {
+        const list = this.getCategoryQuestions(cat.id);
+        list.forEach(q => {
           pool.push({
             ...q,
-            categoryId: catId,
-            categoryName: this.getCategoryName(catId)
+            categoryId: cat.id,
+            categoryName: this.getCategoryName(cat.id),
+            src: q.src || q.image,
+            image: q.image || q.src
           });
-        }
+        });
       });
-    });
+    }
+
+    // Deduplicate by ID
+    const uniquePool = [];
+    const seenIds = new Set();
+    for (const q of pool) {
+      if (q && q.id) {
+        if (!seenIds.has(q.id)) {
+          seenIds.add(q.id);
+          uniquePool.push(q);
+        }
+      } else if (q) {
+        uniquePool.push(q);
+      }
+    }
+    pool = uniquePool;
 
     // Shuffle pool with Fisher-Yates
     for (let i = pool.length - 1; i > 0; i--) {
@@ -100,10 +155,11 @@ window.GC_DATA = {
       [pool[i], pool[j]] = [pool[j], pool[i]];
     }
 
-    // If user requested more questions than currently available in selected categories, auto-cycle and reshuffle!
-    if (config.maxCount && config.maxCount > 0 && pool.length > 0 && pool.length < config.maxCount) {
+    // Adjust to maxCount
+    const maxCount = (config.maxCount && config.maxCount > 0) ? config.maxCount : 20;
+    if (pool.length > 0 && pool.length < maxCount) {
       const basePool = [...pool];
-      while (pool.length < config.maxCount) {
+      while (pool.length < maxCount) {
         const extra = basePool.map(q => ({
           ...q,
           id: q.id + '_cyc_' + Math.random().toString(36).substring(2, 6)
@@ -114,9 +170,9 @@ window.GC_DATA = {
         }
         pool = pool.concat(extra);
       }
-      pool = pool.slice(0, config.maxCount);
-    } else if (config.maxCount && config.maxCount > 0 && pool.length > config.maxCount) {
-      pool = pool.slice(0, config.maxCount);
+      pool = pool.slice(0, maxCount);
+    } else if (pool.length > maxCount) {
+      pool = pool.slice(0, maxCount);
     }
 
     return pool;

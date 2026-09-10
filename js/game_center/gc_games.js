@@ -142,10 +142,17 @@ class BaseGameEngine {
 
   // Wide Full-Stage Question Presentation (Matching System 1 #screen-game)
   showQuestionModal(onAnswerResolved, specificQuestion = null) {
-    const q = specificQuestion || window.GC_STATE.getCurrentQuestion();
+    let q = specificQuestion || window.GC_STATE.getCurrentQuestion();
     if (!q) {
-      window.GC_UI.showVictoryScreen();
-      return;
+      console.warn('[GC_GAMES] No current question found in session.');
+      if (window.GC_STATE.questions && window.GC_STATE.questions.length > 0) {
+        window.GC_STATE.currentIndex = 0;
+        q = window.GC_STATE.getCurrentQuestion();
+      }
+      if (!q) {
+        window.GC_UI.showVictoryScreen();
+        return;
+      }
     }
 
     const currentTeam = window.GC_STATE.getCurrentTeam();
@@ -162,11 +169,31 @@ class BaseGameEngine {
         else if (q.subcat === 'Always Heavy') poolChoices = ["Heavy Letter", "Light Letter"];
         else if (q.subcat === 'Lam of Allah') poolChoices = ["Heavy Laam", "Light Laam"];
         else if (q.subcat === 'Alif') poolChoices = ["Heavy Alif", "Light Alif"];
+        else if (q.ans && q.ans.startsWith('Both are permissible')) {
+          poolChoices = [
+            'Both are permissible — Tarqeeq is preferred when stopping.',
+            'Both are permissible — Tafkheem is preferred when stopping.',
+            'Heavy Raa',
+            'Light Raa'
+          ];
+        }
+      } else if (q.categoryId === 'qalqalah') {
+        if (['Minor', 'Medium', 'Major'].includes(q.ans)) {
+          poolChoices = ['Minor', 'Medium', 'Major'];
+        } else {
+          poolChoices = ['Qalqalah', 'No Qalqalah'];
+        }
+      } else if (q.categoryId === 'noon_sakinah_tanween' && (q.ans === 'Heavy Ghunnah' || q.ans === 'Light Ghunnah')) {
+        poolChoices = ['Heavy Ghunnah', 'Light Ghunnah'];
       }
+
       let wrong = poolChoices.filter(c => c !== q.ans);
       for (let i = wrong.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [wrong[i], wrong[j]] = [wrong[j], wrong[i]];
+      }
+      if (wrong.length === 0) {
+        wrong = ['None of the above'];
       }
       choices = [q.ans, ...wrong.slice(0, 3)];
     }
