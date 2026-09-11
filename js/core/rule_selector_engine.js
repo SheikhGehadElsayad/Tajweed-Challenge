@@ -377,6 +377,27 @@
             `;
             arena.appendChild(cmdBar);
 
+            // 1.5 Full-Width Colorful Realm Selector Dropdown Bar (Edge-to-Edge)
+            const realmBar = document.createElement('div');
+            realmBar.className = 'arena-realm-bar';
+            realmBar.innerHTML = `
+                <div class="arena-realm-header">
+                    <div class="arena-realm-tag" id="arena-realm-tag">
+                        <span class="art-icon">🎯</span>
+                        <span class="art-text">SELECT TAJWEED REALM</span>
+                    </div>
+                    <div class="arena-realm-summary-badge" id="arena-realm-summary-badge">
+                        9 Realms Available
+                    </div>
+                </div>
+                <div class="arena-realm-select-wrapper">
+                    <select class="arena-realm-dropdown" id="arena-realm-select-dropdown" aria-label="Select Tajweed Realm">
+                    </select>
+                    <span class="arena-realm-select-arrow">▼</span>
+                </div>
+            `;
+            arena.appendChild(realmBar);
+
             // 2. Dual Workspace: Left Dock & Right Stage Deck
             const workspace = document.createElement('div');
             workspace.className = 'arena-workspace';
@@ -474,6 +495,59 @@
                 if (totalValEl) totalValEl.textContent = totalPoolCount;
                 if (subsValEl) subsValEl.textContent = `${activeSubs} Sub-Rules (${activeWorlds} Realms)`;
 
+                // 1.5 Sync Full-Width Realm Selector Bar (Edge-to-Edge)
+                const activeDef = CATEGORY_DEFINITIONS.find(c => c.id === activeWorldId) || CATEGORY_DEFINITIONS[0];
+                realmBar.style.setProperty('--world-color', activeDef.color);
+
+                const realmTag = realmBar.querySelector('#arena-realm-tag');
+                if (realmTag) {
+                    realmTag.innerHTML = `
+                        <span class="art-icon">${activeDef.icon}</span>
+                        <span class="art-text">${activeDef.title} Realm</span>
+                    `;
+                }
+
+                const summaryBadge = realmBar.querySelector('#arena-realm-summary-badge');
+                if (summaryBadge) {
+                    summaryBadge.textContent = `${activeSubs} Active Sub-Rules (${totalPoolCount} Total Qs)`;
+                }
+
+                const realmSelect = realmBar.querySelector('#arena-realm-select-dropdown');
+                if (realmSelect) {
+                    realmSelect.innerHTML = '';
+                    CATEGORY_DEFINITIONS.forEach(catDef => {
+                        const qList = bank[catDef.id]?.questions || [];
+                        if (qList.length === 0) return;
+
+                        const catState = state[catDef.id] || {};
+                        const subEntries = Object.entries(catState);
+                        const enabledSubs = subEntries.filter(([k, s]) => s.enabled);
+
+                        let totalActiveCatQs = 0;
+                        enabledSubs.forEach(([k, s]) => {
+                            const count = (typeof s.qty === 'number') ? Math.min(s.qty, s.maxAvailable) : s.maxAvailable;
+                            totalActiveCatQs += count;
+                        });
+
+                        const opt = document.createElement('option');
+                        opt.value = catDef.id;
+                        const statusText = enabledSubs.length > 0
+                            ? `— ${enabledSubs.length}/${subEntries.length} Active (${totalActiveCatQs} Qs)`
+                            : '— [Inactive]';
+                        opt.textContent = `${catDef.icon} ${catDef.title} ${statusText}`;
+                        if (catDef.id === activeWorldId) {
+                            opt.selected = true;
+                        }
+                        realmSelect.appendChild(opt);
+                    });
+
+                    realmSelect.onchange = (e) => {
+                        playClick();
+                        activeWorldId = e.target.value;
+                        updateUI();
+                    };
+                }
+
                 // 2. Render Left Worlds Dock
                 worldsDock.innerHTML = '';
                 CATEGORY_DEFINITIONS.forEach(catDef => {
@@ -516,7 +590,6 @@
                 });
 
                 // 3. Render Active Realm Stage Deck
-                const activeDef = CATEGORY_DEFINITIONS.find(c => c.id === activeWorldId) || CATEGORY_DEFINITIONS[0];
                 const activeCatState = state[activeDef.id] || {};
                 const activeSubEntries = Object.entries(activeCatState);
                 const activeEnabledCount = activeSubEntries.filter(([k, s]) => s.enabled).length;
@@ -533,10 +606,10 @@
                         </div>
                         <div class="stage-actions">
                             <button type="button" class="stage-action-btn" id="stage-btn-toggle-all">
-                                ${isAllActiveInRealm ? 'Deselect Realm' : 'Select All in Realm'}
+                                ${isAllActiveInRealm ? 'Deselect All Rules' : 'Select All Rules'}
                             </button>
                             <button type="button" class="stage-action-btn" id="stage-btn-all-5">Set 5 Each</button>
-                            <button type="button" class="stage-action-btn" id="stage-btn-all-max">Set Max</button>
+                            <button type="button" class="stage-action-btn" id="stage-btn-all-max">Set Max All</button>
                         </div>
                     </div>
                     <div class="stage-missions-grid" id="stage-missions-container"></div>
