@@ -3,6 +3,9 @@
  * Provides standardized multi-rule, sub-rule hierarchy, granular per-subrule question quantities,
  * dynamic count calculation, and reusable Arcade Stage Arena UI component across
  * Game Center, Classic Challenge, Free Practice, and Homework Creator.
+ * 
+ * Version 38: Zoom Accessibility, Full-Width Edge-to-Edge Dropdown,
+ * Smooth Up/Down Scrolling, Large Vibrant Typography, and Simplified Friendly Options.
  */
 
 (function(window) {
@@ -19,128 +22,137 @@
         {
             id: 'image_bank',
             title: 'Noon & Meem Mushaddad',
-            subtitle: 'Letters with permanent two-count Ghunnah (نّ - مّ)',
+            titleAr: 'النون والميم المشددتان',
+            subtitle: 'حروف الغنة الدائمة بمقدار حركتين (نّ - مّ)',
             icon: '💎',
             color: '#06b6d4',
             subrules: [
-                { key: 'Noon Mushaddad', label: 'Noon Mushaddadah (نّ)' },
-                { key: 'Meem Mushaddad', label: 'Meem Mushaddadah (مّ)' },
-                { key: 'Two counts of ghunna', label: 'All Mushaddad (Ghunnah)' }
+                { key: 'Noon Mushaddad', label: 'Noon Mushaddadah (نّ)', labelAr: 'نون مشددة (نّ)' },
+                { key: 'Meem Mushaddad', label: 'Meem Mushaddadah (مّ)', labelAr: 'ميم مشددة (مّ)' },
+                { key: 'Two counts of ghunna', label: 'All Mushaddad (Ghunnah)', labelAr: 'غنة النون والميم المشددتين (حركتان)' }
             ]
         },
         {
             id: 'qalqalah',
             title: 'Qalqalah (Echo)',
-            subtitle: 'Echoing vibration on letters (ق ط ب ج د)',
+            titleAr: 'أحكام القلقلة',
+            subtitle: 'اضطراب الصوت عند النطق بالحرف الساكن (ق ط ب ج د)',
             icon: '⚡',
             color: '#f59e0b',
             subrules: [
-                { key: 'General Qalqalah', label: 'General Qalqalah (Yes/No)' },
-                { key: 'Minor', label: 'Minor Qalqalah (Sughra)' },
-                { key: 'Medium', label: 'Medium Qalqalah (Wusta)' },
-                { key: 'Major', label: 'Major Qalqalah (Kubra)' }
+                { key: 'General Qalqalah', label: 'General Qalqalah (Yes/No)', labelAr: 'قلقلة عامة (تمييز القلقلة)' },
+                { key: 'Minor', label: 'Minor Qalqalah (Sughra)', labelAr: 'قلقلة صغرى (وسط الكلمة)' },
+                { key: 'Medium', label: 'Medium Qalqalah (Wusta)', labelAr: 'قلقلة وسطى (آخر الكلمة غير مشدد)' },
+                { key: 'Major', label: 'Major Qalqalah (Kubra)', labelAr: 'قلقلة كبرى (آخر الكلمة مشدد)' }
             ]
         },
         {
             id: 'meem_sakinah',
             title: 'Meem Sakinah',
-            subtitle: 'Oral rules for Meem with Sukoon (مْ)',
+            titleAr: 'أحكام الميم الساكنة',
+            subtitle: 'الأحكام الشفوية للميم الساكنة (مْ)',
             icon: '🌙',
             color: '#8b5cf6',
             subrules: [
-                { key: 'Oral + Clarity', label: 'Izhar Shafawi (Oral Clarity)' },
-                { key: 'Oral + Merger', label: 'Idgham Shafawi (Oral Merging)' },
-                { key: 'Oral + Hiding', label: 'Ikhfaa Shafawi (Oral Hiding)' }
+                { key: 'Oral + Clarity', label: 'Izhar Shafawi (Oral Clarity)', labelAr: 'إظهار شفوي (جميع الحروف عدا الباء والميم)' },
+                { key: 'Oral + Merger', label: 'Idgham Shafawi (Oral Merging)', labelAr: 'إدغام شفوي / متماثلين (مع الميم)' },
+                { key: 'Oral + Hiding', label: 'Ikhfaa Shafawi (Oral Hiding)', labelAr: 'إخفاء شفوي (مع الباء بغنة)' }
             ]
         },
         {
             id: 'noon_sakinah_tanween',
             title: 'Noon Sakinah & Tanween',
-            subtitle: 'Clarity, merging, conversion, and hiding rules',
+            titleAr: 'أحكام النون الساكنة والتنوين',
+            subtitle: 'أحكام الإظهار والإدغام والإقلاب والإخفاء',
             icon: '📖',
             color: '#10b981',
             subrules: [
-                { key: 'Izhar', label: 'Izhar Halqi (Throat Clarity)' },
-                { key: 'Idgham with Ghunnah', label: 'Idgham with Ghunnah (Merging)' },
-                { key: 'Idgham without Ghunnah', label: 'Idgham without Ghunnah' },
-                { key: 'Iqlab', label: 'Iqlab (Conversion to Meem)' },
-                { key: 'Ikhfa', label: 'Ikhfaa Haqiqi (True Hiding)' },
-                { key: 'Izhar Mutlaq', label: 'Izhar Mutlaq (Absolute Clarity)' },
-                { key: 'Ikhfa Ghunnah', label: 'Ikhfaa Ghunnah (Heavy / Light)' }
+                { key: 'Izhar', label: 'Izhar Halqi (Throat Clarity)', labelAr: 'إظهار حلقي (ء هـ ع ح غ خ)' },
+                { key: 'Idgham with Ghunnah', label: 'Idgham with Ghunnah', labelAr: 'إدغام بغنة (ي ن م و)' },
+                { key: 'Idgham without Ghunnah', label: 'Idgham without Ghunnah', labelAr: 'إدغام بغير غنة (ل ر)' },
+                { key: 'Iqlab', label: 'Iqlab (Conversion to Meem)', labelAr: 'إقلاب (قلب النون ميماً عند الباء)' },
+                { key: 'Ikhfa', label: 'Ikhfaa Haqiqi (True Hiding)', labelAr: 'إخفاء حقيقي (باقي الحروف الـ 15)' },
+                { key: 'Izhar Mutlaq', label: 'Izhar Mutlaq (Absolute Clarity)', labelAr: 'إظهار مطلق (دنيا، بنيان، قنوان، صنوان)' },
+                { key: 'Ikhfa Ghunnah', label: 'Ikhfaa Ghunnah (Heavy / Light)', labelAr: 'مراتب غنة الإخفاء (مفخمة ومرفقة)' }
             ]
         },
         {
             id: 'tafkheem_tarqeeq',
             title: 'Tafkheem & Tarqeeq',
-            subtitle: 'Heavy & light letter characteristics (خ ص ض غ ط ق ظ, Raa, Laam)',
+            titleAr: 'التفخيم والترقيق',
+            subtitle: 'أحكام الاستعلاء والاستفال وتفخيم وترقيق الراء واللام والألف',
             icon: '⚖️',
             color: '#ec4899',
             subrules: [
-                { key: 'Always Heavy', label: 'Always Heavy Letters (Istilaa)' },
-                { key: 'Heavy Ra', label: 'Heavy Raa (Tafkheem)' },
-                { key: 'Light Ra', label: 'Light Raa (Tarqeeq)' },
-                { key: 'Ra Both Options', label: 'Raa: Both Options Allowed' },
-                { key: 'Lam of Allah', label: 'Laam in the Word of Allah' },
-                { key: 'Alif', label: 'Alif of Madd (Follows Preceding)' }
+                { key: 'Always Heavy', label: 'Always Heavy Letters', labelAr: 'حروف الاستعلاء المفخمة دائماً (خص ضغط قظ)' },
+                { key: 'Heavy Ra', label: 'Heavy Raa (Tafkheem)', labelAr: 'الراء المفخمة' },
+                { key: 'Light Ra', label: 'Light Raa (Tarqeeq)', labelAr: 'الراء المرققة' },
+                { key: 'Ra Both Options', label: 'Raa: Both Options Allowed', labelAr: 'الراء جواز الوجهين (فرق، مصر، القطر)' },
+                { key: 'Lam of Allah', label: 'Laam in Word of Allah', labelAr: 'لام لفظ الجلالة (تغليظ وترقيق)' },
+                { key: 'Alif', label: 'Alif of Madd', labelAr: 'ألف المد (تتبع ما قبلها تفخيماً وترقيقاً)' }
             ]
         },
         {
             id: 'madd_rules',
-            title: 'Madd Rules (Elongation)',
-            subtitle: 'Natural, secondary, and compulsory lengthenings',
+            title: 'Madd Rules',
+            titleAr: 'أحكام المدود',
+            subtitle: 'المدود الأصلية والفرعية وأزمنتها',
             icon: '🌊',
             color: '#3b82f6',
             subrules: [
-                { key: 'Natural Madd', label: 'Natural Madd (Tabee\'ee)' },
-                { key: 'Connected', label: 'Connected Madd (Muttasil)' },
-                { key: 'Separated', label: 'Separated Madd (Munfasil)' },
-                { key: 'Substitute', label: 'Substitute Madd (Badal)' },
-                { key: 'Compensatory Madd', label: 'Compensatory Madd (\'Iwad)' },
-                { key: 'Temporary Madd', label: 'Temporary Madd (\'Aarid)' },
-                { key: 'Soft Madd', label: 'Soft Madd (Leen)' },
-                { key: 'Minor Sila Madd', label: 'Minor Sila Madd (Ha Kinaayah)' },
-                { key: 'Major Sila Madd', label: 'Major Sila Madd' },
-                { key: 'Permanent Word Based Heavy', label: 'Compulsory Word Heavy (Muthaqqal)' },
-                { key: 'Permanent Word Based Light', label: 'Compulsory Word Light (Mukhaffaf)' },
-                { key: 'Permanent Letter Based Heavy', label: 'Compulsory Letter Heavy (Harfee)' },
-                { key: 'Permanent Letter Based Light', label: 'Compulsory Letter Light' },
-                { key: 'Stabilizing Madd', label: 'Stabilizing Madd (Tamkeen)' }
+                { key: 'Natural Madd', label: 'Natural Madd (Tabee\'ee)', labelAr: 'المد الطبيعي (الأصلي - حركتان)' },
+                { key: 'Connected', label: 'Connected Madd (Muttasil)', labelAr: 'المد المتصل (واجب 4-5 حركات)' },
+                { key: 'Separated', label: 'Separated Madd (Munfasil)', labelAr: 'المد المنفصل (جائز 4-5 حركات)' },
+                { key: 'Substitute', label: 'Substitute Madd (Badal)', labelAr: 'مد البدل (حركتان)' },
+                { key: 'Compensatory Madd', label: 'Compensatory Madd (\'Iwad)', labelAr: 'مد العوض (حركتان عند الوقف)' },
+                { key: 'Temporary Madd', label: 'Temporary Madd (\'Aarid)', labelAr: 'المد العارض للسكون (2-4-6 حركات)' },
+                { key: 'Soft Madd', label: 'Soft Madd (Leen)', labelAr: 'مد اللين (2-4-6 حركات)' },
+                { key: 'Minor Sila Madd', label: 'Minor Sila Madd', labelAr: 'مد الصلة الصغرى (حركتان)' },
+                { key: 'Major Sila Madd', label: 'Major Sila Madd', labelAr: 'مد الصلة الكبرى (4-5 حركات)' },
+                { key: 'Permanent Word Based Heavy', label: 'Compulsory Word Heavy', labelAr: 'مد لازم كلمي مثقل (6 حركات)' },
+                { key: 'Permanent Word Based Light', label: 'Compulsory Word Light', labelAr: 'مد لازم كلمي مخفف (6 حركات)' },
+                { key: 'Permanent Letter Based Heavy', label: 'Compulsory Letter Heavy', labelAr: 'مد لازم حرفي مثقل (6 حركات)' },
+                { key: 'Permanent Letter Based Light', label: 'Compulsory Letter Light', labelAr: 'مد لازم حرفي مخفف (6 حركات)' },
+                { key: 'Stabilizing Madd', label: 'Stabilizing Madd (Tamkeen)', labelAr: 'مد التمكين (حركتان)' }
             ]
         },
         {
             id: 'hamzat_wasl',
             title: 'Hamzat Al-Wasl',
-            subtitle: 'Connecting hamzah dropping and vowel starting rules',
+            titleAr: 'همزة الوصل',
+            subtitle: 'أحكام البدء بهمزة الوصل وسقوطها في درج الكلام',
             icon: '🔗',
             color: '#6366f1',
             subrules: [
-                { key: 'Dropped', label: 'Dropped in Continuous Speech' },
-                { key: 'Start with fatha', label: 'Start with Fathah (Al- nouns)' },
-                { key: 'Start with damma', label: 'Start with Dammah (Verbs)' },
-                { key: 'Start with kasra', label: 'Start with Kasrah (Verbs & Nouns)' }
+                { key: 'Dropped', label: 'Dropped in Continuous Speech', labelAr: 'سقوط همزة الوصل وصلاً' },
+                { key: 'Start with fatha', label: 'Start with Fathah (Al- nouns)', labelAr: 'البدء بالفتح (في الأسماء المعرفة بـ الـ)' },
+                { key: 'Start with damma', label: 'Start with Dammah (Verbs)', labelAr: 'البدء بالضم (إذا كان ثالث الفعل مضموماً ضماً لازماً)' },
+                { key: 'Start with kasra', label: 'Start with Kasrah (Verbs & Nouns)', labelAr: 'البدء بالكسر (في الأفعال والأسماء القياسية والسماعية)' }
             ]
         },
         {
             id: 'lam_shamsiyyah_qamariyyah',
             title: 'Lam Shamsiyyah & Qamariyyah',
-            subtitle: 'Solar and lunar letter assimilations with Al- (ال)',
+            titleAr: 'اللام الشمسية واللام القمرية',
+            subtitle: 'إدغام وإظهار لام التعريف مع الحروف الهجائية',
             icon: '☀️',
             color: '#ea580c',
             subrules: [
-                { key: 'Lam Shamsiyyah', label: 'Lam Shamsiyyah (Solar - Merged)' },
-                { key: 'Lam Qamariyyah', label: 'Lam Qamariyyah (Lunar - Clear)' }
+                { key: 'Lam Shamsiyyah', label: 'Lam Shamsiyyah (Solar)', labelAr: 'اللام الشمسية (المدغمة - 14 حرفاً)' },
+                { key: 'Lam Qamariyyah', label: 'Lam Qamariyyah (Lunar)', labelAr: 'اللام القمرية (المظهرة - ابغ حجك وخف عقيمه)' }
             ]
         },
         {
             id: 'letter_relations',
             title: 'Letter Relationships',
-            subtitle: 'Identical, homogeneous, and close letter combinations',
+            titleAr: 'علاقات الحروف',
+            subtitle: 'المتماثلان والمتجانسان والمتقاربان والمتباعدان',
             icon: '🤝',
             color: '#14b8a6',
             subrules: [
-                { key: 'Identical', label: 'Identical Letters (Mutamathilayn)' },
-                { key: 'Similar', label: 'Homogeneous Letters (Mutajanisayn)' },
-                { key: 'Close', label: 'Close Letters (Mutaqaribayn)' }
+                { key: 'Identical', label: 'Identical Letters (Mutamathilayn)', labelAr: 'المتماثلان (اتفقا مخرجاً وصفة)' },
+                { key: 'Similar', label: 'Homogeneous Letters (Mutajanisayn)', labelAr: 'المتجانسان (اتفقا مخرجاً واختلفا صفة)' },
+                { key: 'Close', label: 'Close Letters (Mutaqaribayn)', labelAr: 'المتقاربان (تقاربا مخرجاً وصفة)' }
             ]
         }
     ];
@@ -193,10 +205,6 @@
 
         /**
          * Build Question Pool with Per-Subrule Granular Quantities
-         * selectionConfig can be:
-         * 1. Rich config: { [catId]: { [subKey]: { enabled: boolean, qty: number | 'ALL' } } }
-         * 2. Direct qty: { [catId]: { [subKey]: 5 } }
-         * 3. Legacy array: { [catId]: ['ALL'] | ['subKey1', 'subKey2'] }
          */
         buildPool(selectionConfig = {}) {
             const bank = getBank();
@@ -283,13 +291,7 @@
 
         /**
          * Render the Gamified Arcade Stage Arena Component
-         * @param {HTMLElement} container - Mount target element
-         * @param {Object} options - Configuration options
-         *   - initialSelection: Object mapping catId -> subKey config
-         *   - showLaunchButton: boolean (default: false)
-         *   - launchButtonText: string
-         *   - onLaunch: function({ pool, selectedConfig, totalCount })
-         *   - onChange: function({ selectedConfig, pool, totalCount, activeWorldCount, activeSubRuleCount })
+         * Cleaned, simplified, zoom-accessible, full-width dropdown from far right to far left.
          */
         render(container, options = {}) {
             if (!container) return null;
@@ -298,10 +300,10 @@
             const bank = getBank();
 
             // Internal State Structure:
-            // state[catId][subKey] = { enabled: boolean, qty: number | 'ALL' }
+            // state[catId][subKey] = { enabled: boolean, qty: number | 'ALL', maxAvailable: number }
             const state = {};
 
-            // Helper: populate default state
+            // Populate default state
             CATEGORY_DEFINITIONS.forEach(catDef => {
                 state[catDef.id] = {};
                 const qList = bank[catDef.id]?.questions || [];
@@ -362,81 +364,74 @@
             const arena = document.createElement('div');
             arena.className = 'rule-arena-container';
 
-            // 1. Top Command Bar
+            // 1. Top Simplified Command Bar
             const cmdBar = document.createElement('div');
             cmdBar.className = 'arena-cmd-bar';
             cmdBar.innerHTML = `
                 <div class="arena-cmd-left">
-                    <span class="arena-cmd-title">🎮 MISSION CONTROL: SELECT REALMS & SUB-RULES</span>
+                    <span class="arena-cmd-icon">🎯</span>
+                    <div class="arena-cmd-titles">
+                        <span class="arena-cmd-title-ar">تخصيص قواعد التحدي والأبواب التجويدية</span>
+                        <span class="arena-cmd-title-en">Select Tajweed Rules & Question Counts</span>
+                    </div>
                 </div>
                 <div class="arena-cmd-actions">
-                    <button type="button" class="arena-btn-cmd highlight" id="arena-cmd-all">🌟 Select All Realms</button>
-                    <button type="button" class="arena-btn-cmd" id="arena-cmd-balanced">🎲 Balanced 20</button>
-                    <button type="button" class="arena-btn-cmd" id="arena-cmd-clear">🧹 Clear All</button>
+                    <button type="button" class="arena-btn-cmd highlight" id="arena-cmd-all">🌟 تفعيل كل الأبواب (Select All)</button>
+                    <button type="button" class="arena-btn-cmd" id="arena-cmd-clear">🧹 مسح الكل (Clear All)</button>
                 </div>
             `;
             arena.appendChild(cmdBar);
 
-            // 1.5 Full-Width Colorful Realm Selector Dropdown Bar (Edge-to-Edge)
-            const realmBar = document.createElement('div');
-            realmBar.className = 'arena-realm-bar';
-            realmBar.innerHTML = `
-                <div class="arena-realm-header">
-                    <div class="arena-realm-tag" id="arena-realm-tag">
-                        <span class="art-icon">🎯</span>
-                        <span class="art-text">SELECT TAJWEED REALM</span>
-                    </div>
-                    <div class="arena-realm-summary-badge" id="arena-realm-summary-badge">
-                        9 Realms Available
+            // 2. Full-Width Realm Dropdown Bar (من أقصى اليمين إلى اليسار وبحجم كبير وملون)
+            const dropdownBanner = document.createElement('div');
+            dropdownBanner.className = 'arena-realm-dropdown-banner';
+            dropdownBanner.innerHTML = `
+                <div class="arena-dropdown-header">
+                    <label for="arena-realm-dropdown" class="arena-dropdown-label">
+                        <span class="adh-icon">📂</span>
+                        <span class="adh-text">اختر الباب التجويدي (قائمة منسدلة عريضة وكبيرة):</span>
+                    </label>
+                    <div class="arena-dropdown-nav">
+                        <button type="button" class="arena-nav-step-btn" id="arena-realm-prev" title="الباب السابق">➡️ السابق</button>
+                        <button type="button" class="arena-nav-step-btn" id="arena-realm-next" title="الباب التالي">التالي ⬅️</button>
                     </div>
                 </div>
-                <div class="arena-realm-select-wrapper">
-                    <select class="arena-realm-dropdown" id="arena-realm-select-dropdown" aria-label="Select Tajweed Realm">
-                    </select>
-                    <span class="arena-realm-select-arrow">▼</span>
+                <div class="arena-dropdown-select-wrap">
+                    <select id="arena-realm-dropdown" class="arena-realm-dropdown" aria-label="اختر الباب التجويدي"></select>
                 </div>
             `;
-            arena.appendChild(realmBar);
+            arena.appendChild(dropdownBanner);
 
-            // 2. Dual Workspace: Left Dock & Right Stage Deck
-            const workspace = document.createElement('div');
-            workspace.className = 'arena-workspace';
-
-            const worldsDock = document.createElement('div');
-            worldsDock.className = 'arena-worlds-dock';
-            workspace.appendChild(worldsDock);
-
+            // 3. Stage Deck (Full Width)
             const stageDeck = document.createElement('div');
             stageDeck.className = 'arena-stage-deck';
-            workspace.appendChild(stageDeck);
+            arena.appendChild(stageDeck);
 
-            arena.appendChild(workspace);
-
-            // 3. Bottom Arena HUD Bar
+            // 4. Bottom Arena HUD Bar (Full Width, Large, Clean)
             const hudBar = document.createElement('div');
             hudBar.className = 'arena-hud-bar';
             hudBar.innerHTML = `
                 <div class="arena-hud-metrics">
                     <div class="hud-metric">
-                        <span class="hud-label">Total Questions:</span>
+                        <span class="hud-label">إجمالي الأسئلة:</span>
                         <span class="hud-val" id="arena-hud-total-val">0</span>
                     </div>
                     <div class="hud-metric">
-                        <span class="hud-label">Missions Active:</span>
-                        <span class="hud-sub-val" id="arena-hud-subs-val">0 Sub-Rules</span>
+                        <span class="hud-label">الأبواب والقواعد النشطة:</span>
+                        <span class="hud-sub-val" id="arena-hud-subs-val">0 قاعدة</span>
                     </div>
                 </div>
                 <div class="arena-hud-presets">
-                    <span class="hud-preset-label">Quick Limits:</span>
-                    <button type="button" class="hud-chip" data-limit="10">10 Qs</button>
-                    <button type="button" class="hud-chip active" data-limit="20">20 Qs</button>
-                    <button type="button" class="hud-chip" data-limit="30">30 Qs</button>
-                    <button type="button" class="hud-chip" data-limit="ALL">Max All ⭐</button>
+                    <span class="hud-preset-label">كمية سريعة:</span>
+                    <button type="button" class="hud-chip" data-limit="10">10 أسئلة</button>
+                    <button type="button" class="hud-chip active" data-limit="20">20 سؤال</button>
+                    <button type="button" class="hud-chip" data-limit="30">30 سؤال</button>
+                    <button type="button" class="hud-chip" data-limit="ALL">جميع الأسئلة ⭐</button>
                 </div>
                 <div id="arena-hud-action-slot" style="display: flex; align-items: center;">
                     ${options.showLaunchButton ? `
                         <button type="button" class="arena-hero-btn" id="arena-hero-launch-btn">
-                            ${options.launchButtonText || '🚀 LAUNCH CHALLENGE 🚀'}
+                            ${options.launchButtonText || '🚀 ابدأ التحدي الآن 🚀'}
                         </button>
                     ` : ''}
                 </div>
@@ -493,28 +488,16 @@
                 const totalValEl = hudBar.querySelector('#arena-hud-total-val');
                 const subsValEl = hudBar.querySelector('#arena-hud-subs-val');
                 if (totalValEl) totalValEl.textContent = totalPoolCount;
-                if (subsValEl) subsValEl.textContent = `${activeSubs} Sub-Rules (${activeWorlds} Realms)`;
+                if (subsValEl) subsValEl.textContent = `${activeSubs} قاعدة (${activeWorlds} أبواب)`;
 
-                // 1.5 Sync Full-Width Realm Selector Bar (Edge-to-Edge)
-                const activeDef = CATEGORY_DEFINITIONS.find(c => c.id === activeWorldId) || CATEGORY_DEFINITIONS[0];
-                realmBar.style.setProperty('--world-color', activeDef.color);
+                // 2. Refresh Full-Width Dropdown
+                const dropdownEl = dropdownBanner.querySelector('#arena-realm-dropdown');
+                if (dropdownEl) {
+                    const activeDef = CATEGORY_DEFINITIONS.find(c => c.id === activeWorldId) || CATEGORY_DEFINITIONS[0];
+                    dropdownEl.style.setProperty('--world-color', activeDef.color);
+                    dropdownEl.style.borderColor = activeDef.color;
 
-                const realmTag = realmBar.querySelector('#arena-realm-tag');
-                if (realmTag) {
-                    realmTag.innerHTML = `
-                        <span class="art-icon">${activeDef.icon}</span>
-                        <span class="art-text">${activeDef.title} Realm</span>
-                    `;
-                }
-
-                const summaryBadge = realmBar.querySelector('#arena-realm-summary-badge');
-                if (summaryBadge) {
-                    summaryBadge.textContent = `${activeSubs} Active Sub-Rules (${totalPoolCount} Total Qs)`;
-                }
-
-                const realmSelect = realmBar.querySelector('#arena-realm-select-dropdown');
-                if (realmSelect) {
-                    realmSelect.innerHTML = '';
+                    let optionsHtml = '';
                     CATEGORY_DEFINITIONS.forEach(catDef => {
                         const qList = bank[catDef.id]?.questions || [];
                         if (qList.length === 0) return;
@@ -529,93 +512,53 @@
                             totalActiveCatQs += count;
                         });
 
-                        const opt = document.createElement('option');
-                        opt.value = catDef.id;
-                        const statusText = enabledSubs.length > 0
-                            ? `— ${enabledSubs.length}/${subEntries.length} Active (${totalActiveCatQs} Qs)`
-                            : '— [Inactive]';
-                        opt.textContent = `${catDef.icon} ${catDef.title} ${statusText}`;
-                        if (catDef.id === activeWorldId) {
-                            opt.selected = true;
-                        }
-                        realmSelect.appendChild(opt);
-                    });
+                        const isSel = catDef.id === activeWorldId;
+                        const statusBadge = enabledSubs.length > 0 ? `[${enabledSubs.length}/${subEntries.length} مفعلة • ${totalActiveCatQs} سؤال]` : '[غير مفعل]';
 
-                    realmSelect.onchange = (e) => {
+                        optionsHtml += `<option value="${catDef.id}" ${isSel ? 'selected' : ''}>
+                            ${catDef.icon} ${catDef.titleAr} - ${catDef.title} ${statusBadge}
+                        </option>`;
+                    });
+                    dropdownEl.innerHTML = optionsHtml;
+
+                    dropdownEl.onchange = (e) => {
                         playClick();
                         activeWorldId = e.target.value;
                         updateUI();
                     };
                 }
 
-                // 2. Render Left Worlds Dock
-                worldsDock.innerHTML = '';
-                CATEGORY_DEFINITIONS.forEach(catDef => {
-                    const qList = bank[catDef.id]?.questions || [];
-                    const totalBankQs = qList.length;
-                    if (totalBankQs === 0) return;
-
-                    const catState = state[catDef.id] || {};
-                    const subEntries = Object.entries(catState);
-                    const enabledSubs = subEntries.filter(([k, s]) => s.enabled);
-                    const isActiveWorld = catDef.id === activeWorldId;
-
-                    let totalActiveCatQs = 0;
-                    enabledSubs.forEach(([k, s]) => {
-                        const count = (typeof s.qty === 'number') ? Math.min(s.qty, s.maxAvailable) : s.maxAvailable;
-                        totalActiveCatQs += count;
-                    });
-
-                    const pill = document.createElement('div');
-                    pill.className = `arena-world-pill ${isActiveWorld ? 'active' : ''} ${enabledSubs.length > 0 ? 'has-selected' : ''}`;
-                    pill.style.setProperty('--world-color', catDef.color);
-
-                    pill.innerHTML = `
-                        <span class="awp-icon">${catDef.icon}</span>
-                        <div class="awp-info">
-                            <span class="awp-title">${catDef.title}</span>
-                            <span class="awp-badge ${enabledSubs.length > 0 ? 'active-count' : ''}">
-                                ${enabledSubs.length === 0 ? 'Inactive' : `${enabledSubs.length}/${subEntries.length} active • ${totalActiveCatQs} Qs`}
-                            </span>
-                        </div>
-                    `;
-
-                    pill.onclick = () => {
-                        playClick();
-                        activeWorldId = catDef.id;
-                        updateUI();
-                    };
-
-                    worldsDock.appendChild(pill);
-                });
-
-                // 3. Render Active Realm Stage Deck
+                // 3. Render Active Realm Stage Deck (Wide, Big, Simplified)
+                const activeDef = CATEGORY_DEFINITIONS.find(c => c.id === activeWorldId) || CATEGORY_DEFINITIONS[0];
                 const activeCatState = state[activeDef.id] || {};
                 const activeSubEntries = Object.entries(activeCatState);
                 const activeEnabledCount = activeSubEntries.filter(([k, s]) => s.enabled).length;
                 const isAllActiveInRealm = activeEnabledCount === activeSubEntries.length && activeSubEntries.length > 0;
 
+                stageDeck.style.setProperty('--world-color', activeDef.color);
+
                 stageDeck.innerHTML = `
-                    <div class="stage-header" style="border-bottom-color: ${activeDef.color}33;">
+                    <div class="stage-header" style="border-right: 8px solid ${activeDef.color}; background: linear-gradient(135deg, ${activeDef.color}18, #ffffff 85%);">
                         <div class="stage-title-wrap">
                             <span class="stage-icon">${activeDef.icon}</span>
                             <div>
-                                <h3 class="stage-title" style="color: ${activeDef.color};">${activeDef.title} Realm</h3>
+                                <h3 class="stage-title-ar" style="color: ${activeDef.color};">${activeDef.titleAr}</h3>
+                                <div class="stage-title-en">${activeDef.title}</div>
                                 <p class="stage-subtitle">${activeDef.subtitle}</p>
                             </div>
                         </div>
                         <div class="stage-actions">
-                            <button type="button" class="stage-action-btn" id="stage-btn-toggle-all">
-                                ${isAllActiveInRealm ? 'Deselect All Rules' : 'Select All Rules'}
+                            <button type="button" class="stage-action-btn highlight" id="stage-btn-toggle-all">
+                                ${isAllActiveInRealm ? '✖️ إلغاء تحديد الباب' : '✔️ تفعيل كل قواعد الباب'}
                             </button>
-                            <button type="button" class="stage-action-btn" id="stage-btn-all-5">Set 5 Each</button>
-                            <button type="button" class="stage-action-btn" id="stage-btn-all-max">Set Max All</button>
+                            <button type="button" class="stage-action-btn" id="stage-btn-all-5">5 أسئلة لكل قاعدة</button>
+                            <button type="button" class="stage-action-btn" id="stage-btn-all-max">أقصى حد لكل القواعد</button>
                         </div>
                     </div>
                     <div class="stage-missions-grid" id="stage-missions-container"></div>
                 `;
 
-                // Stage Header Actions
+                // Realm Header Actions
                 const toggleAllBtn = stageDeck.querySelector('#stage-btn-toggle-all');
                 if (toggleAllBtn) {
                     toggleAllBtn.onclick = () => {
@@ -652,7 +595,7 @@
                     };
                 }
 
-                // Render Sub-rule Mission Cards
+                // Render Sub-rule Mission Cards (Simplified, Clear, Easy to Tap)
                 const missionsContainer = stageDeck.querySelector('#stage-missions-container');
                 activeDef.subrules.forEach(sub => {
                     const subState = activeCatState[sub.key] || { enabled: false, qty: 5, maxAvailable: 0 };
@@ -663,66 +606,35 @@
                     card.className = `mission-card ${isChecked ? 'active' : ''}`;
                     card.style.setProperty('--world-color', activeDef.color);
 
-                    const displayQty = subState.qty === 'ALL' ? subState.maxAvailable : subState.qty;
-
                     card.innerHTML = `
                         <div class="mc-header">
-                            <label class="mc-check-label">
-                                <input type="checkbox" class="mc-checkbox" ${isChecked ? 'checked' : ''}>
-                                <span class="mc-title">${sub.label}</span>
-                            </label>
-                            <span class="mc-bank-pill">${subState.maxAvailable} in bank</span>
-                        </div>
-                        <div class="mc-controls" style="opacity: ${isChecked ? '1' : '0.4'}; pointer-events: ${isChecked ? 'auto' : 'none'};">
-                            <div class="mc-stepper">
-                                <button type="button" class="mc-step-btn minus" title="Decrease">−</button>
-                                <input type="number" class="mc-qty-input" value="${displayQty}" min="1" max="${subState.maxAvailable}">
-                                <button type="button" class="mc-step-btn plus" title="Increase">+</button>
+                            <div class="mc-title-wrap">
+                                <span class="mc-check-badge ${isChecked ? 'checked' : ''}">
+                                    ${isChecked ? '✔️ مفعّلة' : '⭕ اضغط للاختيار'}
+                                </span>
+                                <div class="mc-titles">
+                                    <div class="mc-title-ar">${sub.labelAr || sub.label}</div>
+                                    <div class="mc-title-en">${sub.label}</div>
+                                </div>
                             </div>
+                            <span class="mc-bank-pill">${subState.maxAvailable} سؤال بالبنك</span>
+                        </div>
+                        <div class="mc-easy-controls">
+                            <span class="mc-choice-label">اختر عدد الأسئلة:</span>
                             <div class="mc-presets">
-                                <button type="button" class="mc-preset-btn ${subState.qty === 5 ? 'active' : ''}" data-val="5">5</button>
-                                <button type="button" class="mc-preset-btn ${subState.qty === 10 ? 'active' : ''}" data-val="10">10</button>
-                                <button type="button" class="mc-preset-btn ${subState.qty === 'ALL' || subState.qty === subState.maxAvailable ? 'active' : ''}" data-val="ALL">All (${subState.maxAvailable})</button>
+                                <button type="button" class="mc-preset-btn ${isChecked && subState.qty === 5 ? 'active' : ''}" data-val="5">5 أسئلة</button>
+                                <button type="button" class="mc-preset-btn ${isChecked && subState.qty === 10 ? 'active' : ''}" data-val="10">10 أسئلة</button>
+                                <button type="button" class="mc-preset-btn ${isChecked && (subState.qty === 'ALL' || subState.qty >= subState.maxAvailable) ? 'active' : ''}" data-val="ALL">الكل (${subState.maxAvailable}) ⭐</button>
                             </div>
                         </div>
                     `;
 
-                    // Checkbox toggle
-                    const cb = card.querySelector('.mc-checkbox');
-                    cb.onchange = (e) => {
-                        playClick();
-                        subState.enabled = e.target.checked;
-                        updateUI();
-                    };
-
-                    // Stepper controls
-                    const inputEl = card.querySelector('.mc-qty-input');
-                    const minusBtn = card.querySelector('.mc-step-btn.minus');
-                    const plusBtn = card.querySelector('.mc-step-btn.plus');
-
-                    minusBtn.onclick = (e) => {
+                    // Clicking header or badge toggles on/off
+                    const headerEl = card.querySelector('.mc-header');
+                    headerEl.onclick = (e) => {
                         e.stopPropagation();
                         playClick();
-                        let cur = typeof subState.qty === 'number' ? subState.qty : subState.maxAvailable;
-                        cur = Math.max(1, cur - 1);
-                        subState.qty = cur;
-                        updateUI();
-                    };
-
-                    plusBtn.onclick = (e) => {
-                        e.stopPropagation();
-                        playClick();
-                        let cur = typeof subState.qty === 'number' ? subState.qty : subState.maxAvailable;
-                        cur = Math.min(subState.maxAvailable, cur + 1);
-                        subState.qty = cur;
-                        updateUI();
-                    };
-
-                    inputEl.onchange = (e) => {
-                        let val = parseInt(e.target.value, 10);
-                        if (isNaN(val) || val < 1) val = 1;
-                        if (val > subState.maxAvailable) val = subState.maxAvailable;
-                        subState.qty = val;
+                        subState.enabled = !subState.enabled;
                         updateUI();
                     };
 
@@ -732,6 +644,7 @@
                             e.stopPropagation();
                             playClick();
                             const val = btn.dataset.val;
+                            subState.enabled = true;
                             if (val === 'ALL') {
                                 subState.qty = 'ALL';
                             } else {
@@ -790,33 +703,32 @@
                 };
             }
 
-            // 3. Balanced 20 Mix
-            const cmdBalancedBtn = arena.querySelector('#arena-cmd-balanced');
-            if (cmdBalancedBtn) {
-                cmdBalancedBtn.onclick = () => {
+            // 3. Dropdown Prev / Next Navigation Buttons
+            const prevBtn = arena.querySelector('#arena-realm-prev');
+            const nextBtn = arena.querySelector('#arena-realm-next');
+
+            if (prevBtn) {
+                prevBtn.onclick = () => {
                     playClick();
-                    // Clear all
-                    CATEGORY_DEFINITIONS.forEach(catDef => {
-                        const catState = state[catDef.id];
-                        if (!catState) return;
-                        Object.keys(catState).forEach(subKey => {
-                            catState[subKey].enabled = false;
-                        });
-                    });
-                    // Pick 4 major realms, 5 questions each = 20 total
-                    const mix = [
-                        { cat: 'image_bank', sub: 'Noon Mushaddad', qty: 5 },
-                        { cat: 'qalqalah', sub: 'Minor', qty: 5 },
-                        { cat: 'noon_sakinah_tanween', sub: 'Izhar', qty: 5 },
-                        { cat: 'madd_rules', sub: 'Connected', qty: 5 }
-                    ];
-                    mix.forEach(m => {
-                        if (state[m.cat] && state[m.cat][m.sub]) {
-                            state[m.cat][m.sub].enabled = true;
-                            state[m.cat][m.sub].qty = m.qty;
-                        }
-                    });
-                    activeWorldId = 'qalqalah';
+                    const idx = CATEGORY_DEFINITIONS.findIndex(c => c.id === activeWorldId);
+                    if (idx > 0) {
+                        activeWorldId = CATEGORY_DEFINITIONS[idx - 1].id;
+                    } else {
+                        activeWorldId = CATEGORY_DEFINITIONS[CATEGORY_DEFINITIONS.length - 1].id;
+                    }
+                    updateUI();
+                };
+            }
+
+            if (nextBtn) {
+                nextBtn.onclick = () => {
+                    playClick();
+                    const idx = CATEGORY_DEFINITIONS.findIndex(c => c.id === activeWorldId);
+                    if (idx < CATEGORY_DEFINITIONS.length - 1) {
+                        activeWorldId = CATEGORY_DEFINITIONS[idx + 1].id;
+                    } else {
+                        activeWorldId = CATEGORY_DEFINITIONS[0].id;
+                    }
                     updateUI();
                 };
             }
