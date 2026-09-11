@@ -640,17 +640,23 @@ function generateHWLink() {
     const compactCodes = selectedCats.map(c => HW_CODES_REVERSE[c] || c);
     const qty = document.getElementById('custom-qty-input')?.value || '10';
     const timer = document.getElementById('timer-select')?.value || '15';
-
     // Get current teacher details (Sheikh Gehad default or customized colleague)
-    const teacherInfo = (typeof window.StudentEngine !== 'undefined') ? window.StudentEngine.getTeacherInfo() : { name: 'الشيخ جهاد الصياد', whatsapp: '+201099684126', email: 'gehadnagah789@gmail.com' };
+    const teacherInfo = (typeof window.StudentEngine !== 'undefined') ? window.StudentEngine.getTeacherInfo() : { name: 'Sheikh Gehad Elsayad', whatsapp: '+201099684126', email: 'gehadnagah789@gmail.com' };
 
     const url = new URL(window.location.origin + window.location.pathname);
     url.searchParams.set('hw', compactCodes.join(','));
     url.searchParams.set('q', qty);
     url.searchParams.set('t', timer);
-    if (teacherInfo.name) url.searchParams.set('tc', teacherInfo.name);
-    if (teacherInfo.whatsapp) url.searchParams.set('wa', teacherInfo.whatsapp.replace(/[^\d+]/g, ''));
-    if (teacherInfo.email) url.searchParams.set('gm', teacherInfo.email);
+
+    // Only append teacher parameters if customized by another teacher
+    const isDefaultTeacher = (!teacherInfo.name || teacherInfo.name.includes('جهاد') || teacherInfo.name.toLowerCase().includes('gehad'))
+        && (!teacherInfo.whatsapp || teacherInfo.whatsapp.includes('1099684126'));
+
+    if (!isDefaultTeacher) {
+        if (teacherInfo.name) url.searchParams.set('tc', teacherInfo.name);
+        if (teacherInfo.whatsapp) url.searchParams.set('wa', teacherInfo.whatsapp.replace(/[^\d+]/g, ''));
+        if (teacherInfo.email) url.searchParams.set('gm', teacherInfo.email);
+    }
 
     const linkStr = url.toString();
     const out = document.getElementById('hw-link-out');
