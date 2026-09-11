@@ -1089,22 +1089,39 @@ function parseURLModes() {
                 titleEl.innerHTML = `📝 Homework for <span style="color:#2563eb;">${studentName}</span>`;
             }
 
-            // Hide standard selection elements so student has clean view
-            const rulesBox = document.getElementById('cb-all-rules')?.closest('fieldset') 
-                || document.getElementById('cb-all-rules')?.parentElement?.parentElement?.parentElement;
+            // Hide standard selection elements, rules arena & top quick setup so student has a clean, focused homework portal
+            const rulesBox = document.getElementById('rules-container');
             if (rulesBox) rulesBox.style.display = 'none';
+
+            const legacyRulesBox = document.getElementById('cb-all-rules')?.closest('fieldset') 
+                || document.getElementById('cb-all-rules')?.parentElement?.parentElement?.parentElement;
+            if (legacyRulesBox) legacyRulesBox.style.display = 'none';
 
             const nameInput = document.getElementById('student-name');
             if (nameInput) {
                 nameInput.value = studentName;
-                const nameContainer = nameInput.closest('div[style*="text-align: center"]');
+                const nameContainer = nameInput.closest('div[style*="background: #f8fafc"]') || nameInput.parentElement;
                 if (nameContainer) nameContainer.style.display = 'none';
             }
+
+            // Hide timer selector from header since timer is predefined by teacher
+            const timerSelect = document.getElementById('timer-select');
+            if (timerSelect) {
+                timerSelect.value = String(timer);
+                const timerContainer = timerSelect.closest('div[style*="background: #f8fafc"]') || timerSelect.parentElement;
+                if (timerContainer) timerContainer.style.display = 'none';
+            }
+
+            // Hide top header arena-hero-btn
+            document.querySelectorAll('#screen-start .arena-hero-btn').forEach(btn => btn.style.display = 'none');
 
             const hwTeacherPanel = document.getElementById('hw-teacher-panel');
             if (hwTeacherPanel) hwTeacherPanel.style.display = 'none';
 
-            const setupOuterCard = document.querySelector('#screen-start div[style*="border-radius:1.5rem"]');
+            const setupOuterCard = document.querySelector('#screen-start div[style*="border-radius: 1.5rem"]') 
+                || document.querySelector('#screen-start div[style*="border-radius:1.5rem"]')
+                || document.querySelector('#screen-start section');
+
             let launchCard = document.getElementById('hw-student-launch-card');
             if (!launchCard && setupOuterCard) {
                 launchCard = document.createElement('div');
@@ -1114,19 +1131,28 @@ function parseURLModes() {
 
             if (launchCard) {
                 launchCard.innerHTML = `
-                    <div style="background: linear-gradient(135deg, #eff6ff, #f8fafc); border: 2.5px solid #3b82f6; border-radius: 18px; padding: 26px 20px; text-align: center; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(59,130,246,0.12);">
-                        <div style="font-size: 3rem; margin-bottom: 8px;">🌟</div>
-                        <h2 style="font-size: 1.8rem; font-weight: 900; color: #1e293b; margin: 0 0 6px 0;">Welcome, ${studentName}!</h2>
-                        <div style="font-size: 1.05rem; font-weight: 800; color: #2563eb; margin-bottom: 4px;">👨‍🏫 Teacher: ${teacherName}</div>
-                        <div style="font-size: 0.8rem; font-weight: 700; color: #64748b; margin-bottom: 16px;">Supervised & Developed by Sheikh Gehad Elsayad 📖</div>
+                    <div style="background: linear-gradient(135deg, #eff6ff, #f8fafc); border: 2.5px solid #3b82f6; border-radius: 20px; padding: 32px 24px; text-align: center; margin: 10px auto 20px auto; max-width: 680px; width: 100%; box-shadow: 0 12px 30px rgba(59,130,246,0.15);">
+                        <div style="font-size: 3.5rem; margin-bottom: 8px;">🌟</div>
+                        <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: #1e293b; margin: 0 0 8px 0;">Welcome, ${studentName}!</h2>
+                        <div style="font-size: 1.15rem; font-weight: 800; color: #2563eb; margin-bottom: 4px;">👨‍🏫 Teacher: ${teacherName}</div>
+                        <div style="font-size: 0.85rem; font-weight: 700; color: #64748b; margin-bottom: 20px;">Supervised & Developed by Sheikh Gehad Elsayad 📖</div>
 
-                        <div style="background: white; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 14px 18px; max-width: 440px; margin: 0 auto 20px auto; text-align: left; font-size: 0.9rem; color: #334155; font-weight: 700; line-height: 1.5;">
-                            <div style="margin-bottom: 6px;">🎯 <strong>Questions:</strong> ${qty} Questions</div>
-                            <div style="margin-bottom: 6px;">⏱️ <strong>Timer:</strong> ${timer > 0 ? timer + ' seconds per question' : 'Unlimited time'}</div>
-                            <div>📜 <strong>Assigned Topics:</strong> ${topicLabels.join(' • ') || 'Selected Rules'}</div>
+                        <div style="background: white; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 18px 22px; max-width: 520px; margin: 0 auto 24px auto; text-align: left; font-size: 0.95rem; color: #334155; font-weight: 700; line-height: 1.6; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
+                            <div style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                                <span style="font-size: 1.1rem;">🎯</span> 
+                                <span><strong>Questions:</strong> <span style="color:#2563eb; font-weight:900;">${qty} Questions</span></span>
+                            </div>
+                            <div style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                                <span style="font-size: 1.1rem;">⏱️</span> 
+                                <span><strong>Timer:</strong> ${timer > 0 ? timer + ' seconds per question' : 'Unlimited time'}</span>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 8px;">
+                                <span style="font-size: 1.1rem;">📜</span> 
+                                <span><strong>Assigned Topics:</strong> <span style="color:#0f766e;">${topicLabels.join(' • ') || 'Selected Rules'}</span></span>
+                            </div>
                         </div>
 
-                        <button type="button" id="btn-hw-start-direct" class="btn-start" style="font-size: 1.35rem; padding: 14px 32px; width: 100%; max-width: 320px; margin: 0 auto; background: #2563eb; box-shadow: 0 5px 0 #1d4ed8; font-weight: 900; cursor: pointer; border-radius: 12px;">
+                        <button type="button" id="btn-hw-start-direct" class="btn-start" style="font-size: 1.4rem; padding: 16px 36px; width: 100%; max-width: 360px; margin: 0 auto; background: linear-gradient(135deg, #2563eb, #1d4ed8); box-shadow: 0 5px 0 #1e40af; font-weight: 900; cursor: pointer; border-radius: 14px; color: white; border: none; letter-spacing: 0.5px;">
                             Start Homework 🚀
                         </button>
                     </div>
@@ -1139,6 +1165,8 @@ function parseURLModes() {
             if (startBtn) {
                 startBtn.textContent = "Start Homework 🚀";
                 startBtn.onclick = launchHomeworkGame;
+                // If launch card exists, hide the bottom generic button to avoid duplicate actions
+                startBtn.style.display = 'none';
             }
 
         } catch (e) {
