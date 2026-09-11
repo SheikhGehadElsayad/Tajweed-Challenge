@@ -127,7 +127,38 @@ const appContainer = document.createElement('div');
         </section>
     </main>
 
-    <!-- Setup Screen (Free Play & Homework) -->
+    <!-- Dedicated Homework Assignment Screen -->
+    <main id="screen-homework" class="screen">
+        <section class="start-container" style="justify-content: flex-start; padding-top: 2vh; background: linear-gradient(135deg, #eff6ff, #f8fafc); min-height: 100vh; overflow-y: auto;">
+            <div style="width: 100%; max-width: 780px; display: flex; flex-direction: column; gap: 16px; padding: 2vh 3vw; margin: 0 auto;">
+                
+                <!-- Top Bar -->
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <button class="icon-btn" onclick="if(typeof SFX !== 'undefined') SFX.click(); switchScreen('screen-mode-select');">⬅</button>
+                    <h1 style="font-size: clamp(1.5rem, 3.2vw, 2.2rem); font-weight: 900; color: #1e293b; text-align: center; margin: 0;">
+                        📝 Assign Homework
+                    </h1>
+                    <button type="button" onclick="if(typeof window.StudentModal!=='undefined') window.StudentModal.open('teacher');" style="background: white; color: #2563eb; border: 1.5px solid #3b82f6; border-radius: 99px; font-weight: 800; font-size: 0.85rem; padding: 6px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        ⚙️ Teacher Profile
+                    </button>
+                </div>
+
+                <!-- Attribution Card -->
+                <div style="background: white; border: 1.5px solid #bfdbfe; border-radius: 12px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 0.85rem; color: #475569;">
+                    <div>👑 Developed & Supervised by <strong>Sheikh Gehad Elsayad</strong></div>
+                    <div id="hw-active-teacher-badge" style="color: #2563eb; font-weight: 800;">👨‍🏫 Teacher: Sheikh Gehad Elsayad</div>
+                </div>
+
+                <!-- Homework Creator Root Container -->
+                <div id="hw-creator-root" style="width: 100%; background: white; border-radius: 1.5rem; padding: 3vh 3vw; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 2px solid #e2e8f0;">
+                    <!-- Dynamically populated by renderHomeworkCreator -->
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Setup Screen (Free Play & Homework Launch) -->
     <main id="screen-start" class="screen">
         <section class="start-container" aria-labelledby="start-title" style="background: linear-gradient(135deg, #f0fdf4, #f8fafc);">
             <div style="width:100%; max-width:800px; display:flex; flex-direction:column; align-items:center; padding: 2vh 0;">
@@ -515,11 +546,10 @@ const appContainer = document.createElement('div');
                 document.getElementById('start-title').textContent = "Challenge Setup ⚙️";
             });
             document.getElementById('btn-mode-hw').addEventListener('click', () => {
-                SFX.click(); switchScreen('screen-start');
-                document.getElementById('hw-teacher-panel').hidden = false;
-                document.getElementById('start-title').textContent = "Teacher Hub 👩‍🏫";
+                SFX.click();
+                switchScreen('screen-homework');
+                if (typeof renderHomeworkCreator === 'function') renderHomeworkCreator();
             });
-            document.getElementById('btn-generate-hw').addEventListener('click', generateHWLink);
             
             parseURLModes();
             document.getElementById('btn-show-lb-splash').addEventListener('click', () => { SFX.click(); showLeaderboard('screen-splash'); });

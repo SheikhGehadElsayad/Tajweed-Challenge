@@ -602,7 +602,7 @@ function startProgressiveLevel(index) {
     }
 }
 
-// Short rule code mapping for ultra-compact Zoom links
+// Short rule code mapping for ultra-compact homework links
 const HW_RULE_CODES = {
     'im': 'image_bank',
     'ql': 'qalqalah',
@@ -616,71 +616,354 @@ const HW_RULE_CODES = {
 };
 const HW_CODES_REVERSE = Object.fromEntries(Object.entries(HW_RULE_CODES).map(([k, v]) => [v, k]));
 
-function generateHWLink() {
-    let selectedCats = [];
-    let selectedSubs = [];
+const HW_RULE_METADATA = [
+    { id: 'ql', key: 'qalqalah', title: 'Qalqalah', titleAr: 'القلقلة', icon: '⚡' },
+    { id: 'ns', key: 'noon_sakinah_tanween', title: 'Noon Sakinah & Tanween', titleAr: 'النون الساكنة والتنوين', icon: '📖' },
+    { id: 'ms', key: 'meem_sakinah', title: 'Meem Sakinah', titleAr: 'الميم الساكنة', icon: '🌙' },
+    { id: 'im', key: 'image_bank', title: 'Noon & Meem Mushaddad', titleAr: 'النون والميم المشددتان', icon: '💎' },
+    { id: 'md', key: 'madd_rules', title: 'Madd Rules', titleAr: 'أحكام المدود', icon: '🌊' },
+    { id: 'tt', key: 'tafkheem_tarqeeq', title: 'Tafkheem & Tarqeeq', titleAr: 'التفخيم والترقيق', icon: '🏔️' },
+    { id: 'hw', key: 'hamzat_wasl', title: 'Hamzat Al-Wasl', titleAr: 'همزة الوصل', icon: '🔗' },
+    { id: 'lq', key: 'lam_shamsiyyah_qamariyyah', title: 'Lam Shamsiyyah/Qamariyyah', titleAr: 'اللام الشمسية والقمرية', icon: '☀️' },
+    { id: 'lr', key: 'letter_relations', title: 'Relations Between Letters', titleAr: 'علاقات الحروف', icon: '🤝' }
+];
 
-    // Check RuleSelectorEngine first if available
-    if (typeof window.RuleSelectorEngine !== 'undefined' && window.RuleSelectorEngine.getActiveSelection) {
-        const sel = window.RuleSelectorEngine.getActiveSelection();
-        selectedCats = Object.keys(sel || {});
+function renderHomeworkCreator() {
+    const root = document.getElementById('hw-creator-root');
+    if (!root) return;
+
+    const teacherInfo = (typeof window.StudentEngine !== 'undefined') 
+        ? window.StudentEngine.getTeacherInfo() 
+        : { name: 'Sheikh Gehad Elsayad', whatsapp: '+201099684126', email: 'gehadnagah789@gmail.com' };
+
+    const badgeEl = document.getElementById('hw-active-teacher-badge');
+    if (badgeEl) {
+        badgeEl.innerHTML = `👨‍🏫 Teacher: <strong>${teacherInfo.name || 'Sheikh Gehad Elsayad'}</strong>`;
     }
 
-    // Fallback to checkboxes if RuleSelectorEngine not active
-    if (selectedCats.length === 0) {
-        selectedCats = Array.from(document.querySelectorAll('.cat-cb:checked')).map(cb => cb.value);
-        selectedSubs = Array.from(document.querySelectorAll('.sub-cb:checked')).map(cb => cb.value);
+    const students = (typeof window.StudentEngine !== 'undefined') ? window.StudentEngine.getAllStudents() : [];
+    const activeStudent = (typeof window.StudentEngine !== 'undefined') ? window.StudentEngine.getActiveStudent() : null;
+
+    root.innerHTML = `
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            
+            <!-- Step 1: Target Student -->
+            <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <label for="hw-student-select" style="font-size: 1.05rem; font-weight: 900; color: #1e293b; display: flex; align-items: center; gap: 6px;">
+                        <span>👤</span> 1. Select Student Profile:
+                    </label>
+                    <button type="button" onclick="if(typeof window.StudentModal!=='undefined') window.StudentModal.open('roster');" style="background: white; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 3px 10px; font-size: 0.8rem; font-weight: 800; color: #2563eb; cursor: pointer;">
+                        👥 Manage Profiles
+                    </button>
+                </div>
+
+                <select id="hw-student-select" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 2px solid #cbd5e1; font-weight: 800; font-size: 1rem; color: #1e293b; background: white; cursor: pointer;">
+                    ${students.length > 0 ? students.map(s => `
+                        <option value="${s.name}" ${activeStudent && activeStudent.id === s.id ? 'selected' : ''}>
+                            ${s.avatar || '👤'} ${s.name} (${s.mistakes?.length || 0} mistakes • ${s.homeworks?.length || 0} HWs)
+                        </option>
+                    `).join('') : `
+                        <option value="Student">👤 Student</option>
+                    `}
+                    <option value="__NEW__">➕ [ Add / Enter New Student Name ]</option>
+                </select>
+
+                <div id="hw-custom-student-container" style="display: none; margin-top: 10px;">
+                    <input type="text" id="hw-custom-student-input" placeholder="Type new student name here..." maxlength="30" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 2px solid #3b82f6; font-weight: 800; font-size: 0.95rem;">
+                </div>
+            </div>
+
+            <!-- Step 2: Tajweed Rules -->
+            <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                    <label style="font-size: 1.05rem; font-weight: 900; color: #1e293b; display: flex; align-items: center; gap: 6px;">
+                        <span>📜</span> 2. Choose Tajweed Rules:
+                    </label>
+                    <div style="display: flex; gap: 8px;">
+                        <button type="button" id="hw-btn-rules-all" style="background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; border-radius: 6px; padding: 3px 10px; font-size: 0.8rem; font-weight: 800; cursor: pointer;">Select All</button>
+                        <button type="button" id="hw-btn-rules-clear" style="background: white; color: #64748b; border: 1px solid #cbd5e1; border-radius: 6px; padding: 3px 10px; font-size: 0.8rem; font-weight: 800; cursor: pointer;">Clear</button>
+                    </div>
+                </div>
+
+                <div id="hw-rules-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px;">
+                    ${HW_RULE_METADATA.map(r => {
+                        const count = (typeof TAJWEED_BANK !== 'undefined' && TAJWEED_BANK[r.key]?.questions?.length) || 0;
+                        const isDefault = (r.id === 'ql' || r.id === 'ns');
+                        return `
+                            <label class="hw-rule-card" style="display: flex; align-items: center; gap: 10px; background: white; border: 1.5px solid ${isDefault ? '#3b82f6' : '#cbd5e1'}; border-radius: 10px; padding: 10px; cursor: pointer; transition: all 0.15s ease;">
+                                <input type="checkbox" class="hw-rule-cb" value="${r.id}" data-cat="${r.key}" ${isDefault ? 'checked' : ''} style="width: 18px; height: 18px; cursor: pointer; accent-color: #2563eb;">
+                                <div style="flex: 1; min-width: 0;">
+                                    <div style="font-weight: 800; font-size: 0.88rem; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                        ${r.icon} ${r.title}
+                                    </div>
+                                    <div style="font-size: 0.72rem; color: #64748b; font-weight: 700;">
+                                        ${r.titleAr} (${count} Qs)
+                                    </div>
+                                </div>
+                            </label>
+                        `;
+                    }).join('')}
+                </div>
+
+                <div id="hw-rules-count-msg" style="margin-top: 10px; font-size: 0.85rem; font-weight: 800; color: #2563eb; text-align: right;"></div>
+            </div>
+
+            <!-- Step 3: Question Count & Timer -->
+            <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 16px;">
+                <label style="font-size: 1.05rem; font-weight: 900; color: #1e293b; display: block; margin-bottom: 10px;">
+                    <span>🔢</span> 3. Number of Questions & Timer:
+                </label>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between;">
+                    <div style="flex: 1; min-width: 220px;">
+                        <span style="display: block; font-size: 0.85rem; font-weight: 800; color: #475569; margin-bottom: 6px;">Questions Count:</span>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap;" id="hw-qty-chips">
+                            ${[5, 10, 15, 20].map(n => `
+                                <button type="button" class="hw-chip-btn ${n === 10 ? 'active' : ''}" data-qty="${n}" style="padding: 6px 14px; border-radius: 8px; font-weight: 800; font-size: 0.85rem; cursor: pointer; border: 1.5px solid ${n === 10 ? '#2563eb' : '#cbd5e1'}; background: ${n === 10 ? '#2563eb' : 'white'}; color: ${n === 10 ? 'white' : '#334155'};">
+                                    ${n} Qs
+                                </button>
+                            `).join('')}
+                            <input type="number" id="hw-custom-qty" value="10" min="1" max="100" style="width: 70px; padding: 6px 8px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; font-size: 0.85rem; text-align: center;" title="Custom question count">
+                        </div>
+                    </div>
+
+                    <div style="flex: 1; min-width: 200px;">
+                        <span style="display: block; font-size: 0.85rem; font-weight: 800; color: #475569; margin-bottom: 6px;">Timer per Question:</span>
+                        <select id="hw-timer-select" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-weight: 800; font-size: 0.9rem; background: white;">
+                            <option value="15" selected>⏱️ 15 Seconds (Standard)</option>
+                            <option value="20">⏱️ 20 Seconds (Comfortable)</option>
+                            <option value="30">⏱️ 30 Seconds (Relaxed)</option>
+                            <option value="0">⏳ No Timer (Unlimited)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generate Action -->
+            <button type="button" id="hw-btn-generate" class="btn-start" style="font-size: 1.15rem; padding: 14px; background: #2563eb; box-shadow: 0 4px 0 #1d4ed8; font-weight: 900; border-radius: 12px; cursor: pointer; width: 100%;">
+                Generate Student Homework Link 🔗
+            </button>
+
+            <!-- Result Box -->
+            <div id="hw-result-card" style="display: none; background: #ecfdf5; border: 2px solid #10b981; border-radius: 14px; padding: 18px; text-align: center;">
+                <div style="font-size: 1.15rem; font-weight: 900; color: #065f46; margin-bottom: 6px;">
+                    🎉 Link Generated Successfully!
+                </div>
+                <div id="hw-result-target" style="font-size: 0.92rem; font-weight: 800; color: #047857; margin-bottom: 12px;"></div>
+
+                <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                    <input type="text" id="hw-result-url" readonly style="flex: 1; padding: 10px 14px; border-radius: 8px; border: 1.5px solid #6ee7b7; font-weight: 800; font-size: 0.85rem; background: white; color: #065f46;" onclick="this.select()">
+                    <button type="button" id="hw-btn-copy-result" style="padding: 10px 18px; border-radius: 8px; background: #10b981; color: white; border: none; font-weight: 900; font-size: 0.95rem; cursor: pointer; box-shadow: 0 3px 0 #059669; white-space: nowrap;">
+                        📋 Copy Link
+                    </button>
+                </div>
+
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <button type="button" id="hw-btn-wa-share" style="background: #25d366; color: white; border: none; border-radius: 8px; padding: 8px 16px; font-weight: 800; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 3px 0 #1da851;">
+                        <span>📲</span> Share on WhatsApp
+                    </button>
+                </div>
+
+                <div style="margin-top: 12px; font-size: 0.78rem; color: #065f46; line-height: 1.4; text-align: left; background: white; border-radius: 8px; padding: 10px; border: 1px dashed #6ee7b7;">
+                    💡 <strong>How it works:</strong> When the student opens this link, they will be greeted by name and immediately start the homework. Once they complete the assignment, their score and mistakes will be sent directly to your WhatsApp/Gmail and imported into their platform profile.
+                </div>
+            </div>
+
+        </div>
+    `;
+
+    // Connect Events
+    const studentSelect = root.querySelector('#hw-student-select');
+    const customContainer = root.querySelector('#hw-custom-student-container');
+    const customInput = root.querySelector('#hw-custom-student-input');
+
+    studentSelect.onchange = () => {
+        if (studentSelect.value === '__NEW__') {
+            customContainer.style.display = 'block';
+            customInput.focus();
+        } else {
+            customContainer.style.display = 'none';
+        }
+    };
+
+    function updateCount() {
+        const cbs = Array.from(root.querySelectorAll('.hw-rule-cb:checked'));
+        let total = 0;
+        cbs.forEach(cb => {
+            const cat = cb.dataset.cat;
+            if (typeof TAJWEED_BANK !== 'undefined' && TAJWEED_BANK[cat]?.questions) {
+                total += TAJWEED_BANK[cat].questions.length;
+            }
+        });
+        const msg = root.querySelector('#hw-rules-count-msg');
+        if (msg) {
+            msg.textContent = `Available Questions in Selection: ${total} questions`;
+        }
     }
 
-    if (selectedCats.length === 0) {
-        selectedCats = ['qalqalah', 'noon_sakinah_tanween']; // Sensible default if nothing checked
-    }
+    root.querySelectorAll('.hw-rule-cb').forEach(cb => {
+        cb.onchange = () => {
+            const card = cb.closest('.hw-rule-card');
+            if (card) {
+                card.style.borderColor = cb.checked ? '#3b82f6' : '#cbd5e1';
+            }
+            updateCount();
+        };
+    });
 
-    // Convert rules to compact codes
-    const compactCodes = selectedCats.map(c => HW_CODES_REVERSE[c] || c);
-    const qty = document.getElementById('custom-qty-input')?.value || '10';
-    const timer = document.getElementById('timer-select')?.value || '15';
-    // Get current teacher details (Sheikh Gehad default or customized colleague)
-    const teacherInfo = (typeof window.StudentEngine !== 'undefined') ? window.StudentEngine.getTeacherInfo() : { name: 'Sheikh Gehad Elsayad', whatsapp: '+201099684126', email: 'gehadnagah789@gmail.com' };
+    root.querySelector('#hw-btn-rules-all').onclick = () => {
+        root.querySelectorAll('.hw-rule-cb').forEach(cb => {
+            cb.checked = true;
+            const card = cb.closest('.hw-rule-card');
+            if (card) card.style.borderColor = '#3b82f6';
+        });
+        updateCount();
+    };
 
-    const url = new URL(window.location.origin + window.location.pathname);
-    url.searchParams.set('hw', compactCodes.join(','));
-    url.searchParams.set('q', qty);
-    url.searchParams.set('t', timer);
+    root.querySelector('#hw-btn-rules-clear').onclick = () => {
+        root.querySelectorAll('.hw-rule-cb').forEach(cb => {
+            cb.checked = false;
+            const card = cb.closest('.hw-rule-card');
+            if (card) card.style.borderColor = '#cbd5e1';
+        });
+        updateCount();
+    };
 
-    // Only append teacher parameters if customized by another teacher
-    const isDefaultTeacher = (!teacherInfo.name || teacherInfo.name.includes('جهاد') || teacherInfo.name.toLowerCase().includes('gehad'))
-        && (!teacherInfo.whatsapp || teacherInfo.whatsapp.includes('1099684126'));
+    updateCount();
 
-    if (!isDefaultTeacher) {
-        if (teacherInfo.name) url.searchParams.set('tc', teacherInfo.name);
-        if (teacherInfo.whatsapp) url.searchParams.set('wa', teacherInfo.whatsapp.replace(/[^\d+]/g, ''));
-        if (teacherInfo.email) url.searchParams.set('gm', teacherInfo.email);
-    }
+    // Quantity Chips
+    const qtyChips = root.querySelectorAll('.hw-chip-btn');
+    const customQty = root.querySelector('#hw-custom-qty');
 
-    const linkStr = url.toString();
-    const out = document.getElementById('hw-link-out');
-    const copyBtn = document.getElementById('btn-copy-hw');
+    qtyChips.forEach(btn => {
+        btn.onclick = () => {
+            qtyChips.forEach(b => {
+                b.style.background = 'white';
+                b.style.color = '#334155';
+                b.style.borderColor = '#cbd5e1';
+                b.classList.remove('active');
+            });
+            btn.style.background = '#2563eb';
+            btn.style.color = 'white';
+            btn.style.borderColor = '#2563eb';
+            btn.classList.add('active');
+            customQty.value = btn.dataset.qty;
+        };
+    });
 
-    if (out) {
-        out.value = linkStr;
-        out.style.display = 'block';
-    }
-    if (copyBtn) {
-        copyBtn.style.display = 'block';
-        copyBtn.innerHTML = '📋 Copy Link';
+    customQty.oninput = () => {
+        const val = parseInt(customQty.value);
+        qtyChips.forEach(b => {
+            const isActive = parseInt(b.dataset.qty) === val;
+            b.style.background = isActive ? '#2563eb' : 'white';
+            b.style.color = isActive ? 'white' : '#334155';
+            b.style.borderColor = isActive ? '#2563eb' : '#cbd5e1';
+        });
+    };
+
+    // Generate Button Click
+    root.querySelector('#hw-btn-generate').onclick = () => {
+        let studentName = studentSelect.value;
+        if (studentName === '__NEW__') {
+            studentName = customInput.value.trim();
+        }
+        if (!studentName) {
+            alert("Please select or type a student name!");
+            if (studentSelect.value === '__NEW__') customInput.focus();
+            return;
+        }
+
+        const checkedCodes = Array.from(root.querySelectorAll('.hw-rule-cb:checked')).map(cb => cb.value);
+        if (checkedCodes.length === 0) {
+            alert("Please select at least one Tajweed rule!");
+            return;
+        }
+
+        const qty = parseInt(customQty.value) || 10;
+        const timer = parseInt(root.querySelector('#hw-timer-select').value) || 15;
+
+        // Build URL
+        const url = new URL(window.location.origin + window.location.pathname);
+        url.searchParams.set('hw', checkedCodes.join(','));
+        url.searchParams.set('st', studentName);
+        url.searchParams.set('q', qty);
+        url.searchParams.set('t', timer);
+
+        const isDefaultTeacher = (!teacherInfo.name || teacherInfo.name.includes('جهاد') || teacherInfo.name.toLowerCase().includes('gehad'))
+            && (!teacherInfo.whatsapp || teacherInfo.whatsapp.includes('1099684126'));
+
+        if (!isDefaultTeacher) {
+            if (teacherInfo.name) url.searchParams.set('tc', teacherInfo.name);
+            if (teacherInfo.whatsapp) url.searchParams.set('wa', teacherInfo.whatsapp.replace(/[^\d+]/g, ''));
+            if (teacherInfo.email) url.searchParams.set('gm', teacherInfo.email);
+        }
+
+        const linkStr = url.toString();
+
+        const resultCard = root.querySelector('#hw-result-card');
+        const targetEl = root.querySelector('#hw-result-target');
+        const urlInput = root.querySelector('#hw-result-url');
+        const copyBtn = root.querySelector('#hw-btn-copy-result');
+        const waBtn = root.querySelector('#hw-btn-wa-share');
+
+        resultCard.style.display = 'block';
+        targetEl.innerHTML = `🎯 Target Student: <strong>${studentName}</strong> (${qty} Questions • ${timer > 0 ? timer + 's per Q' : 'No timer'})`;
+        urlInput.value = linkStr;
+
         copyBtn.onclick = () => {
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(linkStr);
-            } else if (out) {
-                out.select();
+            } else {
+                urlInput.select();
                 document.execCommand('copy');
             }
             copyBtn.innerHTML = '✅ Link Copied!';
             setTimeout(() => { copyBtn.innerHTML = '📋 Copy Link'; }, 2500);
         };
-    }
+
+        const waText = `Assalamu Alaikum ${studentName}!\nHere is your Tajweed Homework assignment from teacher ${teacherInfo.name || 'Sheikh Gehad Elsayad'}:\n\n${linkStr}\n\nPlease complete it at home! 📖`;
+        waBtn.onclick = () => {
+            window.open(`https://wa.me/?text=${encodeURIComponent(waText)}`, '_blank');
+        };
+
+        resultCard.scrollIntoView({ behavior: 'smooth' });
+    };
 }
+
+// Backward compatible legacy stub
+function generateHWLink() {
+    renderHomeworkCreator();
+}
+
+function launchHomeworkGame() {
+    if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
+    const cfg = window.CURRENT_HW_CONFIG || {};
+    const pool = window.CURRENT_HW_POOL || [];
+    if (pool.length === 0) {
+        alert("Homework questions could not be loaded. Please check your link.");
+        return;
+    }
+
+    const studentName = cfg.studentName || 'Student';
+    const qty = cfg.qty || 10;
+    const timer = cfg.timer !== undefined ? cfg.timer : 15;
+
+    isHomeworkMode = true;
+    isProgressiveMode = false;
+
+    session.studentName = studentName;
+    session.studentAvatar = '🎓';
+    TIME_LIMIT = timer;
+
+    let finalPlaylist = smartMix(pool);
+    if (qty > 0 && qty < finalPlaylist.length) {
+        finalPlaylist = finalPlaylist.slice(0, qty);
+    }
+
+    initGameSession(false, finalPlaylist);
+}
+window.launchHomeworkGame = launchHomeworkGame;
 
 function parseURLModes() {
     const params = new URLSearchParams(window.location.search);
@@ -704,13 +987,46 @@ function parseURLModes() {
                 categories = parts.map(p => HW_RULE_CODES[p] || p);
             }
 
+            const studentName = params.get('st') || params.get('name') || 'Student';
             const qty = parseInt(params.get('q') || '10', 10);
             const timer = parseInt(params.get('t') || '15', 10);
             const teacherName = params.get('tc') || 'Sheikh Gehad Elsayad';
             const teacherWa = params.get('wa') || '+201099684126';
             const teacherGm = params.get('gm') || 'gehadnagah789@gmail.com';
 
+            // Direct robust pool creation from TAJWEED_BANK
+            let pool = [];
+            const seen = new Set();
+            categories.forEach(catKey => {
+                const catObj = (typeof TAJWEED_BANK !== 'undefined') ? TAJWEED_BANK[catKey] : null;
+                if (catObj && catObj.questions) {
+                    catObj.questions.forEach(q => {
+                        if (!seen.has(q.id)) {
+                            seen.add(q.id);
+                            pool.push({ ...q, categoryId: catKey });
+                        }
+                    });
+                }
+            });
+
+            // Robust fallback if empty
+            if (pool.length === 0 && typeof TAJWEED_BANK !== 'undefined') {
+                ['qalqalah', 'noon_sakinah_tanween'].forEach(catKey => {
+                    const catObj = TAJWEED_BANK[catKey];
+                    if (catObj && catObj.questions) {
+                        catObj.questions.forEach(q => {
+                            if (!seen.has(q.id)) {
+                                seen.add(q.id);
+                                pool.push({ ...q, categoryId: catKey });
+                            }
+                        });
+                    }
+                });
+            }
+
+            window.CURRENT_HW_POOL = pool;
             window.CURRENT_HW_CONFIG = {
+                studentName: studentName,
                 categories: categories,
                 qty: qty,
                 timer: timer,
@@ -724,38 +1040,73 @@ function parseURLModes() {
             isHomeworkMode = true;
             isProgressiveMode = false;
 
-            document.getElementById('screen-start')?.classList.add('active');
-            document.getElementById('screen-splash')?.classList.remove('active');
+            // Switch to screen-start and render dedicated Student Launch Card
+            switchScreen('screen-start');
 
             const titleEl = document.getElementById('start-title');
             if (titleEl) {
-                titleEl.innerHTML = `
-                    <div style="font-size:1.6rem; color:#1e293b; font-weight:900;">📝 Homework Assignment</div>
-                    <div style="font-size:1rem; color:#2563eb; font-weight:800; margin-top:4px;">👨‍🏫 Teacher: ${teacherName}</div>
-                    <div style="font-size:0.8rem; color:#64748b; font-weight:700; margin-top:2px;">Developed & Supervised by Sheikh Gehad Elsayad 📖</div>
+                titleEl.innerHTML = `📝 Homework for <span style="color:#2563eb;">${studentName}</span>`;
+            }
+
+            // Hide standard selection elements so student has clean view
+            const rulesBox = document.getElementById('cb-all-rules')?.closest('fieldset') 
+                || document.getElementById('cb-all-rules')?.parentElement?.parentElement?.parentElement;
+            if (rulesBox) rulesBox.style.display = 'none';
+
+            const nameInput = document.getElementById('student-name');
+            if (nameInput) {
+                nameInput.value = studentName;
+                const nameContainer = nameInput.closest('div[style*="text-align: center"]');
+                if (nameContainer) nameContainer.style.display = 'none';
+            }
+
+            const hwTeacherPanel = document.getElementById('hw-teacher-panel');
+            if (hwTeacherPanel) hwTeacherPanel.style.display = 'none';
+
+            const setupOuterCard = document.querySelector('#screen-start div[style*="border-radius:1.5rem"]');
+            let launchCard = document.getElementById('hw-student-launch-card');
+            if (!launchCard && setupOuterCard) {
+                launchCard = document.createElement('div');
+                launchCard.id = 'hw-student-launch-card';
+                setupOuterCard.prepend(launchCard);
+            }
+
+            const ruleLabels = categories.map(c => {
+                const def = HW_RULE_METADATA.find(d => d.key === c || d.id === c);
+                return def ? def.title : c;
+            }).join(' • ');
+
+            if (launchCard) {
+                launchCard.innerHTML = `
+                    <div style="background: linear-gradient(135deg, #eff6ff, #f8fafc); border: 2.5px solid #3b82f6; border-radius: 18px; padding: 26px 20px; text-align: center; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(59,130,246,0.12);">
+                        <div style="font-size: 3rem; margin-bottom: 8px;">🌟</div>
+                        <h2 style="font-size: 1.8rem; font-weight: 900; color: #1e293b; margin: 0 0 6px 0;">Welcome, ${studentName}!</h2>
+                        <div style="font-size: 1.05rem; font-weight: 800; color: #2563eb; margin-bottom: 4px;">👨‍🏫 Teacher: ${teacherName}</div>
+                        <div style="font-size: 0.8rem; font-weight: 700; color: #64748b; margin-bottom: 16px;">Supervised & Developed by Sheikh Gehad Elsayad 📖</div>
+
+                        <div style="background: white; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 14px 18px; max-width: 420px; margin: 0 auto 20px auto; text-align: left; font-size: 0.9rem; color: #334155; font-weight: 700; line-height: 1.5;">
+                            <div style="margin-bottom: 6px;">🎯 <strong>Questions:</strong> ${qty} Questions</div>
+                            <div style="margin-bottom: 6px;">⏱️ <strong>Timer:</strong> ${timer > 0 ? timer + ' seconds per question' : 'Unlimited time'}</div>
+                            <div>📜 <strong>Topics:</strong> ${ruleLabels || 'Selected Rules'}</div>
+                        </div>
+
+                        <button type="button" id="btn-hw-start-direct" class="btn-start" style="font-size: 1.35rem; padding: 14px 32px; width: 100%; max-width: 320px; margin: 0 auto; background: #2563eb; box-shadow: 0 5px 0 #1d4ed8; font-weight: 900; cursor: pointer; border-radius: 12px;">
+                            Start Homework 🚀
+                        </button>
+                    </div>
                 `;
+
+                document.getElementById('btn-hw-start-direct')?.addEventListener('click', launchHomeworkGame);
             }
 
             const startBtn = document.getElementById('btn-start-game');
-            if (startBtn) startBtn.textContent = "Start Homework 🚀";
-
-            // Hide rule selection for student so they focus directly on playing
-            const rulesBox = document.getElementById('cb-all-rules')?.parentElement?.parentElement?.parentElement;
-            if (rulesBox) rulesBox.style.display = 'none';
-
-            // Select matching categories
-            categories.forEach(c => {
-                const el = document.querySelector(`.cat-cb[value="${c}"]`);
-                if (el) el.checked = true;
-            });
-
-            const tSelect = document.getElementById('timer-select');
-            if (tSelect) tSelect.value = timer;
-            const qInput = document.getElementById('custom-qty-input');
-            if (qInput) qInput.value = qty;
+            if (startBtn) {
+                startBtn.textContent = "Start Homework 🚀";
+                startBtn.onclick = launchHomeworkGame;
+            }
 
         } catch (e) {
-            console.warn("Error parsing homework URL:", e);
+            console.error("Error loading homework mode:", e);
         }
     } 
     // 2. Handling Magic Sync Import Link for Teachers

@@ -11,6 +11,8 @@ function switchScreen(id) {
             setTimeout(() => document.getElementById('student-name')?.focus(), 50);
         } else if (id === 'screen-progressive') {
             setTimeout(() => document.getElementById('prog-student-name')?.focus(), 50);
+        } else if (id === 'screen-homework') {
+            setTimeout(() => document.getElementById('hw-student-select')?.focus(), 50);
         }
     }
 }

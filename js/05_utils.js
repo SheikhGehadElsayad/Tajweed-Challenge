@@ -393,6 +393,13 @@
         ========================================================= */
         function attemptStartGame() {
             if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
+
+            // If in homework mode, delegate directly to homework launcher
+            if (window.isHomeworkMode && typeof window.launchHomeworkGame === 'function') {
+                window.launchHomeworkGame();
+                return;
+            }
+
             const input = document.getElementById('student-name');
             const nameErr = document.getElementById('name-error');
             const setupErr = document.getElementById('setup-error');

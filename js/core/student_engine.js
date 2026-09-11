@@ -99,6 +99,10 @@
             return Object.values(this.state.students || {}).sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
         }
 
+        getStudents() {
+            return this.getAllStudents();
+        }
+
         getStudent(id) {
             return this.state.students[id] || null;
         }
