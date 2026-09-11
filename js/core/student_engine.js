@@ -82,7 +82,8 @@
                         bestStreak: 0,
                         attempts: {}
                     },
-                    mistakes: []
+                    mistakes: [],
+                    homeworks: []
                 };
 
                 this.state.students[initialId] = initialStudent;
@@ -153,7 +154,8 @@
                     bestStreak: 0,
                     attempts: {}
                 },
-                mistakes: []
+                mistakes: [],
+                homeworks: []
             };
 
             this.state.students[id] = student;
@@ -355,6 +357,127 @@
 
             student.mistakes = [];
             this.save();
+        }
+
+        // ================= HOMEWORK RECORDS & SYNC =================
+
+        addHomeworkRecord(studentName, hwRecord) {
+            const cleanName = (studentName || '').trim().replace(/\s+/g, ' ');
+            if (!cleanName) return null;
+
+            // Find existing student by name (case-insensitive) or create new
+            let student = Object.values(this.state.students || {}).find(s => 
+                s.name && s.name.trim().toLowerCase() === cleanName.toLowerCase()
+            );
+
+            if (!student) {
+                student = this.addStudent(cleanName);
+            }
+
+            if (!student) return null;
+
+            if (!Array.isArray(student.homeworks)) {
+                student.homeworks = [];
+            }
+
+            const recordId = hwRecord.id || ('hw_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6));
+            const entry = {
+                id: recordId,
+                date: hwRecord.date || new Date().toLocaleString('ar-EG', { dateStyle: 'short', timeStyle: 'short' }),
+                timestamp: hwRecord.timestamp || Date.now(),
+                score: hwRecord.score || 0,
+                total: hwRecord.total || 0,
+                accuracy: hwRecord.accuracy || 0,
+                timeSpent: hwRecord.timeSpent || 0,
+                teacherName: hwRecord.teacherName || this.getTeacherInfo().name,
+                rules: hwRecord.rules || [],
+                mistakes: Array.isArray(hwRecord.mistakes) ? hwRecord.mistakes : []
+            };
+
+            // Avoid duplicate submissions with identical id
+            const existingIdx = student.homeworks.findIndex(h => h.id === recordId);
+            if (existingIdx >= 0) {
+                student.homeworks[existingIdx] = entry;
+            } else {
+                student.homeworks.unshift(entry);
+            }
+
+            // Cap stored homework records per student to 50
+            if (student.homeworks.length > 50) {
+                student.homeworks = student.homeworks.slice(0, 50);
+            }
+
+            // Automatically feed mistakes into the student's active Mistake Bank
+            if (entry.mistakes.length > 0) {
+                entry.mistakes.forEach(m => {
+                    this.addMistake({
+                        qId: m.qId || m.id || ('hw_q_' + Math.random().toString(36).substring(2, 6)),
+                        text: m.text || m.prompt || '',
+                        src: m.src || m.image || '',
+                        image: m.image || m.src || '',
+                        userAns: m.userAns || m.choice || '',
+                        ans: m.ans || m.correctAns || '',
+                        correctAns: m.correctAns || m.ans || '',
+                        prompt: m.prompt || 'Tajweed Rule Question',
+                        categoryId: m.categoryId || m.rule || '',
+                        explanation: m.explanation || ''
+                    }, student.id);
+                });
+            }
+
+            // Set as active student so teacher sees them immediately
+            this.state.activeStudentId = student.id;
+            this.save();
+            return { student, record: entry };
+        }
+
+        getStudentHomeworks(studentId = null) {
+            const student = studentId ? this.getStudent(studentId) : this.getActiveStudent();
+            return (student && Array.isArray(student.homeworks)) ? student.homeworks : [];
+        }
+
+        // ================= TEACHER CONFIGURATION & CREATOR BRANDING =================
+
+        getCreatorInfo() {
+            return {
+                name: 'الشيخ جهاد الصياد',
+                nameEn: 'Sheikh Gehad Elsayad',
+                title: 'مؤسس ومعد تطبيق تجويد تشالنج',
+                brandingText: 'تطبيق تجويد تشالنج | إعداد وإشراف: الشيخ جهاد الصياد'
+            };
+        }
+
+        getTeacherInfo() {
+            try {
+                const saved = localStorage.getItem('tajweed_teacher_info');
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    if (parsed && parsed.name) return parsed;
+                }
+            } catch (e) {}
+
+            return {
+                name: 'الشيخ جهاد الصياد',
+                whatsapp: '+201099684126', // Sheikh Gehad default
+                email: 'gehadnagah789@gmail.com'
+            };
+        }
+
+        saveTeacherInfo(info) {
+            try {
+                const current = this.getTeacherInfo();
+                const updated = {
+                    ...current,
+                    name: (info.name || '').trim() || current.name,
+                    whatsapp: (info.whatsapp || '').trim().replace(/[^\d+]/g, ''),
+                    email: (info.email || '').trim()
+                };
+                localStorage.setItem('tajweed_teacher_info', JSON.stringify(updated));
+                return updated;
+            } catch (e) {
+                console.error('Failed to save teacher info:', e);
+                return this.getTeacherInfo();
+            }
         }
 
         // ================= BACKUP & RESTORE =================

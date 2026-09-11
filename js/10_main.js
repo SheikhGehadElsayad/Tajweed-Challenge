@@ -140,13 +140,21 @@ const appContainer = document.createElement('div');
                 
                 <div style="width:100%; background:white; border-radius:1.5rem; padding: 3vh 3vw; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 2px solid #e2e8f0;">
                     
-                    <div id="hw-teacher-panel" class="hw-overlay" hidden>
-                        <span style="font-weight:900; color:#475569; font-size:1.2rem;">👩‍🏫 Teacher Panel: Create Homework</span>
-                        <p style="font-size:0.9rem; color:#64748b; margin:0;">Select rules and settings below, then click to generate a link for your students.</p>
-                        <button id="btn-generate-hw" class="btn-start" style="font-size:1rem; padding: 10px; margin-top:5px;">Generate HW Link 🔗</button>
-                        <div style="display:flex; gap:10px; align-items:center; margin-top:5px;">
-                            <input type="text" id="hw-link-out" readonly style="flex:1; padding:10px; font-size:0.8rem; border-radius:8px; border:1px solid #cbd5e1; display:none;" onclick="this.select()">
-                            <button id="btn-copy-hw" class="btn-start" style="display:none; padding:10px; width:auto; font-size:1rem;">Copy</button>
+                    <div id="hw-teacher-panel" class="hw-overlay" hidden style="background:#eff6ff; border:2px solid #3b82f6; border-radius:16px; padding:16px; margin-bottom:15px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                            <span style="font-weight:900; color:#1e40af; font-size:1.15rem;">👨‍🏫 لوحة المعلم: إنشاء وإرسال الواجب</span>
+                            <button type="button" onclick="if(typeof window.StudentModal!=='undefined') window.StudentModal.open('teacher');" style="background:white; color:#2563eb; border:1.5px solid #3b82f6; border-radius:99px; font-weight:800; font-size:0.85rem; padding:4px 12px; cursor:pointer; display:flex; align-items:center; gap:4px;">
+                                ⚙️ تعديل بيانات المعلم
+                            </button>
+                        </div>
+                        <p style="font-size:0.85rem; color:#475569; margin:6px 0 10px 0;">حدد الأحكام وعدد الأسئلة، ثم اضغط لإنشاء رابط قصير ترسله لطلابك في شات زوم:</p>
+                        <button id="btn-generate-hw" class="btn-start" style="font-size:1rem; padding: 10px 20px; background:#2563eb; box-shadow:0 3px 0 #1d4ed8;">إنشاء رابط الواجب لشات زوم 🔗</button>
+                        <div style="display:flex; gap:10px; align-items:center; margin-top:10px;">
+                            <input type="text" id="hw-link-out" readonly style="flex:1; padding:10px; font-size:0.85rem; border-radius:8px; border:1.5px solid #94a3b8; display:none; background:white; font-weight:700;" onclick="this.select()">
+                            <button id="btn-copy-hw" class="btn-start" style="display:none; padding:10px 16px; width:auto; font-size:0.95rem; background:#10b981; box-shadow:0 3px 0 #059669;">📋 نسخ الرابط لشات زوم</button>
+                        </div>
+                        <div style="font-size:0.75rem; color:#64748b; margin-top:6px;">
+                            ✨ إشراف وإعداد: الشيخ جهاد الصياد | Sheikh Gehad Elsayad
                         </div>
                     </div>
                     <div style="margin-bottom: 25px; text-align: center;">

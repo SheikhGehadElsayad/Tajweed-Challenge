@@ -63,8 +63,11 @@
                         <button type="button" class="sm-tab" data-tab="form" id="sm-tab-form">
                             <span>➕</span> Add / Edit Student
                         </button>
+                        <button type="button" class="sm-tab" data-tab="teacher" id="sm-tab-teacher">
+                            <span>👨‍🏫</span> Teacher & Homework Settings
+                        </button>
                         <button type="button" class="sm-tab" data-tab="backup">
-                            <span>💾</span> Backup & Settings
+                            <span>💾</span> Backup
                         </button>
                     </nav>
 
@@ -137,6 +140,8 @@
                 this.renderRosterTab(body);
             } else if (this.activeTab === 'form') {
                 this.renderFormTab(body);
+            } else if (this.activeTab === 'teacher') {
+                this.renderTeacherTab(body);
             } else if (this.activeTab === 'backup') {
                 this.renderBackupTab(body);
             }
@@ -157,6 +162,8 @@
                 });
             }
 
+            const activeHws = (active && Array.isArray(active.homeworks)) ? active.homeworks : [];
+
             container.innerHTML = `
                 <!-- Active Student Highlight Card -->
                 <div class="sm-active-card" style="border-color: ${active?.color || '#2563eb'};">
@@ -172,13 +179,64 @@
                                 <span>•</span>
                                 <span>🏆 ${completedCount} Stages Cleared</span>
                                 <span>•</span>
-                                <span>Scoring: ${active?.scoringPolicy === 'cumulative' ? 'Cumulative' : active?.scoringPolicy === 'latest' ? 'Latest' : 'Best'}</span>
+                                <span>📝 ${activeHws.length} Homeworks</span>
                             </div>
                         </div>
                     </div>
                     <div class="sm-active-actions">
                         <button type="button" class="sm-btn-edit-active" id="sm-btn-edit-active">✏️ Edit Profile</button>
                     </div>
+                </div>
+
+                <!-- Active Student Homework History -->
+                <div class="sm-homework-section" style="margin: 15px 0; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                        <h4 style="margin:0; font-weight:900; color:#1e293b; font-size:1rem; display:flex; align-items:center; gap:6px;">
+                            <span>📝</span> سجل الواجبات المنزلية (${activeHws.length})
+                        </h4>
+                        <span style="font-size:0.75rem; color:#64748b; font-weight:700;">المستوردة تلقائياً عبر واتساب / جيميل</span>
+                    </div>
+
+                    ${activeHws.length > 0 ? `
+                        <div style="display:flex; flex-direction:column; gap:10px; max-height:220px; overflow-y:auto; padding-right:4px;">
+                            ${activeHws.map((hw, idx) => `
+                                <div style="background:white; border:1px solid #cbd5e1; border-radius:10px; padding:10px; box-shadow:0 2px 4px rgba(0,0,0,0.03);">
+                                    <div style="display:flex; justify-content:space-between; align-items:center; font-weight:800; font-size:0.9rem;">
+                                        <span style="color:#2563eb;">📅 ${hw.date}</span>
+                                        <span style="background:${hw.accuracy >= 80 ? '#dcfce7; color:#15803d' : hw.accuracy >= 50 ? '#fef3c7; color:#b45309' : '#fee2e2; color:#b91c1c'}; padding:2px 8px; border-radius:6px;">
+                                            🎯 ${hw.score}/${hw.total} (${hw.accuracy}%)
+                                        </span>
+                                    </div>
+                                    <div style="font-size:0.8rem; color:#64748b; margin-top:4px;">
+                                        ⏱️ وقت الحل: ${hw.timeSpent}ث | المعلم: ${hw.teacherName || 'الشيخ جهاد'}
+                                    </div>
+                                    ${hw.mistakes && hw.mistakes.length > 0 ? `
+                                        <details style="margin-top:6px; font-size:0.8rem; border-top:1px dashed #e2e8f0; padding-top:6px;">
+                                            <summary style="cursor:pointer; font-weight:800; color:#ef4444;">
+                                                ❌ أخطاء الواجب (${hw.mistakes.length} أسئلة)
+                                            </summary>
+                                            <div style="display:flex; flex-direction:column; gap:6px; margin-top:6px;">
+                                                ${hw.mistakes.map((m) => `
+                                                    <div style="background:#fff1f2; border:1px solid #fecdd3; border-radius:6px; padding:6px;">
+                                                        <div style="font-weight:800; color:#9f1239;">[${m.rule || 'حكم'}] ${m.prompt || ''} ${m.text || ''}</div>
+                                                        <div style="color:#b91c1c;">إجابة الطالب: <strong>${m.userAns} ❌</strong></div>
+                                                        <div style="color:#15803d;">الإجابة الصحيحة: <strong>${m.correctAns} ✅</strong></div>
+                                                    </div>
+                                                `).join('')}
+                                            </div>
+                                        </details>
+                                    ` : `
+                                        <div style="margin-top:4px; font-size:0.75rem; color:#10b981; font-weight:800;">🌟 واجب مثالي بدون أي أخطاء!</div>
+                                    `}
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : `
+                        <div style="text-align:center; padding:12px; color:#64748b; font-size:0.85rem; font-weight:700;">
+                            لا توجد واجبات مسجلة لهذا الطالب بعد.<br>
+                            <span style="font-size:0.75rem; color:#94a3b8;">بمجرد أن يحل الطالب الواجب ويرسل النتيجة وتضغط على رابط الحفظ السحري، ستظهر هنا فوراً!</span>
+                        </div>
+                    `}
                 </div>
 
                 <div class="sm-roster-header">
@@ -496,6 +554,68 @@
                     }
                 };
                 reader.readAsText(file);
+            });
+        }
+
+        // TAB 4: TEACHER & HOMEWORK SETTINGS
+        renderTeacherTab(container) {
+            const teacher = window.StudentEngine.getTeacherInfo();
+            const creator = window.StudentEngine.getCreatorInfo();
+
+            container.innerHTML = `
+                <div class="sm-teacher-container" style="display:flex; flex-direction:column; gap:16px;">
+                    <!-- Creator Ownership & Verified Badge -->
+                    <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color:white; border-radius:14px; padding:16px; box-shadow:0 4px 12px rgba(37,99,235,0.2);">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <span style="font-size:2rem;">👑</span>
+                            <div>
+                                <div style="font-weight:900; font-size:1.15rem;">تطبيق تجويد تشالنج - Tajweed Challenge</div>
+                                <div style="font-weight:700; font-size:0.95rem; opacity:0.95;">إشراف وتطوير: ${creator.name} (Sheikh Gehad Elsayad)</div>
+                            </div>
+                        </div>
+                        <div style="font-size:0.8rem; margin-top:8px; opacity:0.85; line-height:1.4;">
+                            المنصة صُممت لخدمة معلمين وطلاب القرآن الكريم في كافة أنحاء العالم. البيانات الموضحة أدناه تتيح لكل معلم تخصيص اسمه ورقم واتسابه وإيميله لاستقبال واجبات طلابه مباشرة، مع الحفاظ الدائم على حقوق ملكية وتطوير المنصة للشيخ جهاد الصياد.
+                        </div>
+                    </div>
+
+                    <!-- Teacher Customization Form -->
+                    <div style="background:white; border:2px solid #e2e8f0; border-radius:14px; padding:18px;">
+                        <h4 style="margin:0 0 12px 0; color:#1e293b; font-size:1.05rem; font-weight:900; display:flex; align-items:center; gap:8px;">
+                            <span>⚙️</span> تخصيص بيانات المعلم لاستقبال الواجبات
+                        </h4>
+
+                        <div style="display:flex; flex-direction:column; gap:12px;">
+                            <div>
+                                <label style="display:block; font-weight:800; color:#475569; font-size:0.85rem; margin-bottom:4px;">اسم المعلم (كما سيظهر للطلاب في الواجب):</label>
+                                <input type="text" id="sm-teacher-name" value="${teacher.name}" style="width:100%; padding:10px; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:700;">
+                            </div>
+
+                            <div>
+                                <label style="display:block; font-weight:800; color:#475569; font-size:0.85rem; margin-bottom:4px;">رقم واتساب المعلم (مع كود الدولة مثل +2010...):</label>
+                                <input type="text" id="sm-teacher-wa" value="${teacher.whatsapp}" placeholder="+201012345678" style="width:100%; padding:10px; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:700;">
+                                <span style="font-size:0.75rem; color:#64748b;">سيتم إرسال تقارير الواجبات وأخطاء الطلاب إلى هذا الرقم مباشرة عند ضغط الطالب على زر واتساب.</span>
+                            </div>
+
+                            <div>
+                                <label style="display:block; font-weight:800; color:#475569; font-size:0.85rem; margin-bottom:4px;">إيميل المعلم (Gmail):</label>
+                                <input type="email" id="sm-teacher-gm" value="${teacher.email}" placeholder="teacher@gmail.com" style="width:100%; padding:10px; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:700;">
+                            </div>
+
+                            <button type="button" id="sm-btn-save-teacher" style="margin-top:8px; background:#2563eb; color:white; font-weight:800; font-size:1rem; padding:12px; border-radius:10px; border:none; cursor:pointer; box-shadow:0 3px 0 #1d4ed8;">
+                                💾 حفظ بيانات المعلم
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            container.querySelector('#sm-btn-save-teacher')?.addEventListener('click', () => {
+                const name = container.querySelector('#sm-teacher-name')?.value;
+                const whatsapp = container.querySelector('#sm-teacher-wa')?.value;
+                const email = container.querySelector('#sm-teacher-gm')?.value;
+
+                window.StudentEngine.saveTeacherInfo({ name, whatsapp, email });
+                alert('✅ تم حفظ وتحديث بيانات المعلم بنجاح! سيتم تضمين هذه البيانات في كل روابط الواجبات القادمة.');
             });
         }
 

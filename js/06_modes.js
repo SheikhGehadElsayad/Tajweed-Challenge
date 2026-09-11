@@ -602,89 +602,214 @@ function startProgressiveLevel(index) {
     }
 }
 
-        function generateHWLink() {
-            const selectedCbs = Array.from(document.querySelectorAll('.cat-cb:checked'));
-            const subCbs = Array.from(document.querySelectorAll('.sub-cb:checked'));
-            
-            let hwData = {
-                c: selectedCbs.map(cb => cb.value),
-                s: subCbs.map(cb => cb.value),
-                t: document.getElementById('timer-select').value,
-                q: document.getElementById('custom-qty-input').value
-            };
-            
-            try {
-                const b64 = btoa(JSON.stringify(hwData));
-                const url = new URL(window.location.href);
-                url.search = '?hw=' + b64;
-                
-                const out = document.getElementById('hw-link-out');
-                const copyBtn = document.getElementById('btn-copy-hw');
-                out.value = url.toString();
-                out.style.display = 'block'; copyBtn.style.display = 'block';
-                
-                copyBtn.onclick = () => {
-                    out.select(); document.execCommand('copy');
-                    copyBtn.textContent = 'Copied! ✅';
-                    setTimeout(()=> copyBtn.textContent='Copy', 2000);
-                };
-            } catch(e) { alert("Error generating link."); }
-        }
+// Short rule code mapping for ultra-compact Zoom links
+const HW_RULE_CODES = {
+    'im': 'image_bank',
+    'ql': 'qalqalah',
+    'ms': 'meem_sakinah',
+    'ns': 'noon_sakinah_tanween',
+    'tt': 'tafkheem_tarqeeq',
+    'md': 'madd_rules',
+    'hw': 'hamzat_wasl',
+    'lq': 'lam_shamsiyyah_qamariyyah',
+    'lr': 'letter_relations'
+};
+const HW_CODES_REVERSE = Object.fromEntries(Object.entries(HW_RULE_CODES).map(([k, v]) => [v, k]));
 
-        function parseURLModes() {
-            const params = new URLSearchParams(window.location.search);
-            if(params.has('hw')) {
-                try {
-                    const data = JSON.parse(atob(params.get('hw')));
-                    document.getElementById('screen-start').classList.add('active');
-                    document.getElementById('screen-splash').classList.remove('active');
-                    
-                    document.getElementById('start-title').textContent = "Homework Assignment 📝";
-                    document.getElementById('btn-start-game').textContent = "START HOMEWORK";
-                    
-                    document.getElementById('cb-all-rules').parentElement.parentElement.parentElement.style.display = 'none';
-                    
-                    data.c.forEach(c => { const el = document.querySelector(`.cat-cb[value="${c}"]`); if(el) el.checked=true; });
-                    data.s.forEach(s => { const el = document.querySelector(`.sub-cb[value="${s}"]`); if(el) el.checked=true; });
-                    document.getElementById('timer-select').value = data.t;
-                    document.getElementById('custom-qty-input').value = data.q;
-                    
-                    isHomeworkMode = true; isProgressiveMode = false;
-                } catch(e) { alert("Invalid homework link."); }
-            } else if(params.has('result')) {
-                try {
-                    const data = JSON.parse(decodeURIComponent(atob(params.get('result'))));
-                    document.getElementById('screen-splash').classList.remove('active');
-                    const rep = document.getElementById('screen-report');
-                    rep.classList.add('active');
-                    
-                    document.getElementById('report-title').innerHTML = `📝 Student Report: <span style="color:#3b82f6">${data.n}</span>`;
-                    document.getElementById('report-subtitle').textContent = `Completed in ${data.t} seconds`;
-                    
-                    document.getElementById('btn-report-home').style.display = 'none';
-                    
-                    let html = `<div style="text-align:center; padding:15px; font-size:1.2rem;">
-                        <strong>Score:</strong> ${data.s} | <strong>Accuracy:</strong> ${data.a}%<br>
-                        <strong>Correct:</strong> ${data.c} | <strong>Incorrect:</strong> ${data.m.length}
-                    </div>`;
-                    
-                    if(data.m.length > 0) {
-                        html += `<h3 style="margin-top:20px; color:#ef4444; font-weight:900;">Mistakes Made:</h3>`;
-                        data.m.forEach(m => {
-                            html += `<div style="padding:10px; border-bottom:1px solid #cbd5e1; font-weight:700;">
-                                Expected: <span style="color:#ef4444;">${m.ans}</span>
-                            </div>`;
-                        });
-                    } else {
-                        html += `<div style="padding:10px; color:#10b981; font-weight:bold; font-size:1.2rem;">Perfect Assignment! 🎉</div>`;
-                    }
-                    
-                    document.getElementById('main-stats-grid').innerHTML = html;
-                    document.getElementById('main-stats-grid').style.display = 'block';
-                    document.getElementById('rule-stats-breakdown').innerHTML = '';
-                } catch(e) { alert("Invalid result link."); }
+function generateHWLink() {
+    let selectedCats = [];
+    let selectedSubs = [];
+
+    // Check RuleSelectorEngine first if available
+    if (typeof window.RuleSelectorEngine !== 'undefined' && window.RuleSelectorEngine.getActiveSelection) {
+        const sel = window.RuleSelectorEngine.getActiveSelection();
+        selectedCats = Object.keys(sel || {});
+    }
+
+    // Fallback to checkboxes if RuleSelectorEngine not active
+    if (selectedCats.length === 0) {
+        selectedCats = Array.from(document.querySelectorAll('.cat-cb:checked')).map(cb => cb.value);
+        selectedSubs = Array.from(document.querySelectorAll('.sub-cb:checked')).map(cb => cb.value);
+    }
+
+    if (selectedCats.length === 0) {
+        selectedCats = ['qalqalah', 'noon_sakinah_tanween']; // Sensible default if nothing checked
+    }
+
+    // Convert rules to compact codes
+    const compactCodes = selectedCats.map(c => HW_CODES_REVERSE[c] || c);
+    const qty = document.getElementById('custom-qty-input')?.value || '10';
+    const timer = document.getElementById('timer-select')?.value || '15';
+
+    // Get current teacher details (Sheikh Gehad default or customized colleague)
+    const teacherInfo = (typeof window.StudentEngine !== 'undefined') ? window.StudentEngine.getTeacherInfo() : { name: 'الشيخ جهاد الصياد', whatsapp: '+201099684126', email: 'gehadnagah789@gmail.com' };
+
+    const url = new URL(window.location.origin + window.location.pathname);
+    url.searchParams.set('hw', compactCodes.join(','));
+    url.searchParams.set('q', qty);
+    url.searchParams.set('t', timer);
+    if (teacherInfo.name) url.searchParams.set('tc', teacherInfo.name);
+    if (teacherInfo.whatsapp) url.searchParams.set('wa', teacherInfo.whatsapp.replace(/[^\d+]/g, ''));
+    if (teacherInfo.email) url.searchParams.set('gm', teacherInfo.email);
+
+    const linkStr = url.toString();
+    const out = document.getElementById('hw-link-out');
+    const copyBtn = document.getElementById('btn-copy-hw');
+
+    if (out) {
+        out.value = linkStr;
+        out.style.display = 'block';
+    }
+    if (copyBtn) {
+        copyBtn.style.display = 'block';
+        copyBtn.innerHTML = '📋 نسخ الرابط لشات زوم';
+        copyBtn.onclick = () => {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(linkStr);
+            } else if (out) {
+                out.select();
+                document.execCommand('copy');
             }
+            copyBtn.innerHTML = '✅ تم النسخ لشات زوم!';
+            setTimeout(() => { copyBtn.innerHTML = '📋 نسخ الرابط لشات زوم'; }, 2500);
+        };
+    }
+}
+
+function parseURLModes() {
+    const params = new URLSearchParams(window.location.search);
+
+    // 1. Handling Homework Assignment Link
+    if (params.has('hw')) {
+        try {
+            const rawHw = params.get('hw');
+            let categories = [];
+
+            // Check if legacy base64 or modern compact comma-separated codes
+            if (rawHw.startsWith('ey') || rawHw.length > 25) {
+                try {
+                    const legacy = JSON.parse(atob(rawHw));
+                    categories = legacy.c || [];
+                } catch(e) { categories = []; }
+            }
+
+            if (categories.length === 0) {
+                const parts = rawHw.split(',');
+                categories = parts.map(p => HW_RULE_CODES[p] || p);
+            }
+
+            const qty = parseInt(params.get('q') || '10', 10);
+            const timer = parseInt(params.get('t') || '15', 10);
+            const teacherName = params.get('tc') || 'الشيخ جهاد الصياد';
+            const teacherWa = params.get('wa') || '+201099684126';
+            const teacherGm = params.get('gm') || 'gehadnagah789@gmail.com';
+
+            window.CURRENT_HW_CONFIG = {
+                categories: categories,
+                qty: qty,
+                timer: timer,
+                teacher: {
+                    name: teacherName,
+                    whatsapp: teacherWa,
+                    email: teacherGm
+                }
+            };
+
+            isHomeworkMode = true;
+            isProgressiveMode = false;
+
+            document.getElementById('screen-start')?.classList.add('active');
+            document.getElementById('screen-splash')?.classList.remove('active');
+
+            const titleEl = document.getElementById('start-title');
+            if (titleEl) {
+                titleEl.innerHTML = `
+                    <div style="font-size:1.6rem; color:#1e293b; font-weight:900;">📝 واجب مخصص للطلاب</div>
+                    <div style="font-size:1rem; color:#2563eb; font-weight:800; margin-top:4px;">👨‍🏫 المعلم: ${teacherName}</div>
+                    <div style="font-size:0.8rem; color:#64748b; font-weight:700; margin-top:2px;">إعداد وتطوير: الشيخ جهاد الصياد 📖</div>
+                `;
+            }
+
+            const startBtn = document.getElementById('btn-start-game');
+            if (startBtn) startBtn.textContent = "ابدأ حل الواجب 🚀";
+
+            // Hide rule selection for student so they focus directly on playing
+            const rulesBox = document.getElementById('cb-all-rules')?.parentElement?.parentElement?.parentElement;
+            if (rulesBox) rulesBox.style.display = 'none';
+
+            // Select matching categories
+            categories.forEach(c => {
+                const el = document.querySelector(`.cat-cb[value="${c}"]`);
+                if (el) el.checked = true;
+            });
+
+            const tSelect = document.getElementById('timer-select');
+            if (tSelect) tSelect.value = timer;
+            const qInput = document.getElementById('custom-qty-input');
+            if (qInput) qInput.value = qty;
+
+        } catch (e) {
+            console.warn("Error parsing homework URL:", e);
         }
+    } 
+    // 2. Handling Magic Sync Import Link for Teachers
+    else if (params.has('import_hw')) {
+        try {
+            const rawData = params.get('import_hw');
+            const data = JSON.parse(decodeURIComponent(atob(rawData)));
+
+            if (data && data.n && typeof window.StudentEngine !== 'undefined') {
+                const result = window.StudentEngine.addHomeworkRecord(data.n, {
+                    score: data.s || 0,
+                    total: data.tot || (data.s + (data.m ? data.m.length : 0)),
+                    accuracy: data.a || 0,
+                    timeSpent: data.t || 0,
+                    teacherName: data.tc || 'الشيخ جهاد الصياد',
+                    rules: data.r || [],
+                    mistakes: data.m || []
+                });
+
+                // Clear url query to avoid re-importing on page refresh
+                window.history.replaceState({}, document.title, window.location.pathname);
+
+                // Open Student Hub modal directly on roster with confirmation
+                setTimeout(() => {
+                    if (typeof window.StudentModal !== 'undefined') {
+                        window.StudentModal.open('roster');
+                    }
+                    if (typeof confetti !== 'undefined') {
+                        confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
+                    }
+                    alert(`🎉 تم بنجاح تسجيل نتيجة واجب الطالب [${data.n}] وتحديث بروفايله وبنك أخطائه على المنصة!`);
+                }, 400);
+            }
+        } catch(e) {
+            console.error("Failed to import homework record:", e);
+        }
+    }
+    // 3. Backward compatible legacy result
+    else if (params.has('result')) {
+        try {
+            const data = JSON.parse(decodeURIComponent(atob(params.get('result'))));
+            document.getElementById('screen-splash')?.classList.remove('active');
+            const rep = document.getElementById('screen-report');
+            if (rep) rep.classList.add('active');
+
+            const title = document.getElementById('report-title');
+            if (title) title.innerHTML = `📝 Student Report: <span style="color:#3b82f6">${data.n}</span>`;
+
+            let html = `<div style="text-align:center; padding:15px; font-size:1.2rem;">
+                <strong>Score:</strong> ${data.s} | <strong>Accuracy:</strong> ${data.a}%<br>
+                <strong>Correct:</strong> ${data.c} | <strong>Incorrect:</strong> ${data.m?.length || 0}
+            </div>`;
+            const grid = document.getElementById('main-stats-grid');
+            if (grid) {
+                grid.innerHTML = html;
+                grid.style.display = 'block';
+            }
+        } catch(e) {}
+    }
+}
 
         
 
