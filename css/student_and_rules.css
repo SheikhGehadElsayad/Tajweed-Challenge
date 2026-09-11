@@ -1665,16 +1665,16 @@ html, body {
    10. ENLARGED QUIZ GAMEPLAY SCREEN (LARGE, CLEAR & PROMINENT)
    ========================================================================== */
 #screen-game {
-    zoom: 1.25;
+    zoom: 1.15;
     width: 100%;
     height: auto !important;
     min-height: 100vh !important;
     overflow-y: auto !important;
 }
 
-@supports not (zoom: 1.25) {
+@supports not (zoom: 1.15) {
     #screen-game {
-        font-size: 125%;
+        font-size: 115%;
     }
 }
 
