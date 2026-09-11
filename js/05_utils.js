@@ -125,11 +125,38 @@
             'letter_relations'            // 9. Relations Between Letters
         ];
 
+        let activeRseInstance = null;
+
         function renderSetupUI() {
             const container = document.getElementById('rules-container');
             if (!container) return;
             container.innerHTML = '';
 
+            if (typeof window.RuleSelectorEngine !== 'undefined') {
+                activeRseInstance = window.RuleSelectorEngine.render(container, {
+                    initialSelection: {
+                        'qalqalah': {
+                            'Minor': { enabled: true, qty: 5 },
+                            'Medium': { enabled: true, qty: 5 },
+                            'Major': { enabled: true, qty: 5 }
+                        },
+                        'madd_rules': {
+                            'Connected': { enabled: true, qty: 5 }
+                        }
+                    },
+                    showLaunchButton: false,
+                    onChange: (data) => {
+                        const totalCount = data.totalCount;
+                        const lbl = document.getElementById('total-available-lbl');
+                        if (lbl) lbl.textContent = totalCount;
+                        const qtyInput = document.getElementById('custom-qty-input');
+                        if (qtyInput) qtyInput.value = totalCount;
+                    }
+                });
+                return;
+            }
+
+            // Fallback if RuleSelectorEngine not found
             MAIN_RULES_ORDER.forEach(catKey => {
                 const cat = TAJWEED_BANK[catKey];
                 if (!cat) return;
@@ -139,253 +166,14 @@
                 const card = document.createElement('div');
                 card.className = 'rule-card';
                 card.dataset.cat = catKey;
-                card.style.cssText = 'background: white; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); transition: all 0.2s ease;';
-
-                const hasSubMap = !!SUB_CATEGORY_MAPPING[catKey];
-
-                let html = `
-                  <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%;">
-                    <label style="cursor: pointer; display: flex; align-items: center; gap: 10px; flex: 1; margin: 0; user-select: none;">
-                      <input type="checkbox" class="cat-cb" value="${catKey}" style="width: 20px; height: 20px; cursor: pointer; accent-color: #2563eb;">
-                      <span style="font-size: 1.05rem; font-weight: 800; color: #1e293b;">${cat.title}</span>
-                      <span style="font-size: 0.88rem; font-weight: 700; color: #0369a1; background: #e0f2fe; padding: 2px 10px; border-radius: 999px;">${totalCount} examples</span>
-                    </label>
-                    <input type="number" class="cat-qty rule-qty-input" data-cat="${catKey}" min="1" max="${totalCount}"
-                      placeholder="${totalCount}" title="Number of examples from ${cat.title} (leave blank for all ${totalCount})"
-                      style="display: none; width: 85px; text-align: center; font-weight: 800; font-size: 0.95rem; padding: 5px 8px; border: 2px solid #3b82f6; border-radius: 8px; background: #eff6ff; color: #1e40af;">
-                  </div>`;
-
-                if (hasSubMap) {
-                    html += `<div class="sub-rules-list" style="margin-left: 24px; margin-top: 10px; padding-left: 14px; border-left: 3px solid #cbd5e1; display: flex; flex-direction: column; gap: 8px;">`;
-                    Object.keys(SUB_CATEGORY_MAPPING[catKey]).forEach(subKey => {
-                        const subQs = getSubQuestions(catKey, subKey, cat.questions);
-                        const subCount = subQs.length;
-                        if (subCount === 0) return;
-                        html += `
-                          <div class="sub-rule-row" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%;">
-                            <label style="cursor: pointer; display: flex; align-items: center; gap: 8px; flex: 1; margin: 0; user-select: none;">
-                              <input type="checkbox" class="sub-cb" data-parent="${catKey}" value="${subKey}" style="width: 17px; height: 17px; cursor: pointer; accent-color: #3b82f6;">
-                              <span style="font-size: 0.95rem; font-weight: 700; color: #475569;">${subKey}</span>
-                              <span style="font-size: 0.82rem; font-weight: 600; color: #64748b; background: #f1f5f9; padding: 2px 8px; border-radius: 999px;">${subCount} examples</span>
-                            </label>
-                            <input type="number" class="sub-qty rule-qty-input" data-parent="${catKey}" data-sub="${subKey}" min="1" max="${subCount}"
-                              placeholder="${subCount}" title="Number of examples from ${subKey} (leave blank for all ${subCount})"
-                              style="display: none; width: 75px; text-align: center; font-weight: 700; font-size: 0.9rem; padding: 4px 6px; border: 1.5px solid #93c5fd; border-radius: 6px; background: #f0f9ff; color: #1e40af;">
-                          </div>`;
-                    });
-                    html += `</div>`;
-                }
-
-                card.innerHTML = html;
+                card.style.cssText = 'background: white; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 18px;';
+                card.innerHTML = `
+                  <label style="cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                    <input type="checkbox" class="cat-cb" value="${catKey}" checked style="width: 20px; height: 20px;">
+                    <span style="font-size: 1.05rem; font-weight: 800;">${cat.title}</span>
+                  </label>`;
                 container.appendChild(card);
             });
-
-            // Bind Category Checkboxes
-            document.querySelectorAll('.cat-cb').forEach(cb => {
-                cb.addEventListener('change', (e) => {
-                    const card = e.target.closest('.rule-card');
-                    const subCbs = card.querySelectorAll('.sub-cb');
-                    const catQty = card.querySelector('.cat-qty');
-                    const isChecked = e.target.checked;
-
-                    subCbs.forEach(sub => {
-                        sub.checked = isChecked;
-                        const sq = sub.closest('.sub-rule-row')?.querySelector('.sub-qty');
-                        if (sq) {
-                            sq.style.display = isChecked ? 'inline-block' : 'none';
-                            if (!isChecked) sq.value = '';
-                        }
-                    });
-
-                    if (catQty) {
-                        catQty.style.display = isChecked ? 'inline-block' : 'none';
-                        if (!isChecked) catQty.value = '';
-                    }
-
-                    if (isChecked) {
-                        card.style.borderColor = '#93c5fd';
-                        card.style.background = '#f8fafc';
-                    } else {
-                        card.style.borderColor = '#e2e8f0';
-                        card.style.background = 'white';
-                    }
-
-                    updateTotalAvailable();
-                    updateAllRulesCheckboxState();
-                });
-            });
-
-            // Bind Sub-Rule Checkboxes
-            document.querySelectorAll('.sub-cb').forEach(cb => {
-                cb.addEventListener('change', (e) => {
-                    const card = e.target.closest('.rule-card');
-                    const catCb = card.querySelector('.cat-cb');
-                    const catQty = card.querySelector('.cat-qty');
-                    const siblings = Array.from(card.querySelectorAll('.sub-cb'));
-                    const allChecked = siblings.every(s => s.checked);
-                    const someChecked = siblings.some(s => s.checked);
-
-                    catCb.checked = allChecked;
-                    catCb.indeterminate = someChecked && !allChecked;
-
-                    const sq = e.target.closest('.sub-rule-row')?.querySelector('.sub-qty');
-                    if (sq) {
-                        sq.style.display = e.target.checked ? 'inline-block' : 'none';
-                        if (!e.target.checked) sq.value = '';
-                    }
-
-                    if (catQty) {
-                        catQty.style.display = allChecked ? 'inline-block' : 'none';
-                        if (!allChecked) catQty.value = '';
-                    }
-
-                    if (allChecked || someChecked) {
-                        card.style.borderColor = '#93c5fd';
-                        card.style.background = '#f8fafc';
-                    } else {
-                        card.style.borderColor = '#e2e8f0';
-                        card.style.background = 'white';
-                    }
-
-                    updateTotalAvailable();
-                    updateAllRulesCheckboxState();
-                });
-            });
-
-            // Bind Master "Select All" Checkbox
-            const masterCb = document.getElementById('cb-all-rules');
-            if (masterCb) {
-                masterCb.addEventListener('change', (e) => {
-                    const checked = e.target.checked;
-                    document.querySelectorAll('.rule-card').forEach(card => {
-                        const catCb = card.querySelector('.cat-cb');
-                        const catQty = card.querySelector('.cat-qty');
-                        const subCbs = card.querySelectorAll('.sub-cb');
-
-                        if (catCb) {
-                            catCb.checked = checked;
-                            catCb.indeterminate = false;
-                        }
-                        if (catQty) {
-                            catQty.style.display = checked ? 'inline-block' : 'none';
-                            if (!checked) catQty.value = '';
-                        }
-                        subCbs.forEach(sub => {
-                            sub.checked = checked;
-                            const sq = sub.closest('.sub-rule-row')?.querySelector('.sub-qty');
-                            if (sq) {
-                                sq.style.display = checked ? 'inline-block' : 'none';
-                                if (!checked) sq.value = '';
-                            }
-                        });
-
-                        if (checked) {
-                            card.style.borderColor = '#93c5fd';
-                            card.style.background = '#f8fafc';
-                        } else {
-                            card.style.borderColor = '#e2e8f0';
-                            card.style.background = 'white';
-                        }
-                    });
-                    updateTotalAvailable();
-                });
-            }
-
-            // Bind All Quantity Inputs
-            document.querySelectorAll('.rule-qty-input').forEach(input => {
-                input.addEventListener('input', updateTotalAvailable);
-            });
-
-            // By default, select all rules so user can press Enter immediately
-            if (masterCb) {
-                masterCb.checked = true;
-                try {
-                    if (typeof Event !== 'undefined' && masterCb.dispatchEvent) {
-                        masterCb.dispatchEvent(new Event('change'));
-                    } else if (masterCb.onchange) {
-                        masterCb.onchange();
-                    }
-                } catch(e) {
-                    document.querySelectorAll('.rule-card').forEach(card => {
-                        const catCb = card.querySelector('.cat-cb');
-                        if (catCb) catCb.checked = true;
-                    });
-                    updateTotalAvailable();
-                }
-            } else {
-                updateTotalAvailable();
-            }
-        }
-
-        let selectedChallengeQty = null;
-
-        function updateTotalAvailable() {
-            const pool = getSelectedPool();
-            totalAvailableQuestions = pool.length;
-            const lbl = document.getElementById('total-available-lbl');
-            if (lbl) {
-                lbl.textContent = totalAvailableQuestions;
-            }
-            const qtyInput = document.getElementById('custom-qty-input');
-            if (qtyInput) {
-                if (!selectedChallengeQty || selectedChallengeQty > totalAvailableQuestions) {
-                    selectedChallengeQty = totalAvailableQuestions;
-                }
-                qtyInput.value = selectedChallengeQty;
-            }
-
-            // Render dynamic chips for Classic Setup
-            const chipsContainer = document.getElementById('classic-qty-chips');
-            if (chipsContainer) {
-                chipsContainer.innerHTML = '';
-                const baseNums = [5, 10, 15, 20, 25, 30, 40];
-                const validNums = baseNums.filter(n => n <= totalAvailableQuestions);
-                if (validNums.length === 0 && totalAvailableQuestions > 0) {
-                    validNums.push(totalAvailableQuestions);
-                }
-
-                validNums.forEach(num => {
-                    const btn = document.createElement('button');
-                    btn.type = 'button';
-                    const isActive = selectedChallengeQty === num;
-                    btn.className = `btn-secondary ${isActive ? 'active' : ''}`;
-                    btn.style.cssText = `padding: 6px 14px; border-radius: 8px; font-weight: 800; font-size: 0.85rem; cursor: pointer; ${isActive ? 'background: #2563eb; color: white; border-color: #2563eb;' : 'background: white; color: #334155; border: 1.5px solid #cbd5e1;'}`;
-                    btn.textContent = `${num} Questions`;
-                    btn.onclick = () => {
-                        selectedChallengeQty = num;
-                        if (qtyInput) qtyInput.value = num;
-                        updateTotalAvailable();
-                    };
-                    chipsContainer.appendChild(btn);
-                });
-
-                if (totalAvailableQuestions > 0) {
-                    const allBtn = document.createElement('button');
-                    allBtn.type = 'button';
-                    const isAllActive = selectedChallengeQty === totalAvailableQuestions;
-                    allBtn.className = `btn-secondary ${isAllActive ? 'active' : ''}`;
-                    allBtn.style.cssText = `padding: 6px 14px; border-radius: 8px; font-weight: 800; font-size: 0.85rem; cursor: pointer; ${isAllActive ? 'background: #2563eb; color: white; border-color: #2563eb;' : 'background: white; color: #334155; border: 1.5px solid #cbd5e1;'}`;
-                    allBtn.textContent = `All (${totalAvailableQuestions}) ⭐`;
-                    allBtn.onclick = () => {
-                        selectedChallengeQty = totalAvailableQuestions;
-                        if (qtyInput) qtyInput.value = totalAvailableQuestions;
-                        updateTotalAvailable();
-                    };
-                    chipsContainer.appendChild(allBtn);
-                }
-            }
-        }
-
-        function updateAllRulesCheckboxState() {
-            const allCbs = Array.from(document.querySelectorAll('.cat-cb'));
-            if (allCbs.length === 0) return;
-            const allChecked = allCbs.every(cb => cb.checked);
-            const someChecked = allCbs.some(cb => cb.checked || cb.indeterminate);
-            const allRulesCb = document.getElementById('cb-all-rules');
-            if (allRulesCb) {
-                allRulesCb.checked = allChecked;
-                allRulesCb.indeterminate = someChecked && !allChecked;
-            }
         }
 
         /* =========================================================
@@ -416,10 +204,18 @@
             if (setupErr) setupErr.hidden = true;
             if (input) input.setAttribute('aria-invalid', 'false');
 
-            let pool = getSelectedPool();
-            if (pool.length === 0) {
+            let pool = [];
+            if (activeRseInstance && typeof activeRseInstance.getPool === 'function') {
+                pool = activeRseInstance.getPool();
+            } else if (typeof window.RuleSelectorEngine !== 'undefined') {
+                pool = window.RuleSelectorEngine.buildPool();
+            } else {
+                pool = getSelectedPool();
+            }
+
+            if (!pool || pool.length === 0) {
                 if (setupErr) {
-                    setupErr.textContent = "Please select at least one Tajweed rule before starting.";
+                    setupErr.textContent = "Please select at least one Tajweed rule or sub-rule before starting.";
                     setupErr.hidden = false;
                 }
                 return;
@@ -429,10 +225,6 @@
             if (!isNaN(timerSelect)) TIME_LIMIT = timerSelect;
 
             let finalPlaylist = smartMix(pool);
-            const userQty = parseInt(document.getElementById('custom-qty-input')?.value);
-            if (!isNaN(userQty) && userQty > 0 && userQty < finalPlaylist.length) {
-                finalPlaylist = finalPlaylist.slice(0, userQty);
-            }
 
             const activeStd = (typeof window.StudentEngine !== 'undefined') ? window.StudentEngine.getActiveStudent() : null;
             if (activeStd) {

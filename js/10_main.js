@@ -210,41 +210,22 @@ const appContainer = document.createElement('div');
                     </div>
 
                     <div style="margin-bottom: 25px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 5px;">
-                            <span style="font-size: 1.1rem; font-weight: 800; color: #475569;">2. Select Tajweed Rules</span>
-                            <label class="rule-checkbox-lbl" style="background:#e0e7ff; color:#3730a3; border: 1px solid #c7d2fe;">
-                                <input type="checkbox" id="cb-all-rules"> Select All
-                            </label>
+                        <label style="display:block; font-size: 1.1rem; font-weight: 800; color: #475569; margin-bottom: 8px;">2. Select Tajweed Realms & Sub-Rules</label>
+                        <div id="rules-container">
+                            <!-- Populated dynamically by RuleSelectorEngine with Arcade Stage Arena -->
                         </div>
-                        <div id="rules-container" style="display:flex; flex-direction:column; gap:12px;">
-                            <!-- Populated dynamically -->
-                        </div>
+                        <input type="hidden" id="custom-qty-input" value="0">
+                        <span id="total-available-lbl" style="display:none;">0</span>
                     </div>
 
-                    <div style="margin-bottom: 25px; background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0;">
-                        <span style="font-size: 1.1rem; font-weight: 800; color: #475569; display:block; margin-bottom: 10px;">3. Timer Options</span>
-                        <div style="display:flex; align-items:center; gap: 15px; flex-wrap:wrap;">
-                            <select id="timer-select" style="padding: 8px; font-size:1.1rem; border-radius:8px; border:1px solid #cbd5e1; font-weight:700; color:#334155;">
-                                <option value="60">60 seconds</option>
-                                <option value="45">45 seconds</option>
-                                <option value="30">30 seconds</option>
-                                <option value="15">15 seconds</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 25px; background: linear-gradient(135deg, #eff6ff, #f8fafc); padding: 16px 20px; border-radius: 14px; border: 2px solid #bfdbfe; display: flex; flex-direction: column; gap: 12px;">
-                        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-                            <div>
-                                <span style="font-size: 1.15rem; font-weight: 900; color: #1e3a8a;">Total Available Questions: </span>
-                                <span style="font-size: 1.4rem; font-weight: 900; color: #2563eb; background: #dbeafe; padding: 2px 14px; border-radius: 999px;" id="total-available-lbl">0</span>
-                            </div>
-                            <input type="hidden" id="custom-qty-input" value="0">
-                        </div>
-                        <div>
-                            <div style="font-size: 0.9rem; font-weight: 800; color: #475569; margin-bottom: 6px;">Choose Question Count:</div>
-                            <div id="classic-qty-chips" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
-                        </div>
+                    <div style="margin-bottom: 25px; background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                        <span style="font-size: 1.05rem; font-weight: 800; color: #475569;">3. Timer per Question</span>
+                        <select id="timer-select" style="padding: 8px 14px; font-size:1rem; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:800; color:#334155; background:white;">
+                            <option value="60">⏱️ 60 seconds</option>
+                            <option value="45">⏱️ 45 seconds</option>
+                            <option value="30">⏱️ 30 seconds</option>
+                            <option value="15" selected>⏱️ 15 seconds</option>
+                        </select>
                     </div>
 
                     <p id="setup-error" class="name-error" style="text-align: center; margin-bottom: 15px;" hidden></p>

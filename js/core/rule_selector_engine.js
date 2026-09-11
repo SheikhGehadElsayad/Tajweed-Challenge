@@ -1,7 +1,8 @@
 /**
  * Universal Rule & Sub-Rule Selection Engine
- * Provides standardized multi-rule, sub-rule hierarchy, dynamic count calculation,
- * and reusable UI component across Game Center, Classic Challenge, and Free Practice.
+ * Provides standardized multi-rule, sub-rule hierarchy, granular per-subrule question quantities,
+ * dynamic count calculation, and reusable Arcade Stage Arena UI component across
+ * Game Center, Classic Challenge, Free Practice, and Homework Creator.
  */
 
 (function(window) {
@@ -10,6 +11,7 @@
     function getBank() {
         if (typeof TAJWEED_BANK !== 'undefined') return TAJWEED_BANK;
         if (typeof window !== 'undefined' && window.TAJWEED_BANK) return window.TAJWEED_BANK;
+        if (typeof global !== 'undefined' && global.TAJWEED_BANK) return global.TAJWEED_BANK;
         return {};
     }
 
@@ -17,128 +19,128 @@
         {
             id: 'image_bank',
             title: 'Noon & Meem Mushaddad',
-            titleAr: 'النون والميم المشددتان',
+            subtitle: 'Letters with permanent two-count Ghunnah (نّ - مّ)',
             icon: '💎',
             color: '#06b6d4',
             subrules: [
-                { key: 'Noon Mushaddad', label: 'Noon Mushaddadah', labelAr: 'النون المشددة' },
-                { key: 'Meem Mushaddad', label: 'Meem Mushaddadah', labelAr: 'الميم المشددة' },
-                { key: 'Two counts of ghunna', label: 'All Mushaddad (Ghunnah)', labelAr: 'غنة النون والميم' }
+                { key: 'Noon Mushaddad', label: 'Noon Mushaddadah (نّ)' },
+                { key: 'Meem Mushaddad', label: 'Meem Mushaddadah (مّ)' },
+                { key: 'Two counts of ghunna', label: 'All Mushaddad (Ghunnah)' }
             ]
         },
         {
             id: 'qalqalah',
-            title: 'Qalqalah',
-            titleAr: 'القلقلة',
+            title: 'Qalqalah (Echo)',
+            subtitle: 'Echoing vibration on letters (ق ط ب ج د)',
             icon: '⚡',
             color: '#f59e0b',
             subrules: [
-                { key: 'General Qalqalah', label: 'General Qalqalah (Yes/No)', labelAr: 'تمييز القلقلة' },
-                { key: 'Minor', label: 'Minor Qalqalah (Sughra)', labelAr: 'قلقلة صغرى' },
-                { key: 'Medium', label: 'Medium Qalqalah (Wusta)', labelAr: 'قلقلة وسطى' },
-                { key: 'Major', label: 'Major Qalqalah (Kubra)', labelAr: 'قلقلة كبرى' }
+                { key: 'General Qalqalah', label: 'General Qalqalah (Yes/No)' },
+                { key: 'Minor', label: 'Minor Qalqalah (Sughra)' },
+                { key: 'Medium', label: 'Medium Qalqalah (Wusta)' },
+                { key: 'Major', label: 'Major Qalqalah (Kubra)' }
             ]
         },
         {
             id: 'meem_sakinah',
             title: 'Meem Sakinah',
-            titleAr: 'أحكام الميم الساكنة',
+            subtitle: 'Oral rules for Meem with Sukoon (مْ)',
             icon: '🌙',
             color: '#8b5cf6',
             subrules: [
-                { key: 'Oral + Clarity', label: 'Izhar Shafawi (Oral Clarity)', labelAr: 'إظهار شفوي' },
-                { key: 'Oral + Merger', label: 'Idgham Shafawi (Oral Merging)', labelAr: 'إدغام شفوي' },
-                { key: 'Oral + Hiding', label: 'Ikhfaa Shafawi (Oral Hiding)', labelAr: 'إخفاء شفوي' }
+                { key: 'Oral + Clarity', label: 'Izhar Shafawi (Oral Clarity)' },
+                { key: 'Oral + Merger', label: 'Idgham Shafawi (Oral Merging)' },
+                { key: 'Oral + Hiding', label: 'Ikhfaa Shafawi (Oral Hiding)' }
             ]
         },
         {
             id: 'noon_sakinah_tanween',
             title: 'Noon Sakinah & Tanween',
-            titleAr: 'النون الساكنة والتنوين',
+            subtitle: 'Clarity, merging, conversion, and hiding rules',
             icon: '📖',
             color: '#10b981',
             subrules: [
-                { key: 'Izhar', label: 'Izhar Halqi (Clear)', labelAr: 'إظهار حلقي' },
-                { key: 'Idgham with Ghunnah', label: 'Idgham with Ghunnah', labelAr: 'إدغام بغنة' },
-                { key: 'Idgham without Ghunnah', label: 'Idgham without Ghunnah', labelAr: 'إدغام بغير غنة' },
-                { key: 'Iqlab', label: 'Iqlab (Conversion to Meem)', labelAr: 'إقلاب' },
-                { key: 'Ikhfa', label: 'Ikhfaa Haqiqi (Hiding)', labelAr: 'إخفاء حقيقي' },
-                { key: 'Izhar Mutlaq', label: 'Izhar Mutlaq', labelAr: 'إظهار مطلق' },
-                { key: 'Ikhfa Ghunnah', label: 'Ikhfaa Ghunnah (Heavy/Light)', labelAr: 'مراتب غنة الإخفاء' }
+                { key: 'Izhar', label: 'Izhar Halqi (Throat Clarity)' },
+                { key: 'Idgham with Ghunnah', label: 'Idgham with Ghunnah (Merging)' },
+                { key: 'Idgham without Ghunnah', label: 'Idgham without Ghunnah' },
+                { key: 'Iqlab', label: 'Iqlab (Conversion to Meem)' },
+                { key: 'Ikhfa', label: 'Ikhfaa Haqiqi (True Hiding)' },
+                { key: 'Izhar Mutlaq', label: 'Izhar Mutlaq (Absolute Clarity)' },
+                { key: 'Ikhfa Ghunnah', label: 'Ikhfaa Ghunnah (Heavy / Light)' }
             ]
         },
         {
             id: 'tafkheem_tarqeeq',
             title: 'Tafkheem & Tarqeeq',
-            titleAr: 'التفخيم والترقيق',
+            subtitle: 'Heavy & light letter characteristics (خ ص ض غ ط ق ظ, Raa, Laam)',
             icon: '⚖️',
             color: '#ec4899',
             subrules: [
-                { key: 'Always Heavy', label: 'Always Heavy Letters', labelAr: 'حروف الاستعلاء' },
-                { key: 'Heavy Ra', label: 'Heavy Raa (Tafkheem)', labelAr: 'تفخيم الراء' },
-                { key: 'Light Ra', label: 'Light Raa (Tarqeeq)', labelAr: 'ترقيق الراء' },
-                { key: 'Ra Both Options', label: 'Raa: Both Options Allowed', labelAr: 'جواز الوجهين في الراء' },
-                { key: 'Lam of Allah', label: 'Laam in Word of Allah', labelAr: 'لام لفظ الجلالة' },
-                { key: 'Alif', label: 'Alif of Madd (Heavy/Light)', labelAr: 'ألف المد' }
+                { key: 'Always Heavy', label: 'Always Heavy Letters (Istilaa)' },
+                { key: 'Heavy Ra', label: 'Heavy Raa (Tafkheem)' },
+                { key: 'Light Ra', label: 'Light Raa (Tarqeeq)' },
+                { key: 'Ra Both Options', label: 'Raa: Both Options Allowed' },
+                { key: 'Lam of Allah', label: 'Laam in the Word of Allah' },
+                { key: 'Alif', label: 'Alif of Madd (Follows Preceding)' }
             ]
         },
         {
             id: 'madd_rules',
-            title: 'Madd Rules',
-            titleAr: 'أحكام المدود',
+            title: 'Madd Rules (Elongation)',
+            subtitle: 'Natural, secondary, and compulsory lengthenings',
             icon: '🌊',
             color: '#3b82f6',
             subrules: [
-                { key: 'Natural Madd', label: 'Natural Madd (Tabee\'ee)', labelAr: 'المد الطبيعي' },
-                { key: 'Connected', label: 'Connected Madd (Muttasil)', labelAr: 'المد المتصل' },
-                { key: 'Separated', label: 'Separated Madd (Munfasil)', labelAr: 'المد المنفصل' },
-                { key: 'Substitute', label: 'Substitute Madd (Badal)', labelAr: 'مد البدل' },
-                { key: 'Compensatory Madd', label: 'Compensatory Madd (\'Iwad)', labelAr: 'مد العوض' },
-                { key: 'Temporary Madd', label: 'Temporary Madd (\'Aarid)', labelAr: 'المد العارض للسكون' },
-                { key: 'Soft Madd', label: 'Soft Madd (Leen)', labelAr: 'مد اللين' },
-                { key: 'Minor Sila Madd', label: 'Minor Sila Madd', labelAr: 'مد الصلة الصغرى' },
-                { key: 'Major Sila Madd', label: 'Major Sila Madd', labelAr: 'مد الصلة الكبرى' },
-                { key: 'Permanent Word Based Heavy', label: 'Compulsory Word Heavy', labelAr: 'مد لازم كلمي مثقل' },
-                { key: 'Permanent Word Based Light', label: 'Compulsory Word Light', labelAr: 'مد لازم كلمي مخفف' },
-                { key: 'Permanent Letter Based Heavy', label: 'Compulsory Letter Heavy', labelAr: 'مد لازم حرفي مثقل' },
-                { key: 'Permanent Letter Based Light', label: 'Compulsory Letter Light', labelAr: 'مد لازم حرفي مخفف' },
-                { key: 'Stabilizing Madd', label: 'Stabilizing Madd (Tamkeen)', labelAr: 'مد التمكين' }
+                { key: 'Natural Madd', label: 'Natural Madd (Tabee\'ee)' },
+                { key: 'Connected', label: 'Connected Madd (Muttasil)' },
+                { key: 'Separated', label: 'Separated Madd (Munfasil)' },
+                { key: 'Substitute', label: 'Substitute Madd (Badal)' },
+                { key: 'Compensatory Madd', label: 'Compensatory Madd (\'Iwad)' },
+                { key: 'Temporary Madd', label: 'Temporary Madd (\'Aarid)' },
+                { key: 'Soft Madd', label: 'Soft Madd (Leen)' },
+                { key: 'Minor Sila Madd', label: 'Minor Sila Madd (Ha Kinaayah)' },
+                { key: 'Major Sila Madd', label: 'Major Sila Madd' },
+                { key: 'Permanent Word Based Heavy', label: 'Compulsory Word Heavy (Muthaqqal)' },
+                { key: 'Permanent Word Based Light', label: 'Compulsory Word Light (Mukhaffaf)' },
+                { key: 'Permanent Letter Based Heavy', label: 'Compulsory Letter Heavy (Harfee)' },
+                { key: 'Permanent Letter Based Light', label: 'Compulsory Letter Light' },
+                { key: 'Stabilizing Madd', label: 'Stabilizing Madd (Tamkeen)' }
             ]
         },
         {
             id: 'hamzat_wasl',
             title: 'Hamzat Al-Wasl',
-            titleAr: 'همزة الوصل',
+            subtitle: 'Connecting hamzah dropping and vowel starting rules',
             icon: '🔗',
             color: '#6366f1',
             subrules: [
-                { key: 'Dropped', label: 'Dropped in Connection', labelAr: 'ساقطة وصلاً' },
-                { key: 'Start with fatha', label: 'Start with Fathah (Al-)', labelAr: 'البدء بالفتح' },
-                { key: 'Start with damma', label: 'Start with Dammah', labelAr: 'البدء بالضم' },
-                { key: 'Start with kasra', label: 'Start with Kasrah', labelAr: 'البدء بالكسر' }
+                { key: 'Dropped', label: 'Dropped in Continuous Speech' },
+                { key: 'Start with fatha', label: 'Start with Fathah (Al- nouns)' },
+                { key: 'Start with damma', label: 'Start with Dammah (Verbs)' },
+                { key: 'Start with kasra', label: 'Start with Kasrah (Verbs & Nouns)' }
             ]
         },
         {
             id: 'lam_shamsiyyah_qamariyyah',
             title: 'Lam Shamsiyyah & Qamariyyah',
-            titleAr: 'اللام الشمسية والقمرية',
+            subtitle: 'Solar and lunar letter assimilations with Al- (ال)',
             icon: '☀️',
             color: '#ea580c',
             subrules: [
-                { key: 'Lam Shamsiyyah', label: 'Lam Shamsiyyah (Solar)', labelAr: 'لام شمسية' },
-                { key: 'Lam Qamariyyah', label: 'Lam Qamariyyah (Lunar)', labelAr: 'لام قمرية' }
+                { key: 'Lam Shamsiyyah', label: 'Lam Shamsiyyah (Solar - Merged)' },
+                { key: 'Lam Qamariyyah', label: 'Lam Qamariyyah (Lunar - Clear)' }
             ]
         },
         {
             id: 'letter_relations',
-            title: 'Relations Between Letters',
-            titleAr: 'علاقات الحروف',
+            title: 'Letter Relationships',
+            subtitle: 'Identical, homogeneous, and close letter combinations',
             icon: '🤝',
             color: '#14b8a6',
             subrules: [
-                { key: 'Identical', label: 'Identical (Mutamathilayn)', labelAr: 'المتماثلان' },
-                { key: 'Similar', label: 'Homogeneous (Mutajanisayn)', labelAr: 'المتجنسان' },
-                { key: 'Close', label: 'Close (Mutaqaribayn)', labelAr: 'المتقاربان' }
+                { key: 'Identical', label: 'Identical Letters (Mutamathilayn)' },
+                { key: 'Similar', label: 'Homogeneous Letters (Mutajanisayn)' },
+                { key: 'Close', label: 'Close Letters (Mutaqaribayn)' }
             ]
         }
     ];
@@ -150,13 +152,18 @@
          * Get questions in category matching a sub-rule key
          */
         filterSubQuestions(catKey, subKey, qList) {
-            if (typeof window.getSubQuestions === 'function') {
-                return window.getSubQuestions(catKey, subKey, qList);
+            if (!Array.isArray(qList) || qList.length === 0) return [];
+            if (typeof window !== 'undefined' && typeof window.getSubQuestions === 'function') {
+                try {
+                    const res = window.getSubQuestions(catKey, subKey, qList);
+                    if (Array.isArray(res) && res.length > 0) return res;
+                } catch (e) {}
             }
-            // Built-in fallback
+
+            // Built-in robust filtering
             if (catKey === 'tafkheem_tarqeeq') return qList.filter(q => q.subcat === subKey);
             if (catKey === 'noon_sakinah_tanween' && subKey === 'Ikhfa Ghunnah') {
-                return qList.filter(q => q.id.startsWith('ikhfa_gh') || q.subcat === 'Ikhfa Ghunnah' || (q.prompt && q.prompt.includes('Ghunnah')));
+                return qList.filter(q => (q.id && q.id.startsWith('ikhfa_gh')) || q.subcat === 'Ikhfa Ghunnah' || (q.prompt && q.prompt.includes('Ghunnah')));
             }
             if (catKey === 'qalqalah') {
                 if (subKey === 'General Qalqalah') return qList.filter(q => q.subcat === 'General Qalqalah' || q.ans === 'Qalqalah' || q.ans === 'No Qalqalah');
@@ -173,43 +180,91 @@
         },
 
         /**
-         * Calculate count of available questions matching selected criteria
-         * selectedMap: { [catId]: ['subKey1', 'subKey2'] | ['ALL'] }
+         * Helper: Fisher-Yates shuffle
          */
-        countAvailable(selectedMap = {}) {
-            return this.buildPool(selectedMap).length;
+        shuffle(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
         },
 
         /**
-         * Build questions array matching selected criteria
+         * Build Question Pool with Per-Subrule Granular Quantities
+         * selectionConfig can be:
+         * 1. Rich config: { [catId]: { [subKey]: { enabled: boolean, qty: number | 'ALL' } } }
+         * 2. Direct qty: { [catId]: { [subKey]: 5 } }
+         * 3. Legacy array: { [catId]: ['ALL'] | ['subKey1', 'subKey2'] }
          */
-        buildPool(selectedMap = {}) {
+        buildPool(selectionConfig = {}) {
             const bank = getBank();
             const pool = [];
             const seenIds = new Set();
 
-            Object.entries(selectedMap).forEach(([catId, subKeys]) => {
+            Object.entries(selectionConfig).forEach(([catId, val]) => {
                 const catObj = bank[catId];
                 if (!catObj || !Array.isArray(catObj.questions)) return;
 
                 const qList = catObj.questions;
                 const catTitle = catObj.title || catId;
 
-                if (!subKeys || subKeys.length === 0 || subKeys.includes('ALL')) {
-                    // Include all questions in category
-                    qList.forEach(q => {
-                        if (!seenIds.has(q.id)) {
-                            seenIds.add(q.id);
-                            pool.push({ ...q, categoryId: catId, categoryTitle: catTitle });
-                        }
-                    });
-                } else {
-                    subKeys.forEach(subKey => {
-                        const matches = this.filterSubQuestions(catId, subKey, qList);
-                        matches.forEach(q => {
+                // Case 1: Legacy Array format ['ALL'] or ['subKey1', ...]
+                if (Array.isArray(val)) {
+                    if (val.length === 0 || val.includes('ALL')) {
+                        qList.forEach(q => {
                             if (!seenIds.has(q.id)) {
                                 seenIds.add(q.id);
                                 pool.push({ ...q, categoryId: catId, categoryTitle: catTitle });
+                            }
+                        });
+                    } else {
+                        val.forEach(subKey => {
+                            const matches = this.filterSubQuestions(catId, subKey, qList);
+                            matches.forEach(q => {
+                                if (!seenIds.has(q.id)) {
+                                    seenIds.add(q.id);
+                                    pool.push({ ...q, categoryId: catId, categoryTitle: catTitle, subRuleKey: subKey });
+                                }
+                            });
+                        });
+                    }
+                }
+                // Case 2: Rich Object format with per-subrule toggles and quantities
+                else if (typeof val === 'object' && val !== null) {
+                    Object.entries(val).forEach(([subKey, subConf]) => {
+                        let isEnabled = true;
+                        let qty = 'ALL';
+
+                        if (typeof subConf === 'boolean') {
+                            isEnabled = subConf;
+                        } else if (typeof subConf === 'number') {
+                            isEnabled = true;
+                            qty = subConf;
+                        } else if (typeof subConf === 'object' && subConf !== null) {
+                            isEnabled = subConf.enabled !== false;
+                            qty = subConf.qty !== undefined ? subConf.qty : 'ALL';
+                        }
+
+                        if (!isEnabled) return;
+
+                        let matches = [];
+                        if (subKey === 'ALL') {
+                            matches = [...qList];
+                        } else {
+                            matches = this.filterSubQuestions(catId, subKey, qList);
+                        }
+
+                        let shuffled = this.shuffle(matches);
+                        if (typeof qty === 'number' && qty > 0) {
+                            shuffled = shuffled.slice(0, qty);
+                        }
+
+                        shuffled.forEach(q => {
+                            if (!seenIds.has(q.id)) {
+                                seenIds.add(q.id);
+                                pool.push({ ...q, categoryId: catId, categoryTitle: catTitle, subRuleKey: subKey });
                             }
                         });
                     });
@@ -220,367 +275,534 @@
         },
 
         /**
-         * Render Universal Rule & Sub-rule Selector Component
-         * @param {HTMLElement} container
-         * @param {Object} options
-         *   - initialSelection: { [catId]: ['ALL' | subKey] }
-         *   - initialCount: 20
-         *   - onChange: function({ selectedMap, totalAvailable, selectedCount, pool })
+         * Count total available questions for a selection
+         */
+        countAvailable(selectionConfig = {}) {
+            return this.buildPool(selectionConfig).length;
+        },
+
+        /**
+         * Render the Gamified Arcade Stage Arena Component
+         * @param {HTMLElement} container - Mount target element
+         * @param {Object} options - Configuration options
+         *   - initialSelection: Object mapping catId -> subKey config
+         *   - showLaunchButton: boolean (default: false)
+         *   - launchButtonText: string
+         *   - onLaunch: function({ pool, selectedConfig, totalCount })
+         *   - onChange: function({ selectedConfig, pool, totalCount, activeWorldCount, activeSubRuleCount })
          */
         render(container, options = {}) {
             if (!container) return null;
             container.innerHTML = '';
 
-            const selectedMap = Object.assign({}, options.initialSelection || { 'image_bank': ['ALL'] });
-            let selectedCount = options.initialCount || 20;
+            const bank = getBank();
 
-            const root = document.createElement('div');
-            root.className = 'rule-selector-engine-root';
+            // Internal State Structure:
+            // state[catId][subKey] = { enabled: boolean, qty: number | 'ALL' }
+            const state = {};
 
-            // Top Quick Actions Bar: identical to Free Practice setup
-            const topBar = document.createElement('div');
-            topBar.className = 'rse-top-bar';
-            topBar.style.cssText = 'display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:2px solid #f1f5f9; padding-bottom:8px;';
-            topBar.innerHTML = `
-                <div style="display:flex; align-items:center; gap:8px;">
-                    <span style="font-size: 1.1rem; font-weight: 900; color: #1e293b;">📜 Select Tajweed Rules</span>
+            // Helper: populate default state
+            CATEGORY_DEFINITIONS.forEach(catDef => {
+                state[catDef.id] = {};
+                const qList = bank[catDef.id]?.questions || [];
+                catDef.subrules.forEach(sub => {
+                    const subCount = this.filterSubQuestions(catDef.id, sub.key, qList).length;
+                    state[catDef.id][sub.key] = {
+                        enabled: false,
+                        qty: subCount > 5 ? 5 : subCount,
+                        maxAvailable: subCount
+                    };
+                });
+            });
+
+            // Hydrate initial selection if provided
+            if (options.initialSelection && typeof options.initialSelection === 'object') {
+                Object.entries(options.initialSelection).forEach(([catId, val]) => {
+                    if (!state[catId]) return;
+                    if (Array.isArray(val)) {
+                        if (val.includes('ALL')) {
+                            Object.keys(state[catId]).forEach(subKey => {
+                                state[catId][subKey].enabled = true;
+                            });
+                        } else {
+                            val.forEach(subKey => {
+                                if (state[catId][subKey]) state[catId][subKey].enabled = true;
+                            });
+                        }
+                    } else if (typeof val === 'object' && val !== null) {
+                        Object.entries(val).forEach(([subKey, subConf]) => {
+                            if (!state[catId][subKey]) return;
+                            if (typeof subConf === 'boolean') {
+                                state[catId][subKey].enabled = subConf;
+                            } else if (typeof subConf === 'number') {
+                                state[catId][subKey].enabled = true;
+                                state[catId][subKey].qty = subConf;
+                            } else if (typeof subConf === 'object' && subConf !== null) {
+                                state[catId][subKey].enabled = subConf.enabled !== false;
+                                if (subConf.qty !== undefined) state[catId][subKey].qty = subConf.qty;
+                            }
+                        });
+                    }
+                });
+            } else {
+                // Default setup: activate Qalqalah with 5 each
+                if (state['qalqalah']) {
+                    Object.keys(state['qalqalah']).forEach(subKey => {
+                        state['qalqalah'][subKey].enabled = true;
+                    });
+                }
+            }
+
+            let activeWorldId = 'qalqalah';
+            if (!CATEGORY_DEFINITIONS.some(c => c.id === activeWorldId)) {
+                activeWorldId = CATEGORY_DEFINITIONS[0].id;
+            }
+
+            // Create Root Arena Container
+            const arena = document.createElement('div');
+            arena.className = 'rule-arena-container';
+
+            // 1. Top Command Bar
+            const cmdBar = document.createElement('div');
+            cmdBar.className = 'arena-cmd-bar';
+            cmdBar.innerHTML = `
+                <div class="arena-cmd-left">
+                    <span class="arena-cmd-title">🎮 MISSION CONTROL: SELECT REALMS & SUB-RULES</span>
                 </div>
-                <div style="display:flex; align-items:center; gap:10px;">
-                    <label class="rule-checkbox-lbl" style="background:#e0e7ff; color:#3730a3; border: 1.5px solid #c7d2fe; padding:4px 12px; border-radius:8px; font-weight:800; font-size:0.85rem; cursor:pointer; display:inline-flex; align-items:center; gap:6px; user-select:none;">
-                        <input type="checkbox" class="rse-master-cb" id="rse-cb-all-rules" style="width:17px; height:17px; cursor:pointer; accent-color:#2563eb;"> Select All
-                    </label>
-                    <button type="button" class="rse-btn-action secondary" id="rse-clear-all" style="background:white; color:#64748b; border:1.5px solid #cbd5e1; padding:4px 10px; border-radius:8px; font-weight:800; font-size:0.82rem; cursor:pointer;">Clear</button>
+                <div class="arena-cmd-actions">
+                    <button type="button" class="arena-btn-cmd highlight" id="arena-cmd-all">🌟 Select All Realms</button>
+                    <button type="button" class="arena-btn-cmd" id="arena-cmd-balanced">🎲 Balanced 20</button>
+                    <button type="button" class="arena-btn-cmd" id="arena-cmd-clear">🧹 Clear All</button>
                 </div>
             `;
-            root.appendChild(topBar);
+            arena.appendChild(cmdBar);
 
-            // Rules Container: Clean vertical list of category cards (identical to Free Practice #rules-container)
-            const grid = document.createElement('div');
-            grid.className = 'rse-rules-container';
-            grid.style.cssText = 'display:flex; flex-direction:column; gap:12px; max-height:400px; overflow-y:auto; padding:2px 4px;';
+            // 2. Dual Workspace: Left Dock & Right Stage Deck
+            const workspace = document.createElement('div');
+            workspace.className = 'arena-workspace';
 
-            CATEGORY_DEFINITIONS.forEach(catDef => {
-                const bank = getBank();
-                const qList = bank[catDef.id]?.questions || [];
-                const totalCatQs = qList.length;
-                if (totalCatQs === 0) return;
+            const worldsDock = document.createElement('div');
+            worldsDock.className = 'arena-worlds-dock';
+            workspace.appendChild(worldsDock);
 
-                const isCatActive = !!selectedMap[catDef.id];
-                const activeSubs = selectedMap[catDef.id] || [];
-                const isAllSubs = activeSubs.includes('ALL') || (activeSubs.length > 0 && activeSubs.length === catDef.subrules.length);
+            const stageDeck = document.createElement('div');
+            stageDeck.className = 'arena-stage-deck';
+            workspace.appendChild(stageDeck);
 
-                const card = document.createElement('div');
-                card.className = `rule-card rse-rule-card ${isCatActive ? 'active' : ''}`;
-                card.dataset.catId = catDef.id;
-                card.style.cssText = `background: ${isCatActive ? '#f8fafc' : 'white'}; border: 2px solid ${isCatActive ? '#93c5fd' : '#e2e8f0'}; border-radius: 14px; padding: 12px 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); transition: all 0.2s ease; flex-shrink: 0;`;
+            arena.appendChild(workspace);
 
-                const hasSubs = catDef.subrules && catDef.subrules.length > 0;
-
-                let html = `
-                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%;">
-                        <label style="cursor: pointer; display: flex; align-items: center; gap: 10px; flex: 1; margin: 0; user-select: none;">
-                            <input type="checkbox" class="cat-cb rse-main-cb" data-cat="${catDef.id}" ${isCatActive ? 'checked' : ''} style="width: 20px; height: 20px; cursor: pointer; accent-color: #2563eb; flex-shrink: 0;">
-                            <span style="font-size: 1.2rem; line-height: 1;">${catDef.icon}</span>
-                            <span style="font-size: 1.05rem; font-weight: 800; color: #1e293b;">${catDef.title}</span>
-                            <span style="font-size: 0.85rem; font-weight: 700; color: #0369a1; background: #e0f2fe; padding: 2px 10px; border-radius: 999px; margin-left: auto; margin-right: 8px;">${totalCatQs} examples</span>
-                        </label>
-                        ${hasSubs ? `
-                        <button type="button" class="rse-expand-toggle" title="Expand Sub-rules" style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #475569; font-size: 0.8rem; flex-shrink: 0;">
-                            <span class="rse-expand-arrow">${isCatActive ? '▲' : '▼'}</span>
-                        </button>
-                        ` : ''}
+            // 3. Bottom Arena HUD Bar
+            const hudBar = document.createElement('div');
+            hudBar.className = 'arena-hud-bar';
+            hudBar.innerHTML = `
+                <div class="arena-hud-metrics">
+                    <div class="hud-metric">
+                        <span class="hud-label">Total Questions:</span>
+                        <span class="hud-val" id="arena-hud-total-val">0</span>
                     </div>
-                `;
+                    <div class="hud-metric">
+                        <span class="hud-label">Missions Active:</span>
+                        <span class="hud-sub-val" id="arena-hud-subs-val">0 Sub-Rules</span>
+                    </div>
+                </div>
+                <div class="arena-hud-presets">
+                    <span class="hud-preset-label">Quick Limits:</span>
+                    <button type="button" class="hud-chip" data-limit="10">10 Qs</button>
+                    <button type="button" class="hud-chip active" data-limit="20">20 Qs</button>
+                    <button type="button" class="hud-chip" data-limit="30">30 Qs</button>
+                    <button type="button" class="hud-chip" data-limit="ALL">Max All ⭐</button>
+                </div>
+                <div id="arena-hud-action-slot" style="display: flex; align-items: center;">
+                    ${options.showLaunchButton ? `
+                        <button type="button" class="arena-hero-btn" id="arena-hero-launch-btn">
+                            ${options.launchButtonText || '🚀 LAUNCH CHALLENGE 🚀'}
+                        </button>
+                    ` : ''}
+                </div>
+            `;
+            arena.appendChild(hudBar);
 
-                if (hasSubs) {
-                    html += `
-                    <div class="sub-rules-list rse-subrules-list" style="margin-left: 28px; margin-top: 10px; padding-left: 14px; border-left: 3px solid #cbd5e1; display: ${isCatActive ? 'flex' : 'none'}; flex-direction: column; gap: 8px;">
+            container.appendChild(arena);
+
+            // Audio Helper
+            const playClick = () => {
+                if (typeof window !== 'undefined' && window.SFX && typeof window.SFX.click === 'function') {
+                    try { window.SFX.click(); } catch(e) {}
+                }
+            };
+
+            // Calculate current metrics & build exported config
+            const getExportedState = () => {
+                const exported = {};
+                let activeWorlds = 0;
+                let activeSubs = 0;
+
+                Object.entries(state).forEach(([catId, subMap]) => {
+                    const activeSubEntries = Object.entries(subMap).filter(([k, s]) => s.enabled);
+                    if (activeSubEntries.length > 0) {
+                        activeWorlds++;
+                        exported[catId] = {};
+                        activeSubEntries.forEach(([k, s]) => {
+                            activeSubs++;
+                            exported[catId][k] = {
+                                enabled: true,
+                                qty: s.qty
+                            };
+                        });
+                    }
+                });
+
+                const pool = this.buildPool(exported);
+                const totalPoolCount = pool.length;
+
+                return {
+                    exported,
+                    pool,
+                    totalPoolCount,
+                    activeWorlds,
+                    activeSubs
+                };
+            };
+
+            // Main UI Refresh Function
+            const updateUI = () => {
+                const { exported, pool, totalPoolCount, activeWorlds, activeSubs } = getExportedState();
+
+                // 1. Update HUD metrics
+                const totalValEl = hudBar.querySelector('#arena-hud-total-val');
+                const subsValEl = hudBar.querySelector('#arena-hud-subs-val');
+                if (totalValEl) totalValEl.textContent = totalPoolCount;
+                if (subsValEl) subsValEl.textContent = `${activeSubs} Sub-Rules (${activeWorlds} Realms)`;
+
+                // 2. Render Left Worlds Dock
+                worldsDock.innerHTML = '';
+                CATEGORY_DEFINITIONS.forEach(catDef => {
+                    const qList = bank[catDef.id]?.questions || [];
+                    const totalBankQs = qList.length;
+                    if (totalBankQs === 0) return;
+
+                    const catState = state[catDef.id] || {};
+                    const subEntries = Object.entries(catState);
+                    const enabledSubs = subEntries.filter(([k, s]) => s.enabled);
+                    const isActiveWorld = catDef.id === activeWorldId;
+
+                    let totalActiveCatQs = 0;
+                    enabledSubs.forEach(([k, s]) => {
+                        const count = (typeof s.qty === 'number') ? Math.min(s.qty, s.maxAvailable) : s.maxAvailable;
+                        totalActiveCatQs += count;
+                    });
+
+                    const pill = document.createElement('div');
+                    pill.className = `arena-world-pill ${isActiveWorld ? 'active' : ''} ${enabledSubs.length > 0 ? 'has-selected' : ''}`;
+                    pill.style.setProperty('--world-color', catDef.color);
+
+                    pill.innerHTML = `
+                        <span class="awp-icon">${catDef.icon}</span>
+                        <div class="awp-info">
+                            <span class="awp-title">${catDef.title}</span>
+                            <span class="awp-badge ${enabledSubs.length > 0 ? 'active-count' : ''}">
+                                ${enabledSubs.length === 0 ? 'Inactive' : `${enabledSubs.length}/${subEntries.length} active • ${totalActiveCatQs} Qs`}
+                            </span>
+                        </div>
                     `;
 
-                    catDef.subrules.forEach(sub => {
-                        const subMatches = this.filterSubQuestions(catDef.id, sub.key, qList);
-                        const isSubChecked = isCatActive && (isAllSubs || activeSubs.includes(sub.key));
-                        html += `
-                            <div class="sub-rule-row rse-sub-row" style="display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%;">
-                                <label style="cursor: pointer; display: flex; align-items: center; gap: 8px; flex: 1; margin: 0; user-select: none;">
-                                    <input type="checkbox" class="sub-cb rse-sub-cb" data-parent="${catDef.id}" data-sub="${sub.key}" ${isSubChecked ? 'checked' : ''} style="width: 17px; height: 17px; cursor: pointer; accent-color: #3b82f6; flex-shrink: 0;">
-                                    <span style="font-size: 0.95rem; font-weight: 700; color: #475569;">${sub.label}</span>
-                                    <span style="font-size: 0.82rem; font-weight: 600; color: #64748b; background: #f1f5f9; padding: 2px 8px; border-radius: 999px; margin-left: auto;">${subMatches.length} examples</span>
-                                </label>
+                    pill.onclick = () => {
+                        playClick();
+                        activeWorldId = catDef.id;
+                        updateUI();
+                    };
+
+                    worldsDock.appendChild(pill);
+                });
+
+                // 3. Render Active Realm Stage Deck
+                const activeDef = CATEGORY_DEFINITIONS.find(c => c.id === activeWorldId) || CATEGORY_DEFINITIONS[0];
+                const activeCatState = state[activeDef.id] || {};
+                const activeSubEntries = Object.entries(activeCatState);
+                const activeEnabledCount = activeSubEntries.filter(([k, s]) => s.enabled).length;
+                const isAllActiveInRealm = activeEnabledCount === activeSubEntries.length && activeSubEntries.length > 0;
+
+                stageDeck.innerHTML = `
+                    <div class="stage-header" style="border-bottom-color: ${activeDef.color}33;">
+                        <div class="stage-title-wrap">
+                            <span class="stage-icon">${activeDef.icon}</span>
+                            <div>
+                                <h3 class="stage-title" style="color: ${activeDef.color};">${activeDef.title} Realm</h3>
+                                <p class="stage-subtitle">${activeDef.subtitle}</p>
                             </div>
-                        `;
-                    });
-
-                    html += `</div>`;
-                }
-
-                card.innerHTML = html;
-                grid.appendChild(card);
-            });
-            root.appendChild(grid);
-
-            // Bottom Dynamic Question Count Bar (identical to Free Practice)
-            const countBar = document.createElement('div');
-            countBar.className = 'rse-count-bar';
-            countBar.style.cssText = 'margin-top: 14px; background: linear-gradient(135deg, #eff6ff, #f8fafc); padding: 14px 18px; border-radius: 14px; border: 2px solid #bfdbfe; display: flex; flex-direction: column; gap: 10px;';
-            countBar.innerHTML = `
-                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                    <div>
-                        <span style="font-size: 1.05rem; font-weight: 900; color: #1e3a8a;">Total Available Questions: </span>
-                        <span style="font-size: 1.35rem; font-weight: 900; color: #2563eb; background: #dbeafe; padding: 2px 14px; border-radius: 999px;" id="rse-available-count">0</span>
+                        </div>
+                        <div class="stage-actions">
+                            <button type="button" class="stage-action-btn" id="stage-btn-toggle-all">
+                                ${isAllActiveInRealm ? 'Deselect Realm' : 'Select All in Realm'}
+                            </button>
+                            <button type="button" class="stage-action-btn" id="stage-btn-all-5">Set 5 Each</button>
+                            <button type="button" class="stage-action-btn" id="stage-btn-all-max">Set Max</button>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <div style="font-size: 0.85rem; font-weight: 800; color: #475569; margin-bottom: 6px;">Choose Question Count:</div>
-                    <div id="rse-chips-container" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
-                </div>
-            `;
-            root.appendChild(countBar);
+                    <div class="stage-missions-grid" id="stage-missions-container"></div>
+                `;
 
-            container.appendChild(root);
-
-            // Internal helper to update calculations and trigger onChange
-            const updateUI = () => {
-                const pool = this.buildPool(selectedMap);
-                const totalAvailable = pool.length;
-
-                // Update available count display
-                const countValEl = root.querySelector('#rse-available-count');
-                if (countValEl) countValEl.textContent = totalAvailable;
-
-                // Sync master checkbox state
-                const masterCb = root.querySelector('#rse-cb-all-rules');
-                if (masterCb) {
-                    const allCards = Array.from(root.querySelectorAll('.rse-rule-card'));
-                    const checkedCards = allCards.filter(c => {
-                        const mcb = c.querySelector('.rse-main-cb');
-                        return mcb && mcb.checked;
-                    });
-                    masterCb.checked = allCards.length > 0 && checkedCards.length === allCards.length;
-                    masterCb.indeterminate = checkedCards.length > 0 && checkedCards.length < allCards.length;
+                // Stage Header Actions
+                const toggleAllBtn = stageDeck.querySelector('#stage-btn-toggle-all');
+                if (toggleAllBtn) {
+                    toggleAllBtn.onclick = () => {
+                        playClick();
+                        const nextState = !isAllActiveInRealm;
+                        Object.keys(activeCatState).forEach(k => {
+                            activeCatState[k].enabled = nextState;
+                        });
+                        updateUI();
+                    };
                 }
 
-                // Render dynamic chips: [5, 10, 15, 20, 25, 30, 40, 'All']
-                const chipsContainer = root.querySelector('#rse-chips-container');
-                if (chipsContainer) {
-                    chipsContainer.innerHTML = '';
-                    const baseCounts = [5, 10, 15, 20, 25, 30, 40];
-                    const availableOptions = baseCounts.filter(c => c <= totalAvailable);
+                const set5Btn = stageDeck.querySelector('#stage-btn-all-5');
+                if (set5Btn) {
+                    set5Btn.onclick = () => {
+                        playClick();
+                        Object.keys(activeCatState).forEach(k => {
+                            activeCatState[k].enabled = true;
+                            activeCatState[k].qty = Math.min(5, activeCatState[k].maxAvailable);
+                        });
+                        updateUI();
+                    };
+                }
 
-                    if (availableOptions.length === 0 && totalAvailable > 0) {
-                        availableOptions.push(totalAvailable);
-                    }
+                const setMaxBtn = stageDeck.querySelector('#stage-btn-all-max');
+                if (setMaxBtn) {
+                    setMaxBtn.onclick = () => {
+                        playClick();
+                        Object.keys(activeCatState).forEach(k => {
+                            activeCatState[k].enabled = true;
+                            activeCatState[k].qty = 'ALL';
+                        });
+                        updateUI();
+                    };
+                }
 
-                    availableOptions.forEach(num => {
-                        const chip = document.createElement('button');
-                        chip.type = 'button';
-                        chip.className = `rse-chip ${selectedCount === num ? 'active' : ''}`;
-                        chip.style.cssText = `background: ${selectedCount === num ? '#2563eb' : 'white'}; color: ${selectedCount === num ? 'white' : '#334155'}; border: 1.5px solid ${selectedCount === num ? '#2563eb' : '#cbd5e1'}; padding: 6px 14px; border-radius: 8px; font-size: 0.88rem; font-weight: 800; cursor: pointer; transition: all 0.15s;`;
-                        chip.textContent = `${num} Questions`;
-                        chip.onclick = () => {
-                            selectedCount = num;
+                // Render Sub-rule Mission Cards
+                const missionsContainer = stageDeck.querySelector('#stage-missions-container');
+                activeDef.subrules.forEach(sub => {
+                    const subState = activeCatState[sub.key] || { enabled: false, qty: 5, maxAvailable: 0 };
+                    if (subState.maxAvailable === 0) return;
+
+                    const isChecked = subState.enabled;
+                    const card = document.createElement('div');
+                    card.className = `mission-card ${isChecked ? 'active' : ''}`;
+                    card.style.setProperty('--world-color', activeDef.color);
+
+                    const displayQty = subState.qty === 'ALL' ? subState.maxAvailable : subState.qty;
+
+                    card.innerHTML = `
+                        <div class="mc-header">
+                            <label class="mc-check-label">
+                                <input type="checkbox" class="mc-checkbox" ${isChecked ? 'checked' : ''}>
+                                <span class="mc-title">${sub.label}</span>
+                            </label>
+                            <span class="mc-bank-pill">${subState.maxAvailable} in bank</span>
+                        </div>
+                        <div class="mc-controls" style="opacity: ${isChecked ? '1' : '0.4'}; pointer-events: ${isChecked ? 'auto' : 'none'};">
+                            <div class="mc-stepper">
+                                <button type="button" class="mc-step-btn minus" title="Decrease">−</button>
+                                <input type="number" class="mc-qty-input" value="${displayQty}" min="1" max="${subState.maxAvailable}">
+                                <button type="button" class="mc-step-btn plus" title="Increase">+</button>
+                            </div>
+                            <div class="mc-presets">
+                                <button type="button" class="mc-preset-btn ${subState.qty === 5 ? 'active' : ''}" data-val="5">5</button>
+                                <button type="button" class="mc-preset-btn ${subState.qty === 10 ? 'active' : ''}" data-val="10">10</button>
+                                <button type="button" class="mc-preset-btn ${subState.qty === 'ALL' || subState.qty === subState.maxAvailable ? 'active' : ''}" data-val="ALL">All (${subState.maxAvailable})</button>
+                            </div>
+                        </div>
+                    `;
+
+                    // Checkbox toggle
+                    const cb = card.querySelector('.mc-checkbox');
+                    cb.onchange = (e) => {
+                        playClick();
+                        subState.enabled = e.target.checked;
+                        updateUI();
+                    };
+
+                    // Stepper controls
+                    const inputEl = card.querySelector('.mc-qty-input');
+                    const minusBtn = card.querySelector('.mc-step-btn.minus');
+                    const plusBtn = card.querySelector('.mc-step-btn.plus');
+
+                    minusBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        playClick();
+                        let cur = typeof subState.qty === 'number' ? subState.qty : subState.maxAvailable;
+                        cur = Math.max(1, cur - 1);
+                        subState.qty = cur;
+                        updateUI();
+                    };
+
+                    plusBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        playClick();
+                        let cur = typeof subState.qty === 'number' ? subState.qty : subState.maxAvailable;
+                        cur = Math.min(subState.maxAvailable, cur + 1);
+                        subState.qty = cur;
+                        updateUI();
+                    };
+
+                    inputEl.onchange = (e) => {
+                        let val = parseInt(e.target.value, 10);
+                        if (isNaN(val) || val < 1) val = 1;
+                        if (val > subState.maxAvailable) val = subState.maxAvailable;
+                        subState.qty = val;
+                        updateUI();
+                    };
+
+                    // Preset buttons
+                    card.querySelectorAll('.mc-preset-btn').forEach(btn => {
+                        btn.onclick = (e) => {
+                            e.stopPropagation();
+                            playClick();
+                            const val = btn.dataset.val;
+                            if (val === 'ALL') {
+                                subState.qty = 'ALL';
+                            } else {
+                                subState.qty = Math.min(parseInt(val, 10), subState.maxAvailable);
+                            }
                             updateUI();
                         };
-                        chipsContainer.appendChild(chip);
                     });
 
-                    // 'All' chip
-                    if (totalAvailable > 0) {
-                        const allChip = document.createElement('button');
-                        allChip.type = 'button';
-                        const isAllActive = selectedCount === 'all' || selectedCount >= totalAvailable;
-                        allChip.className = `rse-chip ${isAllActive ? 'active' : ''}`;
-                        allChip.style.cssText = `background: ${isAllActive ? '#2563eb' : 'white'}; color: ${isAllActive ? 'white' : '#334155'}; border: 1.5px solid ${isAllActive ? '#2563eb' : '#cbd5e1'}; padding: 6px 14px; border-radius: 8px; font-size: 0.88rem; font-weight: 800; cursor: pointer; transition: all 0.15s;`;
-                        allChip.textContent = `All (${totalAvailable}) ⭐`;
-                        allChip.onclick = () => {
-                            selectedCount = totalAvailable;
-                            updateUI();
-                        };
-                        chipsContainer.appendChild(allChip);
-                    }
-                }
+                    missionsContainer.appendChild(card);
+                });
 
-                // If selectedCount is higher than totalAvailable, clamp it
-                if (typeof selectedCount === 'number' && selectedCount > totalAvailable && totalAvailable > 0) {
-                    selectedCount = totalAvailable;
-                }
-
-                // Fire callback
+                // Notify callback
                 if (typeof options.onChange === 'function') {
                     options.onChange({
-                        selectedMap,
-                        totalAvailable,
-                        selectedCount: selectedCount === 'all' ? totalAvailable : selectedCount,
-                        pool: pool.slice(0, selectedCount === 'all' ? totalAvailable : Math.min(selectedCount, totalAvailable))
+                        selectedConfig: exported,
+                        pool,
+                        totalCount: totalPoolCount,
+                        activeWorldCount: activeWorlds,
+                        activeSubRuleCount: activeSubs
                     });
                 }
             };
 
-            // Event Bindings
-            // 1. Expand / Collapse drawers
-            root.querySelectorAll('.rse-expand-toggle').forEach(btn => {
-                btn.onclick = (e) => {
-                    e.stopPropagation();
-                    const card = btn.closest('.rse-rule-card');
-                    const drawer = card.querySelector('.rse-subrules-list');
-                    if (!drawer) return;
-                    const isVisible = drawer.style.display !== 'none';
-                    drawer.style.display = isVisible ? 'none' : 'flex';
-                    const arrow = btn.querySelector('.rse-expand-arrow');
-                    if (arrow) arrow.textContent = isVisible ? '▼' : '▲';
-                };
-            });
-
-            // 2. Main Rule Checkbox change
-            root.querySelectorAll('.rse-main-cb').forEach(cb => {
-                cb.onchange = () => {
-                    const catId = cb.dataset.cat;
-                    const card = cb.closest('.rse-rule-card');
-                    const drawer = card.querySelector('.rse-subrules-list');
-                    const subCbs = card.querySelectorAll('.rse-sub-cb');
-                    const arrow = card.querySelector('.rse-expand-arrow');
-
-                    if (cb.checked) {
-                        card.style.borderColor = '#93c5fd';
-                        card.style.background = '#f8fafc';
-                        card.classList.add('active');
-                        if (drawer) {
-                            drawer.style.display = 'flex';
-                            if (arrow) arrow.textContent = '▲';
-                        }
-                        selectedMap[catId] = ['ALL'];
-                        subCbs.forEach(s => s.checked = true);
-                    } else {
-                        card.style.borderColor = '#e2e8f0';
-                        card.style.background = 'white';
-                        card.classList.remove('active');
-                        if (drawer) {
-                            drawer.style.display = 'none';
-                            if (arrow) arrow.textContent = '▼';
-                        }
-                        delete selectedMap[catId];
-                        subCbs.forEach(s => s.checked = false);
-                    }
-                    updateUI();
-                };
-            });
-
-            // 3. Individual Sub-rule checkbox change
-            root.querySelectorAll('.rse-sub-cb').forEach(cb => {
-                cb.onchange = () => {
-                    const catId = cb.dataset.parent;
-                    const card = cb.closest('.rse-rule-card');
-                    const mainCb = card.querySelector('.rse-main-cb');
-                    const subCbs = Array.from(card.querySelectorAll('.rse-sub-cb'));
-
-                    const checkedKeys = subCbs.filter(s => s.checked).map(s => s.dataset.sub);
-
-                    if (checkedKeys.length === 0) {
-                        mainCb.checked = false;
-                        mainCb.indeterminate = false;
-                        card.style.borderColor = '#e2e8f0';
-                        card.style.background = 'white';
-                        card.classList.remove('active');
-                        delete selectedMap[catId];
-                    } else if (checkedKeys.length === subCbs.length) {
-                        mainCb.checked = true;
-                        mainCb.indeterminate = false;
-                        card.style.borderColor = '#93c5fd';
-                        card.style.background = '#f8fafc';
-                        card.classList.add('active');
-                        selectedMap[catId] = ['ALL'];
-                    } else {
-                        mainCb.checked = true;
-                        mainCb.indeterminate = true;
-                        card.style.borderColor = '#93c5fd';
-                        card.style.background = '#f8fafc';
-                        card.classList.add('active');
-                        selectedMap[catId] = checkedKeys;
-                    }
-                    updateUI();
-                };
-            });
-
-            // 4. Master Select All Checkbox
-            const masterCb = root.querySelector('#rse-cb-all-rules');
-            if (masterCb) {
-                masterCb.onchange = (e) => {
-                    const checked = e.target.checked;
-                    CATEGORY_DEFINITIONS.forEach(cat => {
-                        if (checked) {
-                            selectedMap[cat.id] = ['ALL'];
-                        } else {
-                            delete selectedMap[cat.id];
-                        }
-                    });
-
-                    root.querySelectorAll('.rse-rule-card').forEach(card => {
-                        const mcb = card.querySelector('.rse-main-cb');
-                        if (mcb) {
-                            mcb.checked = checked;
-                            mcb.indeterminate = false;
-                        }
-                        card.querySelectorAll('.rse-sub-cb').forEach(s => s.checked = checked);
-                        const drawer = card.querySelector('.rse-subrules-list');
-                        const arrow = card.querySelector('.rse-expand-arrow');
-                        if (checked) {
-                            card.style.borderColor = '#93c5fd';
-                            card.style.background = '#f8fafc';
-                            card.classList.add('active');
-                            if (drawer) {
-                                drawer.style.display = 'flex';
-                                if (arrow) arrow.textContent = '▲';
-                            }
-                        } else {
-                            card.style.borderColor = '#e2e8f0';
-                            card.style.background = 'white';
-                            card.classList.remove('active');
-                            if (drawer) {
-                                drawer.style.display = 'none';
-                                if (arrow) arrow.textContent = '▼';
-                            }
-                        }
+            // Global Command Bar Events
+            // 1. Select All Realms
+            const cmdAllBtn = arena.querySelector('#arena-cmd-all');
+            if (cmdAllBtn) {
+                cmdAllBtn.onclick = () => {
+                    playClick();
+                    CATEGORY_DEFINITIONS.forEach(catDef => {
+                        const catState = state[catDef.id];
+                        if (!catState) return;
+                        Object.keys(catState).forEach(subKey => {
+                            catState[subKey].enabled = true;
+                            if (catState[subKey].qty === undefined) catState[subKey].qty = 5;
+                        });
                     });
                     updateUI();
                 };
             }
 
-            // 5. Clear All Button
-            const clearAllBtn = root.querySelector('#rse-clear-all');
-            if (clearAllBtn) {
-                clearAllBtn.onclick = () => {
-                    Object.keys(selectedMap).forEach(k => delete selectedMap[k]);
-                    if (masterCb) {
-                        masterCb.checked = false;
-                        masterCb.indeterminate = false;
-                    }
-                    root.querySelectorAll('.rse-rule-card').forEach(card => {
-                        const mcb = card.querySelector('.rse-main-cb');
-                        if (mcb) {
-                            mcb.checked = false;
-                            mcb.indeterminate = false;
-                        }
-                        card.querySelectorAll('.rse-sub-cb').forEach(s => s.checked = false);
-                        card.style.borderColor = '#e2e8f0';
-                        card.style.background = 'white';
-                        card.classList.remove('active');
-                        const drawer = card.querySelector('.rse-subrules-list');
-                        const arrow = card.querySelector('.rse-expand-arrow');
-                        if (drawer) drawer.style.display = 'none';
-                        if (arrow) arrow.textContent = '▼';
+            // 2. Clear All
+            const cmdClearBtn = arena.querySelector('#arena-cmd-clear');
+            if (cmdClearBtn) {
+                cmdClearBtn.onclick = () => {
+                    playClick();
+                    CATEGORY_DEFINITIONS.forEach(catDef => {
+                        const catState = state[catDef.id];
+                        if (!catState) return;
+                        Object.keys(catState).forEach(subKey => {
+                            catState[subKey].enabled = false;
+                        });
                     });
                     updateUI();
                 };
             }
 
-            // Initial calculation
+            // 3. Balanced 20 Mix
+            const cmdBalancedBtn = arena.querySelector('#arena-cmd-balanced');
+            if (cmdBalancedBtn) {
+                cmdBalancedBtn.onclick = () => {
+                    playClick();
+                    // Clear all
+                    CATEGORY_DEFINITIONS.forEach(catDef => {
+                        const catState = state[catDef.id];
+                        if (!catState) return;
+                        Object.keys(catState).forEach(subKey => {
+                            catState[subKey].enabled = false;
+                        });
+                    });
+                    // Pick 4 major realms, 5 questions each = 20 total
+                    const mix = [
+                        { cat: 'image_bank', sub: 'Noon Mushaddad', qty: 5 },
+                        { cat: 'qalqalah', sub: 'Minor', qty: 5 },
+                        { cat: 'noon_sakinah_tanween', sub: 'Izhar', qty: 5 },
+                        { cat: 'madd_rules', sub: 'Connected', qty: 5 }
+                    ];
+                    mix.forEach(m => {
+                        if (state[m.cat] && state[m.cat][m.sub]) {
+                            state[m.cat][m.sub].enabled = true;
+                            state[m.cat][m.sub].qty = m.qty;
+                        }
+                    });
+                    activeWorldId = 'qalqalah';
+                    updateUI();
+                };
+            }
+
+            // Global HUD Quick Limit Chips
+            arena.querySelectorAll('.hud-chip').forEach(chip => {
+                chip.onclick = () => {
+                    playClick();
+                    arena.querySelectorAll('.hud-chip').forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+
+                    const limit = chip.dataset.limit;
+                    if (limit === 'ALL') {
+                        Object.values(state).forEach(catState => {
+                            Object.values(catState).forEach(s => {
+                                if (s.enabled) s.qty = 'ALL';
+                            });
+                        });
+                    } else {
+                        const targetLimit = parseInt(limit, 10);
+                        const activeList = [];
+                        Object.values(state).forEach(catState => {
+                            Object.values(catState).forEach(s => {
+                                if (s.enabled) activeList.push(s);
+                            });
+                        });
+                        if (activeList.length > 0) {
+                            const perSub = Math.max(1, Math.floor(targetLimit / activeList.length));
+                            activeList.forEach(s => {
+                                s.qty = Math.min(perSub, s.maxAvailable);
+                            });
+                        }
+                    }
+                    updateUI();
+                };
+            });
+
+            // Launch Hero Button (if configured)
+            const launchBtn = arena.querySelector('#arena-hero-launch-btn');
+            if (launchBtn && typeof options.onLaunch === 'function') {
+                launchBtn.onclick = () => {
+                    playClick();
+                    const { exported, pool, totalPoolCount } = getExportedState();
+                    options.onLaunch({ pool, selectedConfig: exported, totalCount: totalPoolCount });
+                };
+            }
+
+            // Initial render
             updateUI();
 
             return {
-                getSelectedMap: () => selectedMap,
-                getSelectedCount: () => selectedCount,
-                getPool: () => this.buildPool(selectedMap),
-                update: updateUI
+                getSelectedConfig: () => getExportedState().exported,
+                getPool: () => getExportedState().pool,
+                getTotalCount: () => getExportedState().totalPoolCount,
+                update: () => updateUI(),
+                selectWorld: (catId) => {
+                    activeWorldId = catId;
+                    updateUI();
+                }
             };
         }
     };

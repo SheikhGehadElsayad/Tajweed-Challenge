@@ -271,16 +271,15 @@ window.GC_UI = {
 
     // Render RuleSelectorEngine if in standard mode
     let rseState = {
-      selectedMap: { 'image_bank': ['ALL'], 'qalqalah': ['ALL'], 'meem_sakinah': ['ALL'], 'noon_sakinah_tanween': ['ALL'] },
-      selectedCount: 20
+      selectedConfig: { 'image_bank': { 'Noon Mushaddad': { enabled: true, qty: 5 } }, 'qalqalah': { 'Minor': { enabled: true, qty: 5 } } },
+      totalCount: 20
     };
 
     if (!isMistakeMode && typeof window.RuleSelectorEngine !== 'undefined') {
       const mount = modal.querySelector('#gc-rule-selector-mount');
       if (mount) {
         window.RuleSelectorEngine.render(mount, {
-          initialSelection: rseState.selectedMap,
-          initialCount: 20,
+          initialSelection: rseState.selectedConfig,
           onChange: (data) => {
             rseState = data;
           }
@@ -298,9 +297,10 @@ window.GC_UI = {
       let selectedMaxCount = 20;
 
       if (!isMistakeMode) {
-        selectedCats = Object.keys(rseState.selectedMap || {});
-        selectedSubRules = rseState.selectedMap || {};
-        selectedMaxCount = rseState.selectedCount || 20;
+        const activeConfig = rseState.selectedConfig || rseState.selectedMap || {};
+        selectedCats = Object.keys(activeConfig);
+        selectedSubRules = activeConfig;
+        selectedMaxCount = rseState.totalCount || rseState.selectedCount || 20;
         if (selectedCats.length === 0) {
           selectedCats = window.GC_DATA.categories.map(c => c.id);
         }

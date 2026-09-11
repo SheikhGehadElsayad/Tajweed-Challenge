@@ -678,74 +678,14 @@ function renderHomeworkCreator() {
                 </div>
             </div>
 
-            <!-- Step 2: Tajweed Rules & Sub-Rules Selection -->
+            <!-- Step 2: Tajweed Realms & Sub-Rules Selection -->
             <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 16px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
-                    <div>
-                        <label style="font-size: 1.05rem; font-weight: 900; color: #1e293b; display: flex; align-items: center; gap: 6px;">
-                            <span>📜</span> 2. Choose Tajweed Rules & Sub-Rules:
-                        </label>
-                        <span style="font-size: 0.8rem; color: #64748b; font-weight: 700;">Expand any rule to assign specific sub-topics instead of all questions</span>
-                    </div>
-                    <div style="display: flex; gap: 8px;">
-                        <button type="button" id="hw-btn-rules-all" style="background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; border-radius: 6px; padding: 4px 12px; font-size: 0.82rem; font-weight: 800; cursor: pointer;">Select All</button>
-                        <button type="button" id="hw-btn-rules-clear" style="background: white; color: #64748b; border: 1px solid #cbd5e1; border-radius: 6px; padding: 4px 12px; font-size: 0.82rem; font-weight: 800; cursor: pointer;">Clear All</button>
-                    </div>
+                <label style="font-size: 1.05rem; font-weight: 900; color: #1e293b; display: flex; align-items: center; gap: 6px; margin-bottom: 8px;">
+                    <span>📜</span> 2. Choose Tajweed Realms & Custom Sub-Rules:
+                </label>
+                <div id="hw-rules-container">
+                    <!-- Populated dynamically by RuleSelectorEngine with Stage Arena -->
                 </div>
-
-                <div id="hw-rules-container" style="display: flex; flex-direction: column; gap: 10px; max-height: 480px; overflow-y: auto; padding-right: 4px;">
-                    ${categoriesDef.map((cat, catIdx) => {
-                        const count = (typeof TAJWEED_BANK !== 'undefined' && TAJWEED_BANK[cat.id]?.questions?.length) || 0;
-                        const isDefault = (cat.id === 'qalqalah' || cat.id === 'noon_sakinah_tanween');
-                        const catCode = HW_CODES_REVERSE[cat.id] || cat.id;
-
-                        return `
-                            <div class="hw-category-block" data-cat="${cat.id}" data-code="${catCode}" style="background: white; border: 1.5px solid ${isDefault ? '#3b82f6' : '#cbd5e1'}; border-radius: 12px; padding: 12px; transition: all 0.15s ease;">
-                                <!-- Category Main Row -->
-                                <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-                                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; flex: 1; user-select: none;">
-                                        <input type="checkbox" class="hw-main-cat-cb" value="${catCode}" ${isDefault ? 'checked' : ''} style="width: 19px; height: 19px; cursor: pointer; accent-color: #2563eb;">
-                                        <div>
-                                            <span style="font-weight: 900; font-size: 0.95rem; color: #1e293b;">${cat.icon || '📖'} ${cat.title}</span>
-                                            <span style="font-size: 0.78rem; color: #64748b; font-weight: 700; margin-left: 6px;">(${count} Questions)</span>
-                                        </div>
-                                    </label>
-                                    ${cat.subrules && cat.subrules.length > 0 ? `
-                                        <button type="button" class="hw-toggle-subrules" style="background: #f1f5f9; color: #3b82f6; border: 1px solid #cbd5e1; border-radius: 6px; padding: 3px 8px; font-size: 0.78rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; gap: 4px;">
-                                            <span>Sub-rules (${cat.subrules.length})</span> <span class="hw-arrow">▼</span>
-                                        </button>
-                                    ` : ''}
-                                </div>
-
-                                <!-- Sub-rules Drawer -->
-                                ${cat.subrules && cat.subrules.length > 0 ? `
-                                    <div class="hw-subrules-drawer" style="display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid #f1f5f9; padding-left: 28px;">
-                                        <div style="font-size: 0.75rem; color: #64748b; font-weight: 800; margin-bottom: 6px;">Choose specific sub-topics:</div>
-                                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 6px;">
-                                            ${cat.subrules.map((sub, subIdx) => {
-                                                let subCount = 0;
-                                                if (typeof window.RuleSelectorEngine !== 'undefined') {
-                                                    const qList = (typeof TAJWEED_BANK !== 'undefined' && TAJWEED_BANK[cat.id]?.questions) || [];
-                                                    subCount = window.RuleSelectorEngine.filterSubQuestions(cat.id, sub.key, qList).length;
-                                                }
-                                                return `
-                                                    <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: #334155; cursor: pointer; background: #f8fafc; padding: 5px 8px; border-radius: 6px; border: 1px solid #e2e8f0;">
-                                                        <input type="checkbox" class="hw-sub-cb" data-cat="${cat.id}" data-idx="${subIdx}" data-sub="${sub.key}" ${isDefault ? 'checked' : ''} style="width: 15px; height: 15px; cursor: pointer; accent-color: #2563eb;">
-                                                        <span style="flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${sub.label}">
-                                                            ${sub.label} <span style="color: #94a3b8; font-size: 0.72rem;">(${subCount})</span>
-                                                        </span>
-                                                    </label>
-                                                `;
-                                            }).join('')}
-                                        </div>
-                                    </div>
-                                ` : ''}
-                            </div>
-                        `;
-                    }).join('')}
-                </div>
-
-                <div id="hw-rules-count-msg" style="margin-top: 12px; font-size: 0.9rem; font-weight: 800; color: #2563eb; text-align: right;"></div>
             </div>
 
             <!-- Step 3: Question Count & Timer -->
@@ -826,119 +766,27 @@ function renderHomeworkCreator() {
         }
     };
 
-    // Sub-rules Toggle Drawer
-    root.querySelectorAll('.hw-toggle-subrules').forEach(btn => {
-        btn.onclick = () => {
-            const block = btn.closest('.hw-category-block');
-            const drawer = block.querySelector('.hw-subrules-drawer');
-            const arrow = btn.querySelector('.hw-arrow');
-            if (drawer.style.display === 'none') {
-                drawer.style.display = 'block';
-                if (arrow) arrow.textContent = '▲';
-            } else {
-                drawer.style.display = 'none';
-                if (arrow) arrow.textContent = '▼';
-            }
-        };
-    });
-
-    // Helper: calculate selected pool
-    function getSelectedPoolMap() {
-        const selMap = {};
-        root.querySelectorAll('.hw-category-block').forEach(block => {
-            const catId = block.dataset.cat;
-            const mainCb = block.querySelector('.hw-main-cat-cb');
-            const subCbs = Array.from(block.querySelectorAll('.hw-sub-cb'));
-            const checkedSubs = subCbs.filter(s => s.checked);
-
-            if (subCbs.length === 0) {
-                if (mainCb && mainCb.checked) selMap[catId] = ['ALL'];
-            } else {
-                if (checkedSubs.length === subCbs.length && mainCb.checked) {
-                    selMap[catId] = ['ALL'];
-                } else if (checkedSubs.length > 0) {
-                    selMap[catId] = checkedSubs.map(s => s.dataset.sub);
+    // Mount Unified Arcade RuleSelectorEngine
+    let hwRseInstance = null;
+    const hwRulesMount = root.querySelector('#hw-rules-container');
+    if (hwRulesMount && typeof window.RuleSelectorEngine !== 'undefined') {
+        hwRseInstance = window.RuleSelectorEngine.render(hwRulesMount, {
+            initialSelection: {
+                'qalqalah': {
+                    'Minor': { enabled: true, qty: 5 },
+                    'Major': { enabled: true, qty: 5 }
+                },
+                'noon_sakinah_tanween': {
+                    'Izhar': { enabled: true, qty: 5 }
                 }
+            },
+            showLaunchButton: false,
+            onChange: (data) => {
+                const customQty = root.querySelector('#hw-custom-qty');
+                if (customQty) customQty.value = data.totalCount;
             }
         });
-        return selMap;
     }
-
-    function updateCount() {
-        const selMap = getSelectedPoolMap();
-        let total = 0;
-        if (typeof window.RuleSelectorEngine !== 'undefined') {
-            total = window.RuleSelectorEngine.countAvailable(selMap);
-        }
-        const msg = root.querySelector('#hw-rules-count-msg');
-        if (msg) {
-            msg.textContent = `Total Questions in Selection: ${total} questions`;
-        }
-    }
-
-    // Main Category Checkbox change
-    root.querySelectorAll('.hw-main-cat-cb').forEach(mainCb => {
-        mainCb.onchange = () => {
-            const block = mainCb.closest('.hw-category-block');
-            block.querySelectorAll('.hw-sub-cb').forEach(scb => {
-                scb.checked = mainCb.checked;
-            });
-            block.style.borderColor = mainCb.checked ? '#3b82f6' : '#cbd5e1';
-            updateCount();
-        };
-    });
-
-    // Sub-rule Checkbox change
-    root.querySelectorAll('.hw-sub-cb').forEach(subCb => {
-        subCb.onchange = () => {
-            const block = subCb.closest('.hw-category-block');
-            const mainCb = block.querySelector('.hw-main-cat-cb');
-            const allSubs = Array.from(block.querySelectorAll('.hw-sub-cb'));
-            const checkedSubs = allSubs.filter(s => s.checked);
-
-            if (checkedSubs.length === 0) {
-                mainCb.checked = false;
-                mainCb.indeterminate = false;
-                block.style.borderColor = '#cbd5e1';
-            } else if (checkedSubs.length === allSubs.length) {
-                mainCb.checked = true;
-                mainCb.indeterminate = false;
-                block.style.borderColor = '#3b82f6';
-            } else {
-                mainCb.checked = true;
-                mainCb.indeterminate = true;
-                block.style.borderColor = '#3b82f6';
-            }
-            updateCount();
-        };
-    });
-
-    // Select All
-    root.querySelector('#hw-btn-rules-all').onclick = () => {
-        root.querySelectorAll('.hw-category-block').forEach(block => {
-            const mainCb = block.querySelector('.hw-main-cat-cb');
-            if (mainCb) mainCb.checked = true;
-            block.querySelectorAll('.hw-sub-cb').forEach(s => s.checked = true);
-            block.style.borderColor = '#3b82f6';
-        });
-        updateCount();
-    };
-
-    // Clear All
-    root.querySelector('#hw-btn-rules-clear').onclick = () => {
-        root.querySelectorAll('.hw-category-block').forEach(block => {
-            const mainCb = block.querySelector('.hw-main-cat-cb');
-            if (mainCb) {
-                mainCb.checked = false;
-                mainCb.indeterminate = false;
-            }
-            block.querySelectorAll('.hw-sub-cb').forEach(s => s.checked = false);
-            block.style.borderColor = '#cbd5e1';
-        });
-        updateCount();
-    };
-
-    updateCount();
 
     // Quantity Chips
     const qtyChips = root.querySelectorAll('.hw-chip-btn');
@@ -982,23 +830,36 @@ function renderHomeworkCreator() {
             return;
         }
 
-        // Build compact codes with sub-rules support
+        // Build compact codes with sub-rules & quantity support
+        const config = hwRseInstance ? hwRseInstance.getSelectedConfig() : {};
         const codeTokens = [];
-        root.querySelectorAll('.hw-category-block').forEach(block => {
-            const catCode = block.dataset.code;
-            const mainCb = block.querySelector('.hw-main-cat-cb');
-            const subCbs = Array.from(block.querySelectorAll('.hw-sub-cb'));
-            const checkedSubs = subCbs.filter(s => s.checked);
+        const definitions = (typeof window.RuleSelectorEngine !== 'undefined') ? window.RuleSelectorEngine.definitions : [];
 
-            if (subCbs.length === 0) {
-                if (mainCb && mainCb.checked) codeTokens.push(catCode);
+        Object.entries(config).forEach(([catId, subMap]) => {
+            const catCode = HW_CODES_REVERSE[catId] || catId;
+            const def = definitions.find(d => d.id === catId);
+            if (!def || !def.subrules) {
+                codeTokens.push(catCode);
+                return;
+            }
+            const activeSubs = Object.entries(subMap).filter(([k, s]) => s.enabled);
+            if (activeSubs.length === 0) return;
+
+            const isAllMax = activeSubs.length === def.subrules.length && activeSubs.every(([k, s]) => s.qty === 'ALL');
+            if (isAllMax) {
+                codeTokens.push(catCode);
             } else {
-                if (checkedSubs.length === subCbs.length && mainCb.checked && !mainCb.indeterminate) {
-                    codeTokens.push(catCode); // All sub-rules
-                } else if (checkedSubs.length > 0) {
-                    // Specific sub-rule indices (e.g. md:0 or md:0.1)
-                    const indices = checkedSubs.map(s => s.dataset.idx).join('.');
-                    codeTokens.push(`${catCode}:${indices}`);
+                const tokens = activeSubs.map(([subKey, subConf]) => {
+                    const idx = def.subrules.findIndex(s => s.key === subKey);
+                    if (idx === -1) return null;
+                    if (typeof subConf.qty === 'number' && subConf.qty > 0) {
+                        return `${idx}x${subConf.qty}`;
+                    }
+                    return `${idx}`;
+                }).filter(Boolean);
+
+                if (tokens.length > 0) {
+                    codeTokens.push(`${catCode}:${tokens.join('.')}`);
                 }
             }
         });
@@ -1119,9 +980,22 @@ function decodeHwToSelection(hwStr) {
             const catId = HW_RULE_CODES[cCode] || cCode;
             const def = definitions.find(d => d.id === catId);
             if (def && def.subrules) {
-                const indices = idxStr.split('.').map(x => parseInt(x, 10)).filter(n => !isNaN(n));
-                const subKeys = indices.map(i => def.subrules[i]?.key).filter(Boolean);
-                if (subKeys.length > 0) selMap[catId] = subKeys;
+                selMap[catId] = {};
+                const tokenItems = idxStr.split('.');
+                tokenItems.forEach(item => {
+                    let idx, qty = 'ALL';
+                    if (item.includes('x')) {
+                        const [iStr, qStr] = item.split('x');
+                        idx = parseInt(iStr, 10);
+                        qty = parseInt(qStr, 10) || 'ALL';
+                    } else {
+                        idx = parseInt(item, 10);
+                    }
+                    if (!isNaN(idx) && def.subrules[idx]) {
+                        const subKey = def.subrules[idx].key;
+                        selMap[catId][subKey] = { enabled: true, qty: qty };
+                    }
+                });
             } else {
                 selMap[catId] = ['ALL'];
             }
@@ -1163,17 +1037,31 @@ function parseURLModes() {
             // Summarize topic names in English
             const definitions = (typeof window.RuleSelectorEngine !== 'undefined') ? window.RuleSelectorEngine.definitions : [];
             const topicLabels = [];
-            Object.entries(selectionMap).forEach(([catId, subKeys]) => {
+            Object.entries(selectionMap).forEach(([catId, val]) => {
                 const def = definitions.find(d => d.id === catId);
                 if (!def) return;
-                if (subKeys.includes('ALL') || subKeys.length === def.subrules?.length) {
-                    topicLabels.push(def.title);
-                } else {
-                    const subLabels = subKeys.map(k => {
-                        const s = def.subrules?.find(sub => sub.key === k);
-                        return s ? s.label : k;
-                    });
-                    topicLabels.push(`${def.title} (${subLabels.join(', ')})`);
+                if (Array.isArray(val)) {
+                    if (val.includes('ALL') || val.length === def.subrules?.length) {
+                        topicLabels.push(def.title);
+                    } else {
+                        const subLabels = val.map(k => {
+                            const s = def.subrules?.find(sub => sub.key === k);
+                            return s ? s.label : k;
+                        });
+                        topicLabels.push(`${def.title} (${subLabels.join(', ')})`);
+                    }
+                } else if (typeof val === 'object' && val !== null) {
+                    const activeEntries = Object.entries(val).filter(([k, s]) => s === true || (s && s.enabled !== false));
+                    if (activeEntries.length === def.subrules?.length) {
+                        topicLabels.push(def.title);
+                    } else {
+                        const subLabels = activeEntries.map(([k, s]) => {
+                            const subObj = def.subrules?.find(sub => sub.key === k);
+                            const q = s && typeof s.qty === 'number' ? s.qty : null;
+                            return (subObj ? subObj.label : k) + (q ? ` [${q} Qs]` : '');
+                        });
+                        topicLabels.push(`${def.title} (${subLabels.join(', ')})`);
+                    }
                 }
             });
 
