@@ -127,30 +127,32 @@ const appContainer = document.createElement('div');
         </section>
     </main>
 
-    <!-- Dedicated Homework Assignment Screen -->
+    <!-- Dedicated Homework Assignment Screen (Widescreen Edition) -->
     <main id="screen-homework" class="screen">
-        <section class="start-container" style="justify-content: flex-start; padding-top: 2vh; background: linear-gradient(135deg, #eff6ff, #f8fafc); min-height: 100vh; overflow-y: auto;">
-            <div style="width: 100%; max-width: 780px; display: flex; flex-direction: column; gap: 16px; padding: 2vh 3vw; margin: 0 auto;">
+        <section class="start-container" style="justify-content: flex-start; padding: 1.5vh 2vw; background: linear-gradient(135deg, #eff6ff, #f8fafc); min-height: 100vh; overflow-y: auto;">
+            <div style="width: 100%; max-width: 1650px; display: flex; flex-direction: column; gap: 14px; margin: 0 auto;">
                 
                 <!-- Top Bar -->
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <button class="icon-btn" onclick="if(typeof SFX !== 'undefined') SFX.click(); switchScreen('screen-mode-select');">⬅</button>
-                    <h1 style="font-size: clamp(1.5rem, 3.2vw, 2.2rem); font-weight: 900; color: #1e293b; text-align: center; margin: 0;">
-                        📝 Assign Homework
-                    </h1>
-                    <button type="button" onclick="if(typeof window.StudentModal!=='undefined') window.StudentModal.open('teacher');" style="background: white; color: #2563eb; border: 1.5px solid #3b82f6; border-radius: 99px; font-weight: 800; font-size: 0.85rem; padding: 6px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                        ⚙️ Teacher Profile
-                    </button>
+                <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 12px 20px; border-radius: 16px; border: 2px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.03); flex-wrap: wrap; gap: 12px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <button class="icon-btn" onclick="if(typeof SFX !== 'undefined') SFX.click(); switchScreen('screen-mode-select');">⬅</button>
+                        <h1 style="font-size: clamp(1.4rem, 2.2vw, 2rem); font-weight: 900; color: #1e293b; margin: 0;">
+                            📝 Assign Homework Dashboard
+                        </h1>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                        <div style="background: #f8fafc; border: 1.5px solid #bfdbfe; border-radius: 10px; padding: 6px 14px; font-size: 0.85rem; color: #475569; font-weight: 700;">
+                            👑 Developed & Supervised by <strong>Sheikh Gehad Elsayad</strong>
+                        </div>
+                        <div id="hw-active-teacher-badge" style="color: #2563eb; font-weight: 800; font-size: 0.85rem; background: #eff6ff; padding: 6px 12px; border-radius: 10px; border: 1.5px solid #bfdbfe;">👨‍🏫 Teacher: Sheikh Gehad Elsayad</div>
+                        <button type="button" onclick="if(typeof window.StudentModal!=='undefined') window.StudentModal.open('teacher');" style="background: white; color: #2563eb; border: 1.5px solid #3b82f6; border-radius: 99px; font-weight: 800; font-size: 0.85rem; padding: 6px 14px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                            ⚙️ Teacher Profile
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Attribution Card -->
-                <div style="background: white; border: 1.5px solid #bfdbfe; border-radius: 12px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 0.85rem; color: #475569;">
-                    <div>👑 Developed & Supervised by <strong>Sheikh Gehad Elsayad</strong></div>
-                    <div id="hw-active-teacher-badge" style="color: #2563eb; font-weight: 800;">👨‍🏫 Teacher: Sheikh Gehad Elsayad</div>
-                </div>
-
-                <!-- Homework Creator Root Container -->
-                <div id="hw-creator-root" style="width: 100%; background: white; border-radius: 1.5rem; padding: 3vh 3vw; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 2px solid #e2e8f0;">
+                <!-- Homework Creator Root Container (Widescreen) -->
+                <div id="hw-creator-root" style="width: 100%; background: white; border-radius: 1.5rem; padding: 2vh 2vw; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 2px solid #e2e8f0;">
                     <!-- Dynamically populated by renderHomeworkCreator -->
                 </div>
 
@@ -158,20 +160,51 @@ const appContainer = document.createElement('div');
         </section>
     </main>
 
-    <!-- Setup Screen (Free Play & Homework Launch) -->
+    <!-- Setup Screen (Free Play & Homework Launch - Widescreen Edition) -->
     <main id="screen-start" class="screen">
-        <section class="start-container" aria-labelledby="start-title" style="background: linear-gradient(135deg, #f0fdf4, #f8fafc);">
-            <div style="width:100%; max-width:800px; display:flex; flex-direction:column; align-items:center; padding: 2vh 0;">
+        <section class="start-container" aria-labelledby="start-title" style="background: linear-gradient(135deg, #f0fdf4, #f8fafc); padding: 1.5vh 2vw; width: 100%; min-height: 100vh; overflow-y: auto;">
+            <div style="width: 100%; max-width: 1650px; display: flex; flex-direction: column; align-items: stretch; margin: 0 auto; gap: 12px;">
                 
-                <div style="width:100%; display:flex; justify-content:flex-start; margin-bottom:10px;">
-                    <button class="icon-btn" onclick="if(typeof SFX !== 'undefined') SFX.click(); switchScreen('screen-mode-select');">⬅</button>
+                <!-- Full-Width Header Bar -->
+                <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; background: white; padding: 12px 20px; border-radius: 16px; border: 2px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <button class="icon-btn" onclick="if(typeof SFX !== 'undefined') SFX.click(); switchScreen('screen-mode-select');">⬅</button>
+                        <div>
+                            <h1 id="start-title" style="font-size: clamp(1.4rem, 2.2vw, 2.2rem); color: #1e293b; font-weight: 900; margin: 0; line-height: 1.2;">Tajweed Challenge Setup ⚙️</h1>
+                            <span style="font-size: 0.82rem; color: #64748b; font-weight: 700;">Select specific realms, sub-rules & question counts to enter the arena</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Compact Student Profile & Timer Quick Bar -->
+                    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: 8px; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 6px 12px;">
+                            <span style="font-size: 1.15rem;">👤</span>
+                            <input type="text" id="student-name" class="name-input" placeholder="Player Name" autocomplete="off" maxlength="20" spellcheck="false" style="width: 130px; padding: 4px 8px; font-size: 0.95rem; border: 1.5px solid #cbd5e1; border-radius: 8px; font-weight: 800; text-align: left;">
+                            <button type="button" class="btn-secondary" id="btn-open-student-modal-setup" onclick="if(typeof window.StudentModal!=='undefined') window.StudentModal.open('roster');" style="padding: 4px 10px; border-radius: 8px; font-weight: 800; font-size: 0.8rem; border-color: #3b82f6; color: #2563eb; background: #eff6ff; white-space: nowrap;">
+                                Switch Profile
+                            </button>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 6px; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 6px 12px;">
+                            <span style="font-size: 0.85rem; font-weight: 800; color: #475569;">⏱️ Timer:</span>
+                            <select id="timer-select" style="padding: 4px 8px; font-size: 0.88rem; border-radius: 6px; border: 1.5px solid #cbd5e1; font-weight: 800; color: #334155; background: white;">
+                                <option value="60">60s</option>
+                                <option value="45">45s</option>
+                                <option value="30">30s</option>
+                                <option value="15" selected>15s</option>
+                            </select>
+                        </div>
+
+                        <button type="button" class="arena-hero-btn" onclick="document.getElementById('btn-start-game').click();" style="padding: 8px 18px; font-size: 0.95rem;">
+                            🚀 Start Game
+                        </button>
+                    </div>
                 </div>
                 
-                <h1 id="start-title" style="font-size: clamp(2rem, 4vw, 3rem); color: #1e293b; font-weight: 900; margin-bottom: 2vh; text-shadow: 1px 1px 2px rgba(0,0,0,0.05);">Challenge Setup ⚙️</h1>
-                
-                <div style="width:100%; background:white; border-radius:1.5rem; padding: 3vh 3vw; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 2px solid #e2e8f0;">
+                <!-- Main Arena Container (Full Width) -->
+                <div style="width: 100%; background: white; border-radius: 1.5rem; padding: 1.5vh 1.5vw; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 2px solid #e2e8f0; display: flex; flex-direction: column; gap: 12px;">
                     
-                    <div id="hw-teacher-panel" class="hw-overlay" hidden style="background:#eff6ff; border:2px solid #3b82f6; border-radius:16px; padding:16px; margin-bottom:15px;">
+                    <div id="hw-teacher-panel" class="hw-overlay" hidden style="background:#eff6ff; border:2px solid #3b82f6; border-radius:16px; padding:16px; margin-bottom:10px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
                             <span style="font-weight:900; color:#1e40af; font-size:1.15rem;">👨‍🏫 Teacher Panel: Create & Assign Homework</span>
                             <button type="button" onclick="if(typeof window.StudentModal!=='undefined') window.StudentModal.open('teacher');" style="background:white; color:#2563eb; border:1.5px solid #3b82f6; border-radius:99px; font-weight:800; font-size:0.85rem; padding:4px 12px; cursor:pointer; display:flex; align-items:center; gap:4px;">
@@ -188,49 +221,20 @@ const appContainer = document.createElement('div');
                             ✨ Created & Supervised by Sheikh Gehad Elsayad
                         </div>
                     </div>
-                    <div style="margin-bottom: 25px; text-align: center;">
-                        <label for="student-name" style="display:block; font-size: 1.1rem; font-weight: 800; color: #475569; margin-bottom: 8px;">1. Who is playing?</label>
-                        <div style="margin-bottom: 10px;">
-                            <button type="button" class="btn-secondary" id="btn-open-student-modal-setup" onclick="if(typeof window.StudentModal!=='undefined') window.StudentModal.open('roster');" style="margin: 0 auto; padding: 6px 16px; border-radius: 999px; font-weight: 800; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; border-color: #3b82f6; color: #2563eb; background: #eff6ff;">
-                                <span>👥</span> Switch / Manage Student Profile
-                            </button>
-                        </div>
-                        <div class="avatar-upload-container" style="text-align: center; margin-bottom: 10px;">
-                            <label style="cursor: pointer; display: inline-block;" title="Upload your picture!">
-                                <div style="width: 70px; height: 70px; border-radius: 50%; background: #e2e8f0; border: 2px dashed #94a3b8; display: flex; align-items: center; justify-content: center; overflow: hidden; margin: 0 auto; position: relative;">
-                                    <img class="avatar-preview" src="" style="width: 100%; height: 100%; object-fit: cover; display: none; position: absolute; inset:0;">
-                                    <span class="avatar-placeholder" style="font-size: 2rem;">👤</span>
-                                </div>
-                                <input type="file" accept="image/*" class="avatar-input" style="display: none;">
-                                <div style="font-size: 0.8rem; color: #64748b; margin-top: 4px; font-weight: bold;">+ Photo (Optional)</div>
-                            </label>
-                        </div>
-                        <input type="text" id="student-name" class="name-input" placeholder="Enter Your Name" autocomplete="off" maxlength="15" spellcheck="false" style="max-width:350px;">
-                        <p id="name-error" class="name-error" role="alert" hidden></p>
-                    </div>
 
-                    <div style="margin-bottom: 25px;">
-                        <label style="display:block; font-size: 1.1rem; font-weight: 800; color: #475569; margin-bottom: 8px;">2. Select Tajweed Realms & Sub-Rules</label>
-                        <div id="rules-container">
-                            <!-- Populated dynamically by RuleSelectorEngine with Arcade Stage Arena -->
-                        </div>
-                        <input type="hidden" id="custom-qty-input" value="0">
-                        <span id="total-available-lbl" style="display:none;">0</span>
-                    </div>
+                    <p id="name-error" class="name-error" role="alert" hidden></p>
 
-                    <div style="margin-bottom: 25px; background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-                        <span style="font-size: 1.05rem; font-weight: 800; color: #475569;">3. Timer per Question</span>
-                        <select id="timer-select" style="padding: 8px 14px; font-size:1rem; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:800; color:#334155; background:white;">
-                            <option value="60">⏱️ 60 seconds</option>
-                            <option value="45">⏱️ 45 seconds</option>
-                            <option value="30">⏱️ 30 seconds</option>
-                            <option value="15" selected>⏱️ 15 seconds</option>
-                        </select>
+                    <div id="rules-container" style="width: 100%;">
+                        <!-- Populated dynamically by RuleSelectorEngine with Arcade Stage Arena -->
                     </div>
+                    <input type="hidden" id="custom-qty-input" value="0">
+                    <span id="total-available-lbl" style="display:none;">0</span>
 
-                    <p id="setup-error" class="name-error" style="text-align: center; margin-bottom: 15px;" hidden></p>
+                    <p id="setup-error" class="name-error" style="text-align: center; margin: 4px 0;" hidden></p>
                     
-                    <button id="btn-start-game" class="btn-start" style="width: 100%; max-width: none; padding: 2vh 0; font-size: 1.5rem; background: #2563eb; box-shadow: 0 6px 0 #1d4ed8; font-weight: 900; letter-spacing: 0.5px;">Start Game 🚀</button>
+                    <button id="btn-start-game" class="btn-start" style="width: 100%; max-width: none; padding: 14px 0; font-size: 1.35rem; background: #2563eb; box-shadow: 0 5px 0 #1d4ed8; font-weight: 900; letter-spacing: 0.5px; border-radius: 14px;">
+                        Start Challenge Now 🚀
+                    </button>
                 </div>
             </div>
         </section>
