@@ -57,6 +57,25 @@ window.GC_STATE = {
   // Mistake Bank Operations
   getMistakes() {
     try {
+      if (typeof window !== 'undefined' && window.StudentEngine) {
+        const active = window.StudentEngine.getActiveStudent();
+        if (active && Array.isArray(active.mistakes) && active.mistakes.length > 0) {
+          return active.mistakes.map(m => ({
+            question: {
+              id: m.qId || m.id || ('q_' + Math.random().toString(36).substring(2, 6)),
+              text: m.text || m.prompt || '',
+              src: m.src || m.image || '',
+              image: m.image || m.src || '',
+              ans: m.ans || m.correctAns || '',
+              prompt: m.prompt || 'What is the Tajweed rule in this example?',
+              categoryId: m.categoryId || 'qalqalah',
+              categoryName: m.rule || m.categoryId || 'Tajweed',
+              explanation: m.explanation || ''
+            },
+            userChoice: m.userAns || ''
+          }));
+        }
+      }
       const data = localStorage.getItem(this.mistakeBankKey);
       return data ? JSON.parse(data) : [];
     } catch (e) {

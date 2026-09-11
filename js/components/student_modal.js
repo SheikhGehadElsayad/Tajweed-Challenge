@@ -237,6 +237,14 @@
                             <span style="font-size:0.75rem; color:#94a3b8;">بمجرد أن يحل الطالب الواجب ويرسل النتيجة وتضغط على رابط الحفظ السحري، ستظهر هنا فوراً!</span>
                         </div>
                     `}
+
+                    ${(active?.mistakes && active.mistakes.length > 0) ? `
+                        <div style="margin-top:10px; display:flex; gap:8px; justify-content:flex-end;">
+                            <button type="button" id="sm-btn-practice-mistakes" style="background:#8b5cf6; color:white; border:none; padding:8px 14px; border-radius:10px; font-weight:800; font-size:0.85rem; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:0 3px 0 #7c3aed;">
+                                <span>🎮</span> تمرن على أخطاء الطالب (${active.mistakes.length}) في مركز الألعاب
+                            </button>
+                        </div>
+                    ` : ''}
                 </div>
 
                 <div class="sm-roster-header">
@@ -289,6 +297,14 @@
             });
             container.querySelector('#sm-btn-quick-add')?.addEventListener('click', () => {
                 this.open('form', null);
+            });
+
+            container.querySelector('#sm-btn-practice-mistakes')?.addEventListener('click', () => {
+                this.close();
+                if (typeof switchScreen === 'function') switchScreen('screen-game-center');
+                if (typeof window.GC_UI !== 'undefined') {
+                    window.GC_UI.openSetupModal('cards', true);
+                }
             });
 
             container.querySelectorAll('.sm-btn-select-std').forEach(btn => {
