@@ -444,10 +444,10 @@
 
         getCreatorInfo() {
             return {
-                name: 'الشيخ جهاد الصياد',
+                name: 'Sheikh Gehad Elsayad',
                 nameEn: 'Sheikh Gehad Elsayad',
-                title: 'مؤسس ومعد تطبيق تجويد تشالنج',
-                brandingText: 'تطبيق تجويد تشالنج | إعداد وإشراف: الشيخ جهاد الصياد'
+                title: 'Creator & Supervisor of Tajweed Challenge',
+                brandingText: 'Tajweed Challenge | Supervised & Developed by Sheikh Gehad Elsayad'
             };
         }
 
@@ -456,12 +456,17 @@
                 const saved = localStorage.getItem('tajweed_teacher_info');
                 if (saved) {
                     const parsed = JSON.parse(saved);
-                    if (parsed && parsed.name) return parsed;
+                    if (parsed && parsed.name) {
+                        if (parsed.name.includes('جهاد') || parsed.name.includes('الصياد')) {
+                            parsed.name = 'Sheikh Gehad Elsayad';
+                        }
+                        return parsed;
+                    }
                 }
             } catch (e) {}
 
             return {
-                name: 'الشيخ جهاد الصياد',
+                name: 'Sheikh Gehad Elsayad',
                 whatsapp: '+201099684126', // Sheikh Gehad default
                 email: 'gehadnagah789@gmail.com'
             };
