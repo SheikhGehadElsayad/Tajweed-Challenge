@@ -335,11 +335,18 @@ const appContainer = document.createElement('div');
                 </div>
 
                 <!-- Free Practice Top Navigation & Reaction Controls -->
-                <div class="top-nav-controls" id="top-nav-controls" style="display: none; align-items: center; gap: 8px;">
-                    <button class="nav-arrow top-arrow" id="btn-prev" aria-label="Previous Question" title="Previous Question">❮ Prev</button>
-                    <span id="top-nav-counter" style="font-weight: 900; font-size: 0.95rem; color: #1e293b; background: white; padding: 4px 10px; border-radius: 8px; border: 1.5px solid #cbd5e1;">1 / 20</span>
-                    <button class="nav-arrow top-arrow" id="btn-next" aria-label="Next Question" title="Next Question">Next ❯</button>
-                    <button class="mascot top-mascot-btn" id="mascot" aria-label="Reaction Emoji" title="Reaction Emoji" style="margin: 0; width: 38px; height: 38px; font-size: 1.4rem; cursor: pointer;">😃</button>
+                <div class="top-nav-controls" id="top-nav-controls" style="display: none; align-items: center; gap: 10px;">
+                    <button class="nav-arrow top-arrow long-nav-arrow" id="btn-prev" aria-label="Previous Question" title="Previous Question">
+                        <svg width="30" height="16" viewBox="0 0 30 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+                            <path d="M28 8H2M2 8L9 1.5M2 8L9 14.5" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="mascot top-mascot-btn" id="mascot" aria-label="Reaction Mascot" title="Reaction Mascot">😃</button>
+                    <button class="nav-arrow top-arrow long-nav-arrow" id="btn-next" aria-label="Next Question" title="Next Question">
+                        <svg width="30" height="16" viewBox="0 0 30 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+                            <path d="M2 8H28M28 8L21 1.5M28 8L21 14.5" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
                 </div>
 
                 <div class="hud-stats" id="hud-stats" aria-label="Game Statistics">
