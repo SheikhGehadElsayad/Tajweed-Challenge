@@ -1629,25 +1629,6 @@ html, body {
     margin: 0 !important;
 }
 
-/* ==========================================================================
-   9. PRACTICE MODE SETUP SCREEN SCALE (130% - 135% AUTO-ENLARGED)
-   ========================================================================== */
-#screen-start {
-    zoom: 1.32;
-}
-
-@supports not (zoom: 1.32) {
-    #screen-start {
-        font-size: 132%;
-    }
-}
-
-#screen-start .start-container {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
 @media (max-width: 768px) {
     .arena-realm-dropdown {
         font-size: 1.05rem;
@@ -1662,119 +1643,20 @@ html, body {
 }
 
 /* ==========================================================================
-   10. ENLARGED QUIZ GAMEPLAY SCREEN (LARGE, CLEAR & PROMINENT)
+   9. TOP HEADER LONG NAV ARROWS & CENTRAL REACTION MASCOT
    ========================================================================== */
-#screen-game {
-    zoom: 1.15;
-    width: 100%;
-    height: auto !important;
-    min-height: 100vh !important;
-    overflow-y: auto !important;
-}
-
-@supports not (zoom: 1.15) {
-    #screen-game {
-        font-size: 115%;
-    }
-}
-
-#screen-game .game-wrapper {
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#screen-game .main-stage {
-    width: 96vw !important;
-    max-width: 1200px !important;
-    padding: 8px 12px !important;
-    gap: 16px !important;
-}
-
-#screen-game .question-card {
-    width: 100% !important;
-    max-width: 1160px !important;
-    padding: 18px 24px 22px 24px !important;
-    border-radius: 1.5rem !important;
-    border-width: 3.5px !important;
-    box-shadow: 0 8px 25px -4px rgba(56, 189, 248, 0.2) !important;
-}
-
-#screen-game .q-label-top {
-    font-size: clamp(1.4rem, 2.5vw, 1.95rem) !important;
-    font-weight: 900 !important;
-    color: #0f172a !important;
-    margin-bottom: 8px !important;
-}
-
-#screen-game #q-text {
-    min-height: clamp(160px, 25vh, 260px) !important;
-    max-height: clamp(220px, 40vh, 360px) !important;
-    padding: 8px 12px 18px 12px !important;
-}
-
-#screen-game .q-img {
-    max-height: clamp(180px, 34vh, 320px) !important;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1)) !important;
-    border-radius: 12px !important;
-}
-
-#screen-game .explanation-box {
-    font-size: clamp(1.05rem, 1.4vw, 1.25rem) !important;
-    padding: 10px 20px !important;
-    border-radius: 14px !important;
-    line-height: 1.6 !important;
-    max-width: 1000px !important;
-}
-
-#screen-game .answers-row {
-    width: 100% !important;
-    max-width: 1160px !important;
-    gap: 16px !important;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
-    grid-auto-rows: 1fr !important;
-}
-
-#screen-game .ans-card {
-    min-height: clamp(74px, 10vh, 94px) !important;
-    padding: 16px 22px !important;
-    border-radius: 1.35rem !important;
-    box-shadow: 0 5px 0 #1d4ed8 !important;
-}
-
-#screen-game .ans-text {
-    font-size: clamp(1.2rem, 1.8vw, 1.55rem) !important;
-    font-weight: 900 !important;
-}
-
-#screen-game #next-action-container {
-    max-width: 440px !important;
-    margin-top: 12px !important;
-}
-
-#screen-game #btn-next-action {
-    padding: 12px 32px !important;
-    font-size: 1.35rem !important;
-    border-radius: 1rem !important;
-    box-shadow: 0 5px 0 #047857 !important;
-}
-
-/* Long Arrow Navigation Buttons & Mascot in Header */
 .long-nav-arrow {
-    width: 62px !important;
-    height: 38px !important;
+    width: 48px !important;
+    height: 26px !important;
     border-radius: 9999px !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     background: white !important;
-    border: 2px solid #cbd5e1 !important;
+    border: 1.5px solid #cbd5e1 !important;
     color: #1e293b !important;
     cursor: pointer !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
     transition: all 0.15s ease !important;
     padding: 0 !important;
     flex-shrink: 0 !important;
@@ -1785,12 +1667,10 @@ html, body {
     border-color: #3b82f6 !important;
     color: #2563eb !important;
     transform: translateY(-1px) !important;
-    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2) !important;
 }
 
 .long-nav-arrow:active:not(:disabled) {
     transform: translateY(1px) !important;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
 }
 
 .long-nav-arrow:disabled {
@@ -1800,16 +1680,16 @@ html, body {
 }
 
 .top-mascot-btn {
-    width: 44px !important;
-    height: 44px !important;
-    font-size: 1.8rem !important;
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 1.25rem !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     background: white !important;
-    border: 2px solid #cbd5e1 !important;
+    border: 1.5px solid #cbd5e1 !important;
     border-radius: 50% !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
     cursor: pointer !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -1818,7 +1698,8 @@ html, body {
 }
 
 .top-mascot-btn:hover {
-    transform: scale(1.15) !important;
+    transform: scale(1.1) !important;
 }
+
 
 

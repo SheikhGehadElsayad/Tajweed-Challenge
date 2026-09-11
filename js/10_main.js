@@ -335,7 +335,7 @@ const appContainer = document.createElement('div');
                 </div>
 
                 <!-- Free Practice Top Navigation & Reaction Controls -->
-                <div class="top-nav-controls" id="top-nav-controls" style="display: none; align-items: center; gap: 10px;">
+                <div class="top-nav-controls" id="top-nav-controls" style="display: none; align-items: center; gap: 6px;">
                     <button class="nav-arrow top-arrow long-nav-arrow" id="btn-prev" aria-label="Previous Question" title="Previous Question">
                         <svg width="30" height="16" viewBox="0 0 30 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
                             <path d="M28 8H2M2 8L9 1.5M2 8L9 14.5" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
