@@ -192,9 +192,9 @@
                 <div class="sm-homework-section" style="margin: 15px 0; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <h4 style="margin:0; font-weight:900; color:#1e293b; font-size:1rem; display:flex; align-items:center; gap:6px;">
-                            <span>📝</span> سجل الواجبات المنزلية (${activeHws.length})
+                            <span>📝</span> Homework History (${activeHws.length})
                         </h4>
-                        <span style="font-size:0.75rem; color:#64748b; font-weight:700;">المستوردة تلقائياً عبر واتساب / جيميل</span>
+                        <span style="font-size:0.75rem; color:#64748b; font-weight:700;">Synced via WhatsApp / Gmail</span>
                     </div>
 
                     ${activeHws.length > 0 ? `
@@ -208,40 +208,40 @@
                                         </span>
                                     </div>
                                     <div style="font-size:0.8rem; color:#64748b; margin-top:4px;">
-                                        ⏱️ وقت الحل: ${hw.timeSpent}ث | المعلم: ${hw.teacherName || 'الشيخ جهاد'}
+                                        ⏱️ Time: ${hw.timeSpent}s | Teacher: ${hw.teacherName || 'Sheikh Gehad'}
                                     </div>
                                     ${hw.mistakes && hw.mistakes.length > 0 ? `
                                         <details style="margin-top:6px; font-size:0.8rem; border-top:1px dashed #e2e8f0; padding-top:6px;">
                                             <summary style="cursor:pointer; font-weight:800; color:#ef4444;">
-                                                ❌ أخطاء الواجب (${hw.mistakes.length} أسئلة)
+                                                ❌ Review Mistakes (${hw.mistakes.length} questions)
                                             </summary>
                                             <div style="display:flex; flex-direction:column; gap:6px; margin-top:6px;">
                                                 ${hw.mistakes.map((m) => `
                                                     <div style="background:#fff1f2; border:1px solid #fecdd3; border-radius:6px; padding:6px;">
-                                                        <div style="font-weight:800; color:#9f1239;">[${m.rule || 'حكم'}] ${m.prompt || ''} ${m.text || ''}</div>
-                                                        <div style="color:#b91c1c;">إجابة الطالب: <strong>${m.userAns} ❌</strong></div>
-                                                        <div style="color:#15803d;">الإجابة الصحيحة: <strong>${m.correctAns} ✅</strong></div>
+                                                        <div style="font-weight:800; color:#9f1239;">[${m.rule || 'Rule'}] ${m.prompt || ''} ${m.text || ''}</div>
+                                                        <div style="color:#b91c1c;">Student's Choice: <strong>${m.userAns} ❌</strong></div>
+                                                        <div style="color:#15803d;">Correct Answer: <strong>${m.correctAns} ✅</strong></div>
                                                     </div>
                                                 `).join('')}
                                             </div>
                                         </details>
                                     ` : `
-                                        <div style="margin-top:4px; font-size:0.75rem; color:#10b981; font-weight:800;">🌟 واجب مثالي بدون أي أخطاء!</div>
+                                        <div style="margin-top:4px; font-size:0.75rem; color:#10b981; font-weight:800;">🌟 Perfect assignment with zero mistakes!</div>
                                     `}
                                 </div>
                             `).join('')}
                         </div>
                     ` : `
                         <div style="text-align:center; padding:12px; color:#64748b; font-size:0.85rem; font-weight:700;">
-                            لا توجد واجبات مسجلة لهذا الطالب بعد.<br>
-                            <span style="font-size:0.75rem; color:#94a3b8;">بمجرد أن يحل الطالب الواجب ويرسل النتيجة وتضغط على رابط الحفظ السحري، ستظهر هنا فوراً!</span>
+                            No homework records for this student yet.<br>
+                            <span style="font-size:0.75rem; color:#94a3b8;">Once the student submits homework and you click the sync link, it will appear here automatically.</span>
                         </div>
                     `}
 
                     ${(active?.mistakes && active.mistakes.length > 0) ? `
                         <div style="margin-top:10px; display:flex; gap:8px; justify-content:flex-end;">
                             <button type="button" id="sm-btn-practice-mistakes" style="background:#8b5cf6; color:white; border:none; padding:8px 14px; border-radius:10px; font-weight:800; font-size:0.85rem; cursor:pointer; display:flex; align-items:center; gap:6px; box-shadow:0 3px 0 #7c3aed;">
-                                <span>🎮</span> تمرن على أخطاء الطالب (${active.mistakes.length}) في مركز الألعاب
+                                <span>🎮</span> Practice Student Mistakes (${active.mistakes.length}) in Game Center
                             </button>
                         </div>
                     ` : ''}
@@ -585,40 +585,40 @@
                         <div style="display:flex; align-items:center; gap:10px;">
                             <span style="font-size:2rem;">👑</span>
                             <div>
-                                <div style="font-weight:900; font-size:1.15rem;">تطبيق تجويد تشالنج - Tajweed Challenge</div>
-                                <div style="font-weight:700; font-size:0.95rem; opacity:0.95;">إشراف وتطوير: ${creator.name} (Sheikh Gehad Elsayad)</div>
+                                <div style="font-weight:900; font-size:1.15rem;">Tajweed Challenge Platform</div>
+                                <div style="font-weight:700; font-size:0.95rem; opacity:0.95;">Supervised & Developed by: ${creator.name} (Sheikh Gehad Elsayad)</div>
                             </div>
                         </div>
                         <div style="font-size:0.8rem; margin-top:8px; opacity:0.85; line-height:1.4;">
-                            المنصة صُممت لخدمة معلمين وطلاب القرآن الكريم في كافة أنحاء العالم. البيانات الموضحة أدناه تتيح لكل معلم تخصيص اسمه ورقم واتسابه وإيميله لاستقبال واجبات طلابه مباشرة، مع الحفاظ الدائم على حقوق ملكية وتطوير المنصة للشيخ جهاد الصياد.
+                            Designed for Quran teachers and students worldwide. Customize your teacher profile below to receive homework submissions directly on your personal WhatsApp and Gmail, while preserving Sheikh Gehad Elsayad's original creator attribution.
                         </div>
                     </div>
 
                     <!-- Teacher Customization Form -->
                     <div style="background:white; border:2px solid #e2e8f0; border-radius:14px; padding:18px;">
                         <h4 style="margin:0 0 12px 0; color:#1e293b; font-size:1.05rem; font-weight:900; display:flex; align-items:center; gap:8px;">
-                            <span>⚙️</span> تخصيص بيانات المعلم لاستقبال الواجبات
+                            <span>⚙️</span> Teacher Profile & Homework Delivery Settings
                         </h4>
 
                         <div style="display:flex; flex-direction:column; gap:12px;">
                             <div>
-                                <label style="display:block; font-weight:800; color:#475569; font-size:0.85rem; margin-bottom:4px;">اسم المعلم (كما سيظهر للطلاب في الواجب):</label>
+                                <label style="display:block; font-weight:800; color:#475569; font-size:0.85rem; margin-bottom:4px;">Teacher Name (displayed to students in homework):</label>
                                 <input type="text" id="sm-teacher-name" value="${teacher.name}" style="width:100%; padding:10px; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:700;">
                             </div>
 
                             <div>
-                                <label style="display:block; font-weight:800; color:#475569; font-size:0.85rem; margin-bottom:4px;">رقم واتساب المعلم (مع كود الدولة مثل +2010...):</label>
+                                <label style="display:block; font-weight:800; color:#475569; font-size:0.85rem; margin-bottom:4px;">Teacher WhatsApp Number (with country code, e.g. +2010...):</label>
                                 <input type="text" id="sm-teacher-wa" value="${teacher.whatsapp}" placeholder="+201012345678" style="width:100%; padding:10px; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:700;">
-                                <span style="font-size:0.75rem; color:#64748b;">سيتم إرسال تقارير الواجبات وأخطاء الطلاب إلى هذا الرقم مباشرة عند ضغط الطالب على زر واتساب.</span>
+                                <span style="font-size:0.75rem; color:#64748b;">Homework results and student mistake reports will be delivered to this WhatsApp number when students click Submit via WhatsApp.</span>
                             </div>
 
                             <div>
-                                <label style="display:block; font-weight:800; color:#475569; font-size:0.85rem; margin-bottom:4px;">إيميل المعلم (Gmail):</label>
+                                <label style="display:block; font-weight:800; color:#475569; font-size:0.85rem; margin-bottom:4px;">Teacher Gmail / Email Address:</label>
                                 <input type="email" id="sm-teacher-gm" value="${teacher.email}" placeholder="teacher@gmail.com" style="width:100%; padding:10px; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:700;">
                             </div>
 
                             <button type="button" id="sm-btn-save-teacher" style="margin-top:8px; background:#2563eb; color:white; font-weight:800; font-size:1rem; padding:12px; border-radius:10px; border:none; cursor:pointer; box-shadow:0 3px 0 #1d4ed8;">
-                                💾 حفظ بيانات المعلم
+                                💾 Save Teacher Settings
                             </button>
                         </div>
                     </div>
@@ -631,7 +631,7 @@
                 const email = container.querySelector('#sm-teacher-gm')?.value;
 
                 window.StudentEngine.saveTeacherInfo({ name, whatsapp, email });
-                alert('✅ تم حفظ وتحديث بيانات المعلم بنجاح! سيتم تضمين هذه البيانات في كل روابط الواجبات القادمة.');
+                alert('✅ Teacher profile saved successfully! These details will be included in all future homework assignment links.');
             });
         }
 

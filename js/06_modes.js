@@ -662,7 +662,7 @@ function generateHWLink() {
     }
     if (copyBtn) {
         copyBtn.style.display = 'block';
-        copyBtn.innerHTML = '📋 نسخ الرابط لشات زوم';
+        copyBtn.innerHTML = '📋 Copy Link';
         copyBtn.onclick = () => {
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(linkStr);
@@ -670,8 +670,8 @@ function generateHWLink() {
                 out.select();
                 document.execCommand('copy');
             }
-            copyBtn.innerHTML = '✅ تم النسخ لشات زوم!';
-            setTimeout(() => { copyBtn.innerHTML = '📋 نسخ الرابط لشات زوم'; }, 2500);
+            copyBtn.innerHTML = '✅ Link Copied!';
+            setTimeout(() => { copyBtn.innerHTML = '📋 Copy Link'; }, 2500);
         };
     }
 }
@@ -700,7 +700,7 @@ function parseURLModes() {
 
             const qty = parseInt(params.get('q') || '10', 10);
             const timer = parseInt(params.get('t') || '15', 10);
-            const teacherName = params.get('tc') || 'الشيخ جهاد الصياد';
+            const teacherName = params.get('tc') || 'Sheikh Gehad Elsayad';
             const teacherWa = params.get('wa') || '+201099684126';
             const teacherGm = params.get('gm') || 'gehadnagah789@gmail.com';
 
@@ -724,14 +724,14 @@ function parseURLModes() {
             const titleEl = document.getElementById('start-title');
             if (titleEl) {
                 titleEl.innerHTML = `
-                    <div style="font-size:1.6rem; color:#1e293b; font-weight:900;">📝 واجب مخصص للطلاب</div>
-                    <div style="font-size:1rem; color:#2563eb; font-weight:800; margin-top:4px;">👨‍🏫 المعلم: ${teacherName}</div>
-                    <div style="font-size:0.8rem; color:#64748b; font-weight:700; margin-top:2px;">إعداد وتطوير: الشيخ جهاد الصياد 📖</div>
+                    <div style="font-size:1.6rem; color:#1e293b; font-weight:900;">📝 Homework Assignment</div>
+                    <div style="font-size:1rem; color:#2563eb; font-weight:800; margin-top:4px;">👨‍🏫 Teacher: ${teacherName}</div>
+                    <div style="font-size:0.8rem; color:#64748b; font-weight:700; margin-top:2px;">Developed & Supervised by Sheikh Gehad Elsayad 📖</div>
                 `;
             }
 
             const startBtn = document.getElementById('btn-start-game');
-            if (startBtn) startBtn.textContent = "ابدأ حل الواجب 🚀";
+            if (startBtn) startBtn.textContent = "Start Homework 🚀";
 
             // Hide rule selection for student so they focus directly on playing
             const rulesBox = document.getElementById('cb-all-rules')?.parentElement?.parentElement?.parentElement;
@@ -764,7 +764,7 @@ function parseURLModes() {
                     total: data.tot || (data.s + (data.m ? data.m.length : 0)),
                     accuracy: data.a || 0,
                     timeSpent: data.t || 0,
-                    teacherName: data.tc || 'الشيخ جهاد الصياد',
+                    teacherName: data.tc || 'Sheikh Gehad Elsayad',
                     rules: data.r || [],
                     mistakes: data.m || []
                 });
@@ -780,7 +780,7 @@ function parseURLModes() {
                     if (typeof confetti !== 'undefined') {
                         confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
                     }
-                    alert(`🎉 تم بنجاح تسجيل نتيجة واجب الطالب [${data.n}] وتحديث بروفايله وبنك أخطائه على المنصة!`);
+                    alert(`🎉 Successfully saved homework for student [${data.n}]! Profile & mistake bank updated.`);
                 }, 400);
             }
         } catch(e) {

@@ -105,46 +105,46 @@ function finishAndShowReport(earlyExit = false) {
                 // Build WhatsApp & Email formatted message
                 let mistakesText = "";
                 if (cleanMistakes.length > 0) {
-                    mistakesText = "❌ تفاصيل الأخطاء التي وقع فيها الطالب:\n" + cleanMistakes.map((m, i) => 
-                        `${i + 1}. [${m.rule}] ${m.prompt || ''} ${m.text || ''}\n   - إجابة الطالب: ${m.userAns} ❌\n   - الإجابة الصحيحة: ${m.correctAns} ✅`
+                    mistakesText = "❌ Mistakes Review:\n" + cleanMistakes.map((m, i) => 
+                        `${i + 1}. [${m.rule}] ${m.prompt || ''} ${m.text || ''}\n   - Student's Answer: ${m.userAns} ❌\n   - Correct Answer: ${m.correctAns} ✅`
                     ).join('\n');
                 } else {
-                    mistakesText = "🌟 أداء ممتاز ومثالي! تم حل جميع الأسئلة بشكل صحيح 100% بدون أي أخطاء! 🎉";
+                    mistakesText = "🌟 Outstanding! 100% Perfect score with zero mistakes! 🎉";
                 }
 
                 const reportMsg = 
-`📖 تطبيق تجويد تشالنج | إعداد وتطوير: الشيخ جهاد الصياد
+`📖 Tajweed Challenge | Supervised & Developed by Sheikh Gehad Elsayad
 =====================================
-📝 تقرير إنجاز الواجب المنزلي
-👤 الطالب: ${session.studentName}
-👨‍🏫 المعلم: ${teacher.name}
-🎯 النتيجة: ${correctCount} من ${totalQs} (${accuracy}%)
-⏱️ الوقت المستغرق: ${timeSec} ثانية
+📝 Homework Assignment Report
+👤 Student: ${session.studentName}
+👨‍🏫 Teacher: ${teacher.name}
+🎯 Score: ${correctCount} of ${totalQs} (${accuracy}%)
+⏱️ Time: ${timeSec} seconds
 -------------------------------------
 ${mistakesText}
 -------------------------------------
-🔗 لحفظ الواجب في بروفايل الطالب بالمنصة بنقرة واحدة:
+🔗 Click here to save results to student profile:
 ${magicSyncLink}`;
 
                 // Render multi-channel delivery bar
                 subParent.innerHTML = `
                     <div style="width:100%; display:flex; flex-direction:column; gap:10px; background:#f8fafc; border:2px solid #e2e8f0; border-radius:16px; padding:16px; box-shadow:0 4px 12px rgba(0,0,0,0.05);">
                         <div style="font-size:1.1rem; font-weight:900; color:#1e293b; text-align:center;">
-                            📤 إرسال تقرير الواجب إلى المعلم (${teacher.name})
+                            📤 Submit Homework Report to Teacher (${teacher.name})
                         </div>
                         <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:10px; margin-top:5px;">
                             <button id="btn-hw-wa" type="button" style="background:#25d366; color:white; font-weight:800; font-size:1rem; padding:12px 16px; border-radius:12px; border:none; cursor:pointer; box-shadow:0 3px 0 #1ea952; display:flex; align-items:center; justify-content:center; gap:8px;">
-                                <span>📲</span> إرسال عبر واتساب
+                                <span>📲</span> Send via WhatsApp
                             </button>
                             <button id="btn-hw-gm" type="button" style="background:#ea4335; color:white; font-weight:800; font-size:1rem; padding:12px 16px; border-radius:12px; border:none; cursor:pointer; box-shadow:0 3px 0 #c5221f; display:flex; align-items:center; justify-content:center; gap:8px;">
-                                <span>✉️</span> إرسال عبر جيميل
+                                <span>✉️</span> Send via Gmail
                             </button>
                             <button id="btn-hw-zm" type="button" style="background:#2563eb; color:white; font-weight:800; font-size:1rem; padding:12px 16px; border-radius:12px; border:none; cursor:pointer; box-shadow:0 3px 0 #1d4ed8; display:flex; align-items:center; justify-content:center; gap:8px;">
-                                <span>📋</span> نسخ لشات زوم
+                                <span>📋</span> Copy Report
                             </button>
                         </div>
                         <div style="font-size:0.78rem; color:#64748b; text-align:center; margin-top:2px;">
-                            ✨ تطبيق تجويد تشالنج - إشراف وإعداد: الشيخ جهاد الصياد | Sheikh Gehad Elsayad
+                            ✨ Tajweed Challenge | Supervised & Developed by Sheikh Gehad Elsayad
                         </div>
                     </div>
                 `;
@@ -165,23 +165,23 @@ ${magicSyncLink}`;
                 const gmBtn = subParent.querySelector('#btn-hw-gm');
                 if (gmBtn) {
                     gmBtn.onclick = () => {
-                        const subject = `تقرير واجب تجويد تشالنج - الطالب: ${session.studentName} (${accuracy}%)`;
+                        const subject = `Tajweed Challenge HW Report - ${session.studentName} (${accuracy}%)`;
                         const targetEmail = teacher.email || 'gehadnagah789@gmail.com';
                         const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(targetEmail)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(reportMsg)}`;
                         window.open(gmailUrl, '_blank');
                     };
                 }
 
-                // 3. Zoom Button
+                // 3. General Copy Button
                 const zmBtn = subParent.querySelector('#btn-hw-zm');
                 if (zmBtn) {
                     zmBtn.onclick = () => {
                         if (navigator.clipboard && navigator.clipboard.writeText) {
                             navigator.clipboard.writeText(reportMsg);
                         }
-                        zmBtn.innerHTML = '<span>✅</span> تم النسخ لشات زوم!';
+                        zmBtn.innerHTML = '<span>✅</span> Report Copied!';
                         setTimeout(() => {
-                            zmBtn.innerHTML = '<span>📋</span> نسخ لشات زوم';
+                            zmBtn.innerHTML = '<span>📋</span> Copy Report';
                         }, 2500);
                     };
                 }
