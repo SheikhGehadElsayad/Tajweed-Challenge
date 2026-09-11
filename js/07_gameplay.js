@@ -245,9 +245,11 @@
             updateHUD(); 
 
             // Play Sheikh's audio pronunciation if available
+            clearTimeout(window._audioPlayTimeout);
             if (q._audioObj && (typeof isMuted === 'undefined' || !isMuted)) {
                 try {
-                    setTimeout(() => {
+                    window._audioPlayTimeout = setTimeout(() => {
+                        window.currentPlayingAudio = q._audioObj;
                         q._audioObj.currentTime = 0;
                         q._audioObj.play().catch(() => {});
                     }, 400);
@@ -315,6 +317,7 @@
         }
 
         function nextQuestion() {
+            if (typeof window.stopAllActiveAudio === 'function') window.stopAllActiveAudio();
             clearTimeout(window.autoAdvanceTimer);
             const nextActionBox = document.getElementById('next-action-container');
             if (nextActionBox) nextActionBox.style.display = 'none';

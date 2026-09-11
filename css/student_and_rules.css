@@ -1414,54 +1414,90 @@
     flex-shrink: 0;
 }
 
-.mc-easy-controls {
+.mc-two-options-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
     padding-top: 10px;
-    border-top: 1px dashed #e2e8f0;
+    border-top: 1.5px dashed #e2e8f0;
     flex-wrap: wrap;
 }
 
-.mc-choice-label {
+.mc-custom-qty-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 4px 10px;
+}
+
+.mc-opt-label {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #475569;
+}
+
+.mc-qty-direct-input {
+    width: 52px;
+    height: 36px;
+    border: 2px solid #94a3b8;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.05rem;
+    font-weight: 900;
+    color: #1e40af;
+    background: white;
+    outline: none;
+    padding: 0 4px;
+    box-sizing: border-box;
+    transition: border-color 0.15s;
+}
+
+.mc-qty-direct-input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.mc-opt-max {
     font-size: 0.82rem;
     font-weight: 800;
     color: #64748b;
+    white-space: nowrap;
 }
 
-.mc-presets {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-}
-
-.mc-preset-btn {
-    padding: 6px 14px;
-    border-radius: 8px;
-    border: 1.5px solid #cbd5e1;
+.mc-max-all-btn {
+    padding: 8px 18px;
+    border-radius: 10px;
+    border: 2px solid #cbd5e1;
     background: white;
-    font-weight: 800;
-    font-size: 0.86rem;
+    font-weight: 900;
+    font-size: 0.92rem;
     color: #334155;
     cursor: pointer;
-    transition: all 0.12s ease;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
-.mc-preset-btn:hover {
+.mc-max-all-btn:hover {
     background: #eff6ff;
     border-color: #93c5fd;
     color: #2563eb;
+    transform: translateY(-1px);
 }
 
-.mc-preset-btn.active {
+.mc-max-all-btn.active {
     background: var(--world-color, #2563eb);
     color: white;
     border-color: var(--world-color, #2563eb);
-    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
 }
 
-/* Arena HUD Footer (Full Width, High Contrast) */
+/* Arena HUD Footer (Displays Total Questions & Hero Start Button Only) */
 .arena-hud-bar {
     display: flex;
     justify-content: space-between;
@@ -1496,7 +1532,7 @@
 }
 
 .hud-val {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 900;
     color: #38bdf8;
     text-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
@@ -1506,45 +1542,6 @@
     font-size: 1rem;
     font-weight: 800;
     color: #a7f3d0;
-}
-
-.arena-hud-presets {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.hud-preset-label {
-    font-size: 0.82rem;
-    font-weight: 800;
-    color: #94a3b8;
-    margin-right: 4px;
-}
-
-.hud-chip {
-    background: rgba(255, 255, 255, 0.1);
-    color: #e2e8f0;
-    border: 1.5px solid rgba(255, 255, 255, 0.25);
-    border-radius: 10px;
-    padding: 6px 14px;
-    font-weight: 800;
-    font-size: 0.88rem;
-    cursor: pointer;
-    transition: all 0.15s ease;
-}
-
-.hud-chip:hover {
-    background: rgba(255, 255, 255, 0.22);
-    border-color: rgba(255, 255, 255, 0.4);
-    color: white;
-}
-
-.hud-chip.active {
-    background: #3b82f6;
-    border-color: #60a5fa;
-    color: white;
-    box-shadow: 0 0 14px rgba(59, 130, 246, 0.45);
 }
 
 .arena-hero-btn {
@@ -1599,6 +1596,56 @@ html, body {
     height: auto !important;
     min-height: 100vh !important;
     padding-bottom: 90px !important;
+}
+
+/* ==========================================================================
+   8. EQUAL-SIZED QUIZ & INTERACTIVE CHOICES (TOP & BOTTOM EQUAL SIZE)
+   ========================================================================== */
+.answers-row,
+.gc-quiz-answers-row,
+#choices-container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    grid-auto-rows: 1fr !important;
+    gap: clamp(10px, 1.4vw, 16px) !important;
+    width: 100% !important;
+    max-width: 980px !important;
+    justify-content: stretch !important;
+    align-items: stretch !important;
+    box-sizing: border-box !important;
+}
+
+.ans-card,
+.gc-quiz-ans-btn {
+    height: 100% !important;
+    min-height: clamp(64px, 8.5vh, 80px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    padding: clamp(10px, 1.4vh, 16px) clamp(12px, 1.6vw, 20px) !important;
+    margin: 0 !important;
+}
+
+/* ==========================================================================
+   9. PRACTICE MODE SETUP SCREEN SCALE (130% - 135% AUTO-ENLARGED)
+   ========================================================================== */
+#screen-start {
+    zoom: 1.32;
+}
+
+@supports not (zoom: 1.32) {
+    #screen-start {
+        font-size: 132%;
+    }
+}
+
+#screen-start .start-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 @media (max-width: 768px) {

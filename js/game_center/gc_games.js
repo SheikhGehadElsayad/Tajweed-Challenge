@@ -410,6 +410,7 @@ class BaseGameEngine {
 
     const nextBtn = nextContainer.querySelector('#gc-btn-next-action');
     nextBtn.onclick = () => {
+      if (typeof window.stopAllActiveAudio === 'function') window.stopAllActiveAudio();
       window.GC_AUDIO?.stopRecitation();
       window.GC_AUDIO?.playClick();
       overlay.classList.add('animate-fade-out');

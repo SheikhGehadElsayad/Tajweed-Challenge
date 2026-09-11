@@ -362,12 +362,14 @@
         }
 
         function navQuestion(dir) {
+            if (typeof window.stopAllActiveAudio === 'function') window.stopAllActiveAudio();
             clearTimeout(window.autoAdvanceTimer);
             const newHead = session.playHead + dir;
             if (newHead >= 0 && newHead < session.playlist.length) { session.playHead = newHead; loadQuestion(); }
         }
 
         function loadQuestion() {
+            if (typeof window.stopAllActiveAudio === 'function') window.stopAllActiveAudio();
             isAnswering = false; isFrozen = false; hasShield = false;
             
             const q = session.playlist[session.playHead];
@@ -477,6 +479,8 @@
                             found = true;
                             audioBtn.style.display = 'flex';
                             audioBtn.onclick = () => {
+                                if (typeof window.stopAllActiveAudio === 'function') window.stopAllActiveAudio();
+                                window.currentPlayingAudio = testAudio;
                                 try { testAudio.currentTime = 0; testAudio.play(); } catch(e) {}
                             };
                             q._audioObj = testAudio;
@@ -531,14 +535,12 @@
                 if (isTheoryQ) {
                     if (choiceTxt === 'True' || choiceTxt === 'False') {
                         const isT = choiceTxt === 'True';
-                        btn.style.minHeight = '72px';
                         btn.innerHTML = `
                             <div style="display:flex; align-items:center; justify-content:center; gap: 10px; width:100%;">
                                 <span style="font-size:1.5rem;">${isT ? '✅' : '❌'}</span>
                                 <span style="font-size:clamp(1.15rem, 2vw, 1.45rem); font-weight:900;">${isT ? 'True' : 'False'}</span>
                             </div>`;
                     } else {
-                        btn.style.minHeight = '65px';
                         btn.innerHTML = `
                             <div style="display:flex; align-items:center; justify-content:center; width:100%; padding:4px 8px; text-align:center;">
                                 <span style="font-size:clamp(0.95rem, 1.5vw, 1.15rem); font-weight:800; line-height:1.3; text-align:center;">${choiceTxt}</span>

@@ -118,5 +118,35 @@ const SFX = {
     }
 };
 
+// Universal Audio & Speech Stopper (ensures audio immediately ceases when navigating to next question)
+function stopAllActiveAudio() {
+    clearTimeout(window._audioPlayTimeout);
+    clearTimeout(window.autoAdvanceTimer);
+    if (window.currentPlayingAudio) {
+        try {
+            window.currentPlayingAudio.pause();
+            window.currentPlayingAudio.currentTime = 0;
+        } catch(e) {}
+        window.currentPlayingAudio = null;
+    }
+    if (typeof session !== 'undefined' && session && session.playlist) {
+        session.playlist.forEach(item => {
+            if (item && item._audioObj) {
+                try {
+                    item._audioObj.pause();
+                    item._audioObj.currentTime = 0;
+                } catch(e) {}
+            }
+        });
+    }
+    if (typeof window !== 'undefined' && window.speechSynthesis) {
+        try { window.speechSynthesis.cancel(); } catch(e) {}
+    }
+    if (typeof window !== 'undefined' && window.GC_AUDIO && typeof window.GC_AUDIO.stopRecitation === 'function') {
+        try { window.GC_AUDIO.stopRecitation(); } catch(e) {}
+    }
+}
+window.stopAllActiveAudio = stopAllActiveAudio;
+
         // Utilities
         
