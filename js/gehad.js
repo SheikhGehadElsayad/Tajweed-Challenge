@@ -722,6 +722,38 @@ const TAJWEED_BANK = {
                 "prompt": "What is the Madd rule?"
             },
             {
+                "id": "madd_tamkeen_ummiyyeen",
+                "src": "images/madd_tamkeen_ummiyyeen.png",
+                "ans": "Stabilizing Madd",
+                "subcat": "Stabilizing Madd",
+                "explanation": "Meeting of two Yaas in one word (the first with Shaddah & Kasrah, and the second Saakinah) → Stabilizing Madd (Madd At-Tamkeen, 2 counts).",
+                "prompt": "What is the Madd rule?"
+            },
+            {
+                "id": "madd_tamkeen_allathee_yuwaswis",
+                "src": "images/madd_tamkeen_allathee_yuwaswis.png",
+                "ans": "Stabilizing Madd",
+                "subcat": "Stabilizing Madd",
+                "explanation": "Meeting of a Madd Yaa at the end of a word followed by a voweled Yaa at the start of the next word → Stabilizing Madd (Madd At-Tamkeen, 2 counts to prevent merging/dropping).",
+                "prompt": "What is the Madd rule?"
+            },
+            {
+                "id": "madd_tamkeen_yalwoona",
+                "src": "images/madd_tamkeen_yalwoona.png",
+                "ans": "Stabilizing Madd",
+                "subcat": "Stabilizing Madd",
+                "explanation": "Meeting of two Waws in one word (the first with Dammah and the second Saakinah Madd Waw) → Stabilizing Madd (Madd At-Tamkeen, 2 counts).",
+                "prompt": "What is the Madd rule?"
+            },
+            {
+                "id": "madd_tamkeen_aamanoo_wa_amiloo",
+                "src": "images/madd_tamkeen_aamanoo_wa_amiloo.png",
+                "ans": "Stabilizing Madd",
+                "subcat": "Stabilizing Madd",
+                "explanation": "Meeting of a Madd Waw at the end of a word followed by a voweled Waw at the start of the next word → Stabilizing Madd (Madd At-Tamkeen, 2 counts to prevent merging/dropping).",
+                "prompt": "What is the Madd rule?"
+            },
+            {
                 "id": "madd2_a6585f14",
                 "src": "images/img_0192.png",
                 "ans": "Minor Sila Madd",
