@@ -453,9 +453,6 @@
                 this.bubbleEl.classList.add('active');
             }
 
-            // Audible spoken voice in English
-            this.speakVoice(tip.text);
-
             if (this.hideTimeout) {
                 clearTimeout(this.hideTimeout);
             }
