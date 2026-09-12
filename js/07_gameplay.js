@@ -170,6 +170,9 @@
         }
 
         function handleAnswer(sel, btn, q) {
+            if (window.FaridaMascot && typeof window.FaridaMascot.dismiss === 'function') {
+                window.FaridaMascot.dismiss();
+            }
             if(isAnswering) return; isAnswering = true; clearInterval(timerInterval);
             document.querySelectorAll('.ans-card').forEach(b => b.disabled = true);
             
@@ -402,6 +405,9 @@
                 modal.classList.add('active');
                 if (typeof setMascot === 'function') setMascot('happy');
                 if (typeof SFX !== 'undefined' && SFX.ting) SFX.ting();
+                if (typeof window.FaridaMascot !== 'undefined' && window.FaridaMascot.speakVoice) {
+                    window.FaridaMascot.speakVoice(tip.text);
+                }
 
                 let secondsLeft = 4;
                 const countdownSpan = modal.querySelector('#mascot-countdown');
@@ -476,6 +482,9 @@
                         }
 
                         if (typeof setMascot === 'function') setMascot('happy');
+                        if (typeof window.FaridaMascot !== 'undefined' && window.FaridaMascot.speakVoice) {
+                            window.FaridaMascot.speakVoice(ib.funFact);
+                        }
 
                         if (funFactBox) {
                             funFactBox.innerHTML = `💡 <strong>${ib.funFact}</strong>`;

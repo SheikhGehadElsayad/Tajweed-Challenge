@@ -135,10 +135,59 @@
             this.faceEl = null;
             this.bubbleEl = null;
             this.textEl = null;
+            this.badgeEl = null;
             this.currentState = 'idle';
             this.hideTimeout = null;
+            this.tipQueue = [];
             this.isEnabled = localStorage.getItem('tajweed_farida_enabled') !== 'false';
             this.init();
+        }
+
+        getUnusedTip() {
+            const allTips = (typeof window !== 'undefined' && window.MASCOT_TIPS) || (typeof MASCOT_TIPS !== 'undefined' ? MASCOT_TIPS : []);
+            if (!allTips || allTips.length === 0) {
+                return { id: "default", type: "tajweed", text: "Noon Sakinah & Tanween have 4 core rules: Izhar, Idgham, Iqlab, and Ikhfa!" };
+            }
+            if (!this.tipQueue || this.tipQueue.length === 0) {
+                // Shuffle all tips to form a fresh cycle with zero repetition
+                let indices = allTips.map((_, i) => i);
+                for (let i = indices.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [indices[i], indices[j]] = [indices[j], indices[i]];
+                }
+                this.tipQueue = indices;
+            }
+            const nextIdx = this.tipQueue.pop();
+            return allTips[nextIdx] || allTips[0];
+        }
+
+        speakVoice(text) {
+            if (typeof isMuted !== 'undefined' && isMuted) return;
+            try {
+                if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+                    window.speechSynthesis.cancel();
+                    // Clean text for speech synthesis (pronounce smoothly in English)
+                    const cleanText = text
+                        .replace(/[“”"']/g, '')
+                        .replace(/[–—]/g, '-')
+                        .replace(/[؀-ۿ]/g, '') // remove raw Arabic script for smooth English vocalization
+                        .replace(/s+/g, ' ')
+                        .trim();
+                    const utterance = new SpeechSynthesisUtterance(cleanText || text);
+                    utterance.lang = 'en-US';
+                    utterance.rate = 0.95;
+                    utterance.pitch = 1.15; // friendly, upbeat girl mascot voice
+                    window.speechSynthesis.speak(utterance);
+                }
+            } catch (e) {}
+        }
+
+        setFace(state = 'idle') {
+            this.currentState = state;
+            if (this.faceEl) {
+                const faceSvg = SVG_FACES[state] || SVG_FACES.idle;
+                this.faceEl.innerHTML = faceSvg;
+            }
         }
 
         init() {
@@ -164,8 +213,11 @@
                     </div>
                 </button>
                 <div class="farida-speech-bubble" id="farida-speech-bubble" dir="ltr">
-                    <span class="farida-mascot-name">Farida 💡</span>
-                    <p id="farida-speech-text" class="farida-text">Welcome! I'm Farida, your Tajweed learning companion! 📖</p>
+                    <div class="farida-bubble-header">
+                        <span id="farida-tip-badge" class="farida-tip-badge">📖 Tajweed Tip</span>
+                        <button type="button" id="farida-close-bubble" class="farida-bubble-close" aria-label="Close Farida Tip">✕</button>
+                    </div>
+                    <p id="farida-speech-text" class="farida-text"></p>
                 </div>
             `;
 
@@ -175,13 +227,32 @@
             this.faceEl = widget.querySelector('#farida-face-wrapper');
             this.bubbleEl = widget.querySelector('#farida-speech-bubble');
             this.textEl = widget.querySelector('#farida-speech-text');
+            this.badgeEl = widget.querySelector('#farida-tip-badge');
 
             const btn = widget.querySelector('#farida-avatar-btn');
             if (btn) {
-                btn.onclick = () => {
+                btn.onclick = (e) => {
+                    e.stopPropagation();
                     this.onAvatarClick();
                 };
             }
+
+            const closeBtn = widget.querySelector('#farida-close-bubble');
+            if (closeBtn) {
+                closeBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    this.dismiss();
+                };
+            }
+
+            // Clicking outside dismisses the bubble
+            document.addEventListener('click', (e) => {
+                if (this.bubbleEl && this.bubbleEl.classList.contains('active')) {
+                    if (!e.target.closest('#farida-mascot-widget')) {
+                        this.dismiss();
+                    }
+                }
+            });
 
             if (!this.isEnabled) {
                 widget.style.display = 'none';
@@ -200,16 +271,17 @@
                     bottom: 24px;
                     left: 24px;
                     display: flex;
-                    align-items: flex-end;
-                    gap: 12px;
-                    z-index: 9999;
+                    flex-direction: column-reverse; /* Bubble pops UPWARDS above button, never covers question choices! */
+                    align-items: flex-start;
+                    gap: 10px;
+                    z-index: 1800;
                     pointer-events: none;
                     transition: transform 0.3s ease, opacity 0.3s ease;
                 }
                 .farida-avatar-btn {
                     pointer-events: auto;
-                    width: 70px;
-                    height: 70px;
+                    width: 62px;
+                    height: 62px;
                     border-radius: 50%;
                     background: #ffffff;
                     border: 3px solid #0284c7;
@@ -245,10 +317,10 @@
                     background: #ffffff;
                     border: 2px solid #0284c7;
                     border-radius: 18px 18px 18px 4px;
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-                    padding: 10px 14px;
-                    max-width: 290px;
-                    font-size: 0.88rem;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+                    padding: 12px 14px;
+                    max-width: 320px;
+                    font-size: 0.92rem;
                     line-height: 1.45;
                     font-weight: 800;
                     color: #1e293b;
@@ -262,62 +334,79 @@
                     text-align: left;
                 }
                 .farida-speech-bubble.active {
-                    display: block;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
                     opacity: 1;
                     transform: scale(1);
                 }
-                .farida-mascot-name {
-                    display: block;
-                    font-size: 0.74rem;
-                    color: #0284c7;
+                .farida-bubble-header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 8px;
+                    width: 100%;
+                }
+                .farida-tip-badge {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 4px;
+                    font-size: 0.75rem;
+                    color: #0369a1;
                     font-weight: 900;
-                    margin-bottom: 2px;
-                    letter-spacing: 0.5px;
                     text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+                .farida-bubble-close {
+                    background: transparent;
+                    border: none;
+                    color: #94a3b8;
+                    cursor: pointer;
+                    font-size: 0.88rem;
+                    padding: 2px 6px;
+                    border-radius: 6px;
+                    font-weight: 800;
+                    line-height: 1;
+                }
+                .farida-bubble-close:hover {
+                    color: #0f172a;
+                    background: #f1f5f9;
                 }
                 .farida-text {
                     margin: 0;
                     font-family: inherit;
+                    color: #1e293b;
+                    font-weight: 800;
                 }
                 @media (max-width: 768px) {
                     .farida-mascot-container {
-                        bottom: 16px;
-                        left: 12px;
+                        bottom: 14px;
+                        left: 14px;
                     }
                     .farida-avatar-btn {
-                        width: 54px;
-                        height: 54px;
+                        width: 52px;
+                        height: 52px;
                     }
                     .farida-speech-bubble {
-                        max-width: 220px;
-                        font-size: 0.8rem;
+                        max-width: 250px;
+                        font-size: 0.82rem;
                     }
                 }
             `;
             document.head.appendChild(style);
         }
 
+        // react() now ONLY updates the visual face expression silently.
+        // It NEVER pops up the speech bubble automatically during gameplay!
         react(state = 'idle', customText = null) {
-            if (!this.isEnabled) return;
-            if (!this.container) this.injectUI();
-
-            this.currentState = state;
-
-            const faceSvg = SVG_FACES[state] || SVG_FACES.idle;
-            if (this.faceEl) {
-                this.faceEl.innerHTML = faceSvg;
+            this.setFace(state);
+            // Only speak if customText was explicitly provided (e.g. manual call)
+            if (customText) {
+                this.speak(customText, 4000);
             }
-
-            let phrase = customText;
-            if (!phrase) {
-                const list = PHRASES[state] || PHRASES.idle;
-                phrase = list[Math.floor(Math.random() * list.length)];
-            }
-
-            this.speak(phrase, state === 'happy' || state === 'streak' || state === 'clear' ? 3800 : 3200);
         }
 
-        speak(text, duration = 3000) {
+        speak(text, duration = 3500) {
             if (!this.textEl || !this.bubbleEl) return;
 
             if (this.hideTimeout) {
@@ -329,24 +418,50 @@
             this.bubbleEl.classList.add('active');
 
             this.hideTimeout = setTimeout(() => {
-                this.bubbleEl.classList.remove('active');
-                if (this.faceEl && this.currentState !== 'idle') {
-                    this.faceEl.innerHTML = SVG_FACES.idle;
-                }
+                this.dismiss();
             }, duration);
         }
 
+        dismiss() {
+            if (this.hideTimeout) {
+                clearTimeout(this.hideTimeout);
+                this.hideTimeout = null;
+            }
+            if (this.bubbleEl) {
+                this.bubbleEl.classList.remove('active');
+            }
+            this.setFace('idle');
+            if (typeof window !== 'undefined' && window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+            }
+        }
+
         onAvatarClick() {
-            const tips = [
-                '💡 Tajweed Tip: Noon Sakinah & Tanween have 4 core rules: Izhar, Idgham, Iqlab, and Ikhfa!',
-                '💡 Tajweed Tip: Throat letters of Izhar Halqi: Hamzah, Ha, \'Ayn, Haa, Ghayn, Khaa!',
-                '💡 Tajweed Tip: The 6 letters of Idgham are united in (Yarmaloon)!',
-                '💡 Tajweed Tip: Qalqalah letters are five: Qaaf, Taa, Baa, Jeem, Daal (Qutb Jad)!',
-                '💡 Tajweed Tip: Ghunnah is a sweet nasal tone held for exactly 2 counts (Harakatan)!',
-                '🌟 Prophet Muhammad (ﷺ) said: "The best of you are those who learn the Quran and teach it"!'
-            ];
-            const tip = tips[Math.floor(Math.random() * tips.length)];
-            this.react('happy', tip);
+            // Get next non-repeated tip from MASCOT_TIPS bank
+            const tip = this.getUnusedTip();
+            this.setFace('happy');
+
+            const isTajweed = (tip.type === 'tajweed');
+            if (this.badgeEl) {
+                this.badgeEl.textContent = isTajweed ? '📖 Tajweed Tip' : '🌙 Islamic Knowledge';
+                this.badgeEl.style.color = isTajweed ? '#0369a1' : '#15803d';
+            }
+            if (this.textEl) {
+                this.textEl.textContent = tip.text;
+            }
+            if (this.bubbleEl) {
+                this.bubbleEl.classList.add('active');
+            }
+
+            // Audible spoken voice in English
+            this.speakVoice(tip.text);
+
+            if (this.hideTimeout) {
+                clearTimeout(this.hideTimeout);
+            }
+            this.hideTimeout = setTimeout(() => {
+                this.dismiss();
+            }, 7500);
         }
 
         toggle(enabled) {

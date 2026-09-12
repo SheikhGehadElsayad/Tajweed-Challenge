@@ -111,8 +111,8 @@ function switchScreen(id) {
             if (m && typeof mascots !== 'undefined' && mascots[state]) {
                 m.textContent = mascots[state];
             }
-            if (typeof window.SirajMascot !== 'undefined' && window.SirajMascot.react) {
-                window.SirajMascot.react(state);
+            if (typeof window.FaridaMascot !== 'undefined' && window.FaridaMascot.setFace) {
+                window.FaridaMascot.setFace(state);
             }
         }
         function shuffleArray(arr) {

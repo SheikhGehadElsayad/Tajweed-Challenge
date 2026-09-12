@@ -386,6 +386,9 @@
             }
             
             setMascot('idle'); 
+            if (typeof window.FaridaMascot !== 'undefined' && typeof window.FaridaMascot.dismiss === 'function') {
+                window.FaridaMascot.dismiss();
+            }
             updateHUD();
             document.getElementById('quran-box').classList.remove('shake-anim');
             document.getElementById('timer-container').classList.remove('frozen');

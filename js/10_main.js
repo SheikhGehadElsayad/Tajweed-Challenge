@@ -829,9 +829,6 @@ const appContainer = document.createElement('div');
                             showToast(`🔥 Daily Challenge: ${challenge.lessonContext || challenge.ruleTitle}`);
                             session.isDailyChallenge = true;
                             session.dailyChallengeInfo = challenge;
-                            if (window.FaridaMascot && window.FaridaMascot.speak) {
-                                window.FaridaMascot.speak(`Daily Challenge: ${challenge.ruleTitle}! Let's master what you studied in class!`);
-                            }
                             initGameSession(false, challenge.questions);
                         } else {
                             showToast('Starting Daily Challenge session...');
