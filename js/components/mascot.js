@@ -1,9 +1,9 @@
 /**
- * Interactive Talking Islamic Mascot: "سراج" (Siraj)
- * Tajweed Challenge - Educational Mascot
+ * Interactive Talking Companion: "Farida"
+ * Tajweed Challenge - Educational Companion
  *
- * Provides contextual pedagogical encouragement, feedback on correct/incorrect
- * answers, celebrations on streaks, and friendly Islamic remarks.
+ * Provides contextual pedagogical encouragement, English Tajweed tips,
+ * feedback on correct/incorrect answers, and celebrations on streaks.
  */
 
 (function(window) {
@@ -11,119 +11,125 @@
 
     const PHRASES = {
         happy: [
-            'ما شاء الله! إجابة صحيحة ومتقنة! 🌟',
-            'أحسنت، بارك الله في علمك وفهمك! 👏',
-            'تبارك الله! قراءة موفقة وحكم سليم! ✨',
-            'ممتاز يا بطل! واصل على هذا المستوى! 🎯',
-            'فتح الله عليك! إجابة في الصميم! 💡'
+            'Brilliant! Accurate Tajweed application! 🌟',
+            'Well done! Masha\'Allah, excellent recitation! 👏',
+            'Spot on! That is the correct Tajweed rule! ✨',
+            'Keep going! Your pronunciation is sharp! 🎯',
+            'Masha\'Allah! Perfect understanding! 💡'
         ],
         sad: [
-            'لا بأس يا بطل! ركّز في الحرف وحاول مجدداً! 💪',
-            'الخطأ أول خطوة للإتقان، استعن بالله! 📖',
-            'تأنَّ في القراءة.. التدقيق مفتاح التجويد! 🌱',
-            'راجع الحكم بهدوء، أنت قادر على تصحيحه! 🤲',
-            'خير إن شاء الله، كل قارئ يتعلم من أخطائه! 🌟'
+            'Good try! Pay close attention to the letter and vowel! 💪',
+            'Mistakes help us master Quranic rules. Review and retry! 📖',
+            'Focus on the letter\'s articulation point (Makhraj)! 🌱',
+            'Take your time! Accuracy comes with calm reflection! 🤲',
+            'Almost there! Check the Sakinah or Tanween carefully! 🌟'
         ],
         streak: [
-            'ما شاء الله لا قوة إلا بالله! سلسلة إجابات نارية! 🔥',
-            'إتقان مبهر وتركيز عالٍ! استمر هكذا! ⚡',
-            'همتك عالية جداً اليوم، تبارك الرحمن! 🚀'
+            'Unstoppable streak! Masha\'Allah, golden accuracy! 🔥',
+            'Superb focus and consecutive correct answers! ⚡',
+            'Your momentum is outstanding today! Keep it up! 🚀'
         ],
         frozen: [
-            'يا سلام! تجمد الوقت.. فكّر براحتك واقرأ بتأنٍ! ❄️'
+            'Time is frozen! Take a breath, read calmly and choose! ❄️'
         ],
         shield: [
-            'الدرع يحميك الآن، امضِ بثقة وإتقان! 🛡️'
+            'Shield active! Answer with complete confidence! 🛡️'
         ],
         hint: [
-            'استعن بالملاحظة الذهبية وركّز في مخارج الحروف! 💡'
+            'Check the golden hint: focus on letters right after the Noon! 💡'
         ],
         clear: [
-            'مبارك هذا الإنجاز الرائع! نفع الله بك وبما تعلمت! 🏆',
-            'ألف مبروك! تاج الوقار يزدان بإتقانك لأحكام التلاوة! 👑'
+            'Congratulations! Masha\'Allah, stage cleared with excellence! 🏆',
+            'Fantastic achievement! Honoring the Quran with every rule! 👑'
         ],
         idle: [
-            'أهلاً بك! ركّز في الآية الكريمة والحكم التجويدي 📖',
-            'بسم الله نبدأ، استعن بالله واقرأ بتدبر! 🤲',
-            'التجويد حلية التلاوة وزينة الأداء! ✨'
+            'Welcome! I\'m Farida, your Tajweed learning companion! 📖',
+            'Read the verse carefully and identify the Tajweed rule! 🤲',
+            'Tajweed beautifies your recitation. Let\'s master it together! ✨'
         ]
     };
 
     const SVG_FACES = {
         idle: `
-            <svg viewBox="0 0 100 100" class="siraj-svg">
+            <svg viewBox="0 0 100 100" class="farida-svg">
                 <defs>
-                    <radialGradient id="sirajGlow" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" stop-color="#fef08a" stop-opacity="1"/>
-                        <stop offset="70%" stop-color="#f59e0b" stop-opacity="0.8"/>
-                        <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
+                    <radialGradient id="faridaGlow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#fed7aa" stop-opacity="0.9"/>
+                        <stop offset="70%" stop-color="#f472b6" stop-opacity="0.4"/>
+                        <stop offset="100%" stop-color="#ec4899" stop-opacity="0"/>
                     </radialGradient>
                 </defs>
-                <circle cx="50" cy="50" r="46" fill="url(#sirajGlow)" opacity="0.85"/>
-                <path d="M 30 75 C 30 85, 70 85, 70 75 C 70 65, 80 50, 80 38 C 80 22, 67 14, 50 14 C 33 14, 20 22, 20 38 C 20 50, 30 65, 30 75 Z" fill="#fbbf24" stroke="#b45309" stroke-width="2.5"/>
-                <ellipse cx="50" cy="18" rx="22" ry="7" fill="#0284c7" stroke="#0369a1" stroke-width="2"/>
-                <circle cx="50" cy="12" r="3.5" fill="#f59e0b"/>
-                <circle cx="40" cy="42" r="4.5" fill="#1e293b"/>
-                <circle cx="60" cy="42" r="4.5" fill="#1e293b"/>
-                <circle cx="38.5" cy="40.5" r="1.5" fill="#ffffff"/>
-                <circle cx="58.5" cy="40.5" r="1.5" fill="#ffffff"/>
-                <ellipse cx="32" cy="49" rx="4" ry="2.5" fill="#f87171" opacity="0.6"/>
-                <ellipse cx="68" cy="49" rx="4" ry="2.5" fill="#f87171" opacity="0.6"/>
-                <path d="M 42 52 Q 50 60 58 52" fill="none" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
-                <rect x="36" y="80" width="28" height="6" rx="3" fill="#92400e"/>
+                <!-- Soft Aura -->
+                <circle cx="50" cy="50" r="46" fill="url(#faridaGlow)"/>
+                <!-- Cheerful Face Base -->
+                <circle cx="50" cy="50" r="38" fill="#fef3c7" stroke="#f59e0b" stroke-width="2.5"/>
+                <!-- Hair / Headscarf Accent -->
+                <path d="M 20 45 C 20 22, 80 22, 80 45 C 80 32, 68 18, 50 18 C 32 18, 20 32, 20 45 Z" fill="#0284c7"/>
+                <circle cx="50" cy="18" r="4" fill="#38bdf8"/>
+                <!-- Friendly Warm Eyes -->
+                <circle cx="39" cy="48" r="4" fill="#1e293b"/>
+                <circle cx="61" cy="48" r="4" fill="#1e293b"/>
+                <circle cx="37.5" cy="46.5" r="1.5" fill="#ffffff"/>
+                <circle cx="59.5" cy="46.5" r="1.5" fill="#ffffff"/>
+                <!-- Cute Rosy Cheeks -->
+                <ellipse cx="31" cy="55" rx="4.5" ry="2.8" fill="#f43f5e" opacity="0.65"/>
+                <ellipse cx="69" cy="55" rx="4.5" ry="2.8" fill="#f43f5e" opacity="0.65"/>
+                <!-- Gentle Smile -->
+                <path d="M 43 56 Q 50 64 57 56" fill="none" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Bookmark / Pin -->
+                <path d="M 68 28 L 74 18 L 80 28 L 74 25 Z" fill="#f59e0b"/>
             </svg>
         `,
         happy: `
-            <svg viewBox="0 0 100 100" class="siraj-svg">
-                <circle cx="50" cy="50" r="48" fill="#fef08a" opacity="0.95"/>
-                <path d="M 30 75 C 30 85, 70 85, 70 75 C 70 65, 80 50, 80 38 C 80 22, 67 14, 50 14 C 33 14, 20 22, 20 38 C 20 50, 30 65, 30 75 Z" fill="#fcd34d" stroke="#b45309" stroke-width="2.5"/>
-                <ellipse cx="50" cy="18" rx="22" ry="7" fill="#10b981" stroke="#047857" stroke-width="2"/>
-                <circle cx="50" cy="12" r="4" fill="#fbbf24"/>
-                <path d="M 35 44 Q 40 37 45 44" fill="none" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
-                <path d="M 55 44 Q 60 37 65 44" fill="none" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
-                <path d="M 39 52 Q 50 67 61 52 Z" fill="#b91c1c" stroke="#1e293b" stroke-width="2"/>
-                <ellipse cx="50" cy="58" rx="5" ry="3" fill="#f87171"/>
-                <circle cx="31" cy="48" r="4" fill="#ef4444" opacity="0.7"/>
-                <circle cx="69" cy="48" r="4" fill="#ef4444" opacity="0.7"/>
+            <svg viewBox="0 0 100 100" class="farida-svg">
+                <circle cx="50" cy="50" r="48" fill="#fef08a" opacity="0.9"/>
+                <circle cx="50" cy="50" r="38" fill="#fef3c7" stroke="#10b981" stroke-width="2.5"/>
+                <path d="M 20 45 C 20 22, 80 22, 80 45 C 80 32, 68 18, 50 18 C 32 18, 20 32, 20 45 Z" fill="#059669"/>
+                <!-- Joyful Curved Eyes -->
+                <path d="M 34 49 Q 39 42 44 49" fill="none" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M 56 49 Q 61 42 66 49" fill="none" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Happy Open Smile -->
+                <path d="M 41 55 Q 50 68 59 55 Z" fill="#e11d48" stroke="#1e293b" stroke-width="1.8"/>
+                <ellipse cx="50" cy="62" rx="4.5" ry="2.5" fill="#fda4af"/>
+                <!-- Cheeks -->
+                <circle cx="30" cy="54" r="4.5" fill="#f43f5e" opacity="0.75"/>
+                <circle cx="70" cy="54" r="4.5" fill="#f43f5e" opacity="0.75"/>
                 <text x="14" y="28" font-size="14">✨</text>
                 <text x="74" y="28" font-size="14">✨</text>
-                <rect x="36" y="80" width="28" height="6" rx="3" fill="#92400e"/>
             </svg>
         `,
         sad: `
-            <svg viewBox="0 0 100 100" class="siraj-svg">
-                <circle cx="50" cy="50" r="45" fill="#fed7aa" opacity="0.8"/>
-                <path d="M 30 75 C 30 85, 70 85, 70 75 C 70 65, 80 50, 80 38 C 80 22, 67 14, 50 14 C 33 14, 20 22, 20 38 C 20 50, 30 65, 30 75 Z" fill="#fcd34d" stroke="#b45309" stroke-width="2.5"/>
-                <ellipse cx="50" cy="18" rx="22" ry="7" fill="#64748b" stroke="#334155" stroke-width="2"/>
-                <circle cx="50" cy="12" r="3.5" fill="#f59e0b"/>
-                <circle cx="40" cy="44" r="4" fill="#1e293b"/>
-                <circle cx="60" cy="44" r="4" fill="#1e293b"/>
-                <path d="M 35 37 L 44 40" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M 65 37 L 56 40" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M 44 58 Q 50 53 56 58" fill="none" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
-                <circle cx="70" cy="48" r="2.5" fill="#38bdf8"/>
-                <rect x="36" y="80" width="28" height="6" rx="3" fill="#92400e"/>
+            <svg viewBox="0 0 100 100" class="farida-svg">
+                <circle cx="50" cy="50" r="46" fill="#fed7aa" opacity="0.8"/>
+                <circle cx="50" cy="50" r="38" fill="#fef3c7" stroke="#94a3b8" stroke-width="2.5"/>
+                <path d="M 20 45 C 20 22, 80 22, 80 45 C 80 32, 68 18, 50 18 C 32 18, 20 32, 20 45 Z" fill="#64748b"/>
+                <!-- Concerned/Reflective Eyes -->
+                <circle cx="39" cy="50" r="3.8" fill="#1e293b"/>
+                <circle cx="61" cy="50" r="3.8" fill="#1e293b"/>
+                <path d="M 34 43 L 43 46" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M 66 43 L 57 46" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Gentle Encouraging Small Curve -->
+                <path d="M 44 61 Q 50 56 56 61" fill="none" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="71" cy="52" r="2.5" fill="#38bdf8"/>
             </svg>
         `,
         frozen: `
-            <svg viewBox="0 0 100 100" class="siraj-svg">
-                <circle cx="50" cy="50" r="46" fill="#bae6fd" opacity="0.95"/>
-                <path d="M 30 75 C 30 85, 70 85, 70 75 C 70 65, 80 50, 80 38 C 80 22, 67 14, 50 14 C 33 14, 20 22, 20 38 C 20 50, 30 65, 30 75 Z" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.5"/>
-                <ellipse cx="50" cy="18" rx="22" ry="7" fill="#0284c7" stroke="#0369a1" stroke-width="2"/>
-                <circle cx="50" cy="12" r="3.5" fill="#7dd3fc"/>
-                <circle cx="40" cy="42" r="5" fill="#0369a1"/>
-                <circle cx="60" cy="42" r="5" fill="#0369a1"/>
-                <circle cx="39" cy="41" r="1.5" fill="#ffffff"/>
-                <circle cx="59" cy="41" r="1.5" fill="#ffffff"/>
-                <circle cx="50" cy="56" r="4" fill="#0284c7"/>
+            <svg viewBox="0 0 100 100" class="farida-svg">
+                <circle cx="50" cy="50" r="48" fill="#bae6fd" opacity="0.9"/>
+                <circle cx="50" cy="50" r="38" fill="#f0f9ff" stroke="#0284c7" stroke-width="2.5"/>
+                <path d="M 20 45 C 20 22, 80 22, 80 45 C 80 32, 68 18, 50 18 C 32 18, 20 32, 20 45 Z" fill="#0284c7"/>
+                <circle cx="39" cy="48" r="4.5" fill="#0369a1"/>
+                <circle cx="61" cy="48" r="4.5" fill="#0369a1"/>
+                <circle cx="38" cy="46.5" r="1.5" fill="#ffffff"/>
+                <circle cx="60" cy="46.5" r="1.5" fill="#ffffff"/>
+                <circle cx="50" cy="60" r="4" fill="#0284c7"/>
                 <text x="14" y="28" font-size="14">❄️</text>
                 <text x="74" y="28" font-size="14">❄️</text>
-                <rect x="36" y="80" width="28" height="6" rx="3" fill="#0369a1"/>
             </svg>
         `
     };
 
-    class SirajMascotController {
+    class FaridaMascotController {
         constructor() {
             this.container = null;
             this.faceEl = null;
@@ -131,7 +137,7 @@
             this.textEl = null;
             this.currentState = 'idle';
             this.hideTimeout = null;
-            this.isEnabled = localStorage.getItem('tajweed_siraj_enabled') !== 'false';
+            this.isEnabled = localStorage.getItem('tajweed_farida_enabled') !== 'false';
             this.init();
         }
 
@@ -144,33 +150,33 @@
         }
 
         injectUI() {
-            if (document.getElementById('siraj-mascot-widget')) return;
+            if (document.getElementById('farida-mascot-widget')) return;
 
             const widget = document.createElement('aside');
-            widget.id = 'siraj-mascot-widget';
-            widget.className = 'siraj-mascot-container';
-            widget.setAttribute('aria-label', 'المساعد الذكي سراج');
+            widget.id = 'farida-mascot-widget';
+            widget.className = 'farida-mascot-container';
+            widget.setAttribute('aria-label', 'Farida - Tajweed Study Companion');
 
             widget.innerHTML = `
-                <div class="siraj-speech-bubble" id="siraj-speech-bubble" dir="rtl">
-                    <span class="siraj-mascot-name">سِـرَاج 💡</span>
-                    <p id="siraj-speech-text" class="siraj-text">أهلاً بك يا بطل! ركّز في الآية والحكم التجويدي 📖</p>
-                </div>
-                <button type="button" class="siraj-avatar-btn" id="siraj-avatar-btn" title="سراج رفيقك في التجويد (اضغط للنصيحة)" aria-label="سراج رفيق التجويد">
-                    <div id="siraj-face-wrapper" class="siraj-face-wrapper">
+                <button type="button" class="farida-avatar-btn" id="farida-avatar-btn" title="Farida - Tajweed Study Companion (Click for tips!)" aria-label="Farida Tajweed Companion">
+                    <div id="farida-face-wrapper" class="farida-face-wrapper">
                         ${SVG_FACES.idle}
                     </div>
                 </button>
+                <div class="farida-speech-bubble" id="farida-speech-bubble" dir="ltr">
+                    <span class="farida-mascot-name">Farida 💡</span>
+                    <p id="farida-speech-text" class="farida-text">Welcome! I'm Farida, your Tajweed learning companion! 📖</p>
+                </div>
             `;
 
             document.body.appendChild(widget);
 
             this.container = widget;
-            this.faceEl = widget.querySelector('#siraj-face-wrapper');
-            this.bubbleEl = widget.querySelector('#siraj-speech-bubble');
-            this.textEl = widget.querySelector('#siraj-speech-text');
+            this.faceEl = widget.querySelector('#farida-face-wrapper');
+            this.bubbleEl = widget.querySelector('#farida-speech-bubble');
+            this.textEl = widget.querySelector('#farida-speech-text');
 
-            const btn = widget.querySelector('#siraj-avatar-btn');
+            const btn = widget.querySelector('#farida-avatar-btn');
             if (btn) {
                 btn.onclick = () => {
                     this.onAvatarClick();
@@ -185,11 +191,11 @@
         }
 
         injectStyles() {
-            if (document.getElementById('siraj-mascot-styles')) return;
+            if (document.getElementById('farida-mascot-styles')) return;
             const style = document.createElement('style');
-            style.id = 'siraj-mascot-styles';
+            style.id = 'farida-mascot-styles';
             style.textContent = `
-                .siraj-mascot-container {
+                .farida-mascot-container {
                     position: fixed;
                     bottom: 24px;
                     left: 24px;
@@ -200,14 +206,14 @@
                     pointer-events: none;
                     transition: transform 0.3s ease, opacity 0.3s ease;
                 }
-                .siraj-avatar-btn {
+                .farida-avatar-btn {
                     pointer-events: auto;
                     width: 70px;
                     height: 70px;
                     border-radius: 50%;
                     background: #ffffff;
-                    border: 3px solid #f59e0b;
-                    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);
+                    border: 3px solid #0284c7;
+                    box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35);
                     cursor: pointer;
                     display: flex;
                     align-items: center;
@@ -216,32 +222,32 @@
                     transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
                     outline: none;
                 }
-                .siraj-avatar-btn:hover {
-                    transform: scale(1.08) rotate(4deg);
+                .farida-avatar-btn:hover {
+                    transform: scale(1.08) rotate(3deg);
                 }
-                .siraj-avatar-btn:active {
+                .farida-avatar-btn:active {
                     transform: scale(0.95);
                 }
-                .siraj-face-wrapper {
+                .farida-face-wrapper {
                     width: 100%;
                     height: 100%;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                 }
-                .siraj-svg {
+                .farida-svg {
                     width: 100%;
                     height: 100%;
                     display: block;
                 }
-                .siraj-speech-bubble {
+                .farida-speech-bubble {
                     pointer-events: auto;
                     background: #ffffff;
-                    border: 2px solid #f59e0b;
+                    border: 2px solid #0284c7;
                     border-radius: 18px 18px 18px 4px;
                     box-shadow: 0 10px 30px rgba(0,0,0,0.12);
                     padding: 10px 14px;
-                    max-width: 280px;
+                    max-width: 290px;
                     font-size: 0.88rem;
                     line-height: 1.45;
                     font-weight: 800;
@@ -252,36 +258,39 @@
                     transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
                     display: none;
                     position: relative;
+                    direction: ltr;
+                    text-align: left;
                 }
-                .siraj-speech-bubble.active {
+                .farida-speech-bubble.active {
                     display: block;
                     opacity: 1;
                     transform: scale(1);
                 }
-                .siraj-mascot-name {
+                .farida-mascot-name {
                     display: block;
-                    font-size: 0.72rem;
-                    color: #d97706;
+                    font-size: 0.74rem;
+                    color: #0284c7;
                     font-weight: 900;
                     margin-bottom: 2px;
+                    letter-spacing: 0.5px;
                     text-transform: uppercase;
                 }
-                .siraj-text {
+                .farida-text {
                     margin: 0;
                     font-family: inherit;
                 }
                 @media (max-width: 768px) {
-                    .siraj-mascot-container {
+                    .farida-mascot-container {
                         bottom: 16px;
                         left: 12px;
                     }
-                    .siraj-avatar-btn {
+                    .farida-avatar-btn {
                         width: 54px;
                         height: 54px;
                     }
-                    .siraj-speech-bubble {
-                        max-width: 210px;
-                        font-size: 0.78rem;
+                    .farida-speech-bubble {
+                        max-width: 220px;
+                        font-size: 0.8rem;
                     }
                 }
             `;
@@ -328,21 +337,21 @@
         }
 
         onAvatarClick() {
-            const adviceList = [
-                '💡 نصيحة: النون الساكنة والتنوين لها 4 أحكام: الإظهار، الإدغام، الإقلاب، والإخفاء!',
-                '💡 نصيحة: حروف الإظهار الحلقي مجموعة في: أخي هاك علماً حازه غير خاسر!',
-                '💡 نصيحة: حروف الإدغام ستة مجموعة في كلمة (يَرْمَلُون)!',
-                '💡 نصيحة: حروف القلقلة خمسة مجموعة في (قُطْبُ جَدّ)!',
-                '💡 نصيحة: الغنة صوت رخيم يخرج من الخيشوم مقداره حركتان!',
-                '🌟 ما شاء الله على حرصك! استمر في التعلم والممارسة فـ"خيركم من تعلم القرآن وعلمه"!'
+            const tips = [
+                '💡 Tajweed Tip: Noon Sakinah & Tanween have 4 core rules: Izhar, Idgham, Iqlab, and Ikhfa!',
+                '💡 Tajweed Tip: Throat letters of Izhar Halqi: Hamzah, Ha, \'Ayn, Haa, Ghayn, Khaa!',
+                '💡 Tajweed Tip: The 6 letters of Idgham are united in (Yarmaloon - يَرْمَلُون)!',
+                '💡 Tajweed Tip: Qalqalah letters are five: Qaaf, Taa, Baa, Jeem, Daal (Qutb Jad - قُطْبُ جَدّ)!',
+                '💡 Tajweed Tip: Ghunnah is a sweet nasal tone held for exactly 2 counts (Harakatan)!',
+                '🌟 Prophet Muhammad (ﷺ) said: "The best of you are those who learn the Quran and teach it"!'
             ];
-            const advice = adviceList[Math.floor(Math.random() * adviceList.length)];
-            this.react('happy', advice);
+            const tip = tips[Math.floor(Math.random() * tips.length)];
+            this.react('happy', tip);
         }
 
         toggle(enabled) {
             this.isEnabled = typeof enabled === 'boolean' ? enabled : !this.isEnabled;
-            localStorage.setItem('tajweed_siraj_enabled', this.isEnabled ? 'true' : 'false');
+            localStorage.setItem('tajweed_farida_enabled', this.isEnabled ? 'true' : 'false');
             if (this.container) {
                 this.container.style.display = this.isEnabled ? 'flex' : 'none';
             }
@@ -350,6 +359,8 @@
         }
     }
 
-    window.SirajMascot = new SirajMascotController();
+    // Initialize Farida globally with backward-compatible alias
+    window.FaridaMascot = new FaridaMascotController();
+    window.SirajMascot = window.FaridaMascot;
 
 })(window);
