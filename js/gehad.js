@@ -1976,757 +1976,607 @@ const TAJWEED_BANK = {
             "No Qalqalah"
         ],
         "questions": [
-            {
-                "id": "qalqalah_gen_1",
-                "src": "images/qalqalah_new_Screenshot_1.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_2",
-                "src": "images/qalqalah_new_Screenshot_2.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_3",
-                "src": "images/qalqalah_new_Screenshot_3.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_4",
-                "src": "images/qalqalah_new_Screenshot_4.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_5",
-                "src": "images/qalqalah_new_Screenshot_5.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_6",
-                "src": "images/qalqalah_new_Screenshot_6.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_7",
-                "src": "images/qalqalah_new_Screenshot_7.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_8",
-                "src": "images/qalqalah_new_Screenshot_8.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_9",
-                "src": "images/qalqalah_new_Screenshot_9.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_10",
-                "src": "images/qalqalah_new_Screenshot_10.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_11",
-                "src": "images/qalqalah_new_Screenshot_11.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_12",
-                "src": "images/qalqalah_new_Screenshot_12.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_13",
-                "src": "images/qalqalah_new_Screenshot_13.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_14",
-                "src": "images/qalqalah_new_Screenshot_14.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_15",
-                "src": "images/qalqalah_new_Screenshot_15.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_16",
-                "src": "images/qalqalah_new_Screenshot_16.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_17",
-                "src": "images/qalqalah_new_Screenshot_17.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_18",
-                "src": "images/qalqalah_new_Screenshot_18.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_19",
-                "src": "images/qalqalah_new_Screenshot_19.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_20",
-                "src": "images/qalqalah_new_Screenshot_20.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_21",
-                "src": "images/qalqalah_new_Screenshot_21.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_22",
-                "src": "images/qalqalah_new_Screenshot_22.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_23",
-                "src": "images/qalqalah_new_Screenshot_23.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_24",
-                "src": "images/qalqalah_new_Screenshot_24.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_25",
-                "src": "images/qalqalah_new_Screenshot_25.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_26",
-                "src": "images/qalqalah_new_Screenshot_26.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_27",
-                "src": "images/qalqalah_new_Screenshot_27.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_28",
-                "src": "images/qalqalah_new_Screenshot_28.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_29",
-                "src": "images/qalqalah_new_Screenshot_29.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_gen_30",
-                "src": "images/qalqalah_new_Screenshot_30.png",
-                "ans": "Qalqalah",
-                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                "prompt": "Is there Qalqalah in this example?",
-                "choicesList": [
-                    "Qalqalah",
-                    "No Qalqalah"
-                ],
-                "subcat": "General Qalqalah"
-            },
-            {
-                "id": "qalqalah_deg_1",
-                "src": "images/qalqalah_new_Screenshot_1.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_2",
-                "src": "images/qalqalah_new_Screenshot_2.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_3",
-                "src": "images/qalqalah_new_Screenshot_3.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_4",
-                "src": "images/qalqalah_new_Screenshot_4.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_5",
-                "src": "images/qalqalah_new_Screenshot_5.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_6",
-                "src": "images/qalqalah_new_Screenshot_6.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_7",
-                "src": "images/qalqalah_new_Screenshot_7.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_8",
-                "src": "images/qalqalah_new_Screenshot_8.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_9",
-                "src": "images/qalqalah_new_Screenshot_9.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_10",
-                "src": "images/qalqalah_new_Screenshot_10.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_11",
-                "src": "images/qalqalah_new_Screenshot_11.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_12",
-                "src": "images/qalqalah_new_Screenshot_12.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_13",
-                "src": "images/qalqalah_new_Screenshot_13.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_14",
-                "src": "images/qalqalah_new_Screenshot_14.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_15",
-                "src": "images/qalqalah_new_Screenshot_15.png",
-                "ans": "Minor",
-                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_16",
-                "src": "images/qalqalah_new_Screenshot_16.png",
-                "ans": "Medium",
-                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_17",
-                "src": "images/qalqalah_new_Screenshot_17.png",
-                "ans": "Medium",
-                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_18",
-                "src": "images/qalqalah_new_Screenshot_18.png",
-                "ans": "Medium",
-                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_19",
-                "src": "images/qalqalah_new_Screenshot_19.png",
-                "ans": "Medium",
-                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_20",
-                "src": "images/qalqalah_new_Screenshot_20.png",
-                "ans": "Medium",
-                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_21",
-                "src": "images/qalqalah_new_Screenshot_21.png",
-                "ans": "Medium",
-                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_22",
-                "src": "images/qalqalah_new_Screenshot_22.png",
-                "ans": "Medium",
-                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_23",
-                "src": "images/qalqalah_new_Screenshot_23.png",
-                "ans": "Medium",
-                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_24",
-                "src": "images/qalqalah_new_Screenshot_24.png",
-                "ans": "Medium",
-                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_25",
-                "src": "images/qalqalah_new_Screenshot_25.png",
-                "ans": "Medium",
-                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_26",
-                "src": "images/qalqalah_new_Screenshot_26.png",
-                "ans": "Major",
-                "explanation": "Stopping on a Qalqalah letter with Shaddah at the end of the word → Major Qalqalah (Qalqalah Kubra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_27",
-                "src": "images/qalqalah_new_Screenshot_27.png",
-                "ans": "Major",
-                "explanation": "Stopping on a Qalqalah letter with Shaddah at the end of the word → Major Qalqalah (Qalqalah Kubra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_28",
-                "src": "images/qalqalah_new_Screenshot_28.png",
-                "ans": "Major",
-                "explanation": "Stopping on a Qalqalah letter with Shaddah at the end of the word → Major Qalqalah (Qalqalah Kubra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_29",
-                "src": "images/qalqalah_new_Screenshot_29.png",
-                "ans": "Major",
-                "explanation": "Stopping on a Qalqalah letter with Shaddah at the end of the word → Major Qalqalah (Qalqalah Kubra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            },
-            {
-                "id": "qalqalah_deg_30",
-                "src": "images/qalqalah_new_Screenshot_30.png",
-                "ans": "Major",
-                "explanation": "Stopping on a Qalqalah letter with Shaddah at the end of the word → Major Qalqalah (Qalqalah Kubra).",
-                "prompt": "What is the degree of Qalqalah?",
-                "choicesList": [
-                    "Minor",
-                    "Medium",
-                    "Major"
-                ],
-                "subcat": "Qalqalah Degree"
-            }
-        ]
+                {
+                    "id": "qalqalah_gen_1",
+                    "src": "images/qalqalah_new_Screenshot_1.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_2",
+                    "src": "images/qalqalah_new_Screenshot_2.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_3",
+                    "src": "images/qalqalah_new_Screenshot_3.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_4",
+                    "src": "images/qalqalah_new_Screenshot_4.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_5",
+                    "src": "images/qalqalah_new_Screenshot_5.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_6",
+                    "src": "images/qalqalah_new_Screenshot_6.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_7",
+                    "src": "images/qalqalah_new_Screenshot_7.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_8",
+                    "src": "images/qalqalah_new_Screenshot_8.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_9",
+                    "src": "images/qalqalah_new_Screenshot_9.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_10",
+                    "src": "images/qalqalah_new_Screenshot_10.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_11",
+                    "src": "images/qalqalah_new_Screenshot_11.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_12",
+                    "src": "images/qalqalah_new_Screenshot_12.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_13",
+                    "src": "images/qalqalah_new_Screenshot_13.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_14",
+                    "src": "images/qalqalah_new_Screenshot_14.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_15",
+                    "src": "images/qalqalah_new_Screenshot_15.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_16",
+                    "src": "images/qalqalah_new_Screenshot_16.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_17",
+                    "src": "images/qalqalah_new_Screenshot_17.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_18",
+                    "src": "images/qalqalah_new_Screenshot_18.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_19",
+                    "src": "images/qalqalah_new_Screenshot_19.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_20",
+                    "src": "images/qalqalah_new_Screenshot_20.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_21",
+                    "src": "images/qalqalah_new_Screenshot_21.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_22",
+                    "src": "images/qalqalah_new_Screenshot_22.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_24",
+                    "src": "images/qalqalah_new_Screenshot_24.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_gen_25",
+                    "src": "images/qalqalah_new_Screenshot_25.png",
+                    "ans": "Qalqalah",
+                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                    "prompt": "Is there Qalqalah in this example?",
+                    "choicesList": [
+                        "Qalqalah",
+                        "No Qalqalah"
+                    ],
+                    "subcat": "General Qalqalah"
+                },
+                {
+                    "id": "qalqalah_deg_1",
+                    "src": "images/qalqalah_new_Screenshot_1.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_2",
+                    "src": "images/qalqalah_new_Screenshot_2.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_3",
+                    "src": "images/qalqalah_new_Screenshot_3.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_4",
+                    "src": "images/qalqalah_new_Screenshot_4.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_5",
+                    "src": "images/qalqalah_new_Screenshot_5.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_6",
+                    "src": "images/qalqalah_new_Screenshot_6.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_7",
+                    "src": "images/qalqalah_new_Screenshot_7.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_8",
+                    "src": "images/qalqalah_new_Screenshot_8.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_9",
+                    "src": "images/qalqalah_new_Screenshot_9.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_10",
+                    "src": "images/qalqalah_new_Screenshot_10.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_11",
+                    "src": "images/qalqalah_new_Screenshot_11.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_12",
+                    "src": "images/qalqalah_new_Screenshot_12.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_13",
+                    "src": "images/qalqalah_new_Screenshot_13.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_14",
+                    "src": "images/qalqalah_new_Screenshot_14.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_15",
+                    "src": "images/qalqalah_new_Screenshot_15.png",
+                    "ans": "Minor",
+                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_16",
+                    "src": "images/qalqalah_new_Screenshot_16.png",
+                    "ans": "Medium",
+                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_17",
+                    "src": "images/qalqalah_new_Screenshot_17.png",
+                    "ans": "Medium",
+                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_18",
+                    "src": "images/qalqalah_new_Screenshot_18.png",
+                    "ans": "Medium",
+                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_19",
+                    "src": "images/qalqalah_new_Screenshot_19.png",
+                    "ans": "Medium",
+                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_20",
+                    "src": "images/qalqalah_new_Screenshot_20.png",
+                    "ans": "Medium",
+                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_21",
+                    "src": "images/qalqalah_new_Screenshot_21.png",
+                    "ans": "Medium",
+                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_22",
+                    "src": "images/qalqalah_new_Screenshot_22.png",
+                    "ans": "Medium",
+                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_24",
+                    "src": "images/qalqalah_new_Screenshot_24.png",
+                    "ans": "Medium",
+                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                },
+                {
+                    "id": "qalqalah_deg_25",
+                    "src": "images/qalqalah_new_Screenshot_25.png",
+                    "ans": "Medium",
+                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                    "prompt": "What is the degree of Qalqalah?",
+                    "choicesList": [
+                        "Minor",
+                        "Medium",
+                        "Major"
+                    ],
+                    "subcat": "Qalqalah Degree"
+                }
+            ]
     },
     "noon_sakinah_tanween": {
         "title": "Noon Sakinah & Tanween",
