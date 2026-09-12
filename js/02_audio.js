@@ -115,6 +115,26 @@ const SFX = {
             noise.connect(bandpass); bandpass.connect(gainNode); gainNode.connect(audioCtx.destination);
             noise.start();
         } catch(e) {}
+    },
+    celebrateStreak10: () => {
+        if (typeof isMuted !== 'undefined' && isMuted) return;
+        try {
+            if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const celebrationLines = [
+                    "Wow, ten in a row! You're a Tajweed star!",
+                    "Incredible streak! Ten correct answers in a row!",
+                    "Ten out of ten streak! You are truly mastering Tajweed!",
+                    "Unbelievable focus! That's a perfect ten streak!"
+                ];
+                const line = celebrationLines[Math.floor(Math.random() * celebrationLines.length)];
+                const utterance = new SpeechSynthesisUtterance(line);
+                utterance.lang = 'en-US';
+                utterance.rate = 1.0;
+                utterance.pitch = 1.1; // cheerful, friendly mascot tone
+                window.speechSynthesis.speak(utterance);
+            }
+        } catch(e) {}
     }
 };
 

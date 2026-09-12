@@ -204,6 +204,14 @@
                     if(session.streak > session.bestStreak) session.bestStreak = session.streak;
                     let streakMsg = "Correct! 🌟"; 
                     if(session.streak === 3) { pts += 10; streakMsg = "🔥 x3 Combo!"; } 
+                    else if(session.streak === 10) {
+                        pts += 20;
+                        streakMsg = "👑 x10 LEGENDARY STREAK!";
+                        if (typeof SFX !== 'undefined' && SFX.celebrateStreak10) SFX.celebrateStreak10();
+                        if (typeof confetti !== 'undefined') {
+                            confetti({ particleCount: 220, spread: 360, startVelocity: 45, origin: { y: 0.5 } });
+                        }
+                    }
                     else if(session.streak >= 5) { pts += 20; streakMsg = "🔥🔥 Super Streak!"; }
                     session.score += pts; session.coins += starsEarned; 
                     setMascot('happy'); showToast(streakMsg, false);
@@ -321,6 +329,174 @@
             if (!session.isPracticeMode) session.stars += stars;
         }
 
+        // ============================================================
+        // MID-QUIZ MASCOT INTERRUPT SYSTEM (Farida)
+        // ============================================================
+        const MASCOT_INTERRUPT_INTERVAL = 6; // Trigger every 6 answered questions (5-7 range)
+        const MASCOT_INTERRUPT_MODE = 'alternate'; // 'alternate' (tip, icebreaker, tip, ...) or 'random'
+        let mascotInterruptCounter = 0;
+
+        function triggerMascotInterrupt(onComplete) {
+            const tips = (typeof window !== 'undefined' && window.MASCOT_TIPS) || (typeof MASCOT_TIPS !== 'undefined' ? MASCOT_TIPS : []);
+            const icebreakers = (typeof window !== 'undefined' && window.MASCOT_ICEBREAKERS) || (typeof MASCOT_ICEBREAKERS !== 'undefined' ? MASCOT_ICEBREAKERS : []);
+
+            if (tips.length === 0 && icebreakers.length === 0) {
+                onComplete();
+                return;
+            }
+
+            const isIcebreaker = (MASCOT_INTERRUPT_MODE === 'alternate')
+                ? (mascotInterruptCounter % 2 === 1 && icebreakers.length > 0)
+                : (Math.random() > 0.5 && icebreakers.length > 0);
+            mascotInterruptCounter++;
+
+            let modal = document.getElementById('mascot-interrupt-modal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'mascot-interrupt-modal';
+                modal.className = 'mascot-interrupt-overlay';
+                modal.setAttribute('role', 'dialog');
+                modal.setAttribute('aria-modal', 'true');
+                modal.setAttribute('aria-label', "Farida's Learning Break");
+                document.body.appendChild(modal);
+            }
+
+            let advanceTimer = null;
+            let countdownInterval = null;
+
+            const closeAndResume = () => {
+                if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null; }
+                if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
+                modal.classList.remove('active');
+                modal.style.display = 'none';
+                if (typeof setMascot === 'function') setMascot('idle');
+                onComplete();
+            };
+
+            if (!isIcebreaker) {
+                // (a) RANDOM TIP CARD
+                const tip = tips[Math.floor(Math.random() * tips.length)];
+                const isTajweed = (tip.type === 'tajweed');
+                const badgeStyle = isTajweed 
+                    ? 'background:#eff6ff; color:#1d4ed8; border:1.5px solid #bfdbfe;' 
+                    : 'background:#f0fdf4; color:#15803d; border:1.5px solid #bbf7d0;';
+                const badgeLabel = isTajweed ? '📖 Tajweed Tip' : '🌙 Islamic Reminder';
+
+                modal.innerHTML = `
+                    <div class="mascot-interrupt-card">
+                        <div class="mascot-interrupt-badge" style="${badgeStyle}">
+                            ${badgeLabel}
+                        </div>
+                        <div class="mascot-interrupt-avatar">
+                            <span>🧕</span>
+                        </div>
+                        <h3 class="mascot-interrupt-title">Farida's Quick Break ✨</h3>
+                        <p class="mascot-interrupt-text">"${tip.text}"</p>
+                        <button id="btn-mascot-continue" class="mascot-continue-btn" type="button" aria-label="Continue Quiz">
+                            Continue Quiz ➡ (<span id="mascot-countdown">4</span>s)
+                        </button>
+                    </div>
+                `;
+
+                modal.style.display = 'flex';
+                modal.classList.add('active');
+                if (typeof setMascot === 'function') setMascot('happy');
+                if (typeof SFX !== 'undefined' && SFX.ting) SFX.ting();
+
+                let secondsLeft = 4;
+                const countdownSpan = modal.querySelector('#mascot-countdown');
+                countdownInterval = setInterval(() => {
+                    secondsLeft--;
+                    if (countdownSpan) countdownSpan.textContent = secondsLeft;
+                    if (secondsLeft <= 0) {
+                        clearInterval(countdownInterval);
+                    }
+                }, 1000);
+
+                advanceTimer = setTimeout(closeAndResume, 4000);
+
+                const btnContinue = modal.querySelector('#btn-mascot-continue');
+                if (btnContinue) {
+                    btnContinue.onclick = () => {
+                        if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
+                        closeAndResume();
+                    };
+                }
+            } else {
+                // (b) RANDOM ICEBREAKER QUESTION
+                const ib = icebreakers[Math.floor(Math.random() * icebreakers.length)];
+
+                modal.innerHTML = `
+                    <div class="mascot-interrupt-card">
+                        <div class="mascot-interrupt-badge" style="background:#fef3c7; color:#92400e; border:1.5px solid #fde68a;">
+                            🎲 Farida's Mini Icebreaker
+                        </div>
+                        <div class="mascot-interrupt-avatar">
+                            <span>🎯</span>
+                        </div>
+                        <h3 class="mascot-interrupt-title">Quick Fun Question!</h3>
+                        <p class="mascot-interrupt-text" style="color:#0f172a;">${ib.question}</p>
+                        <div style="font-size:0.8rem; color:#64748b; font-weight:700; margin-top:-6px;">
+                            Zero pressure • Purely for fun!
+                        </div>
+                        <div class="mascot-interrupt-options" id="mascot-ib-options">
+                            ${ib.options.map((opt, idx) => `
+                                <button type="button" class="mascot-option-btn" data-index="${idx}">${opt}</button>
+                            `).join('')}
+                        </div>
+                        <div id="mascot-funfact" class="mascot-funfact-box" style="display:none;"></div>
+                        <button id="btn-mascot-continue" class="mascot-continue-btn" type="button" style="display:none; margin-top:6px;" aria-label="Continue Quiz">
+                            Continue Quiz ➡
+                        </button>
+                    </div>
+                `;
+
+                modal.style.display = 'flex';
+                modal.classList.add('active');
+                if (typeof SFX !== 'undefined' && SFX.ting) SFX.ting();
+
+                const optionBtns = modal.querySelectorAll('.mascot-option-btn');
+                const funFactBox = modal.querySelector('#mascot-funfact');
+                const btnContinue = modal.querySelector('#btn-mascot-continue');
+
+                optionBtns.forEach(btn => {
+                    btn.onclick = () => {
+                        const selIdx = parseInt(btn.dataset.index, 10);
+                        optionBtns.forEach(b => b.disabled = true);
+
+                        const isCorrect = (selIdx === ib.correctIndex);
+                        if (isCorrect) {
+                            btn.classList.add('correct');
+                            if (typeof SFX !== 'undefined' && SFX.ting) SFX.ting();
+                        } else {
+                            btn.classList.add('wrong');
+                            const correctBtn = modal.querySelector(`.mascot-option-btn[data-index="${ib.correctIndex}"]`);
+                            if (correctBtn) correctBtn.classList.add('correct');
+                            if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
+                        }
+
+                        if (typeof setMascot === 'function') setMascot('happy');
+
+                        if (funFactBox) {
+                            funFactBox.innerHTML = `💡 <strong>${ib.funFact}</strong>`;
+                            funFactBox.style.display = 'block';
+                        }
+
+                        if (btnContinue) {
+                            btnContinue.style.display = 'inline-block';
+                            btnContinue.onclick = () => {
+                                if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
+                                closeAndResume();
+                            };
+                        }
+
+                        // Auto advance after 2.8 seconds
+                        advanceTimer = setTimeout(closeAndResume, 2800);
+                    };
+                });
+            }
+        }
+
         function nextQuestion() {
             if (typeof window.stopAllActiveAudio === 'function') window.stopAllActiveAudio();
             clearTimeout(window.autoAdvanceTimer);
@@ -332,15 +508,26 @@
                 expBox.innerHTML = '';
             }
             session.playHead++; 
+            if (session.playHead >= session.playlist.length) {
+                finishAndShowReport(); 
+                return;
+            }
+
+            // Mid-quiz Mascot Interrupt Break (every MASCOT_INTERRUPT_INTERVAL answered questions)
+            if (session.playHead > 0 && (session.playHead % MASCOT_INTERRUPT_INTERVAL === 0)) {
+                triggerMascotInterrupt(() => {
+                    loadQuestion();
+                });
+                return;
+            }
+
             if (session.playHead > 0 && session.playHead % 20 === 0) {
                 if (typeof showLogoPopup === 'function') showLogoPopup(session.playHead);
                 setTimeout(() => {
-                    if(session.playHead >= session.playlist.length) finishAndShowReport(); 
-                    else loadQuestion();
+                    loadQuestion();
                 }, 3000);
             } else {
-                if(session.playHead >= session.playlist.length) finishAndShowReport(); 
-                else loadQuestion();
+                loadQuestion();
             }
         }
 
