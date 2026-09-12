@@ -13,12 +13,13 @@
 /* Full-Width Edge-to-Edge Leaderboard Arena */
 .leaderboard-wrapper {
     width: 100%;
-    max-width: 1350px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 0 10px;
+    padding: 1vh 2vw;
+    box-sizing: border-box;
 }
 
 .lb-filter-tabs {

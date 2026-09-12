@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مراجعة وتدقيق النطق الصوتي - تجويد تشالنج</title>
+    <title>Audio Pronunciation Review & QA - Tajweed Challenge</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
@@ -109,27 +109,27 @@
 <body>
 
     <header>
-        <h1>📖 مراجعة وتدقيق النطق الصوتي <span>(تجويد تشالنج)</span></h1>
+        <h1>📖 Audio Pronunciation Review & QA <span>(Tajweed Challenge)</span></h1>
         <div class="header-actions">
-            <button id="btn-export-report" class="btn-folder" style="background:#8b5cf6; border:none; padding:7px 16px;">📋 تقرير الملاحظات (<span id="flag-counter">0</span>)</button>
-            <span class="badge" id="total-badge">572 مثال قرآني</span>
-            <a href="index.html" target="_blank" class="btn-game">🎮 فتح اللعبة</a>
+            <button id="btn-export-report" class="btn-folder" style="background:#8b5cf6; border:none; padding:7px 16px;">📋 Flagged Report (<span id="flag-counter">0</span>)</button>
+            <span class="badge" id="total-badge">572 Quranic Examples</span>
+            <a href="index.html" target="_blank" class="btn-game">🎮 Open Game</a>
         </div>
     </header>
 
     <div class="folder-setup">
         <div>
-            <strong style="color:#38bdf8; display:block; font-size:1rem;">📁 لحفظ أي تعديل صوتي بضغطة زر مباشرة في مجلد اللعبة:</strong>
-            <span id="folder-status" style="font-size:0.85rem; color:#cbd5e1;">اضغط على الزر واختر مجلد audio الخاص باللعبة ليتم حفظ أي تعديل تسجله بصوتك فوراً.</span>
+            <strong style="color:#38bdf8; display:block; font-size:1rem;">📁 To directly save audio changes into the game folder:</strong>
+            <span id="folder-status" style="font-size:0.85rem; color:#cbd5e1;">Click the button and select the game audio folder to instantly save any recordings.</span>
         </div>
-        <button id="btn-select-folder" class="btn-folder">📂 اختيار مجلد audio</button>
+        <button id="btn-select-folder" class="btn-folder">📂 Select audio Folder</button>
     </div>
 
     <main class="main-card">
         <!-- Filter & Search Bar -->
         <div class="filter-bar">
             <div class="filter-group">
-                <label for="cat-select">الباب:</label>
+                <label for="cat-select">Topic / Rule:</label>
                 <select id="cat-select" class="select-styled"></select>
             </div>
 
@@ -137,67 +137,67 @@
             <div class="filter-group">
                 <label style="color:#f59e0b; cursor:pointer; display:flex; align-items:center; gap:6px; font-size:0.92rem; font-weight:bold;">
                     <input type="checkbox" id="chk-only-flagged" style="width:16px; height:16px; cursor:pointer;">
-                    🚩 عرض الملاحظات فقط
+                    🚩 Show Flagged Only
                 </label>
             </div>
 
             <div class="jump-box">
-                <label for="jump-input" style="font-size:0.85rem; color:#94a3b8;">انتقال لرقم:</label>
+                <label for="jump-input" style="font-size:0.85rem; color:#94a3b8;">Jump to #:</label>
                 <input type="number" id="jump-input" class="input-num" min="1" value="1">
-                <button id="btn-jump" class="nav-btn" style="padding:4px 10px; font-size:0.85rem;">ذهاب</button>
+                <button id="btn-jump" class="nav-btn" style="padding:4px 10px; font-size:0.85rem;">Go</button>
             </div>
         </div>
 
         <!-- Navigation Bar -->
         <div class="nav-bar">
-            <button class="nav-btn" id="btn-prev">❮ السابق (السهم الأيمن)</button>
-            <span class="counter-lbl" id="counter-lbl">مثال 1 من 572</span>
-            <button class="nav-btn" id="btn-next">التالي ❯ (السهم الأيسر)</button>
+            <button class="nav-btn" id="btn-prev">❮ Previous (Left Arrow)</button>
+            <span class="counter-lbl" id="counter-lbl">Example 1 of 572</span>
+            <button class="nav-btn" id="btn-next">Next ❯ (Right Arrow)</button>
         </div>
 
         <!-- Info Panel -->
         <div class="info-panel">
             <div class="rule-title">
-                <span id="flag-tag-badge" class="flag-tag">🚩 به ملاحظة</span>
-                <span id="ayah-info-badge" class="rule-badge" style="background:#059669; font-weight: bold;">📖 الآية</span>
-                <span id="cat-badge" class="rule-badge">الباب</span>
+                <span id="flag-tag-badge" class="flag-tag">🚩 Flagged</span>
+                <span id="ayah-info-badge" class="rule-badge" style="background:#059669; font-weight: bold;">📖 Ayah</span>
+                <span id="cat-badge" class="rule-badge">Topic</span>
                 <span id="prompt-badge" class="rule-badge" style="background:#7c3aed; color:white; font-weight:bold; display:none;"></span>
-                <span id="ans-txt" style="color:#38bdf8;">الحكم: الإظهار</span>
+                <span id="ans-txt" style="color:#38bdf8;">Rule: Izhar</span>
             </div>
             <div class="file-name" id="file-lbl">mutamathilayn_Screenshot_1.mp3</div>
         </div>
 
         <!-- Quran Example Image -->
         <div class="q-display">
-            <img id="q-img" src="" alt="مثال القرآن">
+            <img id="q-img" src="" alt="Quranic Example">
         </div>
 
         <!-- Audio Player Section -->
         <div class="audio-section">
             <div class="audio-status" id="audio-status-box">
                 <span id="audio-icon">🔊</span>
-                <span id="audio-status-txt">جارٍ فحص الملف الصوتي...</span>
+                <span id="audio-status-txt">Checking audio file...</span>
             </div>
 
             <div class="audio-controls">
                 <button id="btn-play-audio" class="btn-play-sheikh" style="background: linear-gradient(135deg, #0284c7, #0369a1); font-size: 1rem; padding: 10px 20px;">
                     <span>▶️</span>
-                    <span>استمع للمثال (Space)</span>
+                    <span>Play Example (Space)</span>
                 </button>
 
                 
-                <button id="btn-toggle-flag" class="btn-flag" title="اضغط لتعليم هذا المثال لمراجعته (اختصار: حرف X)">
+                <button id="btn-toggle-flag" class="btn-flag" title="Click to flag this card for review (Shortcut: X)">
                     <span id="flag-btn-icon">🚩</span>
-                    <span id="flag-btn-lbl">تسجيل ملاحظة (X)</span>
+                    <span id="flag-btn-lbl">Flag for Review (X)</span>
                 </button>
 
-                <button id="btn-record-voice" class="btn-record-custom" title="اضغط لتسجيل قراءتك الصحيحة للمثال مباشرة بصوتك المتقن">
+                <button id="btn-record-voice" class="btn-record-custom" title="Record your voice for this example">
                     <span id="rec-icon">🎙️</span>
-                    <span id="rec-label">تسجيل بديل بصوتك</span>
+                    <span id="rec-label">Record Your Voice</span>
                 </button>
 
-                <button id="btn-save-voice" class="btn-save-custom">💾 حفظ الصوت الجديد</button>
-                <button id="btn-delete-voice" class="btn-delete-audio">🗑️ مسح الصوت</button>
+                <button id="btn-save-voice" class="btn-save-custom">💾 Save New Audio</button>
+                <button id="btn-delete-voice" class="btn-delete-audio">🗑️ Delete Audio</button>
             </div>
 
             <audio id="main-audio" class="audio-player" controls preload="auto"></audio>
@@ -205,31 +205,31 @@
             <!-- Audio Trimmer Section -->
             <div class="trimmer-panel" id="trimmer-panel">
                 <div class="trimmer-title">
-                    <span>✂️ أداة تحديد وقص المقطع المطلوب بنفسك</span>
-                    <span id="trim-duration-badge" style="background:#1e293b; color:#38bdf8; padding:3px 10px; border-radius:6px; font-size:0.85rem; font-family:monospace;">المحدد: 0.00s</span>
+                    <span>✂️ Audio Trimmer & Precision Clipper</span>
+                    <span id="trim-duration-badge" style="background:#1e293b; color:#38bdf8; padding:3px 10px; border-radius:6px; font-size:0.85rem; font-family:monospace;">Selected: 0.00s</span>
                 </div>
                 
                 <div class="trimmer-controls">
                     <div class="trim-box">
                         <label>
-                            <span>▶️ بداية المقطع (Start)</span>
-                            <button id="btn-set-start" class="btn-set-cur" title="ضبط البداية عند اللحظة الحالية في المشغل">📍 اللحظة الحالية</button>
+                            <span>▶️ Start Time</span>
+                            <button id="btn-set-start" class="btn-set-cur" title="ضبط البداية عند اللحظة الحالية في المشغل">📍 Current Position</button>
                         </label>
                         <div class="trim-input-group">
                             <input type="number" id="trim-start-num" class="trim-num-input" min="0" step="0.05" value="0.00">
-                            <span style="font-size:0.8rem; color:#64748b;">ث</span>
+                            <span style="font-size:0.8rem; color:#64748b;">s</span>
                             <input type="range" id="trim-start-range" class="trim-slider" min="0" max="10" step="0.01" value="0">
                         </div>
                     </div>
 
                     <div class="trim-box">
                         <label>
-                            <span>⏹️ نهاية المقطع (End)</span>
-                            <button id="btn-set-end" class="btn-set-cur" title="ضبط النهاية عند اللحظة الحالية في المشغل">📍 اللحظة الحالية</button>
+                            <span>⏹️ End Time</span>
+                            <button id="btn-set-end" class="btn-set-cur" title="ضبط النهاية عند اللحظة الحالية في المشغل">📍 Current Position</button>
                         </label>
                         <div class="trim-input-group">
                             <input type="number" id="trim-end-num" class="trim-num-input" min="0" step="0.05" value="0.00">
-                            <span style="font-size:0.8rem; color:#64748b;">ث</span>
+                            <span style="font-size:0.8rem; color:#64748b;">s</span>
                             <input type="range" id="trim-end-range" class="trim-slider" min="0" max="10" step="0.01" value="0">
                         </div>
                     </div>
@@ -237,8 +237,8 @@
 
                 <div class="trim-actions">
                     <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-                        <button id="btn-preview-slice" class="btn-play-slice">🎧 استمع للمقطع المحدد فقط</button>
-                        <button id="btn-execute-cut" class="btn-save-slice">✂️ قص وحفظ المقطع في ملفات اللعبة</button>
+                        <button id="btn-preview-slice" class="btn-play-slice">🎧 Preview Selection</button>
+                        <button id="btn-execute-cut" class="btn-save-slice">✂️ Trim & Save Audio</button>
                     </div>
                     <span id="trim-status-msg" class="trim-status-badge"></span>
                 </div>
@@ -248,7 +248,7 @@
         <!-- Audit / Keyboard Shortcuts -->
         <div class="audit-feedback">
             <div class="keyboard-hint">
-                ⌨️ اختصارات سريعة: <kbd>Space</kbd> استماع | <kbd>X</kbd> تعليم للمراجعة | <kbd>→</kbd> السابق | <kbd>←</kbd> التالي
+                ⌨️ Shortcuts: <kbd>Space</kbd> Play | <kbd>X</kbd> Flag for Review | <kbd>←</kbd> Prev | <kbd>→</kbd> Next
             </div>
             <div id="explanation-lbl" style="color:#94a3b8; font-size:0.85rem;"></div>
         </div>
@@ -258,14 +258,14 @@
     <div id="report-modal" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-header">
-                <div class="modal-title">📋 تقرير البطاقات المطلوب تعديل نطقها</div>
+                <div class="modal-title">📋 Flagged Audio Review Report</div>
                 <button id="btn-close-modal" class="btn-close-modal">&times;</button>
             </div>
-            <p style="font-size:0.9rem; color:#cbd5e1;">هذه هي قائمة البطاقات التي وضعت عليها علامة أثناء استماعك. اضغط على الزر الأخضر بالأسفل لنسخها ولصقها في المحادثة مباشرة:</p>
+            <p style="font-size:0.9rem; color:#cbd5e1;">List of flagged cards during audio review. Click Copy below to paste directly:</p>
             <textarea id="report-text" class="modal-textarea" readonly></textarea>
             <div class="modal-actions">
-                <button id="btn-copy-clipboard" class="btn-copy-report">📋 نسخ القائمة للحافظة</button>
-                <button id="btn-clear-all-flags" class="btn-clear-flags">🗑️ مسح جميع العلامات</button>
+                <button id="btn-copy-clipboard" class="btn-copy-report">📋 Copy Report to Clipboard</button>
+                <button id="btn-clear-all-flags" class="btn-clear-flags">🗑️ Clear All Flags</button>
             </div>
         </div>
     </div>
@@ -286,7 +286,7 @@
         function initData() {
             allQuestions = [];
             const catSelect = document.getElementById('cat-select');
-            catSelect.innerHTML = '<option value="ALL">-- كل الأبواب (جميع الأمثلة) --</option>';
+            catSelect.innerHTML = '<option value="ALL">-- All Topics (All Examples) --</option>';
 
             for (let catKey in TAJWEED_BANK) {
                 const catObj = TAJWEED_BANK[catKey];
@@ -332,7 +332,7 @@
 
         function updateDisplay() {
             if (filteredQuestions.length === 0) {
-                document.getElementById('counter-lbl').textContent = 'لا توجد أمثلة مطابقة';
+                document.getElementById('counter-lbl').textContent = 'No matching examples found';
                 return;
             }
 
@@ -342,7 +342,7 @@
             const q = filteredQuestions[currentIndex];
             const audioFileName = getAudioFileName(q);
 
-            document.getElementById('counter-lbl').textContent = `مثال ${currentIndex + 1} من ${filteredQuestions.length} (رقم عام: ${q.globalIndex} من ${allQuestions.length})`;
+            document.getElementById('counter-lbl').textContent = `Example ${currentIndex + 1} of ${filteredQuestions.length} (Global #${q.globalIndex} of ${allQuestions.length})`;
             document.getElementById('cat-badge').textContent = q.categoryTitle;
             const cardBase = audioFileName.replace(/\.[^.]+$/, '');
             const ayahData = AYAH_MAP[cardBase];
@@ -364,7 +364,7 @@
                     promptBadge.style.display = 'none';
                 }
             }
-            document.getElementById('ans-txt').textContent = `الحكم: ${q.ans || ''}`;
+            document.getElementById('ans-txt').textContent = `Rule: ${q.ans || ''}`;
             document.getElementById('file-lbl').textContent = audioFileName;
             document.getElementById('q-img').src = q.src || '';
             document.getElementById('explanation-lbl').textContent = q.explanation ? `💡 ${q.explanation}` : '';
@@ -392,12 +392,12 @@
             audioPlayer.pause();
             const audioPath = `audio/${fileName}?t=${Date.now()}`;
             
-            statusTxt.textContent = 'جارٍ فحص الصوت...';
+            statusTxt.textContent = 'Checking audio...';
             statusBox.className = 'audio-status';
             playBtn.disabled = true;
 
             audioPlayer.oncanplay = () => {
-                statusTxt.textContent = '✅ الصوت يعمل في اللعبة (اضغط Space للاستماع، أو X لتسجيل ملاحظة)';
+                statusTxt.textContent = '✅ Audio is functional (Space to play, X to flag)';
                 statusBox.className = 'audio-status status-ready';
                 audioIcon.textContent = '🔊';
                 playBtn.disabled = false;
@@ -405,7 +405,7 @@
             };
 
             audioPlayer.onerror = () => {
-                statusTxt.textContent = '⚠️ لم يتم العثور على الملف الصوتي لهذا المثال (audio/' + fileName + ')';
+                statusTxt.textContent = '⚠️ Audio file not found (audio/' + fileName + ')';
                 statusBox.className = 'audio-status status-missing';
                 audioIcon.textContent = '🎙️';
                 playBtn.disabled = true;
@@ -421,13 +421,13 @@
             try {
                 if ('showDirectoryPicker' in window) {
                     dirHandle = await window.showDirectoryPicker();
-                    document.getElementById('folder-status').textContent = `✅ متصل بنجاح بمجلد: "${dirHandle.name}". أي تسجيل جديد سيُحفظ فوراً في اللعبة!`;
+                    document.getElementById('folder-status').textContent = `✅ Connected to folder: "${dirHandle.name}". New recordings will save instantly!`;
                     document.getElementById('folder-status').style.color = '#10b981';
-                    document.getElementById('btn-select-folder').textContent = '✔️ مجلد اللعبة متصل';
+                    document.getElementById('btn-select-folder').textContent = '✔️ Audio Folder Connected';
                     document.getElementById('btn-select-folder').style.background = '#10b981';
                     updateDisplay();
                 } else {
-                    alert('المتصفح لا يدعم الوصول المباشر، سيتم تنزيل التسجيل كملف MP3 يدوي عند الحفظ.');
+                    alert('Direct folder access not supported; audio will download as MP3.');
                 }
             } catch(e) {
                 console.log(e);
@@ -454,7 +454,7 @@
                         player.play();
                         document.getElementById('btn-play-audio').disabled = false;
                         document.getElementById('btn-save-voice').style.display = 'inline-block';
-                        document.getElementById('audio-status-txt').textContent = '🎙️ تم التسجيل! استمع له ثم اضغط "حفظ الصوت الجديد" ليحل محله فوراً.';
+                        document.getElementById('audio-status-txt').textContent = '🎙️ Recorded! Preview then click Save.';
                         document.getElementById('audio-status-box').className = 'audio-status status-ready';
                     };
 
@@ -462,17 +462,17 @@
                     isRecording = true;
                     recBtn.classList.add('recording');
                     document.getElementById('rec-icon').textContent = '⏹️';
-                    document.getElementById('rec-label').textContent = 'إيقاف التسجيل';
-                    document.getElementById('audio-status-txt').textContent = '🔴 جارٍ التسجيل الآن... اقرأ الكلمة بنطقك المتقن ثم اضغط إيقاف.';
+                    document.getElementById('rec-label').textContent = 'Stop Recording';
+                    document.getElementById('audio-status-txt').textContent = '🔴 Recording now... Read clearly then press Stop.';
                 } catch(err) {
-                    alert('يرجى السماح بالوصول للميكروفون لتتمكن من التسجيل.');
+                    alert('Please allow microphone access to record.');
                 }
             } else {
                 mediaRecorder.stop();
                 isRecording = false;
                 recBtn.classList.remove('recording');
                 document.getElementById('rec-icon').textContent = '🎙️';
-                document.getElementById('rec-label').textContent = 'إعادة التسجيل';
+                document.getElementById('rec-label').textContent = 'Record Again';
             }
         });
 
@@ -488,16 +488,16 @@
                     const writable = await fileHandle.createWritable();
                     await writable.write(recordedBlob);
                     await writable.close();
-                    alert(`✅ تم حفظ التسجيل الجديد لمثال (${fileName}) بنجاح! وسيعمل فوراً في اللعبة.`);
+                    alert(`✅ Recording saved for (${fileName}) successfully!`);
                     document.getElementById('btn-save-voice').style.display = 'none';
                     probeAudio(fileName);
                 } catch(e) {
-                    alert('تعذر الحفظ المباشر، جاري التنزيل كملف صوتي...');
+                    alert('Direct save failed; downloading audio file...');
                     downloadBlob(recordedBlob, fileName);
                 }
             } else {
                 downloadBlob(recordedBlob, fileName);
-                alert(`تم تنزيل الملف (${fileName})، يرجى نقله إلى مجلد audio في اللعبة.`);
+                alert(`Downloaded (${fileName}); please place into audio folder.`);
             }
         });
 
@@ -513,14 +513,14 @@
         document.getElementById('btn-delete-voice').addEventListener('click', async () => {
             const q = filteredQuestions[currentIndex];
             const fileName = getAudioFileName(q);
-            if (confirm(`هل تريد مسح هذا الصوت نهائياً لتعيد تسجيله؟`)) {
+            if (confirm(`Delete this audio file permanently?`)) {
                 if (dirHandle) {
                     try {
                         await dirHandle.removeEntry(fileName);
-                        alert('تم مسح الملف بنجاح.');
+                        alert('File deleted successfully.');
                         probeAudio(fileName);
                     } catch(e) {
-                        alert('يرجى مسح الملف يدوياً من مجلد audio.');
+                        alert('Please remove file manually from audio folder.');
                     }
                 }
             }
@@ -622,12 +622,12 @@
             if (isFlagged) {
                 flagBtn.classList.add('flagged');
                 flagIcon.textContent = '❌';
-                flagLbl.textContent = 'إلغاء الملاحظة (X)';
+                flagLbl.textContent = 'Unflag (X)';
                 flagTag.classList.add('show');
             } else {
                 flagBtn.classList.remove('flagged');
                 flagIcon.textContent = '🚩';
-                flagLbl.textContent = 'تسجيل ملاحظة (X)';
+                flagLbl.textContent = 'Flag for Review (X)';
                 flagTag.classList.remove('show');
             }
         };
@@ -652,18 +652,18 @@
         document.getElementById('btn-export-report').addEventListener('click', () => {
             const arr = Array.from(flaggedSet);
             if (arr.length === 0) {
-                alert('لم تقم بتعليم أي بطاقة بعد! أثناء الاستماع، اضغط حرف X أو زر (تسجيل ملاحظة) لأي مثال غير مطابق.');
+                alert('No cards flagged yet! Press X to flag any card.');
                 return;
             }
 
-            let report = 'قائمة البطاقات المطلوب مراجعة وتعديل نطقها الصوتي (' + arr.length + ' بطاقة):\n\n';
+            let report = 'Flagged Cards Audio QA Report (' + arr.length + ' cards):\n\n';
             arr.forEach((fileName, idx) => {
                 // find question
                 const q = allQuestions.find(item => getAudioFileName(item) === fileName);
                 const ayahInfo = (typeof AYAH_MAP !== 'undefined' && AYAH_MAP[fileName.replace(/\.[^.]+$/, '')]) || null;
                 const ayahStr = ayahInfo ? (' [سورة ' + ayahInfo.sName + ' : آية ' + ayahInfo.ayah + ']') : '';
-                const catStr = q ? (' - باب: ' + q.categoryTitle) : '';
-                const numStr = q ? ('مثال رقم ' + q.globalIndex) : ('رقم ' + (idx + 1));
+                const catStr = q ? (' - Topic: ' + q.categoryTitle) : '';
+                const numStr = q ? ('Example #' + q.globalIndex) : ('#' + (idx + 1));
                 report += (idx + 1) + '. ' + numStr + ' (' + fileName + ')' + catStr + ayahStr + '\n';
             });
 
@@ -678,17 +678,17 @@
         document.getElementById('btn-copy-clipboard').addEventListener('click', () => {
             reportText.select();
             navigator.clipboard.writeText(reportText.value).then(() => {
-                alert('✅ تم نسخ القائمة بنجاح! يمكنك الآن لصقها هنا في المحادثة مباشرة.');
+                alert('✅ Report copied to clipboard!');
                 modal.style.display = 'none';
             }).catch(() => {
                 document.execCommand('copy');
-                alert('✅ تم نسخ القائمة!');
+                alert('✅ Report copied!');
                 modal.style.display = 'none';
             });
         });
 
         document.getElementById('btn-clear-all-flags').addEventListener('click', () => {
-            if (confirm('هل أنت متأكد من مسح جميع العلامات المسجلة؟')) {
+            if (confirm('Are you sure you want to clear all flags?')) {
                 flaggedSet.clear();
                 saveFlagsToStorage();
                 modal.style.display = 'none';
@@ -760,7 +760,7 @@
             const s = parseFloat(trimStartNum.value) || 0;
             const e = parseFloat(trimEndNum.value) || 0;
             const diff = Math.max(0, e - s);
-            trimDurationBadge.textContent = `المحدد: ${diff.toFixed(2)} ثانية (${s.toFixed(2)}s ➔ ${e.toFixed(2)}s)`;
+            trimDurationBadge.textContent = `Selected: ${diff.toFixed(2)}s (${s.toFixed(2)}s ➔ ${e.toFixed(2)}s)`;
         }
 
         playerAudio.addEventListener('loadedmetadata', () => {
@@ -833,7 +833,7 @@
             const s = parseFloat(trimStartNum.value) || 0;
             const e = parseFloat(trimEndNum.value) || 0;
             if (e <= s) {
-                alert('يرجى تحديد وقت نهاية أكبر من وقت البداية.');
+                alert('End time must be greater than start time.');
                 return;
             }
             if (sliceCheckInterval) clearInterval(sliceCheckInterval);
@@ -864,7 +864,7 @@
             try {
                 statusMsg.style.display = 'inline-block';
                 statusMsg.style.color = '#38bdf8';
-                statusMsg.textContent = '⏳ جارٍ معالجة وقص الصوت بدقة...';
+                statusMsg.textContent = '⏳ Processing and trimming audio...';
                 
                 let arrayBuf;
                 if (dirHandle) {
@@ -924,17 +924,17 @@
                     await writable.write(wavBlob);
                     await writable.close();
                     statusMsg.style.color = '#10b981';
-                    statusMsg.textContent = `✅ تم قص وحفظ المقطع (${(frameCount / sampleRate).toFixed(2)}s) بنجاح في اللعبة!`;
+                    statusMsg.textContent = `✅ Trimmed audio (${(frameCount / sampleRate).toFixed(2)}s) saved successfully!`;
                     probeAudio(fileName);
                 } else {
                     downloadBlob(wavBlob, fileName);
                     statusMsg.style.color = '#f59e0b';
-                    statusMsg.textContent = '📥 تم تنزيل المقطع المقصوص. اختر مجلد audio أعلى الصفحة للحفظ التلقائي المباشر.';
+                    statusMsg.textContent = '📥 Trimmed audio downloaded.';
                 }
             } catch (err) {
                 console.error(err);
                 statusMsg.style.color = '#ef4444';
-                statusMsg.textContent = '❌ حدث خطأ أثناء قص الصوت: ' + err.message;
+                statusMsg.textContent = '❌ Error trimming audio: ' + err.message;
             }
         });
 

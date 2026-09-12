@@ -31,7 +31,10 @@
     background: transparent;
     z-index: 1;
     position: relative;
-    padding: 6vh 4vw;
+    padding: 4vh 3vw;
+    width: 100%;
+    max-width: 100%;
+    align-items: stretch;
 }
 
 #screen-mode-select h1 {
@@ -42,7 +45,7 @@
 
 .mode-btn {
     width: 100%;
-    max-width: 320px;
+    max-width: none;
     padding: 3vh 2vw;
     font-size: 1.5rem;
     border-radius: 24px;
@@ -139,14 +142,14 @@
 }
 
 #map-container {
-    padding: 16px 8px 40px;
+    padding: 16px 2vw 40px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 24px;
     width: 100%;
-    max-width: 680px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
 }
 
 /* Dashboard Summary Card */
@@ -392,9 +395,9 @@
 }
 
 .stage-track {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
     position: relative;
 }
 

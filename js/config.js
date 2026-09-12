@@ -14,7 +14,7 @@
             name: 'Sheikh Gehad Elsayad',
             whatsapp: '+201099684126',
             email: 'gehadnagah789@gmail.com',
-            title: 'الشيخ جهاد الصياد'
+            title: 'Sheikh Gehad Elsayad'
         },
 
         getDefaultTeacher() {

@@ -19,19 +19,19 @@
         {
             id: 'image_bank',
             title: 'Noon & Meem Mushaddad',
-            subtitle: 'Letters with permanent two-count Ghunnah (نّ - مّ)',
+            subtitle: 'Letters with permanent two-count Ghunnah (Noon & Meem Mushaddad)',
             icon: '💎',
             color: '#06b6d4',
             subrules: [
-                { key: 'Noon Mushaddad', label: 'Noon Mushaddadah (نّ)' },
-                { key: 'Meem Mushaddad', label: 'Meem Mushaddadah (مّ)' },
+                { key: 'Noon Mushaddad', label: 'Noon Mushaddadah' },
+                { key: 'Meem Mushaddad', label: 'Meem Mushaddadah' },
                 { key: 'Two counts of ghunna', label: 'All Mushaddad (Ghunnah)' }
             ]
         },
         {
             id: 'qalqalah',
             title: 'Qalqalah (Echo)',
-            subtitle: 'Echoing vibration on letters (ق ط ب ج د)',
+            subtitle: 'Echoing vibration on Qalqalah letters (Q-T-B-J-D)',
             icon: '⚡',
             color: '#f59e0b',
             subrules: [
@@ -44,7 +44,7 @@
         {
             id: 'meem_sakinah',
             title: 'Meem Sakinah',
-            subtitle: 'Oral rules for Meem with Sukoon (مْ)',
+            subtitle: 'Oral rules for Meem with Sukoon',
             icon: '🌙',
             color: '#8b5cf6',
             subrules: [
@@ -72,7 +72,7 @@
         {
             id: 'tafkheem_tarqeeq',
             title: 'Tafkheem & Tarqeeq',
-            subtitle: 'Heavy & light letter characteristics (خ ص ض غ ط ق ظ, Raa, Laam)',
+            subtitle: 'Heavy & light letter characteristics (Heavy Letters, Raa, Laam)',
             icon: '⚖️',
             color: '#ec4899',
             subrules: [
@@ -123,7 +123,7 @@
         {
             id: 'lam_shamsiyyah_qamariyyah',
             title: 'Lam Shamsiyyah & Qamariyyah',
-            subtitle: 'Solar and lunar letter assimilations with Al- (ال)',
+            subtitle: 'Solar and lunar letter assimilations with Al-',
             icon: '☀️',
             color: '#ea580c',
             subrules: [

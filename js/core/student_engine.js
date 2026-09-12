@@ -726,7 +726,7 @@ this.save();
                 if (recentKeys.length > 0) {
                     targetRuleKey = recentKeys[Math.floor(Math.random() * recentKeys.length)];
                     targetRuleTitle = bank[targetRuleKey]?.title || student.lastSession.ruleTitles?.[0] || targetRuleKey;
-                    lessonContext = `Based on your last lesson: ${targetRuleTitle} (بناءً على درسك الأخير في الحصة)`;
+                    lessonContext = `Based on your last lesson: ${targetRuleTitle}`;
                 }
             }
 
@@ -738,7 +738,7 @@ this.save();
                     if (hwKeys.length > 0) {
                         targetRuleKey = hwKeys[0];
                         targetRuleTitle = bank[targetRuleKey]?.title || targetRuleKey;
-                        lessonContext = `Based on your last homework: ${targetRuleTitle} (بناءً على واجبك الأخير مع المعلم)`;
+                        lessonContext = `Based on your last homework: ${targetRuleTitle}`;
                     }
                 }
             }
@@ -759,7 +759,7 @@ this.save();
                 });
                 if (targetRuleKey && bank[targetRuleKey]) {
                     targetRuleTitle = bank[targetRuleKey]?.title || targetRuleKey;
-                    lessonContext = `Remediating recent mistakes: ${targetRuleTitle} (معالجة وتثبيت أخطائك السابقة)`;
+                    lessonContext = `Remediating recent mistakes: ${targetRuleTitle}`;
                 }
             }
 
@@ -768,8 +768,8 @@ this.save();
             if (!targetRuleKey || !bank[targetRuleKey]) {
                 const dayIndex = new Date().getDate() % (availableKeys.length || 1);
                 targetRuleKey = availableKeys[dayIndex] || 'noon_sakinah_tanween';
-                targetRuleTitle = bank[targetRuleKey]?.title || 'أحكام النون الساكنة والتنوين';
-                lessonContext = `Daily Tajweed Mastery: ${targetRuleTitle} (تحدي التجويد اليومي الموجه)`;
+                targetRuleTitle = bank[targetRuleKey]?.title || 'Noon Saakinah & Tanween Rules';
+                lessonContext = `Daily Tajweed Mastery: ${targetRuleTitle}`;
             }
 
             const ruleObj = bank[targetRuleKey];

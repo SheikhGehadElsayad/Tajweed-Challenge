@@ -69,9 +69,9 @@ const appContainer = document.createElement('div');
         <!-- Start/Setup Screen (Enhanced with Configuration) -->
     <!-- Mode Select Screen -->
     <main id="screen-mode-select" class="screen">
-        <section class="start-container">
+        <section class="start-container" style="padding: 3vh 3vw; width: 100%; max-width: 100%; align-items: stretch; justify-content: flex-start; min-height: 100vh;">
             <h1 style="font-size: clamp(2rem, 4vw, 3rem); color: #1e293b; font-weight: 900; margin-bottom: 3vh; text-align:center;">Choose Learning Mode</h1>
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; width:100%; max-width:680px;">
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; width:100%; max-width:100%;">
                 <button id="btn-mode-daily" class="mode-btn daily" style="width: 100%; background: linear-gradient(135deg, #ea580c, #c2410c); color: white; border: 3px solid #fdba74; box-shadow: 0 8px 16px rgba(234, 88, 12, 0.25);">
                     <span style="font-size:2.5rem;">🔥</span>
                     <span style="font-size:1.25rem; font-weight:900;">Daily Challenge</span>
@@ -94,24 +94,26 @@ const appContainer = document.createElement('div');
                 </button>
             </div>
             
-            <div style="margin-top: 4vh; text-align:center;">
+            <div style="margin-top: 4vh; text-align:center; width: 100%;">
                 <p style="color:#64748b; margin-bottom:10px; font-weight:700;">Teachers & Parents</p>
-                <button id="btn-mode-hw" class="mode-btn hw" style="margin: 0 auto;">📝 Assign HW</button>
+                <button id="btn-mode-hw" class="mode-btn hw" style="margin: 0 auto; min-width: 240px;">📝 Assign HW</button>
             </div>
-            <button class="btn-secondary" onclick="if(typeof SFX !== 'undefined') SFX.click(); switchScreen('screen-splash');" style="margin-top:20px; width: 100px;">⬅ Back</button>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn-secondary" onclick="if(typeof SFX !== 'undefined') SFX.click(); switchScreen('screen-splash');" style="width: 120px;">⬅ Back</button>
+            </div>
         </section>
     </main>
 
     <!-- Progressive Map Screen -->
     <main id="screen-progressive" class="screen">
-        <section class="start-container" style="justify-content: flex-start; padding-top:2vh;">
-            <div style="width:100%; max-width:680px; display:flex; justify-content:space-between; align-items:center;">
+        <section class="start-container" style="justify-content: flex-start; padding: 2vh 2vw; width: 100%; max-width: 100%; align-items: stretch; min-height: 100vh;">
+            <div style="width:100%; max-width:100%; display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px;">
                 <button class="icon-btn" onclick="if(typeof SFX !== 'undefined') SFX.click(); switchScreen('screen-mode-select');">⬅</button>
-                <h1 style="font-size: 1.8rem; font-weight:900; color:#1e293b;">Tajweed Roadmap 🗺️</h1>
+                <h1 style="font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight:900; color:#1e293b; margin: 0;">Tajweed Roadmap 🗺️</h1>
                 <div style="width:44px;"></div>
             </div>
             
-            <div style="width:100%; max-width:680px; margin-top:20px; text-align:center;">
+            <div style="width:100%; max-width:100%; margin-top:10px; margin-bottom: 16px; text-align:center;">
                 <div class="avatar-upload-container" style="text-align: center; margin-bottom: 10px;">
                     <label style="cursor: pointer; display: inline-block;" title="Upload your picture!">
                         <div style="width: 70px; height: 70px; border-radius: 50%; background: #e2e8f0; border: 2px dashed #94a3b8; display: flex; align-items: center; justify-content: center; overflow: hidden; margin: 0 auto; position: relative;">
@@ -168,7 +170,7 @@ const appContainer = document.createElement('div');
     <!-- Setup Screen (Free Play & Homework Launch - Widescreen Edition) -->
     <main id="screen-start" class="screen">
         <section class="start-container" aria-labelledby="start-title" style="background: linear-gradient(135deg, #f0fdf4, #f8fafc); padding: 1.5vh 2vw; width: 100%; min-height: 100vh; overflow-y: auto;">
-            <div style="width: 100%; max-width: 1650px; display: flex; flex-direction: column; align-items: stretch; margin: 0 auto; gap: 12px;">
+            <div style="width: 100%; max-width: 100%; display: flex; flex-direction: column; align-items: stretch; margin: 0; gap: 12px;">
                 
                 <!-- Full-Width Header Bar -->
                 <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; background: white; padding: 12px 20px; border-radius: 16px; border: 2px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
@@ -247,8 +249,8 @@ const appContainer = document.createElement('div');
  
     <!-- Theoretical Challenge Setup Screen -->
     <main id="screen-theory-setup" class="screen">
-        <section class="start-container" style="background: linear-gradient(135deg, #f0fdf4, #f8fafc); padding: 2vh 4vw; overflow-y: auto;">
-            <div style="width:100%; max-width:850px; display:flex; flex-direction:column; align-items:center;">
+        <section class="start-container" style="background: linear-gradient(135deg, #f0fdf4, #f8fafc); padding: 2vh 3vw; overflow-y: auto; width: 100%; max-width: 100%; align-items: stretch;">
+            <div style="width:100%; max-width:100%; display:flex; flex-direction:column; align-items:stretch;">
                 
                 <div style="width:100%; display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                     <button class="icon-btn" onclick="if(typeof SFX !== 'undefined') SFX.click(); switchScreen('screen-mode-select');">⬅</button>
@@ -309,7 +311,7 @@ const appContainer = document.createElement('div');
                 <p id="theory-setup-error" class="name-error" style="text-align: center; margin-bottom: 15px;" hidden></p>
 
                 <!-- Total Selected Display & Start Button -->
-                <div style="width: 100%; max-width: 500px; text-align: center;">
+                <div style="width: 100%; max-width: 500px; text-align: center; margin: 0 auto;">
                     <div style="margin-bottom: 15px; font-size: 1.15rem; font-weight: 800; color: #1e3a8a;">
                         Selected Questions to Play: <span id="theory-selected-count-badge" style="background: #2563eb; color: white; padding: 3px 14px; border-radius: 999px;">60</span>
                     </div>
@@ -481,15 +483,15 @@ const appContainer = document.createElement('div');
 
                 <!-- Header Title -->
                 <header style="text-align: center; margin: 1vh 0;">
-                    <h1 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: #1e293b; margin: 0;">🏆 لوحة الشرف والمتصدرين (Leaderboard)</h1>
-                    <p style="color: #64748b; font-weight: 700; margin-top: 4px; font-size: 0.95rem;">تنافس يومياً وأسبوعياً مع طلاب التجويد وارتقِ بأعلى المراتب! ✨</p>
+                    <h1 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: #1e293b; margin: 0;">🏆 Hall of Fame & Leaderboard</h1>
+                    <p style="color: #64748b; font-weight: 700; margin-top: 4px; font-size: 0.95rem;">Compete daily and weekly with fellow Tajweed students to reach the highest rank! ✨</p>
                 </header>
 
                 <!-- Daily / Weekly / All-time Filter Tabs -->
                 <nav class="lb-filter-tabs" aria-label="Leaderboard Time Period">
-                    <button type="button" class="lb-tab-btn active" id="lb-tab-today" data-period="today">📅 الترتيب اليومي (Today)</button>
-                    <button type="button" class="lb-tab-btn" id="lb-tab-week" data-period="week">📆 الترتيب الأسبوعي (This Week)</button>
-                    <button type="button" class="lb-tab-btn" id="lb-tab-all" data-period="all">🏆 الترتيب العام (All-Time)</button>
+                    <button type="button" class="lb-tab-btn active" id="lb-tab-today" data-period="today">📅 Today's Ranking</button>
+                    <button type="button" class="lb-tab-btn" id="lb-tab-week" data-period="week">📆 Weekly Ranking</button>
+                    <button type="button" class="lb-tab-btn" id="lb-tab-all" data-period="all">🏆 All-Time Ranking</button>
                 </nav>
 
                 <!-- Active Student Balance & Rank Summary Banner -->
@@ -500,12 +502,12 @@ const appContainer = document.createElement('div');
                 <!-- Full Width Leaderboard List -->
                 <section class="leaderboard-list" aria-label="Student Rankings">
                     <div class="lb-table-header">
-                        <div style="width: 48px;">الترتيب</div>
-                        <div style="flex: 1;">الطالب</div>
-                        <div style="width: 70px; text-align: center;">الستريك</div>
-                        <div style="width: 70px; text-align: center;">النجوم</div>
-                        <div style="width: 70px; text-align: center;">الدقة</div>
-                        <div style="width: 90px; text-align: right;">النقاط</div>
+                        <div style="width: 48px;">Rank</div>
+                        <div style="flex: 1;">Student</div>
+                        <div style="width: 70px; text-align: center;">Streak</div>
+                        <div style="width: 70px; text-align: center;">Stars</div>
+                        <div style="width: 70px; text-align: center;">Accuracy</div>
+                        <div style="width: 90px; text-align: right;">Score</div>
                     </div>
                     <div class="lb-scroll-body" id="lb-container">
                         <!-- Populated dynamically with all students -->
@@ -727,7 +729,7 @@ const appContainer = document.createElement('div');
                 btnCertRep.addEventListener('click', () => {
                     if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
                     if (window.CertificateGenerator) {
-                        const teacherInfo = (typeof window.StudentEngine !== 'undefined' && window.StudentEngine.getTeacherInfo()) || (window.APP_CONFIG && window.APP_CONFIG.DEFAULT_TEACHER) || { name: 'الشيخ جهاد الصياد' };
+                        const teacherInfo = (typeof window.StudentEngine !== 'undefined' && window.StudentEngine.getTeacherInfo()) || (window.APP_CONFIG && window.APP_CONFIG.DEFAULT_TEACHER) || { name: 'Sheikh Gehad Elsayad' };
                         window.CertificateGenerator.generate({
                             studentName: session.studentName || 'Student',
                             worldTitle: 'Tajweed Mastery Challenge',

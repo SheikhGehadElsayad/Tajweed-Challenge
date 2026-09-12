@@ -490,11 +490,11 @@ class BaseGameEngine {
       if (typeof confetti === 'function') confetti({ particleCount: 60 });
     } else if (type === 'teacher_dare') {
       icon = '👨‍🏫';
-      title = '👨‍🏫 DARE THE TEACHER! (تحدي على الشيخ)';
+      title = '👨‍🏫 DARE THE TEACHER!';
       msg = 'Student Power! Challenge Sheikh Gehad to demonstrate the Tajweed rule or give you a 30-second applause!';
     } else if (type === 'recite_dare') {
       icon = '🎤';
-      title = '🎤 RECITE FOR THE TEACHER! (تحدي التلاوة)';
+      title = '🎤 RECITE FOR THE TEACHER!';
       msg = 'Teacher Challenge! Sheikh Gehad challenges you to recite an Ayah with proper Tajweed!';
     }
 

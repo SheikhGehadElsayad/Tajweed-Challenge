@@ -979,9 +979,9 @@
                         return `
                             <span class="shb-avatar">${active.avatar || '🦁'}</span>
                             <span class="shb-name">${active.name}</span>
-                            <span class="shb-stat" title="رصيد النقاط" style="background:#eff6ff; color:#2563eb; font-weight:900; font-size:0.72rem; padding:1px 6px; border-radius:6px; border:1px solid #bfdbfe;">💎 ${bal.points}</span>
-                            <span class="shb-stat" title="رصيد النجوم" style="background:#fefce8; color:#ca8a04; font-weight:900; font-size:0.72rem; padding:1px 6px; border-radius:6px; border:1px solid #fde047;">⭐ ${bal.stars}</span>
-                            <span class="shb-streak" title="سلسلة الأيام" style="background:#fff7ed; color:#ea580c; font-weight:900; font-size:0.72rem; padding:1px 6px; border-radius:6px; border:1px solid #fdba74;">🔥 ${bal.streak}</span>
+                            <span class="shb-stat" title="Points Balance" style="background:#eff6ff; color:#2563eb; font-weight:900; font-size:0.72rem; padding:1px 6px; border-radius:6px; border:1px solid #bfdbfe;">💎 ${bal.points}</span>
+                            <span class="shb-stat" title="Stars Balance" style="background:#fefce8; color:#ca8a04; font-weight:900; font-size:0.72rem; padding:1px 6px; border-radius:6px; border:1px solid #fde047;">⭐ ${bal.stars}</span>
+                            <span class="shb-streak" title="Daily Streak" style="background:#fff7ed; color:#ea580c; font-weight:900; font-size:0.72rem; padding:1px 6px; border-radius:6px; border:1px solid #fdba74;">🔥 ${bal.streak}</span>
                             <span class="shb-caret">▼</span>
                         `;
                     })()}

@@ -23,7 +23,7 @@ const PROGRESSIVE_WORLDS = [
         title: 'Qalqalah',
         icon: '⚡',
         color: '#f59e0b',
-        desc: 'Echoing sound on the letters of Qutb Jad (ق، ط، ب، ج، د)',
+        desc: 'Echoing sound on the letters of Qutb Jad (Qaaf, Taa, Baa, Jeem, Daal)',
         stages: [
             { id: 'stg_2_1', name: 'General Qalqalah', desc: 'Identify whether the word contains Qalqalah or not', subKey: 'General Qalqalah', qty: 10 },
             { id: 'stg_2_2', name: 'Minor Qalqalah (Sughra)', desc: 'Qalqalah letter with Sukoon in the middle of a word or sentence', subKey: 'Minor', qty: 10 },
@@ -39,8 +39,8 @@ const PROGRESSIVE_WORLDS = [
         color: '#8b5cf6',
         desc: 'The three rules of Meem Saakinah: Ikhfaa, Idgham, and Izhar Shafawi',
         stages: [
-            { id: 'stg_3_1', name: 'Ikhfaa Shafawi', desc: 'Meem Saakinah followed by letter Baa (ب)', subKey: 'Oral + Hiding', qty: 8 },
-            { id: 'stg_3_2', name: 'Idgham Shafawi', desc: 'Meem Saakinah followed by another Meem (م)', subKey: 'Oral + Merger', qty: 8 },
+            { id: 'stg_3_1', name: 'Ikhfaa Shafawi', desc: 'Meem Saakinah followed by letter Baa', subKey: 'Oral + Hiding', qty: 8 },
+            { id: 'stg_3_2', name: 'Idgham Shafawi', desc: 'Meem Saakinah followed by another Meem', subKey: 'Oral + Merger', qty: 8 },
             { id: 'stg_3_3', name: 'Izhar Shafawi', desc: 'Meem Saakinah followed by all other letters', subKey: 'Oral + Clarity', qty: 8 }
         ]
     },
@@ -52,10 +52,10 @@ const PROGRESSIVE_WORLDS = [
         color: '#10b981',
         desc: 'The fundamental rules of Noon Saakinah and Tanween',
         stages: [
-            { id: 'stg_4_1', name: 'Izhar Halqi', desc: 'Clear pronunciation with throat letters (ء، هـ، ع، ح، غ، خ)', subKey: 'Izhar', qty: 10 },
-            { id: 'stg_4_2', name: 'Idgham with Ghunnah', desc: 'Merging with nasalization in letters Yanmoo (ي، ن، م، و)', subKey: 'Idgham with Ghunnah', qty: 10 },
-            { id: 'stg_4_3', name: 'Idgham without Ghunnah', desc: 'Complete merging without nasal sound in Laam (ل) and Raa (ر)', subKey: 'Idgham without Ghunnah', qty: 10 },
-            { id: 'stg_4_4', name: 'Iqlab', desc: 'Converting Noon or Tanween into a Meem before Baa (ب)', subKey: 'Iqlab', qty: 8 },
+            { id: 'stg_4_1', name: 'Izhar Halqi', desc: 'Clear pronunciation with the 6 throat letters', subKey: 'Izhar', qty: 10 },
+            { id: 'stg_4_2', name: 'Idgham with Ghunnah', desc: 'Merging with nasalization in letters Yanmoo (Yaa, Noon, Meem, Waw)', subKey: 'Idgham with Ghunnah', qty: 10 },
+            { id: 'stg_4_3', name: 'Idgham without Ghunnah', desc: 'Complete merging without nasal sound in Laam and Raa', subKey: 'Idgham without Ghunnah', qty: 10 },
+            { id: 'stg_4_4', name: 'Iqlab', desc: 'Converting Noon or Tanween into a Meem before Baa', subKey: 'Iqlab', qty: 8 },
             { id: 'stg_4_5', name: 'Ikhfaa Haqiqi', desc: 'Concealing the Noon sound before the 15 Ikhfaa letters', subKey: 'Ikhfa', qty: 10 },
             { id: 'stg_4_6', name: 'Izhar Mutlaq', desc: 'Noon Saakinah followed by Waw or Yaa in a single word', subKey: 'Izhar Mutlaq', qty: 4 },
             { id: 'stg_4_7', name: 'Ikhfaa Ghunnah', desc: 'Distinguish between Heavy and Light Ghunnah of Ikhfaa', subKey: 'Ikhfa Ghunnah', qty: 10 }
@@ -69,7 +69,7 @@ const PROGRESSIVE_WORLDS = [
         color: '#ec4899',
         desc: 'Heaviness and Lightness of Arabic letters, Raa, and Laam of Allah',
         stages: [
-            { id: 'stg_5_1', name: 'Always Heavy Letters', desc: 'The seven permanent heavy letters (خص ضغط قظ)', subKey: 'Always Heavy', qty: 8 },
+            { id: 'stg_5_1', name: 'Always Heavy Letters', desc: 'The seven permanent heavy letters (Kh-S-D-Gh-T-Q-Z)', subKey: 'Always Heavy', qty: 8 },
             { id: 'stg_5_2', name: 'Heavy Raa (Tafkheem)', desc: 'Cases where letter Raa is pronounced heavy (Fathah, Dammah, etc.)', subKey: 'Heavy Ra', qty: 10 },
             { id: 'stg_5_3', name: 'Light Raa (Tarqeeq)', desc: 'Cases where letter Raa is pronounced light (Kasrah, etc.)', subKey: 'Light Ra', qty: 8 },
             { id: 'stg_5_4', name: 'Raa: Both Options', desc: 'Words where Raa can be read with either Tafkheem or Tarqeeq', subKey: 'Ra Both Options', qty: 6 },

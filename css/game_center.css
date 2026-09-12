@@ -56,8 +56,8 @@ body:has(#screen-gc-results.active) {
 }
 
 .gc-gateway-container {
-  max-width: 1050px;
-  width: 100%;
+  max-width: 1400px;
+  width: 95vw;
   margin: 0 auto;
   text-align: center;
 }
@@ -221,9 +221,11 @@ body:has(#screen-gc-results.active) {
 }
 
 .gc-portal-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-bottom: 120px !important;
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0 2vw 120px;
+  box-sizing: border-box;
 }
 
 .gc-portal-header {

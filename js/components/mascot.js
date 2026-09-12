@@ -340,8 +340,8 @@
             const tips = [
                 '💡 Tajweed Tip: Noon Sakinah & Tanween have 4 core rules: Izhar, Idgham, Iqlab, and Ikhfa!',
                 '💡 Tajweed Tip: Throat letters of Izhar Halqi: Hamzah, Ha, \'Ayn, Haa, Ghayn, Khaa!',
-                '💡 Tajweed Tip: The 6 letters of Idgham are united in (Yarmaloon - يَرْمَلُون)!',
-                '💡 Tajweed Tip: Qalqalah letters are five: Qaaf, Taa, Baa, Jeem, Daal (Qutb Jad - قُطْبُ جَدّ)!',
+                '💡 Tajweed Tip: The 6 letters of Idgham are united in (Yarmaloon)!',
+                '💡 Tajweed Tip: Qalqalah letters are five: Qaaf, Taa, Baa, Jeem, Daal (Qutb Jad)!',
                 '💡 Tajweed Tip: Ghunnah is a sweet nasal tone held for exactly 2 counts (Harakatan)!',
                 '🌟 Prophet Muhammad (ﷺ) said: "The best of you are those who learn the Quran and teach it"!'
             ];

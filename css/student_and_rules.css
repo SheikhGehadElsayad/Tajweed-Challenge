@@ -78,8 +78,8 @@
 .student-modal-dialog {
     background: white;
     border-radius: 24px;
-    width: 100%;
-    max-width: 680px;
+    width: 95vw;
+    max-width: 1400px;
     max-height: 88vh;
     display: flex;
     flex-direction: column;
@@ -1124,7 +1124,7 @@
     border-color: #3b82f6;
 }
 
-/* 2. Full-Width Realm Dropdown Bar (من أقصى اليمين إلى اليسار وبحجم كبير وملون) */
+/* 2. Full-Width Realm Dropdown Bar (Edge-to-edge from far right to far left, prominent & vibrant) */
 .arena-realm-dropdown-banner {
     width: 100%;
     padding: 16px 22px;

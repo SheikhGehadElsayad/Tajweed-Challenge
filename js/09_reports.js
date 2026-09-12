@@ -92,7 +92,7 @@ function finishAndShowReport(earlyExit = false) {
             if (isHomeworkMode && subParent) {
                 // Get teacher details from URL or StudentEngine
                 const teacher = (window.CURRENT_HW_CONFIG && window.CURRENT_HW_CONFIG.teacher) 
-                    || (typeof window.StudentEngine !== 'undefined' ? window.StudentEngine.getTeacherInfo() : { name: 'الشيخ جهاد الصياد', whatsapp: '+201099684126', email: 'gehadnagah789@gmail.com' });
+                    || (typeof window.StudentEngine !== 'undefined' ? window.StudentEngine.getTeacherInfo() : { name: 'Sheikh Gehad Elsayad', whatsapp: '+201099684126', email: 'gehadnagah789@gmail.com' });
 
                 const timeSec = Math.max(1, Math.round((session.endTime - session.startTime) / 1000));
                 
@@ -102,12 +102,12 @@ function finishAndShowReport(earlyExit = false) {
                     text: q.text || q.prompt || '',
                     src: q.src || q.image || '',
                     image: q.image || q.src || '',
-                    userAns: q.userChoice || q.userAns || 'إجابة خاطئة',
+                    userAns: q.userChoice || q.userAns || 'Incorrect Answer',
                     ans: q.ans || q.correctAns || '',
                     correctAns: q.ans || q.correctAns || '',
                     prompt: q.prompt || '',
                     categoryId: q.categoryId || '',
-                    rule: q.categoryTitle || q.categoryId || 'حكم تجويدي',
+                    rule: q.categoryTitle || q.categoryId || 'Tajweed Rule',
                     explanation: q.explanation || ''
                 }));
 
@@ -293,7 +293,7 @@ ${magicSyncLink}`;
                     pBtn.style.cursor = 'pointer';
                     pBtn.style.padding = '14px 26px';
                     pBtn.style.fontSize = '1.15rem';
-                    pBtn.innerHTML = `🎯 Immediate Remediation Drill (معالجة فورية للأخطاء - ${missedQs.length} أسئلة)`;
+                    pBtn.innerHTML = `🎯 Immediate Remediation Drill (${missedQs.length} Questions)`;
                     
                     pBtn.onclick = () => {
                         let practicePlay = [];
@@ -353,19 +353,20 @@ ${magicSyncLink}`;
                     const bal = window.StudentEngine.getStudentBalance(active.id);
                     const rankForPeriod = period === 'today' ? bal.rankDaily : period === 'week' ? bal.rankWeekly : bal.rankAllTime;
                     const periodPts = period === 'today' ? bal.dailyPoints : period === 'week' ? bal.weeklyPoints : bal.points;
+                    const periodTitle = period === 'today' ? 'Today' : period === 'week' ? 'This Week' : 'All-Time';
                     banner.innerHTML = `
                         <div class="lb-active-title">
                             <span style="font-size: 1.5rem;">${active.avatar || '🦁'}</span>
                             <div>
                                 <span style="font-weight: 900; color: #1e3a8a;">${active.name}</span>
-                                <div style="font-size: 0.8rem; color: #64748b; font-weight: 700;">رصيدك وترتيبك الحالي: ${period === 'today' ? 'اليوم' : period === 'week' ? 'هذا الأسبوع' : 'الترتيب العام'}</div>
+                                <div style="font-size: 0.8rem; color: #64748b; font-weight: 700;">Your Standing & Balance: ${periodTitle}</div>
                             </div>
                         </div>
                         <div class="lb-wallet-badges">
-                            <div class="lb-wallet-pill">💎 ${periodPts} نقطة</div>
-                            <div class="lb-wallet-pill">⭐ ${bal.stars} نجوم</div>
-                            <div class="lb-wallet-pill">🔥 ${bal.streak} أيام ستريك</div>
-                            <div class="lb-wallet-pill" style="background: #2563eb; color: white; border-color: #1d4ed8;">🏆 ترتيبك: #${rankForPeriod}</div>
+                            <div class="lb-wallet-pill">💎 ${periodPts} Pts</div>
+                            <div class="lb-wallet-pill">⭐ ${bal.stars} Stars</div>
+                            <div class="lb-wallet-pill">🔥 ${bal.streak} Day Streak</div>
+                            <div class="lb-wallet-pill" style="background: #2563eb; color: white; border-color: #1d4ed8;">🏆 Rank: #${rankForPeriod}</div>
                         </div>
                     `;
                 } else {
@@ -393,7 +394,7 @@ ${magicSyncLink}`;
                         ${avatarHtml}
                         <div class="lb-name">
                             <span>${entry.name}</span>
-                            ${entry.isCurrent ? '<span class="lb-you-tag">أنت (You)</span>' : ''}
+                            ${entry.isCurrent ? '<span class="lb-you-tag">You</span>' : ''}
                         </div>
                     </div>
                     <div class="lb-stats">
@@ -487,7 +488,7 @@ ${magicSyncLink}`;
                 certBtn.onclick = () => {
                     if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
                     if (window.CertificateGenerator) {
-                        const teacherInfo = (typeof window.StudentEngine !== 'undefined' && window.StudentEngine.getTeacherInfo()) || (window.APP_CONFIG && window.APP_CONFIG.DEFAULT_TEACHER) || { name: 'الشيخ جهاد الصياد' };
+                        const teacherInfo = (typeof window.StudentEngine !== 'undefined' && window.StudentEngine.getTeacherInfo()) || (window.APP_CONFIG && window.APP_CONFIG.DEFAULT_TEACHER) || { name: 'Sheikh Gehad Elsayad' };
                         window.CertificateGenerator.generate({
                             studentName: session.studentName || 'Honored Student',
                             worldTitle: currentProgressiveStageInfo.world.title || 'Tajweed Stage',
