@@ -28,7 +28,7 @@ const PROGRESSIVE_WORLDS = [
             { id: 'stg_2_1', name: 'General Qalqalah', desc: 'Identify whether the word contains Qalqalah or not', subKey: 'General Qalqalah', qty: 10 },
             { id: 'stg_2_2', name: 'Minor Qalqalah (Sughra)', desc: 'Qalqalah letter with Sukoon in the middle of a word or sentence', subKey: 'Minor', qty: 10 },
             { id: 'stg_2_3', name: 'Medium Qalqalah (Wusta)', desc: 'Stopping on an un-doubled Qalqalah letter at the end of a word', subKey: 'Medium', qty: 10 },
-            { id: 'stg_2_4', name: 'Major Qalqalah (Kubra)', desc: 'Stopping on a doubled (mushaddad) Qalqalah letter', subKey: 'Major', qty: 5 }
+            { id: 'stg_2_4', name: 'Major Qalqalah (Kubra)', desc: 'Stopping on a doubled (mushaddad) Qalqalah letter', subKey: 'Major', qty: 4 }
         ]
     },
     {

@@ -256,784 +256,784 @@ const TAJWEED_BANK = {
                 "id": "madd_e0fe74f9",
                 "src": "images/img_0125.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_be57cf7a",
                 "src": "images/img_0126.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_7dfbfc8f",
                 "src": "images/img_0127.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_0617e0c1",
                 "src": "images/img_0128.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_b53310de",
                 "src": "images/img_0129.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_f80e9891",
                 "src": "images/img_0130.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_0fb417b6",
                 "src": "images/img_0131.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_7eb0bdb6",
                 "src": "images/img_0132.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_5d5f2214",
                 "src": "images/img_0133.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_afce5309",
                 "src": "images/img_0134.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_7158949c",
                 "src": "images/img_0135.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_e2c114bc",
                 "src": "images/img_0136.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_1bb653cd",
                 "src": "images/img_0137.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_d8f9eb5a",
                 "src": "images/img_0138.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_f6682a59",
                 "src": "images/img_0139.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_0c5ce45c",
                 "src": "images/img_0140.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_4671ed78",
                 "src": "images/img_0141.png",
                 "ans": "Substitute",
-                "explanation": "Hamzah precedes the Madd letter → Substitute Madd (Madd Badal, 2 counts).",
+                "explanation": "Hamzah precedes the Madd letter in the same word without a following Hamzah or Sukoon → Substitute Madd (Madd Badal, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_348e55d2",
                 "src": "images/img_0142.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_db46d8a9",
                 "src": "images/img_0143.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_2a7c7e81",
                 "src": "images/img_0144.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_370f2d2b",
                 "src": "images/img_0145.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_402b670b",
                 "src": "images/img_0146.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_1f61053e",
                 "src": "images/img_0147.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_c2c26fd6",
                 "src": "images/img_0148.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_411e9547",
                 "src": "images/img_0149.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_cc9a9386",
                 "src": "images/img_0150.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_d6e980d1",
                 "src": "images/img_0151.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_ced99ac0",
                 "src": "images/img_0152.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_46692fa2",
                 "src": "images/img_0153.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_9f6c1c12",
                 "src": "images/img_0154.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_0c29e2a7",
                 "src": "images/img_0155.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_0e49400d",
                 "src": "images/img_0156.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_b5e4ec44",
                 "src": "images/img_0157.png",
                 "ans": "Connected",
-                "explanation": "Madd letter followed by Hamzah in the SAME word → Connected Madd (Madd Muttasil, 4-5 counts).",
+                "explanation": "Madd letter followed by a Hamzah in the SAME word → Obligatory Connected Madd (Madd Wajib Muttasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_686f510e",
                 "src": "images/img_0158.png",
                 "ans": "Separated",
-                "explanation": "Madd letter at the end of a word followed by Hamzah at the beginning of next word → Separated Madd (Madd Munfasil, 4-5 counts).",
+                "explanation": "Madd letter at the end of a word followed by a Hamzah at the start of the next word → Permissible Separated Madd (Madd Ja'iz Munfasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_a9891e84",
                 "src": "images/img_0159.png",
                 "ans": "Separated",
-                "explanation": "Madd letter at the end of a word followed by Hamzah at the beginning of next word → Separated Madd (Madd Munfasil, 4-5 counts).",
+                "explanation": "Madd letter at the end of a word followed by a Hamzah at the start of the next word → Permissible Separated Madd (Madd Ja'iz Munfasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_1dedb84e",
                 "src": "images/img_0160.png",
                 "ans": "Separated",
-                "explanation": "Madd letter at the end of a word followed by Hamzah at the beginning of next word → Separated Madd (Madd Munfasil, 4-5 counts).",
+                "explanation": "Madd letter at the end of a word followed by a Hamzah at the start of the next word → Permissible Separated Madd (Madd Ja'iz Munfasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_6bd0de7a",
                 "src": "images/img_0161.png",
                 "ans": "Separated",
-                "explanation": "Madd letter at the end of a word followed by Hamzah at the beginning of next word → Separated Madd (Madd Munfasil, 4-5 counts).",
+                "explanation": "Madd letter at the end of a word followed by a Hamzah at the start of the next word → Permissible Separated Madd (Madd Ja'iz Munfasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_2839b2db",
                 "src": "images/img_0162.png",
                 "ans": "Separated",
-                "explanation": "Madd letter at the end of a word followed by Hamzah at the beginning of next word → Separated Madd (Madd Munfasil, 4-5 counts).",
+                "explanation": "Madd letter at the end of a word followed by a Hamzah at the start of the next word → Permissible Separated Madd (Madd Ja'iz Munfasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_f31697f0",
                 "src": "images/img_0163.png",
                 "ans": "Separated",
-                "explanation": "Madd letter at the end of a word followed by Hamzah at the beginning of next word → Separated Madd (Madd Munfasil, 4-5 counts).",
+                "explanation": "Madd letter at the end of a word followed by a Hamzah at the start of the next word → Permissible Separated Madd (Madd Ja'iz Munfasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_def577bd",
                 "src": "images/img_0164.png",
                 "ans": "Separated",
-                "explanation": "Madd letter at the end of a word followed by Hamzah at the beginning of next word → Separated Madd (Madd Munfasil, 4-5 counts).",
+                "explanation": "Madd letter at the end of a word followed by a Hamzah at the start of the next word → Permissible Separated Madd (Madd Ja'iz Munfasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_71b7a4a4",
                 "src": "images/img_0165.png",
                 "ans": "Separated",
-                "explanation": "Madd letter at the end of a word followed by Hamzah at the beginning of next word → Separated Madd (Madd Munfasil, 4-5 counts).",
+                "explanation": "Madd letter at the end of a word followed by a Hamzah at the start of the next word → Permissible Separated Madd (Madd Ja'iz Munfasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_badf7903",
                 "src": "images/img_0166.png",
                 "ans": "Separated",
-                "explanation": "Madd letter at the end of a word followed by Hamzah at the beginning of next word → Separated Madd (Madd Munfasil, 4-5 counts).",
+                "explanation": "Madd letter at the end of a word followed by a Hamzah at the start of the next word → Permissible Separated Madd (Madd Ja'iz Munfasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_65d70fb5",
                 "src": "images/img_0167.png",
                 "ans": "Separated",
-                "explanation": "Madd letter at the end of a word followed by Hamzah at the beginning of next word → Separated Madd (Madd Munfasil, 4-5 counts).",
+                "explanation": "Madd letter at the end of a word followed by a Hamzah at the start of the next word → Permissible Separated Madd (Madd Ja'iz Munfasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_6ea8ca18",
                 "src": "images/img_0168.png",
                 "ans": "Separated",
-                "explanation": "Madd letter at the end of a word followed by Hamzah at the beginning of next word → Separated Madd (Madd Munfasil, 4-5 counts).",
+                "explanation": "Madd letter at the end of a word followed by a Hamzah at the start of the next word → Permissible Separated Madd (Madd Ja'iz Munfasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_ad485454",
                 "src": "images/img_0169.png",
                 "ans": "Separated",
-                "explanation": "Madd letter at the end of a word followed by Hamzah at the beginning of next word → Separated Madd (Madd Munfasil, 4-5 counts).",
+                "explanation": "Madd letter at the end of a word followed by a Hamzah at the start of the next word → Permissible Separated Madd (Madd Ja'iz Munfasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_8ec133ee",
                 "src": "images/img_0170.png",
                 "ans": "Separated",
-                "explanation": "Madd letter at the end of a word followed by Hamzah at the beginning of next word → Separated Madd (Madd Munfasil, 4-5 counts).",
+                "explanation": "Madd letter at the end of a word followed by a Hamzah at the start of the next word → Permissible Separated Madd (Madd Ja'iz Munfasil, 4-5 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_ba4d817f",
                 "src": "images/img_0171.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_a6c4aaf3",
                 "src": "images/img_0172.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_53a9372e",
                 "src": "images/img_0173.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_cac2a397",
                 "src": "images/img_0174.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_869bda31",
                 "src": "images/img_0175.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_8d902d51",
                 "src": "images/img_0176.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_5071ca4a",
                 "src": "images/img_0177.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_75bb5c25",
                 "src": "images/img_0178.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_deee274e",
                 "src": "images/img_0179.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_33081a7d",
                 "src": "images/img_0180.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_7e28d5a3",
                 "src": "images/img_0181.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_26fec3f0",
                 "src": "images/img_0182.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_5fe18aaa",
                 "src": "images/img_0183.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_8cb076f2",
                 "src": "images/img_0184.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_d1a1896c",
                 "src": "images/img_0185.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_a8d454ae",
                 "src": "images/img_0186.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_9c2b91e2",
                 "src": "images/img_0187.png",
                 "ans": "Compensatory Madd",
-                "explanation": "Stopping on Tanween Fath replaced with Alif → Compensatory Madd (Madd 'Iwad, 2 counts).",
+                "explanation": "Stopping on Tanween Fath (ً) replaced with a prolonged Alif of 2 counts → Compensatory Madd (Madd 'Iwad, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_9ce50fc0",
                 "src": "images/img_0188.png",
                 "ans": "Stabilizing Madd",
-                "explanation": "Two Yaas meeting, first with Shaddah & Kasrah and second Saakinah → Stabilizing Madd (Madd At-Tamkeen, 2 counts).",
+                "explanation": "Meeting of two Yaas (the first with Shaddah & Kasrah and the second Saakinah) → Stabilizing Madd (Madd At-Tamkeen, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_7d03507a",
                 "src": "images/img_0189.png",
                 "ans": "Stabilizing Madd",
-                "explanation": "Two Yaas meeting, first with Shaddah & Kasrah and second Saakinah → Stabilizing Madd (Madd At-Tamkeen, 2 counts).",
+                "explanation": "Meeting of two Yaas (the first with Shaddah & Kasrah and the second Saakinah) → Stabilizing Madd (Madd At-Tamkeen, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_6b849779",
                 "src": "images/img_0190.png",
                 "ans": "Stabilizing Madd",
-                "explanation": "Two Yaas meeting, first with Shaddah & Kasrah and second Saakinah → Stabilizing Madd (Madd At-Tamkeen, 2 counts).",
+                "explanation": "Meeting of two Yaas (the first with Shaddah & Kasrah and the second Saakinah) → Stabilizing Madd (Madd At-Tamkeen, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_3ff90603",
                 "src": "images/img_0191.png",
                 "ans": "Stabilizing Madd",
-                "explanation": "Two Yaas meeting, first with Shaddah & Kasrah and second Saakinah → Stabilizing Madd (Madd At-Tamkeen, 2 counts).",
+                "explanation": "Meeting of two Yaas (the first with Shaddah & Kasrah and the second Saakinah) → Stabilizing Madd (Madd At-Tamkeen, 2 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_a6585f14",
                 "src": "images/img_0192.png",
                 "ans": "Minor Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters not followed by Hamzah → Minor Sila Madd (2 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters not followed by Hamzah → Minor Connecting Madd (Madd Silah Sughra, 2 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_5c33a8dd",
                 "src": "images/img_0193.png",
                 "ans": "Minor Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters not followed by Hamzah → Minor Sila Madd (2 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters not followed by Hamzah → Minor Connecting Madd (Madd Silah Sughra, 2 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_a3d30699",
                 "src": "images/img_0194.png",
                 "ans": "Minor Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters not followed by Hamzah → Minor Sila Madd (2 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters not followed by Hamzah → Minor Connecting Madd (Madd Silah Sughra, 2 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_a4ddd054",
                 "src": "images/img_0195.png",
                 "ans": "Minor Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters not followed by Hamzah → Minor Sila Madd (2 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters not followed by Hamzah → Minor Connecting Madd (Madd Silah Sughra, 2 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_7e9d5db2",
                 "src": "images/img_0196.png",
                 "ans": "Minor Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters not followed by Hamzah → Minor Sila Madd (2 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters not followed by Hamzah → Minor Connecting Madd (Madd Silah Sughra, 2 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_79346fc0",
                 "src": "images/img_0197.png",
                 "ans": "Minor Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters not followed by Hamzah → Minor Sila Madd (2 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters not followed by Hamzah → Minor Connecting Madd (Madd Silah Sughra, 2 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_2069fa82",
                 "src": "images/img_0198.png",
                 "ans": "Minor Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters not followed by Hamzah → Minor Sila Madd (2 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters not followed by Hamzah → Minor Connecting Madd (Madd Silah Sughra, 2 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_2d493657",
                 "src": "images/img_0199.png",
                 "ans": "Major Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters followed by Hamzah → Major Sila Madd (4-5 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters followed by a Hamzah → Major Connecting Madd (Madd Silah Kubra, 4-5 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_ca6c29bc",
                 "src": "images/img_0200.png",
                 "ans": "Major Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters followed by Hamzah → Major Sila Madd (4-5 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters followed by a Hamzah → Major Connecting Madd (Madd Silah Kubra, 4-5 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_d123a20d",
                 "src": "images/img_0201.png",
                 "ans": "Major Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters followed by Hamzah → Major Sila Madd (4-5 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters followed by a Hamzah → Major Connecting Madd (Madd Silah Kubra, 4-5 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_e81e4479",
                 "src": "images/img_0202.png",
                 "ans": "Major Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters followed by Hamzah → Major Sila Madd (4-5 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters followed by a Hamzah → Major Connecting Madd (Madd Silah Kubra, 4-5 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_96603acc",
                 "src": "images/img_0203.png",
                 "ans": "Major Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters followed by Hamzah → Major Sila Madd (4-5 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters followed by a Hamzah → Major Connecting Madd (Madd Silah Kubra, 4-5 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_3a736efb",
                 "src": "images/img_0204.png",
                 "ans": "Major Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters followed by Hamzah → Major Sila Madd (4-5 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters followed by a Hamzah → Major Connecting Madd (Madd Silah Kubra, 4-5 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_f0afc03b",
                 "src": "images/img_0205.png",
                 "ans": "Major Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters followed by Hamzah → Major Sila Madd (4-5 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters followed by a Hamzah → Major Connecting Madd (Madd Silah Kubra, 4-5 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_86840b9f",
                 "src": "images/img_0206.png",
                 "ans": "Major Sila Madd",
-                "explanation": "Ha of pronoun between two voweled letters followed by Hamzah → Major Sila Madd (4-5 counts).",
+                "explanation": "Ha of pronoun (هاء الضمير) between two voweled letters followed by a Hamzah → Major Connecting Madd (Madd Silah Kubra, 4-5 counts when continuing).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_2782c459",
                 "src": "images/img_0237.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_eae64de5",
                 "src": "images/img_0238.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_f12dc044",
                 "src": "images/img_0239.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_520f8a13",
                 "src": "images/img_0240.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_daf0b6ec",
                 "src": "images/img_0241.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_10cb0f1d",
                 "src": "images/img_0242.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_82835298",
                 "src": "images/img_0243.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_881242ed",
                 "src": "images/img_0244.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_3f925ea1",
                 "src": "images/img_0245.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_9f3817b5",
                 "src": "images/img_0246.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_8360bdeb",
                 "src": "images/img_0247.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_a578ed0d",
                 "src": "images/img_0248.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_2fb1aecf",
                 "src": "images/img_0249.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_1650afcc",
                 "src": "images/img_0250.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_09f0af61",
                 "src": "images/img_0251.png",
                 "ans": "Temporary Madd",
-                "explanation": "Madd letter followed by an incidental Sukoon due to stopping → Madd Arid Lissukoon (2, 4, or 6 counts).",
+                "explanation": "Madd letter followed by a letter that receives an incidental Sukoon due to stopping → Temporary Madd (Madd 'Aarid Li-Sukoon, 2, 4, or 6 counts).",
                 "prompt": "What is the mad rule on stopping?"
             },
             {
                 "id": "madd2_d6a19794",
                 "src": "images/img_0252.png",
                 "ans": "Soft Madd",
-                "explanation": "Waw or Yaa with Sukoon preceded by Fathah, stopped upon → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
+                "explanation": "Leen letter (Waw or Yaa Saakinah preceded by Fathah) followed by an incidental Sukoon due to stopping → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_f7cdfce9",
                 "src": "images/img_0253.png",
                 "ans": "Soft Madd",
-                "explanation": "Waw or Yaa with Sukoon preceded by Fathah, stopped upon → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
+                "explanation": "Leen letter (Waw or Yaa Saakinah preceded by Fathah) followed by an incidental Sukoon due to stopping → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_8e74d12c",
                 "src": "images/img_0254.png",
                 "ans": "Soft Madd",
-                "explanation": "Waw or Yaa with Sukoon preceded by Fathah, stopped upon → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
+                "explanation": "Leen letter (Waw or Yaa Saakinah preceded by Fathah) followed by an incidental Sukoon due to stopping → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_cc3dbf05",
                 "src": "images/img_0255.png",
                 "ans": "Soft Madd",
-                "explanation": "Waw or Yaa with Sukoon preceded by Fathah, stopped upon → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
+                "explanation": "Leen letter (Waw or Yaa Saakinah preceded by Fathah) followed by an incidental Sukoon due to stopping → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_5fae53ad",
                 "src": "images/img_0256.png",
                 "ans": "Soft Madd",
-                "explanation": "Waw or Yaa with Sukoon preceded by Fathah, stopped upon → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
+                "explanation": "Leen letter (Waw or Yaa Saakinah preceded by Fathah) followed by an incidental Sukoon due to stopping → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_be636d12",
                 "src": "images/img_0257.png",
                 "ans": "Soft Madd",
-                "explanation": "Waw or Yaa with Sukoon preceded by Fathah, stopped upon → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
+                "explanation": "Leen letter (Waw or Yaa Saakinah preceded by Fathah) followed by an incidental Sukoon due to stopping → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_6c8907bf",
                 "src": "images/img_0258.png",
                 "ans": "Soft Madd",
-                "explanation": "Waw or Yaa with Sukoon preceded by Fathah, stopped upon → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
+                "explanation": "Leen letter (Waw or Yaa Saakinah preceded by Fathah) followed by an incidental Sukoon due to stopping → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_d864cfb8",
                 "src": "images/img_0259.png",
                 "ans": "Soft Madd",
-                "explanation": "Waw or Yaa with Sukoon preceded by Fathah, stopped upon → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
+                "explanation": "Leen letter (Waw or Yaa Saakinah preceded by Fathah) followed by an incidental Sukoon due to stopping → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_dd94c3b7",
                 "src": "images/img_0260.png",
                 "ans": "Soft Madd",
-                "explanation": "Waw or Yaa with Sukoon preceded by Fathah, stopped upon → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
+                "explanation": "Leen letter (Waw or Yaa Saakinah preceded by Fathah) followed by an incidental Sukoon due to stopping → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_24a286b3",
                 "src": "images/img_0261.png",
                 "ans": "Soft Madd",
-                "explanation": "Waw or Yaa with Sukoon preceded by Fathah, stopped upon → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
+                "explanation": "Leen letter (Waw or Yaa Saakinah preceded by Fathah) followed by an incidental Sukoon due to stopping → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_329f0a3c",
                 "src": "images/img_0262.png",
                 "ans": "Soft Madd",
-                "explanation": "Waw or Yaa with Sukoon preceded by Fathah, stopped upon → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
+                "explanation": "Leen letter (Waw or Yaa Saakinah preceded by Fathah) followed by an incidental Sukoon due to stopping → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_52fb0bfe",
                 "src": "images/img_0263.png",
                 "ans": "Soft Madd",
-                "explanation": "Waw or Yaa with Sukoon preceded by Fathah, stopped upon → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
+                "explanation": "Leen letter (Waw or Yaa Saakinah preceded by Fathah) followed by an incidental Sukoon due to stopping → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_1ca52bb6",
                 "src": "images/img_0264.png",
                 "ans": "Soft Madd",
-                "explanation": "Waw or Yaa with Sukoon preceded by Fathah, stopped upon → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
+                "explanation": "Leen letter (Waw or Yaa Saakinah preceded by Fathah) followed by an incidental Sukoon due to stopping → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd2_78cb9486",
                 "src": "images/img_0265.png",
                 "ans": "Soft Madd",
-                "explanation": "Waw or Yaa with Sukoon preceded by Fathah, stopped upon → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
+                "explanation": "Leen letter (Waw or Yaa Saakinah preceded by Fathah) followed by an incidental Sukoon due to stopping → Soft Madd (Madd Al-Leen, 2, 4, or 6 counts).",
                 "prompt": "What is the Madd rule?"
             },
             {
                 "id": "madd_tabii_1",
                 "src": "images/madd_tabii_Screenshot_1.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1047,7 +1047,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_2",
                 "src": "images/madd_tabii_Screenshot_2.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1061,7 +1061,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_3",
                 "src": "images/madd_tabii_Screenshot_3.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1075,7 +1075,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_4",
                 "src": "images/madd_tabii_Screenshot_4.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1089,7 +1089,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_5",
                 "src": "images/madd_tabii_Screenshot_5.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1103,7 +1103,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_6",
                 "src": "images/madd_tabii_Screenshot_6.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1117,7 +1117,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_7",
                 "src": "images/madd_tabii_Screenshot_7.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1131,7 +1131,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_8",
                 "src": "images/madd_tabii_Screenshot_8.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1145,7 +1145,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_9",
                 "src": "images/madd_tabii_Screenshot_9.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1159,7 +1159,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_10",
                 "src": "images/madd_tabii_Screenshot_10.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1173,7 +1173,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_11",
                 "src": "images/madd_tabii_Screenshot_11.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1187,7 +1187,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_12",
                 "src": "images/madd_tabii_Screenshot_12.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1201,7 +1201,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_13",
                 "src": "images/madd_tabii_Screenshot_13.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1215,7 +1215,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_14",
                 "src": "images/madd_tabii_Screenshot_14.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1229,7 +1229,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_15",
                 "src": "images/madd_tabii_Screenshot_15.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1243,7 +1243,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_16",
                 "src": "images/madd_tabii_Screenshot_16.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1257,7 +1257,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_17",
                 "src": "images/madd_tabii_Screenshot_17.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1271,7 +1271,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_18",
                 "src": "images/madd_tabii_Screenshot_18.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1285,7 +1285,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_19",
                 "src": "images/madd_tabii_Screenshot_19.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1299,7 +1299,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_20",
                 "src": "images/madd_tabii_Screenshot_20.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1313,7 +1313,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_21",
                 "src": "images/madd_tabii_Screenshot_21.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1327,7 +1327,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_22",
                 "src": "images/madd_tabii_Screenshot_22.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1341,7 +1341,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_23",
                 "src": "images/madd_tabii_Screenshot_23.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1355,7 +1355,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_24",
                 "src": "images/madd_tabii_Screenshot_24.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1369,7 +1369,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_25",
                 "src": "images/madd_tabii_Screenshot_25.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1383,7 +1383,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_26",
                 "src": "images/madd_tabii_Screenshot_26.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1397,7 +1397,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_27",
                 "src": "images/madd_tabii_Screenshot_27.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1411,7 +1411,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_31",
                 "src": "images/madd_tabii_Screenshot_31.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1425,7 +1425,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_34",
                 "src": "images/madd_tabii_Screenshot_34.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1439,7 +1439,7 @@ const TAJWEED_BANK = {
                 "id": "madd_tabii_38",
                 "src": "images/madd_tabii_Screenshot_38.png",
                 "ans": "Natural Madd",
-                "explanation": "Madd letter with no Hamzah or Sukoon after it → Natural Madd (Madd Tabe'e, 2 counts).",
+                "explanation": "Madd letter (Alif, Waw, or Yaa) with no Hamzah or Sukoon before or after it → Natural Madd (Madd Tabee'ee, 2 counts).",
                 "prompt": "What is the Madd rule in this word?",
                 "choicesList": [
                     "Natural Madd",
@@ -1453,7 +1453,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_muth_1",
                 "src": "images/madd_kalimi_muthaqqal_Screenshot_1.png",
                 "ans": "Permanent Word Based Heavy",
-                "explanation": "Madd letter followed by a letter with Shaddah in the same word → Permanent Word Based Heavy (Lazem Kalemi Moshaqqal, 6 counts).",
+                "explanation": "Madd letter followed by an original Sukoon merged into Shaddah in the same word → Compulsory Word-Based Heavy (Madd Lazim Kalimi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1467,7 +1467,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_muth_2",
                 "src": "images/madd_kalimi_muthaqqal_Screenshot_2.png",
                 "ans": "Permanent Word Based Heavy",
-                "explanation": "Madd letter followed by a letter with Shaddah in the same word → Permanent Word Based Heavy (Lazem Kalemi Moshaqqal, 6 counts).",
+                "explanation": "Madd letter followed by an original Sukoon merged into Shaddah in the same word → Compulsory Word-Based Heavy (Madd Lazim Kalimi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1481,7 +1481,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_muth_3",
                 "src": "images/madd_kalimi_muthaqqal_Screenshot_3.png",
                 "ans": "Permanent Word Based Heavy",
-                "explanation": "Madd letter followed by a letter with Shaddah in the same word → Permanent Word Based Heavy (Lazem Kalemi Moshaqqal, 6 counts).",
+                "explanation": "Madd letter followed by an original Sukoon merged into Shaddah in the same word → Compulsory Word-Based Heavy (Madd Lazim Kalimi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1495,7 +1495,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_muth_4",
                 "src": "images/madd_kalimi_muthaqqal_Screenshot_4.png",
                 "ans": "Permanent Word Based Heavy",
-                "explanation": "Madd letter followed by a letter with Shaddah in the same word → Permanent Word Based Heavy (Lazem Kalemi Moshaqqal, 6 counts).",
+                "explanation": "Madd letter followed by an original Sukoon merged into Shaddah in the same word → Compulsory Word-Based Heavy (Madd Lazim Kalimi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1509,7 +1509,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_muth_5",
                 "src": "images/madd_kalimi_muthaqqal_Screenshot_5.png",
                 "ans": "Permanent Word Based Heavy",
-                "explanation": "Madd letter followed by a letter with Shaddah in the same word → Permanent Word Based Heavy (Lazem Kalemi Moshaqqal, 6 counts).",
+                "explanation": "Madd letter followed by an original Sukoon merged into Shaddah in the same word → Compulsory Word-Based Heavy (Madd Lazim Kalimi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1523,7 +1523,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_muth_6",
                 "src": "images/madd_kalimi_muthaqqal_Screenshot_6.png",
                 "ans": "Permanent Word Based Heavy",
-                "explanation": "Madd letter followed by a letter with Shaddah in the same word → Permanent Word Based Heavy (Lazem Kalemi Moshaqqal, 6 counts).",
+                "explanation": "Madd letter followed by an original Sukoon merged into Shaddah in the same word → Compulsory Word-Based Heavy (Madd Lazim Kalimi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1537,7 +1537,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_muth_7",
                 "src": "images/madd_kalimi_muthaqqal_Screenshot_7.png",
                 "ans": "Permanent Word Based Heavy",
-                "explanation": "Madd letter followed by a letter with Shaddah in the same word → Permanent Word Based Heavy (Lazem Kalemi Moshaqqal, 6 counts).",
+                "explanation": "Madd letter followed by an original Sukoon merged into Shaddah in the same word → Compulsory Word-Based Heavy (Madd Lazim Kalimi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1551,7 +1551,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_muth_8",
                 "src": "images/madd_kalimi_muthaqqal_Screenshot_8.png",
                 "ans": "Permanent Word Based Heavy",
-                "explanation": "Madd letter followed by a letter with Shaddah in the same word → Permanent Word Based Heavy (Lazem Kalemi Moshaqqal, 6 counts).",
+                "explanation": "Madd letter followed by an original Sukoon merged into Shaddah in the same word → Compulsory Word-Based Heavy (Madd Lazim Kalimi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1565,7 +1565,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_muth_9",
                 "src": "images/madd_kalimi_muthaqqal_Screenshot_9.png",
                 "ans": "Permanent Word Based Heavy",
-                "explanation": "Madd letter followed by a letter with Shaddah in the same word → Permanent Word Based Heavy (Lazem Kalemi Moshaqqal, 6 counts).",
+                "explanation": "Madd letter followed by an original Sukoon merged into Shaddah in the same word → Compulsory Word-Based Heavy (Madd Lazim Kalimi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1579,7 +1579,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_muth_10",
                 "src": "images/madd_kalimi_muthaqqal_Screenshot_10.png",
                 "ans": "Permanent Word Based Heavy",
-                "explanation": "Madd letter followed by a letter with Shaddah in the same word → Permanent Word Based Heavy (Lazem Kalemi Moshaqqal, 6 counts).",
+                "explanation": "Madd letter followed by an original Sukoon merged into Shaddah in the same word → Compulsory Word-Based Heavy (Madd Lazim Kalimi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1593,7 +1593,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_muth_11",
                 "src": "images/madd_kalimi_muthaqqal_Screenshot_11.png",
                 "ans": "Permanent Word Based Heavy",
-                "explanation": "Madd letter followed by a letter with Shaddah in the same word → Permanent Word Based Heavy (Lazem Kalemi Moshaqqal, 6 counts).",
+                "explanation": "Madd letter followed by an original Sukoon merged into Shaddah in the same word → Compulsory Word-Based Heavy (Madd Lazim Kalimi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1607,7 +1607,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_muth_12",
                 "src": "images/madd_kalimi_muthaqqal_Screenshot_12.png",
                 "ans": "Permanent Word Based Heavy",
-                "explanation": "Madd letter followed by a letter with Shaddah in the same word → Permanent Word Based Heavy (Lazem Kalemi Moshaqqal, 6 counts).",
+                "explanation": "Madd letter followed by an original Sukoon merged into Shaddah in the same word → Compulsory Word-Based Heavy (Madd Lazim Kalimi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1621,7 +1621,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_muth_13",
                 "src": "images/madd_kalimi_muthaqqal_Screenshot_13.png",
                 "ans": "Permanent Word Based Heavy",
-                "explanation": "Madd letter followed by a letter with Shaddah in the same word → Permanent Word Based Heavy (Lazem Kalemi Moshaqqal, 6 counts).",
+                "explanation": "Madd letter followed by an original Sukoon merged into Shaddah in the same word → Compulsory Word-Based Heavy (Madd Lazim Kalimi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1635,7 +1635,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_muth_14",
                 "src": "images/madd_kalimi_muthaqqal_Screenshot_14.png",
                 "ans": "Permanent Word Based Heavy",
-                "explanation": "Madd letter followed by a letter with Shaddah in the same word → Permanent Word Based Heavy (Lazem Kalemi Moshaqqal, 6 counts).",
+                "explanation": "Madd letter followed by an original Sukoon merged into Shaddah in the same word → Compulsory Word-Based Heavy (Madd Lazim Kalimi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1649,7 +1649,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_mukh_1",
                 "src": "images/madd_kalimi_mukhaffaf_Screenshot_1.png",
                 "ans": "Permanent Word Based Light",
-                "explanation": "Madd letter followed by original Sukoon (no Shaddah) in the same word → Permanent Word Based Light (Lazem Kalemi Mukhaffaf, 6 counts).",
+                "explanation": "Madd letter followed by an unmerged original Sukoon (without Shaddah) in the same word → Compulsory Word-Based Light (Madd Lazim Kalimi Mukhaffaf, 6 counts, e.g. ءَآلْـَٰٔنَ).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1663,7 +1663,7 @@ const TAJWEED_BANK = {
                 "id": "madd_kalimi_mukh_14",
                 "src": "images/madd_kalimi_mukhaffaf_Screenshot_14.png",
                 "ans": "Permanent Word Based Light",
-                "explanation": "Madd letter followed by original Sukoon (no Shaddah) in the same word → Permanent Word Based Light (Lazem Kalemi Mukhaffaf, 6 counts).",
+                "explanation": "Madd letter followed by an unmerged original Sukoon (without Shaddah) in the same word → Compulsory Word-Based Light (Madd Lazim Kalimi Mukhaffaf, 6 counts, e.g. ءَآلْـَٰٔنَ).",
                 "prompt": "What is the Madd Lazim rule?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1677,7 +1677,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_40_lam",
                 "src": "images/madd_harfi_Screenshot_40.png",
                 "ans": "Permanent Letter Based Heavy",
-                "explanation": "In (الٓمٓ), letter Lām (لاَمْ) ends in Meem merged into the following Meem with Idgham → Permanent Letter Based Heavy (Lazem Harfi Moshaqqal, 6 counts).",
+                "explanation": "Letter Lām (لاَمْ) is spelled with 3 letters whose middle is Madd and ending Saakin Meem is merged (Idgham) into the following Meem → Compulsory Letter-Based Heavy (Madd Lazim Harfi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (اللام / Lām)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1691,7 +1691,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_40_meem",
                 "src": "images/madd_harfi_Screenshot_40.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (الٓمٓ), letter Meem (مِيمْ) ends in original Sukoon without Idgham → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Meem (مِيمْ) is spelled with 3 letters whose middle is Madd and ending Saakin Meem is NOT merged (no Idgham) → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (الميم / Meem)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1705,7 +1705,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_1_lam",
                 "src": "images/madd_harfi_Screenshot_1.png",
                 "ans": "Permanent Letter Based Heavy",
-                "explanation": "In (الٓمٓصٓ), letter Lām (لاَمْ) ends in Meem merged into the following Meem with Idgham → Permanent Letter Based Heavy (Lazem Harfi Moshaqqal, 6 counts).",
+                "explanation": "Letter Lām (لاَمْ) is spelled with 3 letters whose middle is Madd and ending Saakin Meem is merged (Idgham) into the following Meem → Compulsory Letter-Based Heavy (Madd Lazim Harfi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (اللام / Lām)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1719,7 +1719,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_1_meem",
                 "src": "images/madd_harfi_Screenshot_1.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (الٓمٓصٓ), letter Meem (مِيمْ) ends in original Sukoon (Izhar before Saad, without Idgham) → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Meem (مِيمْ) is spelled with 3 letters whose middle is Madd and ending Saakin Meem is NOT merged (no Idgham) → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (الميم / Meem)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1733,7 +1733,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_1_saad",
                 "src": "images/madd_harfi_Screenshot_1.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (الٓمٓصٓ), letter Sād (صَادْ) ends in original Sukoon with Qalqalah (without Idgham) → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Sād (صَادْ) is spelled with 3 letters whose middle is Madd and ending Saakin Daal is pronounced with Qalqalah (no Idgham) → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (الصاد / Sād)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1747,7 +1747,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_2_lam",
                 "src": "images/madd_harfi_Screenshot_2.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (الٓر), letter Lām (لاَمْ) ends in original Sukoon (Izhar of Meem before Raa, without Idgham) → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Lām (لاَمْ) is spelled with 3 letters whose middle is Madd and ending Saakin Meem is NOT merged with Idgham → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (اللام / Lām)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1761,7 +1761,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_4_kaf",
                 "src": "images/madd_harfi_Screenshot_4.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (كٓهيعٓصٓ), letter Kāf (كَافْ) ends in original Sukoon (without Idgham) → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Kāf (كَافْ) is spelled with 3 letters whose middle is Madd and ending Saakin Faa is NOT merged (no Idgham) → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (الكاف / Kāf)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1775,7 +1775,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_4_saad",
                 "src": "images/madd_harfi_Screenshot_4.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (كٓهيعٓصٓ), letter Sād (صَادْ) ends in original Sukoon with Qalqalah (without Idgham) → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Sād (صَادْ) is spelled with 3 letters whose middle is Madd and ending Saakin Daal is pronounced with Qalqalah (no Idgham) → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (الصاد / Sād)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1789,7 +1789,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_5_lam",
                 "src": "images/madd_harfi_Screenshot_5.png",
                 "ans": "Permanent Letter Based Heavy",
-                "explanation": "In (الٓمٓر), letter Lām (لاَمْ) ends in Meem merged into the following Meem with Idgham → Permanent Letter Based Heavy (Lazem Harfi Moshaqqal, 6 counts).",
+                "explanation": "Letter Lām (لاَمْ) is spelled with 3 letters whose middle is Madd and ending Saakin Meem is merged (Idgham) into the following Meem → Compulsory Letter-Based Heavy (Madd Lazim Harfi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (اللام / Lām)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1803,7 +1803,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_5_meem",
                 "src": "images/madd_harfi_Screenshot_5.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (الٓمٓر), letter Meem (مِيمْ) ends in original Sukoon (Izhar before Raa, without Idgham) → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Meem (مِيمْ) is spelled with 3 letters whose middle is Madd and ending Saakin Meem is NOT merged (no Idgham) → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (الميم / Meem)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1817,7 +1817,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_6_seen",
                 "src": "images/madd_harfi_Screenshot_6.png",
                 "ans": "Permanent Letter Based Heavy",
-                "explanation": "In (طسٓمٓ), letter Seen (سِينْ) ends in Noon Sakinah merged into Meem with Idgham → Permanent Letter Based Heavy (Lazem Harfi Moshaqqal, 6 counts).",
+                "explanation": "Letter Seen (سِينْ) is spelled with 3 letters whose middle is Madd and ending Saakin Noon is merged (Idgham) into the following Meem → Compulsory Letter-Based Heavy (Madd Lazim Harfi Muthaqqal, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (السين / Seen)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1831,7 +1831,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_6_meem",
                 "src": "images/madd_harfi_Screenshot_6.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (طسٓمٓ), letter Meem (مِيمْ) ends in original Sukoon without Idgham → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Meem (مِيمْ) is spelled with 3 letters whose middle is Madd and ending Saakin Meem is NOT merged (no Idgham) → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (الميم / Meem)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1845,7 +1845,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_7_seen",
                 "src": "images/madd_harfi_Screenshot_7.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (طسٓ), letter Seen (سِينْ) ends in original Sukoon without Idgham → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Seen (سِينْ) is spelled with 3 letters whose middle is Madd and ending Saakin Noon is NOT merged with Idgham → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (السين / Seen)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1859,7 +1859,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_8_seen",
                 "src": "images/madd_harfi_Screenshot_8.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (يسٓ), letter Seen (سِينْ) ends in original Sukoon without Idgham → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Seen (سِينْ) is spelled with 3 letters whose middle is Madd and ending Saakin Noon is NOT merged with Idgham → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (السين / Seen)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1873,7 +1873,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_9_meem",
                 "src": "images/madd_harfi_Screenshot_9.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (حمٓ), letter Meem (مِيمْ) ends in original Sukoon without Idgham → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Meem (مِيمْ) is spelled with 3 letters whose middle is Madd and ending Saakin Meem is NOT merged (no Idgham) → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (الميم / Meem)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1887,7 +1887,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_9_seen",
                 "src": "images/madd_harfi_Screenshot_9.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (عٓسٓقٓ), letter Seen (سِينْ) ends in Noon Sakinah with Ikhfa' before Qaf (without Idgham) → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Seen (سِينْ) is spelled with 3 letters whose middle is Madd and ending Saakin Noon is NOT merged with Idgham → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (السين / Seen)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1901,7 +1901,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_9_qaf",
                 "src": "images/madd_harfi_Screenshot_9.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (عٓسٓقٓ), letter Qāf (قَافْ) ends in original Sukoon with Qalqalah (without Idgham) → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Qāf (قَافْ) is spelled with 3 letters whose middle is Madd and ending Saakin Faa is NOT merged (no Idgham) → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (القاف / Qāf)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1915,7 +1915,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_10_saad",
                 "src": "images/madd_harfi_Screenshot_10.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (صٓ), letter Sād (صَادْ) ends in original Sukoon with Qalqalah (without Idgham) → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Sād (صَادْ) is spelled with 3 letters whose middle is Madd and ending Saakin Daal is pronounced with Qalqalah (no Idgham) → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (الصاد / Sād)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1929,7 +1929,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_11_meem",
                 "src": "images/madd_harfi_Screenshot_11.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (حمٓ), letter Meem (مِيمْ) ends in original Sukoon without Idgham → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Meem (مِيمْ) is spelled with 3 letters whose middle is Madd and ending Saakin Meem is NOT merged (no Idgham) → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (الميم / Meem)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1943,7 +1943,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_12_qaf",
                 "src": "images/madd_harfi_Screenshot_12.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (قٓ), letter Qāf (قَافْ) ends in original Sukoon with Qalqalah (without Idgham) → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Qāf (قَافْ) is spelled with 3 letters whose middle is Madd and ending Saakin Faa is NOT merged (no Idgham) → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (القاف / Qāf)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1957,7 +1957,7 @@ const TAJWEED_BANK = {
                 "id": "madd_harfi_13_noon",
                 "src": "images/madd_harfi_Screenshot_13.png",
                 "ans": "Permanent Letter Based Light",
-                "explanation": "In (نٓ), letter Noon (نُونْ) ends in original Sukoon without Idgham → Permanent Letter Based Light (Lazem Harfi Mukhaffaf, 6 counts).",
+                "explanation": "Letter Noon (نُونْ) is spelled with 3 letters whose middle is Madd and ending Saakin Noon is NOT merged (no Idgham) → Compulsory Letter-Based Light (Madd Lazim Harfi Mukhaffaf, 6 counts).",
                 "prompt": "What is the Madd Lazim rule for letter (النون / Noon)?",
                 "choicesList": [
                     "Permanent Word Based Heavy",
@@ -1976,607 +1976,832 @@ const TAJWEED_BANK = {
             "No Qalqalah"
         ],
         "questions": [
-                {
-                    "id": "qalqalah_gen_1",
-                    "src": "images/qalqalah_new_Screenshot_1.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_2",
-                    "src": "images/qalqalah_new_Screenshot_2.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_3",
-                    "src": "images/qalqalah_new_Screenshot_3.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_4",
-                    "src": "images/qalqalah_new_Screenshot_4.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_5",
-                    "src": "images/qalqalah_new_Screenshot_5.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_6",
-                    "src": "images/qalqalah_new_Screenshot_6.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_7",
-                    "src": "images/qalqalah_new_Screenshot_7.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_8",
-                    "src": "images/qalqalah_new_Screenshot_8.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_9",
-                    "src": "images/qalqalah_new_Screenshot_9.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_10",
-                    "src": "images/qalqalah_new_Screenshot_10.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_11",
-                    "src": "images/qalqalah_new_Screenshot_11.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_12",
-                    "src": "images/qalqalah_new_Screenshot_12.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_13",
-                    "src": "images/qalqalah_new_Screenshot_13.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_14",
-                    "src": "images/qalqalah_new_Screenshot_14.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_15",
-                    "src": "images/qalqalah_new_Screenshot_15.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_16",
-                    "src": "images/qalqalah_new_Screenshot_16.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_17",
-                    "src": "images/qalqalah_new_Screenshot_17.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_18",
-                    "src": "images/qalqalah_new_Screenshot_18.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_19",
-                    "src": "images/qalqalah_new_Screenshot_19.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_20",
-                    "src": "images/qalqalah_new_Screenshot_20.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_21",
-                    "src": "images/qalqalah_new_Screenshot_21.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_22",
-                    "src": "images/qalqalah_new_Screenshot_22.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_24",
-                    "src": "images/qalqalah_new_Screenshot_24.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_gen_25",
-                    "src": "images/qalqalah_new_Screenshot_25.png",
-                    "ans": "Qalqalah",
-                    "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
-                    "prompt": "Is there Qalqalah in this example?",
-                    "choicesList": [
-                        "Qalqalah",
-                        "No Qalqalah"
-                    ],
-                    "subcat": "General Qalqalah"
-                },
-                {
-                    "id": "qalqalah_deg_1",
-                    "src": "images/qalqalah_new_Screenshot_1.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_2",
-                    "src": "images/qalqalah_new_Screenshot_2.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_3",
-                    "src": "images/qalqalah_new_Screenshot_3.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_4",
-                    "src": "images/qalqalah_new_Screenshot_4.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_5",
-                    "src": "images/qalqalah_new_Screenshot_5.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_6",
-                    "src": "images/qalqalah_new_Screenshot_6.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_7",
-                    "src": "images/qalqalah_new_Screenshot_7.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_8",
-                    "src": "images/qalqalah_new_Screenshot_8.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_9",
-                    "src": "images/qalqalah_new_Screenshot_9.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_10",
-                    "src": "images/qalqalah_new_Screenshot_10.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_11",
-                    "src": "images/qalqalah_new_Screenshot_11.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_12",
-                    "src": "images/qalqalah_new_Screenshot_12.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_13",
-                    "src": "images/qalqalah_new_Screenshot_13.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_14",
-                    "src": "images/qalqalah_new_Screenshot_14.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_15",
-                    "src": "images/qalqalah_new_Screenshot_15.png",
-                    "ans": "Minor",
-                    "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_16",
-                    "src": "images/qalqalah_new_Screenshot_16.png",
-                    "ans": "Medium",
-                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_17",
-                    "src": "images/qalqalah_new_Screenshot_17.png",
-                    "ans": "Medium",
-                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_18",
-                    "src": "images/qalqalah_new_Screenshot_18.png",
-                    "ans": "Medium",
-                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_19",
-                    "src": "images/qalqalah_new_Screenshot_19.png",
-                    "ans": "Medium",
-                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_20",
-                    "src": "images/qalqalah_new_Screenshot_20.png",
-                    "ans": "Medium",
-                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_21",
-                    "src": "images/qalqalah_new_Screenshot_21.png",
-                    "ans": "Medium",
-                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_22",
-                    "src": "images/qalqalah_new_Screenshot_22.png",
-                    "ans": "Medium",
-                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_24",
-                    "src": "images/qalqalah_new_Screenshot_24.png",
-                    "ans": "Medium",
-                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                },
-                {
-                    "id": "qalqalah_deg_25",
-                    "src": "images/qalqalah_new_Screenshot_25.png",
-                    "ans": "Medium",
-                    "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
-                    "prompt": "What is the degree of Qalqalah?",
-                    "choicesList": [
-                        "Minor",
-                        "Medium",
-                        "Major"
-                    ],
-                    "subcat": "Qalqalah Degree"
-                }
-            ]
+            {
+                "id": "qalqalah_gen_1",
+                "src": "images/qalqalah_new_Screenshot_1.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_2",
+                "src": "images/qalqalah_new_Screenshot_2.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_3",
+                "src": "images/qalqalah_new_Screenshot_3.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_4",
+                "src": "images/qalqalah_new_Screenshot_4.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_5",
+                "src": "images/qalqalah_new_Screenshot_5.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_6",
+                "src": "images/qalqalah_new_Screenshot_6.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_7",
+                "src": "images/qalqalah_new_Screenshot_7.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_8",
+                "src": "images/qalqalah_new_Screenshot_8.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_9",
+                "src": "images/qalqalah_new_Screenshot_9.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_10",
+                "src": "images/qalqalah_new_Screenshot_10.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_11",
+                "src": "images/qalqalah_new_Screenshot_11.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_12",
+                "src": "images/qalqalah_new_Screenshot_12.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_13",
+                "src": "images/qalqalah_new_Screenshot_13.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_14",
+                "src": "images/qalqalah_new_Screenshot_14.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_15",
+                "src": "images/qalqalah_new_Screenshot_15.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_16",
+                "src": "images/qalqalah_new_Screenshot_16.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_17",
+                "src": "images/qalqalah_new_Screenshot_17.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_18",
+                "src": "images/qalqalah_new_Screenshot_18.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_19",
+                "src": "images/qalqalah_new_Screenshot_19.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_20",
+                "src": "images/qalqalah_new_Screenshot_20.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_21",
+                "src": "images/qalqalah_new_Screenshot_21.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_22",
+                "src": "images/qalqalah_new_Screenshot_22.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_24",
+                "src": "images/qalqalah_new_Screenshot_24.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_25",
+                "src": "images/qalqalah_new_Screenshot_25.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_ashadd",
+                "src": "images/qalqalah_ashadd.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_alhaqq",
+                "src": "images/qalqalah_alhaqq.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_watabb",
+                "src": "images/qalqalah_watabb.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_alhajj",
+                "src": "images/qalqalah_alhajj.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_muheet",
+                "src": "images/qalqalah_muheet.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_ahad",
+                "src": "images/qalqalah_ahad.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_alfalaq",
+                "src": "images/qalqalah_alfalaq.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_waqab",
+                "src": "images/qalqalah_waqab.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_gen_ukhrij",
+                "src": "images/qalqalah_ukhrij.png",
+                "ans": "Qalqalah",
+                "explanation": "The word contains a Qalqalah letter (ق، ط، ب، ج، د) with Sukoon → The sound bounces.",
+                "prompt": "Is there Qalqalah in this example?",
+                "choicesList": [
+                    "Qalqalah",
+                    "No Qalqalah"
+                ],
+                "subcat": "General Qalqalah"
+            },
+            {
+                "id": "qalqalah_deg_1",
+                "src": "images/qalqalah_new_Screenshot_1.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_2",
+                "src": "images/qalqalah_new_Screenshot_2.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_3",
+                "src": "images/qalqalah_new_Screenshot_3.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_4",
+                "src": "images/qalqalah_new_Screenshot_4.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_5",
+                "src": "images/qalqalah_new_Screenshot_5.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_6",
+                "src": "images/qalqalah_new_Screenshot_6.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_7",
+                "src": "images/qalqalah_new_Screenshot_7.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_8",
+                "src": "images/qalqalah_new_Screenshot_8.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_9",
+                "src": "images/qalqalah_new_Screenshot_9.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_10",
+                "src": "images/qalqalah_new_Screenshot_10.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_11",
+                "src": "images/qalqalah_new_Screenshot_11.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_12",
+                "src": "images/qalqalah_new_Screenshot_12.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_13",
+                "src": "images/qalqalah_new_Screenshot_13.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_14",
+                "src": "images/qalqalah_new_Screenshot_14.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_15",
+                "src": "images/qalqalah_new_Screenshot_15.png",
+                "ans": "Minor",
+                "explanation": "Qalqalah letter with Sukoon in the middle of a word → Minor Qalqalah (Qalqalah Sughra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_16",
+                "src": "images/qalqalah_new_Screenshot_16.png",
+                "ans": "Medium",
+                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_17",
+                "src": "images/qalqalah_new_Screenshot_17.png",
+                "ans": "Medium",
+                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_18",
+                "src": "images/qalqalah_new_Screenshot_18.png",
+                "ans": "Medium",
+                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_19",
+                "src": "images/qalqalah_new_Screenshot_19.png",
+                "ans": "Medium",
+                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_20",
+                "src": "images/qalqalah_new_Screenshot_20.png",
+                "ans": "Medium",
+                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_21",
+                "src": "images/qalqalah_new_Screenshot_21.png",
+                "ans": "Medium",
+                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_22",
+                "src": "images/qalqalah_new_Screenshot_22.png",
+                "ans": "Medium",
+                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_24",
+                "src": "images/qalqalah_new_Screenshot_24.png",
+                "ans": "Medium",
+                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_25",
+                "src": "images/qalqalah_new_Screenshot_25.png",
+                "ans": "Medium",
+                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_ashadd",
+                "src": "images/qalqalah_ashadd.png",
+                "ans": "Major",
+                "explanation": "Stopping on a doubled (mushaddad) Qalqalah letter at the end of the word → Major Qalqalah (Qalqalah Kubra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_alhaqq",
+                "src": "images/qalqalah_alhaqq.png",
+                "ans": "Major",
+                "explanation": "Stopping on a doubled (mushaddad) Qalqalah letter at the end of the word → Major Qalqalah (Qalqalah Kubra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_watabb",
+                "src": "images/qalqalah_watabb.png",
+                "ans": "Major",
+                "explanation": "Stopping on a doubled (mushaddad) Qalqalah letter at the end of the word → Major Qalqalah (Qalqalah Kubra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_alhajj",
+                "src": "images/qalqalah_alhajj.png",
+                "ans": "Major",
+                "explanation": "Stopping on a doubled (mushaddad) Qalqalah letter at the end of the word → Major Qalqalah (Qalqalah Kubra).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_muheet",
+                "src": "images/qalqalah_muheet.png",
+                "ans": "Medium",
+                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_ahad",
+                "src": "images/qalqalah_ahad.png",
+                "ans": "Medium",
+                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_alfalaq",
+                "src": "images/qalqalah_alfalaq.png",
+                "ans": "Medium",
+                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_waqab",
+                "src": "images/qalqalah_waqab.png",
+                "ans": "Medium",
+                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            },
+            {
+                "id": "qalqalah_deg_ukhrij",
+                "src": "images/qalqalah_ukhrij.png",
+                "ans": "Medium",
+                "explanation": "Stopping on an unvoweled Qalqalah letter without Shaddah at the end of the word → Medium Qalqalah (Qalqalah Wusta).",
+                "prompt": "What is the degree of Qalqalah?",
+                "choicesList": [
+                    "Minor",
+                    "Medium",
+                    "Major"
+                ],
+                "subcat": "Qalqalah Degree"
+            }
+        ]
     },
     "noon_sakinah_tanween": {
         "title": "Noon Sakinah & Tanween",
@@ -5350,535 +5575,6 @@ const TAJWEED_BANK = {
                 "explanation": "Lam followed by a Solar letter with Shaddah → Merged Lam (Lam Shamsiyyah).",
                 "prompt": "What is the rule of Lam?"
             }
-        ]
-    }
-};
-
-const ruleMeanings = {
-    "Natural Madd": {
-        "en": "Natural Madd",
-        "franco": "Madd Tabe'e",
-        "ar": "Madd Tabe'e"
-    },
-    "Madd Natural – 2 counts": {
-        "en": "Natural Madd",
-        "franco": "Madd Tabe'e",
-        "ar": "Madd Tabe'e"
-    },
-    "Substitute": {
-        "en": "Substitute",
-        "franco": "Madd Badal",
-        "ar": "Madd Badal"
-    },
-    "Connected": {
-        "en": "Connected",
-        "franco": "Madd Muttasil",
-        "ar": "Madd Muttasil"
-    },
-    "Separated": {
-        "en": "Separated",
-        "franco": "Madd Munfasil",
-        "ar": "Madd Munfasil"
-    },
-    "Compensatory Madd": {
-        "en": "Compensatory Madd",
-        "franco": "Madd 'Iwad",
-        "ar": "Madd 'Iwad"
-    },
-    "Stabilizing Madd": {
-        "en": "Stabilizing Madd",
-        "franco": "Madd At-Tamkeen",
-        "ar": "Madd At-Tamkeen"
-    },
-    "Minor Sila Madd": {
-        "en": "Minor Sila Madd",
-        "franco": "Silah Sughra",
-        "ar": "Silah Sughra"
-    },
-    "Major Sila Madd": {
-        "en": "Major Sila Madd",
-        "franco": "Silah Kubra",
-        "ar": "Silah Kubra"
-    },
-    "Permanent Word Based Heavy": {
-        "en": "Permanent Word Based Heavy",
-        "franco": "Lazem Kalemi Moshaqqal",
-        "ar": "Lazem Kalemi Moshaqqal"
-    },
-    "Permanent Word Based Light": {
-        "en": "Permanent Word Based Light",
-        "franco": "Lazem Kalemi Mukhaffaf",
-        "ar": "Lazem Kalemi Mukhaffaf"
-    },
-    "Permanent Letter Based Heavy": {
-        "en": "Permanent Letter Based Heavy",
-        "franco": "Lazem Harfi Moshaqqal",
-        "ar": "Lazem Harfi Moshaqqal"
-    },
-    "Permanent Letter Based Light": {
-        "en": "Permanent Letter Based Light",
-        "franco": "Lazem Harfi Mukhaffaf",
-        "ar": "Lazem Harfi Mukhaffaf"
-    },
-    "Permanent Madd — Word-Based": {
-        "en": "Permanent Word Based Heavy",
-        "franco": "Lazem Kalemi Moshaqqal",
-        "ar": "Lazem Kalemi Moshaqqal"
-    },
-    "Permanent Madd — Letter-Based": {
-        "en": "Permanent Letter Based Light",
-        "franco": "Lazem Harfi Mukhaffaf",
-        "ar": "Lazem Harfi Mukhaffaf"
-    },
-    "Madd Lazim Kalimi Muthaqqal": {
-        "en": "Permanent Word Based Heavy",
-        "franco": "Lazem Kalemi Moshaqqal",
-        "ar": "Lazem Kalemi Moshaqqal"
-    },
-    "Madd Lazim Kalimi Mukhaffaf": {
-        "en": "Permanent Word Based Light",
-        "franco": "Lazem Kalemi Mukhaffaf",
-        "ar": "Lazem Kalemi Mukhaffaf"
-    },
-    "Madd Lazim Harfi Muthaqqal": {
-        "en": "Permanent Letter Based Heavy",
-        "franco": "Lazem Harfi Moshaqqal",
-        "ar": "Lazem Harfi Moshaqqal"
-    },
-    "Madd Lazim Harfi Mukhaffaf": {
-        "en": "Permanent Letter Based Light",
-        "franco": "Lazem Harfi Mukhaffaf",
-        "ar": "Lazem Harfi Mukhaffaf"
-    },
-    "Temporary Madd": {
-        "en": "Temporary Madd",
-        "franco": "Madd 'Aridh",
-        "ar": "Madd 'Aridh"
-    },
-    "Soft Madd": {
-        "en": "Soft Madd",
-        "franco": "Madd Leen",
-        "ar": "Madd Leen"
-    },
-    "Two counts of ghunna": {
-        "en": "Two counts of ghunna",
-        "franco": "Ghunnah Harakatayn",
-        "ar": "Ghunnah Harakatayn"
-    },
-    "Four counts of ghunna": {
-        "en": "Four counts of ghunna",
-        "franco": "Ghunnah Arba' Harakat",
-        "ar": "Ghunnah Arba' Harakat"
-    },
-    "Merging with Ghunnah": {
-        "en": "Merging with ghunnah",
-        "franco": "Idgham bi-Ghunnah",
-        "ar": "Idgham bi-Ghunnah"
-    },
-    "Idgham with Ghunnah": {
-        "en": "Merging with ghunnah",
-        "franco": "Idgham bi-Ghunnah",
-        "ar": "Idgham bi-Ghunnah"
-    },
-    "Idgham without Ghunnah": {
-        "en": "Merging without ghunnah",
-        "franco": "Idgham bi-Ghayr Ghunnah",
-        "ar": "Idgham bi-Ghayr Ghunnah"
-    },
-    "Merging without Ghunnah": {
-        "en": "Merging without ghunnah",
-        "franco": "Idgham bi-Ghayr Ghunnah",
-        "ar": "Idgham bi-Ghayr Ghunnah"
-    },
-    "Izhar": {
-        "en": "Clarity",
-        "franco": "Izhar Halqi",
-        "ar": "Izhar Halqi"
-    },
-    "Iqlab": {
-        "en": "Changing or conversion",
-        "franco": "Iqlab",
-        "ar": "Iqlab"
-    },
-    "Ikhfa": {
-        "en": "Hiding",
-        "franco": "Ikhfa Haqiqi",
-        "ar": "Ikhfa Haqiqi"
-    },
-    "Ikhfaa": {
-        "en": "Hiding",
-        "franco": "Ikhfa Haqiqi",
-        "ar": "Ikhfa Haqiqi"
-    },
-    "Ikhfa Haqiqi": {
-        "en": "Hiding",
-        "franco": "Ikhfa Haqiqi",
-        "ar": "Ikhfa Haqiqi"
-    },
-    "Izhar Mutlaq": {
-        "en": "Absolute clarity",
-        "franco": "Izhar Mutlaq",
-        "ar": "Izhar Mutlaq"
-    },
-    "Oral + Hiding": {
-        "en": "Oral Hiding",
-        "franco": "Ikhfa Shafawi",
-        "ar": "Ikhfa Shafawi"
-    },
-    "Oral + Merger": {
-        "en": "Oral Merging",
-        "franco": "Idgham Shafawi",
-        "ar": "Idgham Shafawi"
-    },
-    "Oral + Clarity": {
-        "en": "Oral Clarity",
-        "franco": "Izhar Shafawi",
-        "ar": "Izhar Shafawi"
-    },
-    "Izhar Shafawi": {
-        "en": "Oral Clarity",
-        "franco": "Izhar Shafawi",
-        "ar": "Izhar Shafawi"
-    },
-    "Idgham Shafawi": {
-        "en": "Oral Merging",
-        "franco": "Idgham Shafawi",
-        "ar": "Idgham Shafawi"
-    },
-    "Ikhfa Shafawi": {
-        "en": "Oral Hiding",
-        "franco": "Ikhfa Shafawi",
-        "ar": "Ikhfa Shafawi"
-    },
-    "Minor": {
-        "en": "Minor Qalqalah",
-        "franco": "Qalqalah Sughra",
-        "ar": "Qalqalah Sughra"
-    },
-    "Medium": {
-        "en": "Medium Qalqalah",
-        "franco": "Qalqalah Wusta",
-        "ar": "Qalqalah Wusta"
-    },
-    "Major": {
-        "en": "Major Qalqalah",
-        "franco": "Qalqalah Kubra",
-        "ar": "Qalqalah Kubra"
-    },
-    "Qalqalah": {
-        "en": "Qalqalah",
-        "franco": "Echoing",
-        "ar": "Echoing"
-    },
-    "No Qalqalah": {
-        "en": "No Qalqalah",
-        "franco": "No Echoing",
-        "ar": "No Echoing"
-    },
-    "Dropped": {
-        "en": "Dropped in Speech",
-        "franco": "Saqitah Waslan",
-        "ar": "Saqitah Waslan"
-    },
-    "Start with damma": {
-        "en": "Start with Dammah",
-        "franco": "Ibtida' bi-Dammah",
-        "ar": "Ibtida' bi-Dammah"
-    },
-    "Start with fatha": {
-        "en": "Start with Fathah",
-        "franco": "Ibtida' bi-Fathah",
-        "ar": "Ibtida' bi-Fathah"
-    },
-    "Start with kasra": {
-        "en": "Start with Kasrah",
-        "franco": "Ibtida' bi-Kasrah",
-        "ar": "Ibtida' bi-Kasrah"
-    },
-    "Identical": {
-        "en": "Identical Letters",
-        "franco": "Mutamathilayn",
-        "ar": "Mutamathilayn"
-    },
-    "Similar": {
-        "en": "Similar Letters",
-        "franco": "Mutajanisayn",
-        "ar": "Mutajanisayn"
-    },
-    "Close": {
-        "en": "Close Letters",
-        "franco": "Mutaqaribayn",
-        "ar": "Mutaqaribayn"
-    },
-    "Heavy": {
-        "en": "Heavy",
-        "franco": "Mufakhkham",
-        "ar": "Mufakhkham"
-    },
-    "Light": {
-        "en": "Light",
-        "franco": "Muraqqaq",
-        "ar": "Muraqqaq"
-    },
-    "Heavy Raa": {
-        "en": "Heavy Raa",
-        "franco": "Raa Mufakhkhamah",
-        "ar": "Raa Mufakhkhamah"
-    },
-    "Light Raa": {
-        "en": "Light Raa",
-        "franco": "Raa Muraqqaqah",
-        "ar": "Raa Muraqqaqah"
-    },
-    "Heavy Letter": {
-        "en": "Heavy Letter",
-        "franco": "Harf Mufakhkham",
-        "ar": "Harf Mufakhkham"
-    },
-    "Light Letter": {
-        "en": "Light Letter",
-        "franco": "Harf Muraqqaq",
-        "ar": "Harf Muraqqaq"
-    },
-    "Heavy Laam": {
-        "en": "Heavy Laam",
-        "franco": "Laam Mufakhkhamah",
-        "ar": "Laam Mufakhkhamah"
-    },
-    "Light Laam": {
-        "en": "Light Laam",
-        "franco": "Laam Muraqqaqah",
-        "ar": "Laam Muraqqaqah"
-    },
-    "Heavy Alif": {
-        "en": "Heavy Alif",
-        "franco": "Alif Mufakhkhamah",
-        "ar": "Alif Mufakhkhamah"
-    },
-    "Light Alif": {
-        "en": "Light Alif",
-        "franco": "Alif Muraqqaqah",
-        "ar": "Alif Muraqqaqah"
-    },
-    "Both are permissible — Tarqeeq is preferred when stopping.": {
-        "en": "Both allowed (Light preferred)",
-        "franco": "Yajuz Al-Wajhan - Tarqeeq Awla",
-        "ar": "Yajuz Al-Wajhan - Tarqeeq Awla"
-    },
-    "Both are permissible — Tafkheem is preferred when stopping.": {
-        "en": "Both allowed (Heavy preferred)",
-        "franco": "Yajuz Al-Wajhan - Tafkheem Awla",
-        "ar": "Yajuz Al-Wajhan - Tafkheem Awla"
-    },
-    "Lam Shamsiyyah": {
-        "en": "Lam Shamsiyyah",
-        "franco": "Idgham",
-        "ar": "Idgham"
-    },
-    "Lam Qamariyyah": {
-        "en": "Lam Qamariyyah",
-        "franco": "Izhar",
-        "ar": "Izhar"
-    },
-    "Heavy Ghunnah": {
-        "en": "Heavy Ghunnah",
-        "franco": "Ghunnah Mufakhkhamah",
-        "ar": "Ghunnah Mufakhkhamah"
-    },
-    "Light Ghunnah": {
-        "en": "Light Ghunnah",
-        "franco": "Ghunnah Muraqqaqah",
-        "ar": "Ghunnah Muraqqaqah"
-    }
-};
-
-const maddCounts = {
-    "Natural Madd": "2 Counts (Harakat)",
-    "Madd Natural – 2 counts": "2 Counts (Harakat)",
-    "Substitute": "2 Counts (Harakat)",
-    "Connected": "4 or 5 Counts (Harakat)",
-    "Separated": "4 or 5 Counts (Harakat)",
-    "Compensatory Madd": "2 Counts (Harakat)",
-    "Stabilizing Madd": "2 Counts (Harakat)",
-    "Minor Sila Madd": "2 Counts (Harakat)",
-    "Major Sila Madd": "4 or 5 Counts (Harakat)",
-    "Permanent Word Based Heavy": "6 Counts (Harakat)",
-    "Permanent Word Based Light": "6 Counts (Harakat)",
-    "Permanent Letter Based Heavy": "6 Counts (Harakat)",
-    "Permanent Letter Based Light": "6 Counts (Harakat)",
-    "Permanent Madd — Word-Based": "6 Counts (Harakat)",
-    "Permanent Madd — Letter-Based": "6 Counts (Harakat)",
-    "Madd Lazim Kalimi Muthaqqal": "6 Counts (Harakat)",
-    "Madd Lazim Kalimi Mukhaffaf": "6 Counts (Harakat)",
-    "Madd Lazim Harfi Muthaqqal": "6 Counts (Harakat)",
-    "Madd Lazim Harfi Mukhaffaf": "6 Counts (Harakat)",
-    "Temporary Madd": "2, 4, or 6 Counts (Harakat)",
-    "Soft Madd": "2, 4, or 6 Counts (Harakat)"
-};
-
-const SUB_CATEGORY_MAPPING = {
-    "hamzat_wasl": {
-        "Dropped": [
-            "Dropped"
-        ],
-        "Start with damma": [
-            "Start with damma"
-        ],
-        "Start with fatha": [
-            "Start with fatha"
-        ],
-        "Start with kasra": [
-            "Start with kasra"
-        ]
-    },
-    "letter_relations": {
-        "Identical": [
-            "Identical"
-        ],
-        "Similar": [
-            "Similar"
-        ],
-        "Close": [
-            "Close"
-        ]
-    },
-    "madd_rules": {
-        "Natural Madd": [
-            "Natural Madd"
-        ],
-        "Permanent Word Based Heavy": [
-            "Permanent Word Based Heavy"
-        ],
-        "Permanent Word Based Light": [
-            "Permanent Word Based Light"
-        ],
-        "Permanent Letter Based Heavy": [
-            "Permanent Letter Based Heavy"
-        ],
-        "Permanent Letter Based Light": [
-            "Permanent Letter Based Light"
-        ],
-        "Substitute": [
-            "Substitute"
-        ],
-        "Connected": [
-            "Connected"
-        ],
-        "Separated": [
-            "Separated"
-        ],
-        "Compensatory Madd": [
-            "Compensatory Madd"
-        ],
-        "Stabilizing Madd": [
-            "Stabilizing Madd"
-        ],
-        "Minor Sila Madd": [
-            "Minor Sila Madd"
-        ],
-        "Major Sila Madd": [
-            "Major Sila Madd"
-        ],
-        "Temporary Madd": [
-            "Temporary Madd"
-        ],
-        "Soft Madd": [
-            "Soft Madd"
-        ]
-    },
-    "meem_sakinah": {
-        "Oral + Hiding": [
-            "Oral + Hiding"
-        ],
-        "Oral + Merger": [
-            "Oral + Merger"
-        ],
-        "Oral + Clarity": [
-            "Oral + Clarity"
-        ]
-    },
-    "noon_sakinah_tanween": {
-        "Izhar": [
-            "Izhar"
-        ],
-        "Idgham with Ghunnah": [
-            "Idgham with Ghunnah"
-        ],
-        "Idgham without Ghunnah": [
-            "Idgham without Ghunnah"
-        ],
-        "Iqlab": [
-            "Iqlab"
-        ],
-        "Ikhfa": [
-            "Ikhfa"
-        ],
-        "Izhar Mutlaq": [
-            "Izhar Mutlaq"
-        ],
-        "Ikhfa Ghunnah": [
-            "Heavy Ghunnah",
-            "Light Ghunnah"
-        ]
-    },
-    "qalqalah": {
-        "Minor": [
-            "Minor"
-        ],
-        "Medium": [
-            "Medium"
-        ],
-        "Major": [
-            "Major"
-        ],
-        "Qalqalah": [
-            "Qalqalah"
-        ],
-        "No Qalqalah": [
-            "No Qalqalah"
-        ]
-    },
-    "image_bank": {
-        "Two counts of ghunna": [
-            "Two counts of ghunna"
-        ]
-    },
-    "tafkheem_tarqeeq": {
-        "Light Ra": [
-            "Light",
-            "Light Raa"
-        ],
-        "Heavy Ra": [
-            "Heavy",
-            "Heavy Raa"
-        ],
-        "Lam of Allah": [
-            "Heavy",
-            "Light",
-            "Heavy Laam",
-            "Light Laam"
-        ],
-        "Always Heavy": [
-            "Heavy",
-            "Heavy Letter"
-        ],
-        "Alif": [
-            "Heavy",
-            "Light",
-            "Heavy Alif",
-            "Light Alif"
-        ],
-        "Ra Both Options": [
-            "Both are permissible — Tarqeeq is preferred when stopping.",
-            "Both are permissible — Tafkheem is preferred when stopping."
-        ]
-    },
-    "lam_shamsiyyah_qamariyyah": {
-        "Lam Shamsiyyah": [
-            "Lam Shamsiyyah"
-        ],
-        "Lam Qamariyyah": [
-            "Lam Qamariyyah"
         ]
     }
 };
