@@ -58,6 +58,11 @@ function finishAndShowReport(earlyExit = false) {
                 } else { rulesStatsBox.style.display = 'none'; }
             }
             
+            const certRepBtn = document.getElementById('btn-cert-report');
+            if (certRepBtn) {
+                certRepBtn.style.display = (accuracy >= 80 && !session.isPracticeMode) ? 'inline-block' : 'none';
+            }
+
             const list = document.getElementById('mistakes-list'); 
             list.innerHTML = '';
             
@@ -325,7 +330,7 @@ ${magicSyncLink}`;
                     nameSpan.className = 'lb-name';
                     nameSpan.textContent = entry.name;
                     
-                    let avatarHtml = entry.avatar ? `<img src="${entry.avatar}" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; margin-right: 10px; border: 2px solid white; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">` : `<span style="font-size: 1.5rem; margin-right: 10px; line-height: 1;">👤</span>`;
+                    let avatarHtml = entry.avatar ? `<img src="${entry.avatar}" alt="User Avatar" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; margin-right: 10px; border: 2px solid white; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">` : `<span style="font-size: 1.5rem; margin-right: 10px; line-height: 1;">👤</span>`;
                     
                     const userGrp = document.createElement('div');
                     userGrp.style.display = 'flex'; userGrp.style.alignItems = 'center';
@@ -400,11 +405,29 @@ ${magicSyncLink}`;
                     </p>
                     <div class="prog-rep-actions">
                         ${passed && nextStage ? `<button id="btn-rep-next-stage" class="btn-prog-rep primary">Next Stage ▶</button>` : ''}
+                        ${passed ? `<button id="btn-rep-cert" class="btn-prog-rep cert" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border: none; font-weight: 800; padding: 10px 18px; border-radius: 10px; cursor: pointer; box-shadow: 0 4px 0 #b45309;">📜 Download Certificate</button>` : ''}
                         <button id="btn-rep-retry-stage" class="btn-prog-rep secondary">🔄 Replay Stage</button>
                         <button id="btn-rep-back-map" class="btn-prog-rep map">🗺️ Return to Roadmap</button>
                     </div>
                 </div>
             `;
+
+            const certBtn = document.getElementById('btn-rep-cert');
+            if (certBtn && passed) {
+                certBtn.onclick = () => {
+                    if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
+                    if (window.CertificateGenerator) {
+                        const teacherInfo = (typeof window.StudentEngine !== 'undefined' && window.StudentEngine.getTeacherInfo()) || (window.APP_CONFIG && window.APP_CONFIG.DEFAULT_TEACHER) || { name: 'الشيخ جهاد الصياد' };
+                        window.CertificateGenerator.generate({
+                            studentName: session.studentName || 'Honored Student',
+                            worldTitle: currentProgressiveStageInfo.world.title || 'Tajweed Stage',
+                            teacherName: teacherInfo.name
+                        });
+                    } else if (typeof showToast === 'function') {
+                        showToast('Certificate generator is loading...', true);
+                    }
+                };
+            }
 
             const nextBtn = document.getElementById('btn-rep-next-stage');
             if (nextBtn && nextStage) {

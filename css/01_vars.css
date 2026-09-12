@@ -1,10 +1,37 @@
-﻿:root {
+:root {
             --bg-color: #f8fafc;
             --text-main: #1e293b;
             --primary: #3b82f6;
             --success: #10b981;
             --error: #ef4444;
             --warning: #f59e0b;
+        }
+
+        [data-theme="emerald"] {
+            --primary: #059669;
+            --bg-color: #f0fdf4;
+            --text-main: #064e3b;
+            --success: #10b981;
+        }
+
+        [data-theme="amber"] {
+            --primary: #d97706;
+            --bg-color: #fffbeb;
+            --text-main: #78350f;
+            --warning: #f59e0b;
+        }
+
+        [data-theme="amethyst"] {
+            --primary: #7c3aed;
+            --bg-color: #faf5ff;
+            --text-main: #4c1d95;
+        }
+
+        [data-theme="ruby"] {
+            --primary: #e11d48;
+            --bg-color: #fff1f2;
+            --text-main: #881337;
+            --error: #ef4444;
         }
 
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }

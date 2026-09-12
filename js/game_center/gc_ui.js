@@ -509,10 +509,16 @@ window.GC_UI = {
     const clearBtn = modal.querySelector('#gc-clear-mistakes-btn');
     if (clearBtn) {
       clearBtn.onclick = () => {
-        if (confirm('Clear all recorded mistakes?')) {
+        const doClear = () => {
           window.GC_STATE.clearMistakes();
           this.openMistakeModal();
           this.renderPortal();
+          if (typeof showToast === 'function') showToast('Mistakes cleared.');
+        };
+        if (typeof showAppConfirm === 'function') {
+          showAppConfirm('Are you sure you want to clear all recorded mistakes?', 'Clear Mistakes', doClear);
+        } else if (confirm('Clear all recorded mistakes?')) {
+          doClear();
         }
       };
     }

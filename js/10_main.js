@@ -72,6 +72,11 @@ const appContainer = document.createElement('div');
         <section class="start-container">
             <h1 style="font-size: clamp(2rem, 4vw, 3rem); color: #1e293b; font-weight: 900; margin-bottom: 3vh; text-align:center;">Choose Learning Mode</h1>
             <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; width:100%; max-width:680px;">
+                <button id="btn-mode-daily" class="mode-btn daily" style="width: 100%; background: linear-gradient(135deg, #ea580c, #c2410c); color: white; border: 3px solid #fdba74; box-shadow: 0 8px 16px rgba(234, 88, 12, 0.25);">
+                    <span style="font-size:2.5rem;">🔥</span>
+                    <span style="font-size:1.25rem; font-weight:900;">Daily Challenge</span>
+                    <span id="daily-streak-mode-lbl" style="font-size:0.85rem; opacity:0.95;">5 Questions • Streak: 0 Days</span>
+                </button>
                 <button id="btn-mode-prog" class="mode-btn prog" style="width: 100%;">
                     <span style="font-size:2.5rem;">🗺️</span>
                     <span>Progressive Mode</span>
@@ -110,7 +115,7 @@ const appContainer = document.createElement('div');
                 <div class="avatar-upload-container" style="text-align: center; margin-bottom: 10px;">
                     <label style="cursor: pointer; display: inline-block;" title="Upload your picture!">
                         <div style="width: 70px; height: 70px; border-radius: 50%; background: #e2e8f0; border: 2px dashed #94a3b8; display: flex; align-items: center; justify-content: center; overflow: hidden; margin: 0 auto; position: relative;">
-                            <img class="avatar-preview" src="" style="width: 100%; height: 100%; object-fit: cover; display: none; position: absolute; inset:0;">
+                            <img class="avatar-preview" src="" alt="Avatar Preview" style="width: 100%; height: 100%; object-fit: cover; display: none; position: absolute; inset:0;">
                             <span class="avatar-placeholder" style="font-size: 2rem;">👤</span>
                         </div>
                         <input type="file" accept="image/*" class="avatar-input" style="display: none;">
@@ -453,6 +458,7 @@ const appContainer = document.createElement('div');
                 
                 <div style="display: flex; gap: 15px; margin-top: 2vh; flex-wrap: wrap; justify-content: center;">
                     <button id="btn-replay" style="background: var(--primary); color: white; padding: 1.5vh 3vw; border-radius: 99px; font-weight: 900; font-size: 1.2rem; cursor: pointer; border: none; box-shadow: 0 4px 0 #2563eb;">⚙️ New Challenge</button>
+                    <button id="btn-cert-report" class="btn-secondary" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border: none; font-weight: 800; display: none;">📜 Certificate</button>
                     <button id="btn-lb-report" class="btn-secondary">🏆 Leaderboard</button>
                     <button id="btn-home-report" class="btn-secondary" style="border-color: #cbd5e1; color: #64748b;">🏠 Home</button>
                 </div>
@@ -661,10 +667,56 @@ const appContainer = document.createElement('div');
             document.getElementById('btn-replay').addEventListener('click', () => { SFX.click(); switchScreen('screen-start'); });
             document.getElementById('btn-home-report').addEventListener('click', () => { SFX.click(); switchScreen('screen-start'); });
             document.getElementById('btn-lb-report').addEventListener('click', () => { SFX.click(); showLeaderboard('screen-report'); });
+
+            const btnModeDaily = document.getElementById('btn-mode-daily');
+            if (btnModeDaily) {
+                btnModeDaily.addEventListener('click', () => {
+                    if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
+                    if (typeof window.StudentEngine !== 'undefined') {
+                        const active = window.StudentEngine.getActiveStudent();
+                        const challenge = window.StudentEngine.getDailyChallenge(active ? active.id : null);
+                        if (challenge && challenge.questions && challenge.questions.length > 0) {
+                            window.StudentEngine.recordDailyPlay(active ? active.id : null);
+                            showToast(`🔥 Starting Daily Challenge (${challenge.ruleName})!`);
+                            initGameSession(false, challenge.questions);
+                        } else {
+                            showToast('Starting Daily Challenge session...');
+                            switchScreen('screen-start');
+                        }
+                    } else {
+                        switchScreen('screen-start');
+                    }
+                });
+            }
+
+            const btnCertRep = document.getElementById('btn-cert-report');
+            if (btnCertRep) {
+                btnCertRep.addEventListener('click', () => {
+                    if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
+                    if (window.CertificateGenerator) {
+                        const teacherInfo = (typeof window.StudentEngine !== 'undefined' && window.StudentEngine.getTeacherInfo()) || (window.APP_CONFIG && window.APP_CONFIG.DEFAULT_TEACHER) || { name: 'الشيخ جهاد الصياد' };
+                        window.CertificateGenerator.generate({
+                            studentName: session.studentName || 'Student',
+                            worldTitle: 'Tajweed Mastery Challenge',
+                            teacherName: teacherInfo.name
+                        });
+                    } else if (typeof showToast === 'function') {
+                        showToast('Certificate generator is loading...', true);
+                    }
+                });
+            }
+
             document.getElementById('btn-home-lb').addEventListener('click', () => { SFX.click(); switchScreen('screen-start'); });
             document.getElementById('btn-clear-lb').addEventListener('click', () => {
-                if(confirm("Are you sure you want to delete all local leaderboard data?")) {
-                    writeStorage(LOCAL_STORAGE_KEY, { leaderboard: [] }); showLeaderboard('screen-start');
+                const doClear = () => {
+                    writeStorage(LOCAL_STORAGE_KEY, { leaderboard: [] }); 
+                    showLeaderboard('screen-start');
+                    if (typeof showToast === 'function') showToast('Leaderboard cleared.');
+                };
+                if (typeof showAppConfirm === 'function') {
+                    showAppConfirm("Are you sure you want to delete all local leaderboard data?", "Clear Leaderboard", doClear);
+                } else if(confirm("Are you sure you want to delete all local leaderboard data?")) {
+                    doClear();
                 }
             });
 

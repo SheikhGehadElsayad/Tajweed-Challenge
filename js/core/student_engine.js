@@ -31,6 +31,10 @@
         init() {
             this.load();
             this.migrateLegacyIfNeeded();
+            const active = this.getActiveStudent();
+            if (active && active.theme) {
+                this.applyTheme(active.theme);
+            }
         }
 
         load() {
@@ -73,6 +77,12 @@
                     name: legacyName,
                     avatar: '🦁',
                     color: '#2563eb',
+                    theme: 'ocean',
+                    dailyStreak: {
+                        currentStreak: 0,
+                        lastPlayedDate: null,
+                        bestStreak: 0
+                    },
                     createdAt: Date.now(),
                     scoringPolicy: 'best', // 'best' | 'latest' | 'cumulative'
                     progress: {
@@ -124,6 +134,9 @@
             if (this.state.students[id]) {
                 this.state.activeStudentId = id;
                 const student = this.state.students[id];
+                if (student.theme) {
+                    this.applyTheme(student.theme);
+                }
                 // Keep legacy key synced for older components that might read it directly
                 try {
                     localStorage.setItem(LEGACY_NAME_KEY, student.name);
@@ -139,7 +152,7 @@
             return false;
         }
 
-        addStudent(name, avatar, color, scoringPolicy = 'best') {
+        addStudent(name, avatar, color, scoringPolicy = 'best', theme = 'ocean') {
             const cleanName = (name || '').trim().replace(/\s+/g, ' ');
             if (!cleanName) return null;
 
@@ -149,6 +162,12 @@
                 name: cleanName,
                 avatar: avatar || DEFAULT_AVATARS[Math.floor(Math.random() * DEFAULT_AVATARS.length)],
                 color: color || DEFAULT_COLORS[Math.floor(Math.random() * DEFAULT_COLORS.length)],
+                theme: theme || 'ocean',
+                dailyStreak: {
+                    currentStreak: 0,
+                    lastPlayedDate: null,
+                    bestStreak: 0
+                },
                 createdAt: Date.now(),
                 scoringPolicy: scoringPolicy,
                 progress: {
@@ -179,6 +198,10 @@
             if (data.avatar !== undefined) student.avatar = data.avatar;
             if (data.color !== undefined) student.color = data.color;
             if (data.scoringPolicy !== undefined) student.scoringPolicy = data.scoringPolicy;
+            if (data.theme !== undefined) {
+                student.theme = data.theme;
+                if (id === this.state.activeStudentId) this.applyTheme(data.theme);
+            }
 
             if (id === this.state.activeStudentId) {
                 try {
@@ -465,9 +488,12 @@
                 }
             } catch (e) {}
 
+            if (typeof window.APP_CONFIG !== 'undefined' && window.APP_CONFIG.getDefaultTeacher) {
+                return window.APP_CONFIG.getDefaultTeacher();
+            }
             return {
                 name: 'Sheikh Gehad Elsayad',
-                whatsapp: '+201099684126', // Sheikh Gehad default
+                whatsapp: '+201099684126',
                 email: 'gehadnagah789@gmail.com'
             };
         }
@@ -486,6 +512,175 @@
             } catch (e) {
                 console.error('Failed to save teacher info:', e);
                 return this.getTeacherInfo();
+            }
+        }
+
+        // ================= DAILY STREAK & CHALLENGE =================
+
+        recordDailyPlay(studentId = null) {
+            const id = studentId || this.state.activeStudentId;
+            if (!id || !this.state.students[id]) return null;
+            const student = this.state.students[id];
+
+            if (!student.dailyStreak) {
+                student.dailyStreak = { currentStreak: 0, lastPlayedDate: null, bestStreak: 0 };
+            }
+
+            const today = new Date().toISOString().slice(0, 10);
+            const last = student.dailyStreak.lastPlayedDate;
+
+            if (last === today) {
+                return student.dailyStreak;
+            }
+
+            if (!last) {
+                student.dailyStreak.currentStreak = 1;
+            } else {
+                const lastDate = new Date(last + 'T00:00:00');
+                const todayDate = new Date(today + 'T00:00:00');
+                const diffDays = Math.round((todayDate - lastDate) / (1000 * 60 * 60 * 24));
+
+                if (diffDays === 1) {
+                    student.dailyStreak.currentStreak = (student.dailyStreak.currentStreak || 0) + 1;
+                } else if (diffDays > 1) {
+                    student.dailyStreak.currentStreak = 1;
+                }
+            }
+
+            student.dailyStreak.lastPlayedDate = today;
+            if (student.dailyStreak.currentStreak > (student.dailyStreak.bestStreak || 0)) {
+                student.dailyStreak.bestStreak = student.dailyStreak.currentStreak;
+            }
+
+            this.save();
+            return student.dailyStreak;
+        }
+
+        getDailyStreak(studentId = null) {
+            const id = studentId || this.state.activeStudentId;
+            if (!id || !this.state.students[id]) return { currentStreak: 0, lastPlayedDate: null, bestStreak: 0 };
+            const student = this.state.students[id];
+            if (!student.dailyStreak) {
+                student.dailyStreak = { currentStreak: 0, lastPlayedDate: null, bestStreak: 0 };
+            }
+
+            const today = new Date().toISOString().slice(0, 10);
+            const last = student.dailyStreak.lastPlayedDate;
+            if (last && last !== today) {
+                const lastDate = new Date(last + 'T00:00:00');
+                const todayDate = new Date(today + 'T00:00:00');
+                const diffDays = Math.round((todayDate - lastDate) / (1000 * 60 * 60 * 24));
+                if (diffDays > 1 && student.dailyStreak.currentStreak > 0) {
+                    student.dailyStreak.currentStreak = 0;
+                    this.save();
+                }
+            }
+
+            return student.dailyStreak;
+        }
+
+        getDailyChallenge(studentId = null) {
+            const id = studentId || this.state.activeStudentId;
+            const student = this.getStudent(id);
+            if (!student) return null;
+
+            // 1. Find weakest rule from student's mistake bank
+            let weakestRuleKey = null;
+            let maxMistakes = 0;
+            const ruleCounts = {};
+
+            if (student.mistakes && student.mistakes.length > 0) {
+                student.mistakes.forEach(m => {
+                    const rule = m.ruleKey || m.rule || (m.tags && m.tags[0]) || 'general';
+                    ruleCounts[rule] = (ruleCounts[rule] || 0) + 1;
+                    if (ruleCounts[rule] > maxMistakes) {
+                        maxMistakes = ruleCounts[rule];
+                        weakestRuleKey = rule;
+                    }
+                });
+            }
+
+            // Fallback to a category from TAJWEED_BANK if no mistakes logged
+            const bank = (typeof window.TAJWEED_BANK !== 'undefined') ? window.TAJWEED_BANK : {};
+            const availableKeys = Object.keys(bank);
+            if (!weakestRuleKey || !bank[weakestRuleKey]) {
+                const dayIndex = new Date().getDate() % (availableKeys.length || 1);
+                weakestRuleKey = availableKeys[dayIndex] || 'qalqalah';
+            }
+
+            const ruleObj = bank[weakestRuleKey];
+            if (!ruleObj) return null;
+
+            let pool = [];
+            if (Array.isArray(ruleObj.examples)) {
+                pool = pool.concat(ruleObj.examples);
+            }
+            if (ruleObj.subcategories) {
+                Object.values(ruleObj.subcategories).forEach(sub => {
+                    if (Array.isArray(sub.examples)) pool = pool.concat(sub.examples);
+                });
+            }
+
+            if (pool.length === 0) {
+                // Fallback to any available questions
+                Object.values(bank).forEach(cat => {
+                    if (Array.isArray(cat.examples)) pool = pool.concat(cat.examples);
+                });
+            }
+
+            const shuffled = [...pool].sort(() => 0.5 - Math.random());
+            const questions = shuffled.slice(0, 5);
+
+            return {
+                ruleKey: weakestRuleKey,
+                ruleTitle: ruleObj.name_ar || ruleObj.name || weakestRuleKey,
+                questions: questions,
+                isWeakest: maxMistakes > 0,
+                mistakeCount: maxMistakes
+            };
+        }
+
+        // ================= PROGRESSION REWARDS & THEMES =================
+
+        getUnlockedRewards(studentId = null) {
+            const id = studentId || this.state.activeStudentId;
+            const student = this.getStudent(id);
+            const stages = (student && student.progress && student.progress.completedStages) || {};
+            const clearedStagesCount = Object.values(stages).filter(s => s.stars >= 1).length;
+
+            return {
+                unlockedThemes: [
+                    'ocean', // Default theme
+                    ...(clearedStagesCount >= 3 ? ['emerald'] : []),
+                    ...(clearedStagesCount >= 8 ? ['amber'] : []),
+                    ...(clearedStagesCount >= 15 ? ['amethyst'] : []),
+                    ...(clearedStagesCount >= 25 ? ['ruby'] : [])
+                ],
+                unlockedAvatars: [
+                    '🦁', '🐯', '🌟', '🚀', // Base starters
+                    ...(clearedStagesCount >= 3 ? ['🦅', '🐬', '🌸'] : []),
+                    ...(clearedStagesCount >= 8 ? ['🎓', '👑', '⚡'] : []),
+                    ...(clearedStagesCount >= 15 ? ['🏹', '💎', '🕌'] : []),
+                    ...(clearedStagesCount >= 25 ? ['🌙', '📖', '🦚'] : [])
+                ],
+                clearedStagesCount
+            };
+        }
+
+        setStudentTheme(themeName, studentId = null) {
+            const id = studentId || this.state.activeStudentId;
+            if (!id || !this.state.students[id]) return false;
+            this.state.students[id].theme = themeName;
+            this.save();
+            if (id === this.state.activeStudentId) {
+                this.applyTheme(themeName);
+            }
+            return true;
+        }
+
+        applyTheme(themeName) {
+            if (typeof document !== 'undefined') {
+                document.documentElement.setAttribute('data-theme', themeName || 'ocean');
             }
         }
 

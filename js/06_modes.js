@@ -230,7 +230,8 @@ function setUnlockedLevel(lvl) {
 function resetProgressiveData() {
     const active = typeof window.StudentEngine !== 'undefined' ? window.StudentEngine.getActiveStudent() : null;
     const name = active ? active.name : 'Student';
-    if (confirm(`Are you sure you want to reset roadmap progress for ${name}? All stars and unlocked stages will be reset to Stage 1.`)) {
+    const confirmMsg = `Are you sure you want to reset roadmap progress for ${name}? All stars and unlocked stages will be reset to Stage 1.`;
+    const doReset = () => {
         if (typeof window.StudentEngine !== 'undefined') {
             window.StudentEngine.resetAllProgress();
         }
@@ -239,6 +240,12 @@ function resetProgressiveData() {
         if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
         renderProgressiveMap();
         if (typeof showToast === 'function') showToast(`Progress reset for ${name}! Starting from Stage 1.`);
+    };
+
+    if (typeof showAppConfirm === 'function') {
+        showAppConfirm(confirmMsg, 'Reset Roadmap Progress', doReset);
+    } else if (confirm(confirmMsg)) {
+        doReset();
     }
 }
 
@@ -462,7 +469,9 @@ function openStageLaunchModal(worldIdx, stageIdx) {
 
     const pool = getProgressiveStagePool(world, stage);
     if (!pool || pool.length === 0) {
-        alert("Stage questions could not be loaded.");
+        if (typeof showToast === 'function') showToast("Stage questions could not be loaded.", true);
+        else if (typeof showAppAlert === 'function') showAppAlert("Stage questions could not be loaded.", "Error");
+        else alert("Stage questions could not be loaded.");
         return;
     }
 
@@ -568,7 +577,9 @@ function startProgressiveStage(worldIdx, stageIdx, overrideQty = null) {
 
     const pool = getProgressiveStagePool(world, stage);
     if (pool.length === 0) {
-        alert("Stage questions could not be loaded.");
+        if (typeof showToast === 'function') showToast("Stage questions could not be loaded.", true);
+        else if (typeof showAppAlert === 'function') showAppAlert("Stage questions could not be loaded.", "Error");
+        else alert("Stage questions could not be loaded.");
         return;
     }
 
@@ -627,9 +638,12 @@ function renderHomeworkCreator() {
     const root = document.getElementById('hw-creator-root');
     if (!root) return;
 
+    const defaultTeacher = (typeof window.APP_CONFIG !== 'undefined') 
+        ? window.APP_CONFIG.getDefaultTeacher() 
+        : { name: 'Sheikh Gehad Elsayad', whatsapp: '+201099684126', email: 'gehadnagah789@gmail.com' };
     const teacherInfo = (typeof window.StudentEngine !== 'undefined') 
         ? window.StudentEngine.getTeacherInfo() 
-        : { name: 'Sheikh Gehad Elsayad', whatsapp: '+201099684126', email: 'gehadnagah789@gmail.com' };
+        : defaultTeacher;
 
     let teacherDisplayName = teacherInfo.name || 'Sheikh Gehad Elsayad';
     if (teacherDisplayName.includes('جهاد') || teacherDisplayName.includes('الصياد')) {
@@ -825,7 +839,9 @@ function renderHomeworkCreator() {
             studentName = customInput.value.trim();
         }
         if (!studentName) {
-            alert("Please select or type a student name!");
+            if (typeof showToast === 'function') showToast("Please select or type a student name!", true);
+            else if (typeof showAppAlert === 'function') showAppAlert("Please select or type a student name!", "Validation");
+            else alert("Please select or type a student name!");
             if (studentSelect.value === '__NEW__') customInput.focus();
             return;
         }
@@ -865,7 +881,9 @@ function renderHomeworkCreator() {
         });
 
         if (codeTokens.length === 0) {
-            alert("Please select at least one Tajweed rule or sub-rule!");
+            if (typeof showToast === 'function') showToast("Please select at least one Tajweed rule or sub-rule!", true);
+            else if (typeof showAppAlert === 'function') showAppAlert("Please select at least one Tajweed rule or sub-rule!", "Validation");
+            else alert("Please select at least one Tajweed rule or sub-rule!");
             return;
         }
 
@@ -879,6 +897,10 @@ function renderHomeworkCreator() {
         url.searchParams.set('st', studentName);
         url.searchParams.set('q', qty);
         url.searchParams.set('t', timer);
+
+        const defaultTc = (typeof window.APP_CONFIG !== 'undefined') 
+            ? window.APP_CONFIG.getDefaultTeacher() 
+            : { name: 'Sheikh Gehad Elsayad', whatsapp: '+201099684126', email: 'gehadnagah789@gmail.com' };
 
         const isDefaultTeacher = (!teacherInfo.name || teacherInfo.name.includes('جهاد') || teacherInfo.name.toLowerCase().includes('gehad'))
             && (!teacherInfo.whatsapp || teacherInfo.whatsapp.includes('1099684126'));
@@ -898,7 +920,8 @@ function renderHomeworkCreator() {
         const waBtn = root.querySelector('#hw-btn-wa-share');
 
         resultCard.style.display = 'block';
-        targetEl.innerHTML = `🎯 Target Student: <strong>${studentName}</strong> (${qty} Questions • ${timer > 0 ? timer + 's per Q' : 'No timer'})`;
+        const safeStudent = typeof escapeHtml === 'function' ? escapeHtml(studentName) : studentName;
+        targetEl.innerHTML = `🎯 Target Student: <strong dir="auto">${safeStudent}</strong> (${qty} Questions • ${timer > 0 ? timer + 's per Q' : 'No timer'})`;
         urlInput.value = linkStr;
 
         copyBtn.onclick = () => {
@@ -931,7 +954,9 @@ function launchHomeworkGame() {
     const cfg = window.CURRENT_HW_CONFIG || {};
     const pool = window.CURRENT_HW_POOL || [];
     if (pool.length === 0) {
-        alert("Homework questions could not be loaded. Please check your link.");
+        if (typeof showToast === 'function') showToast("Homework questions could not be loaded. Please check your link.", true);
+        else if (typeof showAppAlert === 'function') showAppAlert("Homework questions could not be loaded. Please check your link.", "Error");
+        else alert("Homework questions could not be loaded. Please check your link.");
         return;
     }
 
@@ -1016,12 +1041,16 @@ function parseURLModes() {
             const rawHw = params.get('hw');
             const selectionMap = decodeHwToSelection(rawHw);
 
+            const defaultTc = (typeof window.APP_CONFIG !== 'undefined') 
+                ? window.APP_CONFIG.getDefaultTeacher() 
+                : { name: 'Sheikh Gehad Elsayad', whatsapp: '+201099684126', email: 'gehadnagah789@gmail.com' };
+
             const studentName = params.get('st') || params.get('name') || 'Student';
             const qty = parseInt(params.get('q') || '10', 10);
             const timer = parseInt(params.get('t') || '15', 10);
-            const teacherName = params.get('tc') || 'Sheikh Gehad Elsayad';
-            const teacherWa = params.get('wa') || '+201099684126';
-            const teacherGm = params.get('gm') || 'gehadnagah789@gmail.com';
+            const teacherName = params.get('tc') || defaultTc.name;
+            const teacherWa = params.get('wa') || defaultTc.whatsapp;
+            const teacherGm = params.get('gm') || defaultTc.email;
 
             // Direct robust pool creation from RuleSelectorEngine or TAJWEED_BANK
             let pool = [];
@@ -1084,9 +1113,12 @@ function parseURLModes() {
             // Switch to screen-start and render dedicated Student Launch Card
             switchScreen('screen-start');
 
+            const safeStudent = typeof escapeHtml === 'function' ? escapeHtml(studentName) : studentName;
+            const safeTeacher = typeof escapeHtml === 'function' ? escapeHtml(teacherName) : teacherName;
+
             const titleEl = document.getElementById('start-title');
             if (titleEl) {
-                titleEl.innerHTML = `📝 Homework for <span style="color:#2563eb;">${studentName}</span>`;
+                titleEl.innerHTML = `📝 Homework for <span style="color:#2563eb;" dir="auto">${safeStudent}</span>`;
             }
 
             // Hide standard selection elements, rules arena & top quick setup so student has a clean, focused homework portal
@@ -1130,14 +1162,15 @@ function parseURLModes() {
             }
 
             if (launchCard) {
+                const safeTopics = topicLabels.map(t => typeof escapeHtml === 'function' ? escapeHtml(t) : t).join(' • ');
                 launchCard.innerHTML = `
-                    <div style="background: linear-gradient(135deg, #eff6ff, #f8fafc); border: 2.5px solid #3b82f6; border-radius: 20px; padding: 32px 24px; text-align: center; margin: 10px auto 20px auto; max-width: 680px; width: 100%; box-shadow: 0 12px 30px rgba(59,130,246,0.15);">
+                    <div style="background: linear-gradient(135deg, #eff6ff, #f8fafc); border: 2.5px solid #3b82f6; border-radius: 20px; padding: 32px 24px; text-align: center; margin: 10px auto 20px auto; max-width: 680px; width: 100%; box-shadow: 0 12px 30px rgba(59,130,246,0.15);" dir="auto">
                         <div style="font-size: 3.5rem; margin-bottom: 8px;">🌟</div>
-                        <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: #1e293b; margin: 0 0 8px 0;">Welcome, ${studentName}!</h2>
-                        <div style="font-size: 1.15rem; font-weight: 800; color: #2563eb; margin-bottom: 4px;">👨‍🏫 Teacher: ${teacherName}</div>
-                        <div style="font-size: 0.85rem; font-weight: 700; color: #64748b; margin-bottom: 20px;">Supervised & Developed by Sheikh Gehad Elsayad 📖</div>
+                        <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: #1e293b; margin: 0 0 8px 0;" dir="auto">Welcome, ${safeStudent}!</h2>
+                        <div style="font-size: 1.15rem; font-weight: 800; color: #2563eb; margin-bottom: 4px;" dir="auto">👨‍🏫 Teacher: ${safeTeacher}</div>
+                        <div style="font-size: 0.85rem; font-weight: 700; color: #64748b; margin-bottom: 20px;" dir="auto">Supervised & Developed by Sheikh Gehad Elsayad 📖</div>
 
-                        <div style="background: white; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 18px 22px; max-width: 520px; margin: 0 auto 24px auto; text-align: left; font-size: 0.95rem; color: #334155; font-weight: 700; line-height: 1.6; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
+                        <div style="background: white; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 18px 22px; max-width: 520px; margin: 0 auto 24px auto; text-align: left; font-size: 0.95rem; color: #334155; font-weight: 700; line-height: 1.6; box-shadow: 0 4px 10px rgba(0,0,0,0.03);" dir="auto">
                             <div style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
                                 <span style="font-size: 1.1rem;">🎯</span> 
                                 <span><strong>Questions:</strong> <span style="color:#2563eb; font-weight:900;">${qty} Questions</span></span>
@@ -1148,7 +1181,7 @@ function parseURLModes() {
                             </div>
                             <div style="display: flex; align-items: flex-start; gap: 8px;">
                                 <span style="font-size: 1.1rem;">📜</span> 
-                                <span><strong>Assigned Topics:</strong> <span style="color:#0f766e;">${topicLabels.join(' • ') || 'Selected Rules'}</span></span>
+                                <span dir="auto"><strong>Assigned Topics:</strong> <span style="color:#0f766e;">${safeTopics || 'Selected Rules'}</span></span>
                             </div>
                         </div>
 
@@ -1201,7 +1234,13 @@ function parseURLModes() {
                     if (typeof confetti !== 'undefined') {
                         confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
                     }
-                    alert(`🎉 Successfully saved homework for student [${data.n}]! Profile & mistake bank updated.`);
+                    if (typeof showToast === 'function') {
+                        showToast(`🎉 Saved homework for student [${data.n}]! Profile updated.`);
+                    } else if (typeof showAppAlert === 'function') {
+                        showAppAlert(`🎉 Successfully saved homework for student [${data.n}]! Profile & mistake bank updated.`, "Homework Imported");
+                    } else {
+                        alert(`🎉 Successfully saved homework for student [${data.n}]! Profile & mistake bank updated.`);
+                    }
                 }, 400);
             }
         } catch(e) {
@@ -1217,7 +1256,8 @@ function parseURLModes() {
             if (rep) rep.classList.add('active');
 
             const title = document.getElementById('report-title');
-            if (title) title.innerHTML = `📝 Student Report: <span style="color:#3b82f6">${data.n}</span>`;
+            const safeResultName = typeof escapeHtml === 'function' ? escapeHtml(data.n) : data.n;
+            if (title) title.innerHTML = `📝 Student Report: <span style="color:#3b82f6" dir="auto">${safeResultName}</span>`;
 
             let html = `<div style="text-align:center; padding:15px; font-size:1.2rem;">
                 <strong>Score:</strong> ${data.s} | <strong>Accuracy:</strong> ${data.a}%<br>

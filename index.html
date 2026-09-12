@@ -7,48 +7,56 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
     <title>Tajweed Challenge - Student Edition</title>
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Precompiled Production Tailwind CSS (Replaced runtime CDN) -->
+    <link rel="stylesheet" href="css/tailwind.min.css?v=43">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
     
+    <!-- External Libraries with defer -->
+    <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
     <!-- 10 CSS Files -->
-    <link rel="stylesheet" href="css/01_vars.css?v=42">
-    <link rel="stylesheet" href="css/02_screens.css?v=42">
-    <link rel="stylesheet" href="css/03_start.css?v=42">
-    <link rel="stylesheet" href="css/04_setup.css?v=42">
-    <link rel="stylesheet" href="css/05_header.css?v=42">
-    <link rel="stylesheet" href="css/06_quiz.css?v=42">
-    <link rel="stylesheet" href="css/07_modals.css?v=42">
-    <link rel="stylesheet" href="css/08_reports.css?v=42">
-    <link rel="stylesheet" href="css/09_leaderboard.css?v=42">
-    <link rel="stylesheet" href="css/10_animations.css?v=42">
-    <link rel="stylesheet" href="css/game_center.css?v=42">
-    <link rel="stylesheet" href="css/student_and_rules.css?v=42">
+    <link rel="stylesheet" href="css/01_vars.css?v=43">
+    <link rel="stylesheet" href="css/02_screens.css?v=43">
+    <link rel="stylesheet" href="css/03_start.css?v=43">
+    <link rel="stylesheet" href="css/04_setup.css?v=43">
+    <link rel="stylesheet" href="css/05_header.css?v=43">
+    <link rel="stylesheet" href="css/06_quiz.css?v=43">
+    <link rel="stylesheet" href="css/07_modals.css?v=43">
+    <link rel="stylesheet" href="css/08_reports.css?v=43">
+    <link rel="stylesheet" href="css/09_leaderboard.css?v=43">
+    <link rel="stylesheet" href="css/10_animations.css?v=43">
+    <link rel="stylesheet" href="css/game_center.css?v=43">
+    <link rel="stylesheet" href="css/student_and_rules.css?v=43">
 </head>
 <body>
-    <!-- JavaScript Files -->
-    <script src="js/gehad.js?v=42"></script>
-    <script src="js/theory_bank.js?v=42"></script>
-    <script src="js/core/student_engine.js?v=42"></script>
-    <script src="js/core/rule_selector_engine.js?v=42"></script>
-    <script src="js/data/question_repository.js?v=42"></script>
-    <script src="js/components/student_modal.js?v=42"></script>
-    <script src="js/02_audio.js?v=42"></script>
-    <script src="js/03_storage.js?v=42"></script>
-    <script src="js/04_ui_utils.js?v=42"></script>
-    <script src="js/05_utils.js?v=42"></script>
-    <script src="js/06_modes.js?v=42"></script>
-    <script src="js/07_gameplay.js?v=42"></script>
-    <script src="js/08_powerups.js?v=42"></script>
-    <script src="js/09_reports.js?v=42"></script>
-        <!-- Game Center Interactive Arcade Scripts -->
-    <script src="js/game_center/gc_audio.js?v=42"></script>
-    <script src="js/game_center/gc_themes.js?v=42"></script>
-    <script src="js/game_center/gc_data.js?v=42"></script>
-    <script src="js/game_center/gc_state.js?v=42"></script>
-    <script src="js/game_center/gc_games.js?v=42"></script>
-    <script src="js/game_center/gc_ui.js?v=42"></script>
-    <script src="js/10_main.js?v=42"></script>
+    <!-- JavaScript Files with defer for optimal loading performance -->
+    <script defer src="js/config.js?v=43"></script>
+    <script defer src="js/gehad.js?v=43"></script>
+    <script defer src="js/theory_bank.js?v=43"></script>
+    <script defer src="js/core/student_engine.js?v=43"></script>
+    <script defer src="js/core/rule_selector_engine.js?v=43"></script>
+    <script defer src="js/data/question_repository.js?v=43"></script>
+    <script defer src="js/components/certificate.js?v=43"></script>
+    <script defer src="js/components/mascot.js?v=43"></script>
+    <script defer src="js/components/student_modal.js?v=43"></script>
+    <script defer src="js/02_audio.js?v=43"></script>
+    <script defer src="js/03_storage.js?v=43"></script>
+    <script defer src="js/04_ui_utils.js?v=43"></script>
+    <script defer src="js/05_utils.js?v=43"></script>
+    <script defer src="js/06_modes.js?v=43"></script>
+    <script defer src="js/07_gameplay.js?v=43"></script>
+    <script defer src="js/08_powerups.js?v=43"></script>
+    <script defer src="js/09_reports.js?v=43"></script>
+    <!-- Game Center Interactive Arcade Scripts -->
+    <script defer src="js/game_center/gc_audio.js?v=43"></script>
+    <script defer src="js/game_center/gc_themes.js?v=43"></script>
+    <script defer src="js/game_center/gc_data.js?v=43"></script>
+    <script defer src="js/game_center/gc_state.js?v=43"></script>
+    <script defer src="js/game_center/gc_games.js?v=43"></script>
+    <script defer src="js/game_center/gc_ui.js?v=43"></script>
+    <script defer src="js/10_main.js?v=43"></script>
 </body>
 </html>
 

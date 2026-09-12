@@ -27,10 +27,15 @@
         }
 
         function quitGame() {
-            if (confirm('Are you sure you want to end the game?')) {
+            const doQuit = () => {
                 isGamePaused = false;
                 document.getElementById('pause-modal').style.display = 'none';
                 finishAndShowReport();
+            };
+            if (typeof showAppConfirm === 'function') {
+                showAppConfirm('Are you sure you want to end the game?', 'End Game', doQuit);
+            } else if (confirm('Are you sure you want to end the game?')) {
+                doQuit();
             }
         }
 
