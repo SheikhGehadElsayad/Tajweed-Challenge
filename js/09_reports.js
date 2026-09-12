@@ -31,7 +31,24 @@ function finishAndShowReport(earlyExit = false) {
                 document.getElementById('r-streak').textContent = session.bestStreak; 
                 document.getElementById('r-time').textContent = `${avgTime}s`;
                 
-                if(!earlyExit && totalQs > 0) saveScore(session.studentName, session.score, accuracy, session.bestStreak, session.studentAvatar);
+                if(!earlyExit && totalQs > 0) {
+                    saveScore(session.studentName, session.score, accuracy, session.bestStreak, session.studentAvatar);
+
+                    if (typeof window.StudentEngine !== 'undefined') {
+                        const earnedStars = accuracy >= 100 ? 3 : accuracy >= 80 ? 2 : accuracy >= 60 ? 1 : 0;
+                        const ruleKeys = [...new Set(session.responses.map(r => r.categoryId).filter(Boolean))];
+                        const ruleTitles = [...new Set(session.responses.map(r => r.categoryTitle).filter(Boolean))];
+                        window.StudentEngine.recordSessionEnd({
+                            score: session.score,
+                            stars: earnedStars,
+                            accuracy: accuracy,
+                            ruleKeys: ruleKeys,
+                            ruleTitles: ruleTitles,
+                            totalQs: totalQs,
+                            isDailyChallenge: !!session.isDailyChallenge
+                        });
+                    }
+                }
 
                 let catStats = {};
                 session.responses.forEach(r => {
@@ -313,49 +330,102 @@ ${magicSyncLink}`;
             }
         }
 
-        function showLeaderboard(fromScreen) {
-            const lb = getLeaderboard();
-            const container = document.getElementById('lb-container');
-            container.innerHTML = '';
-            
-            if(lb.length === 0) {
-                container.innerHTML = '<div style="padding: 20px; text-align: center; color: #64748b; font-weight: 800;">No scores recorded yet. Be the first!</div>';
-            } else {
-                lb.forEach((entry, i) => {
-                    const row = document.createElement('div');
-                    row.className = 'lb-item';
-                    let rankIcon = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i+1}`;
-                    
-                    const nameSpan = document.createElement('div');
-                    nameSpan.className = 'lb-name';
-                    nameSpan.textContent = entry.name;
-                    
-                    let avatarHtml = entry.avatar ? `<img src="${entry.avatar}" alt="User Avatar" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; margin-right: 10px; border: 2px solid white; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">` : `<span style="font-size: 1.5rem; margin-right: 10px; line-height: 1;">👤</span>`;
-                    
-                    const userGrp = document.createElement('div');
-                    userGrp.style.display = 'flex'; userGrp.style.alignItems = 'center';
-                    userGrp.innerHTML = avatarHtml;
-                    userGrp.appendChild(nameSpan);
+        let currentLbPeriod = 'today';
 
-                    row.innerHTML = `<div class="lb-rank" aria-hidden="true">${rankIcon}</div>`;
-                    row.appendChild(userGrp);
-                    
-                    const statsDiv = document.createElement('div');
-                    statsDiv.className = 'lb-stats';
-                    statsDiv.innerHTML = `
-                        <span title="Accuracy">${entry.acc}%</span>
-                        <span title="Best Streak">🔥${entry.streak}</span>
-                        <span class="lb-score" title="Score">🏆${entry.score}</span>
+        function renderLeaderboardRows(period = 'today') {
+            currentLbPeriod = period;
+            const container = document.getElementById('lb-container');
+            const banner = document.getElementById('lb-active-banner');
+            if (!container) return;
+
+            ['today', 'week', 'all'].forEach(p => {
+                const btn = document.getElementById(`lb-tab-${p}`);
+                if (btn) btn.classList.toggle('active', p === period);
+            });
+
+            const lb = (typeof window.StudentEngine !== 'undefined' && typeof window.StudentEngine.getLeaderboard === 'function') 
+                ? window.StudentEngine.getLeaderboard(period) 
+                : getLeaderboard(period);
+
+            if (banner && typeof window.StudentEngine !== 'undefined') {
+                const active = window.StudentEngine.getActiveStudent();
+                if (active) {
+                    const bal = window.StudentEngine.getStudentBalance(active.id);
+                    const rankForPeriod = period === 'today' ? bal.rankDaily : period === 'week' ? bal.rankWeekly : bal.rankAllTime;
+                    const periodPts = period === 'today' ? bal.dailyPoints : period === 'week' ? bal.weeklyPoints : bal.points;
+                    banner.innerHTML = `
+                        <div class="lb-active-title">
+                            <span style="font-size: 1.5rem;">${active.avatar || '🦁'}</span>
+                            <div>
+                                <span style="font-weight: 900; color: #1e3a8a;">${active.name}</span>
+                                <div style="font-size: 0.8rem; color: #64748b; font-weight: 700;">رصيدك وترتيبك الحالي: ${period === 'today' ? 'اليوم' : period === 'week' ? 'هذا الأسبوع' : 'الترتيب العام'}</div>
+                            </div>
+                        </div>
+                        <div class="lb-wallet-badges">
+                            <div class="lb-wallet-pill">💎 ${periodPts} نقطة</div>
+                            <div class="lb-wallet-pill">⭐ ${bal.stars} نجوم</div>
+                            <div class="lb-wallet-pill">🔥 ${bal.streak} أيام ستريك</div>
+                            <div class="lb-wallet-pill" style="background: #2563eb; color: white; border-color: #1d4ed8;">🏆 ترتيبك: #${rankForPeriod}</div>
+                        </div>
                     `;
-                    row.appendChild(statsDiv);
-                    container.appendChild(row);
-                });
+                } else {
+                    banner.innerHTML = '';
+                }
             }
+
+            container.innerHTML = '';
+
+            if (!lb || lb.length === 0) {
+                container.innerHTML = '<div style="padding: 30px; text-align: center; color: #64748b; font-weight: 800; font-size: 1.1rem;">No scores recorded yet for this period. Be the first to play! 🚀</div>';
+                return;
+            }
+
+            lb.forEach((entry, i) => {
+                const row = document.createElement('div');
+                row.className = `lb-item ${entry.isCurrent ? 'is-active-player' : ''}`;
+
+                let rankBadge = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i + 1}`;
+                let avatarHtml = `<div class="lb-user-avatar" style="border-color: ${entry.color || '#cbd5e1'};">${entry.avatar || '🦁'}</div>`;
+
+                row.innerHTML = `
+                    <div class="lb-rank">${rankBadge}</div>
+                    <div class="lb-user-cell">
+                        ${avatarHtml}
+                        <div class="lb-name">
+                            <span>${entry.name}</span>
+                            ${entry.isCurrent ? '<span class="lb-you-tag">أنت (You)</span>' : ''}
+                        </div>
+                    </div>
+                    <div class="lb-stats">
+                        <div class="lb-stat-pill" title="Daily Streak">🔥 ${entry.streak || 0}</div>
+                        <div class="lb-stat-pill" title="Total Stars">⭐ ${entry.stars || 0}</div>
+                        <div class="lb-stat-pill" title="Accuracy">🎯 ${entry.accuracy || 0}%</div>
+                        <div class="lb-score" title="Points">💎 ${entry.points || 0}</div>
+                    </div>
+                `;
+
+                container.appendChild(row);
+            });
+        }
+
+        function showLeaderboard(fromScreen, initialPeriod = 'today') {
+            renderLeaderboardRows(initialPeriod);
+
+            ['today', 'week', 'all'].forEach(p => {
+                const btn = document.getElementById(`lb-tab-${p}`);
+                if (btn) {
+                    btn.onclick = () => {
+                        if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
+                        renderLeaderboardRows(p);
+                    };
+                }
+            });
+
             const btnBack = document.getElementById('btn-back-lb');
-            if(btnBack) btnBack.onclick = () => { if(typeof SFX !== 'undefined') SFX.click(); switchScreen(fromScreen || 'screen-splash'); };
-            
+            if (btnBack) btnBack.onclick = () => { if (typeof SFX !== 'undefined' && SFX.click) SFX.click(); switchScreen(fromScreen || 'screen-splash'); };
+
             const btnHome = document.getElementById('btn-home-lb');
-            if(btnHome) btnHome.onclick = () => { if(typeof SFX !== 'undefined') SFX.click(); switchScreen(fromScreen || 'screen-splash'); };
+            if (btnHome) btnHome.onclick = () => { if (typeof SFX !== 'undefined' && SFX.click) SFX.click(); switchScreen(fromScreen || 'screen-splash'); };
 
             switchScreen('screen-leaderboard');
         }

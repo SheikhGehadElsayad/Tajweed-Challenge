@@ -10,6 +10,23 @@
 
 (function(window) {
     'use strict';
+    function getWeekKey(d = new Date()) {
+        const target = new Date(d.valueOf());
+        const dayNr = (d.getDay() + 6) % 7;
+        target.setDate(target.getDate() - dayNr + 3);
+        const firstThursday = target.valueOf();
+        target.setMonth(0, 1);
+        if (target.getDay() !== 4) {
+            target.setMonth(0, 1 + ((4 - target.getDay()) + 7) % 7);
+        }
+        const weekNr = 1 + Math.ceil((firstThursday - target) / 604800000);
+        return target.getFullYear() + '-W' + weekNr;
+    }
+
+    function getTodayKey(d = new Date()) {
+        return d.toISOString().slice(0, 10);
+    }
+
 
     const STORAGE_KEY = 'tajweed_students_roster';
     const LEGACY_NAME_KEY = 'tajweed_player_name';
@@ -92,13 +109,35 @@
                         bestStreak: 0,
                         attempts: {}
                     },
+                    balance: {
+                        points: (legacyProg && legacyProg.totalScore) || 0,
+                        stars: 0,
+                        dailyPoints: {},
+                        weeklyPoints: {}
+                    },
+                    lastSession: null,
                     mistakes: [],
                     homeworks: []
                 };
 
                 this.state.students[initialId] = initialStudent;
                 this.state.activeStudentId = initialId;
-                this.save();
+                
+            // Ensure all students have balance and streak
+            Object.values(this.state.students || {}).forEach(std => {
+                if (!std.balance) {
+                    std.balance = {
+                        points: std.progress?.totalScore || 0,
+                        stars: 0,
+                        dailyPoints: {},
+                        weeklyPoints: {}
+                    };
+                }
+                if (!std.dailyStreak) {
+                    std.dailyStreak = { currentStreak: 0, lastPlayedDate: null, bestStreak: 0 };
+                }
+            });
+this.save();
             } else if (!this.state.activeStudentId || !this.state.students[this.state.activeStudentId]) {
                 this.state.activeStudentId = studentIds[0];
                 this.save();
@@ -579,65 +618,293 @@
             return student.dailyStreak;
         }
 
+        
+        // ================= PERSISTENT BALANCE & WALLET =================
+
+        addPoints(score = 0, stars = 0, studentId = null) {
+            const id = studentId || this.state.activeStudentId;
+            if (!id || !this.state.students[id]) return null;
+            const student = this.state.students[id];
+
+            if (!student.balance) {
+                student.balance = { points: 0, stars: 0, dailyPoints: {}, weeklyPoints: {} };
+            }
+
+            const today = getTodayKey();
+            const week = getWeekKey();
+
+            student.balance.points = (student.balance.points || 0) + score;
+            student.balance.stars = (student.balance.stars || 0) + stars;
+
+            student.balance.dailyPoints = student.balance.dailyPoints || {};
+            student.balance.weeklyPoints = student.balance.weeklyPoints || {};
+
+            student.balance.dailyPoints[today] = (student.balance.dailyPoints[today] || 0) + score;
+            student.balance.weeklyPoints[week] = (student.balance.weeklyPoints[week] || 0) + score;
+
+            if (student.progress) {
+                student.progress.totalScore = student.balance.points;
+            }
+
+            this.save();
+            return student.balance;
+        }
+
+        recordSessionEnd(sessionData, studentId = null) {
+            const id = studentId || this.state.activeStudentId;
+            if (!id || !this.state.students[id]) return null;
+            const student = this.state.students[id];
+
+            const today = getTodayKey();
+            const ruleKeys = sessionData.ruleKeys || [];
+            const ruleTitles = sessionData.ruleTitles || [];
+
+            // Update last session so next daily challenge continues from what was practiced in class!
+            student.lastSession = {
+                date: today,
+                timestamp: Date.now(),
+                ruleKeys: ruleKeys,
+                ruleTitles: ruleTitles,
+                totalQs: sessionData.totalQs || 0,
+                isDailyChallenge: !!sessionData.isDailyChallenge
+            };
+
+            if (sessionData.isDailyChallenge) {
+                this.recordDailyPlay(id);
+            }
+
+            return this.addPoints(sessionData.score || 0, sessionData.stars || 0, id);
+        }
+
+        getStudentBalance(studentId = null) {
+            const id = studentId || this.state.activeStudentId;
+            const student = this.getStudent(id);
+            if (!student) return { points: 0, stars: 0, streak: 0, rankDaily: 1, rankWeekly: 1, rankAllTime: 1 };
+
+            if (!student.balance) {
+                student.balance = { points: 0, stars: 0, dailyPoints: {}, weeklyPoints: {} };
+            }
+
+            const today = getTodayKey();
+            const week = getWeekKey();
+
+            const lbAll = this.getLeaderboard('all');
+            const lbWeek = this.getLeaderboard('week');
+            const lbDaily = this.getLeaderboard('today');
+
+            const rankAllTime = (lbAll.findIndex(r => r.id === id) + 1) || 1;
+            const rankWeekly = (lbWeek.findIndex(r => r.id === id) + 1) || 1;
+            const rankDaily = (lbDaily.findIndex(r => r.id === id) + 1) || 1;
+
+            return {
+                points: student.balance.points || (student.progress?.totalScore || 0),
+                stars: student.balance.stars || 0,
+                streak: student.dailyStreak?.currentStreak || 0,
+                dailyPoints: student.balance.dailyPoints?.[today] || 0,
+                weeklyPoints: student.balance.weeklyPoints?.[week] || 0,
+                rankDaily,
+                rankWeekly,
+                rankAllTime
+            };
+        }
+
+        // ================= DAILY CHALLENGE (BASED ON LAST LESSON) =================
+
         getDailyChallenge(studentId = null) {
             const id = studentId || this.state.activeStudentId;
             const student = this.getStudent(id);
             if (!student) return null;
 
-            // 1. Find weakest rule from student's mistake bank
-            let weakestRuleKey = null;
-            let maxMistakes = 0;
-            const ruleCounts = {};
+            const bank = (typeof window.TAJWEED_BANK !== 'undefined') ? window.TAJWEED_BANK : {};
+            let targetRuleKey = null;
+            let targetRuleTitle = null;
+            let lessonContext = '';
 
-            if (student.mistakes && student.mistakes.length > 0) {
+            // 1. First priority: Rules from student's last session / class lesson!
+            if (student.lastSession && Array.isArray(student.lastSession.ruleKeys) && student.lastSession.ruleKeys.length > 0) {
+                const recentKeys = student.lastSession.ruleKeys.filter(k => bank[k]);
+                if (recentKeys.length > 0) {
+                    targetRuleKey = recentKeys[Math.floor(Math.random() * recentKeys.length)];
+                    targetRuleTitle = bank[targetRuleKey]?.title || student.lastSession.ruleTitles?.[0] || targetRuleKey;
+                    lessonContext = `Based on your last lesson: ${targetRuleTitle} (بناءً على درسك الأخير في الحصة)`;
+                }
+            }
+
+            // 2. Second priority: Latest homework assigned by teacher in class!
+            if (!targetRuleKey && Array.isArray(student.homeworks) && student.homeworks.length > 0) {
+                const latestHw = student.homeworks[student.homeworks.length - 1];
+                if (latestHw.rules && latestHw.rules.length > 0) {
+                    const hwKeys = latestHw.rules.filter(k => bank[k]);
+                    if (hwKeys.length > 0) {
+                        targetRuleKey = hwKeys[0];
+                        targetRuleTitle = bank[targetRuleKey]?.title || targetRuleKey;
+                        lessonContext = `Based on your last homework: ${targetRuleTitle} (بناءً على واجبك الأخير مع المعلم)`;
+                    }
+                }
+            }
+
+            // 3. Third priority: Weakest rule with mistakes
+            if (!targetRuleKey && student.mistakes && student.mistakes.length > 0) {
+                let maxMistakes = 0;
+                const ruleCounts = {};
                 student.mistakes.forEach(m => {
-                    const rule = m.ruleKey || m.rule || (m.tags && m.tags[0]) || 'general';
-                    ruleCounts[rule] = (ruleCounts[rule] || 0) + 1;
-                    if (ruleCounts[rule] > maxMistakes) {
-                        maxMistakes = ruleCounts[rule];
-                        weakestRuleKey = rule;
+                    const r = m.ruleKey || m.categoryId || m.rule;
+                    if (r && bank[r]) {
+                        ruleCounts[r] = (ruleCounts[r] || 0) + 1;
+                        if (ruleCounts[r] > maxMistakes) {
+                            maxMistakes = ruleCounts[r];
+                            targetRuleKey = r;
+                        }
                     }
                 });
+                if (targetRuleKey && bank[targetRuleKey]) {
+                    targetRuleTitle = bank[targetRuleKey]?.title || targetRuleKey;
+                    lessonContext = `Remediating recent mistakes: ${targetRuleTitle} (معالجة وتثبيت أخطائك السابقة)`;
+                }
             }
 
-            // Fallback to a category from TAJWEED_BANK if no mistakes logged
-            const bank = (typeof window.TAJWEED_BANK !== 'undefined') ? window.TAJWEED_BANK : {};
+            // 4. Fallback: Foundational core Tajweed rule
             const availableKeys = Object.keys(bank);
-            if (!weakestRuleKey || !bank[weakestRuleKey]) {
+            if (!targetRuleKey || !bank[targetRuleKey]) {
                 const dayIndex = new Date().getDate() % (availableKeys.length || 1);
-                weakestRuleKey = availableKeys[dayIndex] || 'qalqalah';
+                targetRuleKey = availableKeys[dayIndex] || 'noon_sakinah_tanween';
+                targetRuleTitle = bank[targetRuleKey]?.title || 'أحكام النون الساكنة والتنوين';
+                lessonContext = `Daily Tajweed Mastery: ${targetRuleTitle} (تحدي التجويد اليومي الموجه)`;
             }
 
-            const ruleObj = bank[weakestRuleKey];
+            const ruleObj = bank[targetRuleKey];
             if (!ruleObj) return null;
 
             let pool = [];
-            if (Array.isArray(ruleObj.examples)) {
-                pool = pool.concat(ruleObj.examples);
-            }
+            if (Array.isArray(ruleObj.questions)) pool = pool.concat(ruleObj.questions);
+            if (Array.isArray(ruleObj.examples)) pool = pool.concat(ruleObj.examples);
             if (ruleObj.subcategories) {
                 Object.values(ruleObj.subcategories).forEach(sub => {
+                    if (Array.isArray(sub.questions)) pool = pool.concat(sub.questions);
                     if (Array.isArray(sub.examples)) pool = pool.concat(sub.examples);
                 });
             }
 
             if (pool.length === 0) {
-                // Fallback to any available questions
                 Object.values(bank).forEach(cat => {
+                    if (Array.isArray(cat.questions)) pool = pool.concat(cat.questions);
                     if (Array.isArray(cat.examples)) pool = pool.concat(cat.examples);
                 });
             }
 
-            const shuffled = [...pool].sort(() => 0.5 - Math.random());
-            const questions = shuffled.slice(0, 5);
+            const questions = pool
+                .map((q, idx) => ({
+                    ...q,
+                    id: q.id || (targetRuleKey + '_q_' + idx),
+                    categoryId: targetRuleKey,
+                    categoryTitle: targetRuleTitle
+                }))
+                .sort(() => 0.5 - Math.random())
+                .slice(0, 5);
 
             return {
-                ruleKey: weakestRuleKey,
-                ruleTitle: ruleObj.name_ar || ruleObj.name || weakestRuleKey,
-                questions: questions,
-                isWeakest: maxMistakes > 0,
-                mistakeCount: maxMistakes
+                ruleKey: targetRuleKey,
+                ruleTitle: targetRuleTitle,
+                lessonContext: lessonContext,
+                questions: questions
             };
+        }
+
+        // ================= WIDESCREEN DAILY, WEEKLY & ALL-TIME LEADERBOARD =================
+
+        getLeaderboard(period = 'all') {
+            const today = getTodayKey();
+            const week = getWeekKey();
+            const activeId = this.state.activeStudentId;
+
+            const allStudents = this.getAllStudents();
+            const results = allStudents.map(std => {
+                if (!std.balance) {
+                    std.balance = {
+                        points: std.progress?.totalScore || 0,
+                        stars: 0,
+                        dailyPoints: {},
+                        weeklyPoints: {}
+                    };
+                }
+
+                let starsCount = std.balance.stars || 0;
+                if (starsCount === 0 && std.progress?.completedStages) {
+                    Object.values(std.progress.completedStages).forEach(stg => {
+                        starsCount += (stg.stars || 0);
+                    });
+                    std.balance.stars = starsCount;
+                }
+
+                let periodPoints = 0;
+                if (period === 'today') {
+                    periodPoints = std.balance.dailyPoints?.[today] || 0;
+                } else if (period === 'week') {
+                    periodPoints = std.balance.weeklyPoints?.[week] || 0;
+                } else {
+                    periodPoints = std.balance.points || (std.progress?.totalScore || 0);
+                }
+
+                let totalAcc = 0;
+                let countAcc = 0;
+                if (Array.isArray(std.homeworks)) {
+                    std.homeworks.forEach(hw => {
+                        if (hw.accuracy !== undefined) {
+                            totalAcc += hw.accuracy;
+                            countAcc++;
+                        }
+                    });
+                }
+                const avgAccuracy = countAcc > 0 ? Math.round(totalAcc / countAcc) : (periodPoints > 0 ? 90 : 0);
+
+                return {
+                    id: std.id,
+                    name: std.name,
+                    avatar: std.avatar || '🦁',
+                    color: std.color || '#2563eb',
+                    points: periodPoints,
+                    allTimePoints: std.balance.points || 0,
+                    stars: starsCount,
+                    streak: std.dailyStreak?.currentStreak || 0,
+                    accuracy: avgAccuracy,
+                    isCurrent: std.id === activeId,
+                    lastPlayed: std.dailyStreak?.lastPlayedDate || std.lastSession?.date || 'Today'
+                };
+            });
+
+            // Also merge any local challenge scores
+            try {
+                const rawLb = localStorage.getItem('tajweed_challenge_v2');
+                if (rawLb) {
+                    const parsed = JSON.parse(rawLb);
+                    if (Array.isArray(parsed.leaderboard)) {
+                        parsed.leaderboard.forEach(entry => {
+                            const exists = results.some(r => r.name.toLowerCase() === (entry.name || '').toLowerCase());
+                            if (!exists && entry.name) {
+                                results.push({
+                                    id: 'legacy_' + entry.name,
+                                    name: entry.name,
+                                    avatar: entry.avatar || '👤',
+                                    color: '#64748b',
+                                    points: period === 'today' || period === 'week' ? Math.round((entry.score || 0) * 0.75) : (entry.score || 0),
+                                    allTimePoints: entry.score || 0,
+                                    stars: Math.max(1, Math.round((entry.score || 0) / 100)),
+                                    streak: entry.streak || 0,
+                                    accuracy: entry.acc || 85,
+                                    isCurrent: false,
+                                    lastPlayed: 'Recent'
+                                });
+                            }
+                        });
+                    }
+                }
+            } catch (e) {}
+
+            // Sort descending by points -> stars -> accuracy -> streak
+            results.sort((a, b) => b.points - a.points || b.stars - a.stars || b.accuracy - a.accuracy || b.streak - a.streak);
+
+            // Assign rank numbers without slicing!
+            return results.map((item, idx) => ({ ...item, rank: idx + 1 }));
         }
 
         // ================= PROGRESSION REWARDS & THEMES =================

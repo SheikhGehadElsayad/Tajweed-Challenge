@@ -191,13 +191,22 @@
                         <div class="sm-active-info">
                             <div class="sm-active-tag">Active Student 🎯</div>
                             <h3 class="sm-active-name">${active?.name || 'Student'}</h3>
-                            <div class="sm-active-meta">
-                                <span>⭐ ${totalStars} Stars</span>
-                                <span>•</span>
-                                <span>🏆 ${completedCount} Stages Cleared</span>
-                                <span>•</span>
-                                <span>📝 ${activeHws.length} Homeworks</span>
-                            </div>
+                            
+                            ${(() => {
+                                const bal = window.StudentEngine ? window.StudentEngine.getStudentBalance(active?.id) : { points: 0, stars: 0, streak: 0, rankDaily: 1, rankWeekly: 1, rankAllTime: 1 };
+                                return `
+                                    <div class="sm-active-meta" style="display:flex; gap:6px; flex-wrap:wrap; margin-top:6px;">
+                                        <span style="background:#eff6ff; color:#1d4ed8; font-weight:800; padding:2px 8px; border-radius:6px; border:1px solid #bfdbfe;">💎 ${bal.points} Points</span>
+                                        <span style="background:#fefce8; color:#a16207; font-weight:800; padding:2px 8px; border-radius:6px; border:1px solid #fde047;">⭐ ${bal.stars} Stars</span>
+                                        <span style="background:#fff7ed; color:#c2410c; font-weight:800; padding:2px 8px; border-radius:6px; border:1px solid #fdba74;">🔥 ${bal.streak}d Streak</span>
+                                        <span style="background:#f0fdf4; color:#15803d; font-weight:800; padding:2px 8px; border-radius:6px; border:1px solid #bbf7d0;">🏆 Rank #${bal.rankDaily} Today</span>
+                                    </div>
+                                    <div style="font-size:0.75rem; color:#64748b; margin-top:4px;">
+                                        🏆 Stages Cleared: ${completedCount} • 📝 Homeworks: ${activeHws.length}
+                                    </div>
+                                `;
+                            })()}
+
                         </div>
                     </div>
                     <div class="sm-active-actions">
@@ -965,11 +974,17 @@
                 badge.className = `student-header-badge ${extraClass}`;
                 badge.style.setProperty('--student-color', active.color || '#2563eb');
                 badge.innerHTML = `
-                    <span class="shb-avatar">${active.avatar || '🦁'}</span>
-                    <span class="shb-name">${active.name}</span>
-                    <span class="shb-streak" style="background:#fff7ed; color:#ea580c; font-weight:900; font-size:0.75rem; padding:1px 6px; border-radius:6px; border:1px solid #fdba74;">🔥 ${(window.StudentEngine && window.StudentEngine.getDailyStreak ? window.StudentEngine.getDailyStreak().currentStreak : 0)}</span>
-                    <span class="shb-tag">Active</span>
-                    <span class="shb-caret">▼</span>
+                    ${(() => {
+                        const bal = (window.StudentEngine && window.StudentEngine.getStudentBalance) ? window.StudentEngine.getStudentBalance(active.id) : { points: 0, stars: 0, streak: 0 };
+                        return `
+                            <span class="shb-avatar">${active.avatar || '🦁'}</span>
+                            <span class="shb-name">${active.name}</span>
+                            <span class="shb-stat" title="رصيد النقاط" style="background:#eff6ff; color:#2563eb; font-weight:900; font-size:0.72rem; padding:1px 6px; border-radius:6px; border:1px solid #bfdbfe;">💎 ${bal.points}</span>
+                            <span class="shb-stat" title="رصيد النجوم" style="background:#fefce8; color:#ca8a04; font-weight:900; font-size:0.72rem; padding:1px 6px; border-radius:6px; border:1px solid #fde047;">⭐ ${bal.stars}</span>
+                            <span class="shb-streak" title="سلسلة الأيام" style="background:#fff7ed; color:#ea580c; font-weight:900; font-size:0.72rem; padding:1px 6px; border-radius:6px; border:1px solid #fdba74;">🔥 ${bal.streak}</span>
+                            <span class="shb-caret">▼</span>
+                        `;
+                    })()}
                 `;
                 badge.onclick = (e) => {
                     e.stopPropagation();

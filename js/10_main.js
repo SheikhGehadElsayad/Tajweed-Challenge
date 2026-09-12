@@ -466,22 +466,51 @@ const appContainer = document.createElement('div');
         </div>
     </main>
 
-    <!-- Leaderboard Screen -->
+    <!-- Leaderboard Screen (Widescreen Full Width Edition) -->
     <main id="screen-leaderboard" class="screen">
-        <div style="display: flex; flex-direction: column; align-items: center; width: 100%; height: 100%; padding: 4vh 4vw; background: #f1f5f9; overflow-y: auto;">
-            <div style="width:100%; max-width:600px; display:flex; justify-content:flex-start; margin-bottom:10px;">
-                <button id="btn-back-lb" class="icon-btn" onclick="if(typeof SFX !== 'undefined') SFX.click(); switchScreen('screen-splash');">⬅</button>
-            </div>
-            <header style="text-align: center; margin-bottom: 3vh;">
-                <h1 style="font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; color: var(--text-main);">🏆 Leaderboard</h1>
-                <p style="color: #64748b; font-weight: 700;">Top scores saved locally on this device.</p>
-            </header>
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%; min-height: 100vh; padding: 2vh 2vw; background: #f8fafc; overflow-y: auto;">
+            <div class="leaderboard-wrapper">
+                <!-- Top Nav Bar -->
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <button id="btn-back-lb" class="icon-btn" onclick="if(typeof SFX !== 'undefined') SFX.click(); switchScreen('screen-splash');">⬅</button>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <button id="btn-home-lb" style="background: var(--primary); color: white; padding: 8px 18px; border-radius: 99px; font-weight: 900; font-size: 0.95rem; cursor: pointer; border: none; box-shadow: 0 3px 0 #1d4ed8;">🏠 Home</button>
+                        <button id="btn-clear-lb" class="btn-secondary" style="border-color: #fca5a5; color: #ef4444; padding: 8px 14px; font-size: 0.85rem;">🗑️ Clear Local</button>
+                    </div>
+                </div>
 
-            <section class="leaderboard-list" id="lb-container" aria-label="Top Scores"></section>
+                <!-- Header Title -->
+                <header style="text-align: center; margin: 1vh 0;">
+                    <h1 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: #1e293b; margin: 0;">🏆 لوحة الشرف والمتصدرين (Leaderboard)</h1>
+                    <p style="color: #64748b; font-weight: 700; margin-top: 4px; font-size: 0.95rem;">تنافس يومياً وأسبوعياً مع طلاب التجويد وارتقِ بأعلى المراتب! ✨</p>
+                </header>
 
-            <div style="display: flex; gap: 15px; margin-top: 4vh; flex-wrap: wrap; justify-content: center;">
-                <button id="btn-home-lb" style="background: var(--primary); color: white; padding: 1.2vh 3vw; border-radius: 99px; font-weight: 900; font-size: 1.1rem; cursor: pointer; border: none; box-shadow: 0 4px 0 #2563eb;">🏠 Back to Home</button>
-                <button id="btn-clear-lb" class="btn-secondary" style="border-color: #fca5a5; color: #ef4444;">🗑️ Clear Data</button>
+                <!-- Daily / Weekly / All-time Filter Tabs -->
+                <nav class="lb-filter-tabs" aria-label="Leaderboard Time Period">
+                    <button type="button" class="lb-tab-btn active" id="lb-tab-today" data-period="today">📅 الترتيب اليومي (Today)</button>
+                    <button type="button" class="lb-tab-btn" id="lb-tab-week" data-period="week">📆 الترتيب الأسبوعي (This Week)</button>
+                    <button type="button" class="lb-tab-btn" id="lb-tab-all" data-period="all">🏆 الترتيب العام (All-Time)</button>
+                </nav>
+
+                <!-- Active Student Balance & Rank Summary Banner -->
+                <div id="lb-active-banner" class="lb-active-banner">
+                    <!-- Populated dynamically by showLeaderboard -->
+                </div>
+
+                <!-- Full Width Leaderboard List -->
+                <section class="leaderboard-list" aria-label="Student Rankings">
+                    <div class="lb-table-header">
+                        <div style="width: 48px;">الترتيب</div>
+                        <div style="flex: 1;">الطالب</div>
+                        <div style="width: 70px; text-align: center;">الستريك</div>
+                        <div style="width: 70px; text-align: center;">النجوم</div>
+                        <div style="width: 70px; text-align: center;">الدقة</div>
+                        <div style="width: 90px; text-align: right;">النقاط</div>
+                    </div>
+                    <div class="lb-scroll-body" id="lb-container">
+                        <!-- Populated dynamically with all students -->
+                    </div>
+                </section>
             </div>
         </div>
     </main>
@@ -676,8 +705,12 @@ const appContainer = document.createElement('div');
                         const active = window.StudentEngine.getActiveStudent();
                         const challenge = window.StudentEngine.getDailyChallenge(active ? active.id : null);
                         if (challenge && challenge.questions && challenge.questions.length > 0) {
-                            window.StudentEngine.recordDailyPlay(active ? active.id : null);
-                            showToast(`🔥 Starting Daily Challenge (${challenge.ruleName})!`);
+                            showToast(`🔥 Daily Challenge: ${challenge.lessonContext || challenge.ruleTitle}`);
+                            session.isDailyChallenge = true;
+                            session.dailyChallengeInfo = challenge;
+                            if (window.FaridaMascot && window.FaridaMascot.speak) {
+                                window.FaridaMascot.speak(`Daily Challenge: ${challenge.ruleTitle}! Let's master what you studied in class!`);
+                            }
                             initGameSession(false, challenge.questions);
                         } else {
                             showToast('Starting Daily Challenge session...');
