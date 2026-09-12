@@ -4,102 +4,116 @@ const appContainer = document.createElement('div');
     <div id="aria-announcer" aria-live="polite" class="sr-only" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;"></div>
     <div class="toast" id="msg-toast" aria-live="polite"></div>
 
-    <!-- Gateway Selection Screen (Entry Hub) -->
-    <main id="screen-gateway" class="screen active">
-        <section class="gc-gateway-container" aria-labelledby="gateway-title">
-            <header class="gc-gateway-header">
-                <span class="gc-gateway-badge">✨ TAJWEED MASTER HUB • Interactive Learning Platform ✨</span>
-                <h1 id="gateway-title" class="gc-gateway-title">Tajweed Arena & Arcade</h1>
-                <p class="gc-gateway-subtitle">Choose your experience: Learn through classic structured challenges or jump into 7 exciting gamified interactive arcades!</p>
-            </header>
+    <!-- Splash Screen (Screen 1 - Entry Hub) -->
+    <main id="screen-splash" class="screen active">
+        <header class="splash-top-bar" role="toolbar" aria-label="Accessibility and Language Settings">
+            <button id="btn-toggle-lang" class="quick-ctrl-btn" type="button" aria-label="Switch Language / تغيير اللغة">🌐 <span id="lbl-curr-lang">العربية</span></button>
+            <button id="btn-toggle-contrast" class="quick-ctrl-btn" type="button" aria-label="Toggle High Contrast Mode">🌓 <span id="lbl-contrast">Contrast</span></button>
+            <button id="btn-toggle-font" class="quick-ctrl-btn" type="button" aria-label="Adjust Text Size">🔤 <span id="lbl-font">A+</span></button>
+        </header>
 
-            <div class="gc-gateway-choices">
-                <!-- Choice 1: Current Classic Game -->
-                <div class="gc-gate-card classic" id="gate-btn-classic">
-                    <div class="gc-gate-icon">🎮</div>
-                    <h2>CLASSIC CHALLENGE</h2>
-                    <p>The complete full-featured challenge with Progressive Journey, Free Practice, Theoretical Exams, Powerups, and Official Certificates.</p>
-                    <button class="gc-gate-btn">
-                        <span>▶️ Launch Classic Game</span>
-                    </button>
-                </div>
-
-                <!-- Choice 2: Game Center Interactive Arcade -->
-                <div class="gc-gate-card arcade" id="gate-btn-gamecenter">
-                    <div class="gc-gate-icon">🎲</div>
-                    <h2>GAME CENTER</h2>
-                    <p>7 curated interactive games: Spin the Wheel, Open the Box, Cards Battle, Penalty Shootout, Basketball Slam, Balloons, and Bowling!</p>
-                    <button class="gc-gate-btn">
-                        <span>⭐ Enter Game Center</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Splash Screen -->
-    <main id="screen-splash" class="screen">
         <section class="start-container" aria-labelledby="splash-title">
             <div class="splash-layout">
                 <div class="splash-left">
-                    <img src="images/logo.png" alt="Sheikh Gehad Logo" style="width: clamp(150px, 25vw, 220px); height: clamp(150px, 25vw, 220px); border-radius: 50%; box-shadow: 0 6px 20px rgba(0,0,0,0.2); margin-bottom: 2vh; object-fit: cover; border: 4px solid white;">
+                    <img src="images/logo.png" alt="Tajweed Challenge - Sheikh Gehad Elsayad" style="width: clamp(150px, 25vw, 220px); height: clamp(150px, 25vw, 220px); border-radius: 50%; box-shadow: 0 6px 20px rgba(0,0,0,0.2); margin-bottom: 2vh; object-fit: cover; border: 4px solid white;">
                     <h1 id="splash-title" style="font-size: clamp(2.2rem, 4.5vw, 3.5rem); color: var(--text-main); font-weight: 900; margin-bottom: 0.5vh; line-height: 1.1;">Tajweed<br>Challenge</h1>
-                    <h2 style="font-size: 1.1rem; color: #64748b; font-weight: 800; margin-bottom: 0.3vh;">Prepared by</h2>
-                    <h3 style="font-size: 1.5rem; color: #0f766e; font-weight: 900;">Sheikh Gehad Elsayad</h3>
+                    <h2 style="font-size: 1.1rem; color: #64748b; font-weight: 800; margin-bottom: 0.3vh;" data-i18n="preparedBy">Prepared by</h2>
+                    <h3 style="font-size: 1.5rem; color: #0f766e; font-weight: 900;" data-i18n="teacherName">Sheikh Gehad Elsayad</h3>
                 </div>
                 
                 <div class="splash-right">
-                    <a href="https://wa.me/201147992249" target="_blank" rel="noopener noreferrer" class="splash-link" style="background: #25D366; color: white;" aria-label="Contact via WhatsApp">
-                        <span aria-hidden="true">💬</span> WhatsApp Contact
-                    </a>
-                    
-                    <a href="https://linktr.ee/GehadNagah789" target="_blank" rel="noopener noreferrer" class="splash-link" style="background: #e2e8f0; color: #0f172a;" aria-label="Visit Linktree profile">
-                        <span aria-hidden="true">🔗</span> linktr.ee/GehadNagah789
-                    </a>
-                    
-                    <button id="btn-enter-app" class="btn-start" style="margin-top: 1vh; width: 100%; max-width: 280px;" aria-label="Enter Application" onclick="try{if(typeof SFX!=='undefined'&&SFX.click)SFX.click();}catch(e){} switchScreen('screen-mode-select');">Enter App ➡️</button>
-                    <button id="btn-show-lb-splash" class="btn-secondary" style="width: 100%; max-width: 280px;">🏆 Leaderboard</button>
-                    <button id="btn-goto-gamecenter" class="btn-secondary" style="width: 100%; max-width: 280px; background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border: none; font-weight: 800;">🎲 Game Center (Interactive Arcade)</button>
-                    <a href="review.html" target="_blank" class="btn-secondary" style="width: 100%; max-width: 280px; text-decoration: none; display: flex; align-items: center; justify-content: center; background: #0f172a; color: #38bdf8; border: 1px solid #38bdf8; font-weight: 800; font-size: 0.9rem; padding: 8px 12px; border-radius: 0.75rem; margin-top: 4px;">🔍 Recitation Audio Review</a>
+                    <!-- Primary Large Action Button -->
+                    <button id="btn-enter-app" class="btn-start" aria-label="Enter App" style="margin-top: 0;">
+                        <span data-i18n="enterApp">Enter App</span> ➡️
+                    </button>
+
+                    <!-- Compact Secondary Action Row -->
+                    <div class="compact-actions-row" role="group" aria-label="Quick Navigation">
+                        <button id="btn-show-lb-splash" class="compact-icon-btn" type="button" aria-label="View Leaderboard">
+                            <span aria-hidden="true">🏆</span> <span data-i18n="leaderboard">Leaderboard</span>
+                        </button>
+                        <button id="btn-goto-gamecenter" class="compact-icon-btn" type="button" aria-label="Open Game Center Arcade">
+                            <span aria-hidden="true">🎲</span> <span data-i18n="gameCenter">Game Center</span>
+                        </button>
+                    </div>
+
+                    <!-- Visually Separated Teachers & Parents Section -->
+                    <section class="teacher-tools-section" aria-labelledby="teacher-tools-heading">
+                        <h4 id="teacher-tools-heading" class="teacher-tools-title" data-i18n="teachersAndParents">Teachers & Parents</h4>
+                        <div class="teacher-tools-grid">
+                            <button id="btn-splash-hw" class="teacher-tool-btn" type="button" aria-label="Assign Homework">
+                                <span aria-hidden="true">📝</span> <span data-i18n="assignHomework">Assign HW</span>
+                            </button>
+                            <a href="review.html" target="_blank" rel="noopener noreferrer" class="teacher-tool-btn" aria-label="Recitation Audio Review">
+                                <span aria-hidden="true">🔍</span> <span data-i18n="recitationReview">Audio Review</span>
+                            </a>
+                            <a href="https://wa.me/201147992249" target="_blank" rel="noopener noreferrer" class="teacher-tool-btn" aria-label="Contact Sheikh Gehad on WhatsApp">
+                                <span aria-hidden="true">💬</span> <span data-i18n="whatsAppContact">WhatsApp</span>
+                            </a>
+                            <a href="https://linktr.ee/GehadNagah789" target="_blank" rel="noopener noreferrer" class="teacher-tool-btn" aria-label="Visit Linktree Profile">
+                                <span aria-hidden="true">🔗</span> <span data-i18n="linktree">Linktree</span>
+                            </a>
+                        </div>
+                    </section>
                 </div>
             </div>
         </section>
     </main>
 
-        <!-- Start/Setup Screen (Enhanced with Configuration) -->
-    <!-- Mode Select Screen -->
+    <!-- Mode Select Screen (Screen 2 - Unified 5-Card Grid) -->
     <main id="screen-mode-select" class="screen">
         <section class="start-container" style="padding: 3vh 3vw; width: 100%; max-width: 100%; align-items: stretch; justify-content: flex-start; min-height: 100vh;">
-            <h1 style="font-size: clamp(2rem, 4vw, 3rem); color: #1e293b; font-weight: 900; margin-bottom: 3vh; text-align:center;">Choose Learning Mode</h1>
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:20px; width:100%; max-width:100%;">
-                <button id="btn-mode-daily" class="mode-btn daily" style="width: 100%; background: linear-gradient(135deg, #ea580c, #c2410c); color: white; border: 3px solid #fdba74; box-shadow: 0 8px 16px rgba(234, 88, 12, 0.25);">
-                    <span style="font-size:2.5rem;">🔥</span>
-                    <span style="font-size:1.25rem; font-weight:900;">Daily Challenge</span>
-                    <span id="daily-streak-mode-lbl" style="font-size:0.85rem; opacity:0.95;">5 Questions • Streak: 0 Days</span>
-                </button>
-                <button id="btn-mode-prog" class="mode-btn prog" style="width: 100%;">
-                    <span style="font-size:2.5rem;">🗺️</span>
-                    <span>Progressive Mode</span>
-                    <span>Unlock levels one by one</span>
-                </button>
-                <button id="btn-mode-free" class="mode-btn free" style="width: 100%;">
-                    <span style="font-size:2.5rem;">⚙️</span>
-                    <span>Free Practice</span>
-                    <span>Custom practical cards</span>
-                </button>
-                <button id="btn-mode-theory" class="mode-btn" style="width: 100%; background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border: 3px solid #38bdf8; box-shadow: 0 8px 16px rgba(2, 132, 199, 0.25);">
-                    <span style="font-size:2.5rem;">📚</span>
-                    <span style="font-size:1.25rem; font-weight:900;">Theoretical Quiz</span>
-                    <span style="font-size:0.85rem; opacity:0.95;">8 Topics • 340 Questions (T/F & MC)</span>
-                </button>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2vh; width: 100%;">
+                <button class="btn-secondary" id="btn-mode-back" style="width: auto; padding: 8px 18px; font-weight: 800;" aria-label="Back to Splash">⬅ <span data-i18n="back">Back</span></button>
+                <div style="text-align: center; flex: 1;">
+                    <h1 style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: #1e293b; font-weight: 900; margin: 0;" data-i18n="chooseMode">Choose Learning Mode</h1>
+                    <p style="font-size: 0.95rem; color: #64748b; font-weight: 700; margin: 4px 0 0 0;" data-i18n="chooseModeSub">Select your challenge to start learning</p>
+                </div>
+                <div style="width: 80px;"></div>
             </div>
-            
-            <div style="margin-top: 4vh; text-align:center; width: 100%;">
-                <p style="color:#64748b; margin-bottom:10px; font-weight:700;">Teachers & Parents</p>
-                <button id="btn-mode-hw" class="mode-btn hw" style="margin: 0 auto; min-width: 240px;">📝 Assign HW</button>
+
+            <div class="mode-grid">
+                <!-- 1. Daily Challenge -->
+                <div id="btn-mode-daily" class="mode-card" style="--card-accent: var(--accent-daily); --card-accent-bg: var(--accent-daily-bg);" role="button" tabindex="0" aria-label="Daily Challenge">
+                    <div class="mode-card-icon">🔥</div>
+                    <h2 class="mode-card-title" data-i18n="dailyChallenge">Daily Challenge</h2>
+                    <p class="mode-card-desc" id="daily-streak-mode-lbl">5 Questions • Track streak</p>
+                </div>
+
+                <!-- 2. Progressive Mode -->
+                <div id="btn-mode-prog" class="mode-card" style="--card-accent: var(--accent-prog); --card-accent-bg: var(--accent-prog-bg);" role="button" tabindex="0" aria-label="Progressive Mode">
+                    <div class="mode-card-icon">📖</div>
+                    <h2 class="mode-card-title" data-i18n="progressiveMode">Progressive Mode</h2>
+                    <p class="mode-card-desc" data-i18n="progressiveModeDesc">Unlock levels one by one</p>
+                </div>
+
+                <!-- 3. Free Practice -->
+                <div id="btn-mode-free" class="mode-card" style="--card-accent: var(--accent-free); --card-accent-bg: var(--accent-free-bg);" role="button" tabindex="0" aria-label="Free Practice">
+                    <div class="mode-card-icon">⚙️</div>
+                    <h2 class="mode-card-title" data-i18n="freePractice">Free Practice</h2>
+                    <p class="mode-card-desc" data-i18n="freePracticeDesc">Custom practical cards</p>
+                </div>
+
+                <!-- 4. Theoretical Quiz -->
+                <div id="btn-mode-theory" class="mode-card" style="--card-accent: var(--accent-theory); --card-accent-bg: var(--accent-theory-bg);" role="button" tabindex="0" aria-label="Theoretical Quiz">
+                    <div class="mode-card-icon">📚</div>
+                    <h2 class="mode-card-title" data-i18n="theoreticalQuiz">Theoretical Quiz</h2>
+                    <p class="mode-card-desc" data-i18n="theoreticalQuizDesc">340 Questions • T/F & MC</p>
+                </div>
+
+                <!-- 5. Game Center -->
+                <div id="btn-mode-gc" class="mode-card" style="--card-accent: var(--accent-arcade); --card-accent-bg: var(--accent-arcade-bg);" role="button" tabindex="0" aria-label="Game Center">
+                    <div class="mode-card-icon">🎲</div>
+                    <h2 class="mode-card-title" data-i18n="gameCenterMode">Game Center</h2>
+                    <p class="mode-card-desc" data-i18n="gameCenterDesc">7 Interactive arcade games</p>
+                </div>
             </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <button class="btn-secondary" onclick="if(typeof SFX !== 'undefined') SFX.click(); switchScreen('screen-splash');" style="width: 120px;">⬅ Back</button>
+
+            <!-- Teachers & Parents Assign HW shortcut -->
+            <div style="margin-top: 3.5vh; text-align: center; width: 100%;">
+                <button id="btn-mode-hw" class="btn-secondary" style="margin: 0 auto; padding: 10px 24px; font-weight: 800; border-radius: 12px; background: white; border: 1.5px solid #cbd5e1; color: #475569;" aria-label="Teachers & Parents: Assign HW">
+                    📝 <span data-i18n="assignHomework">Assign HW</span>
+                </button>
             </div>
         </section>
     </main>
@@ -558,11 +572,116 @@ const appContainer = document.createElement('div');
             renderSetupUI();
             if(typeof bindAvatarUploads === 'function') bindAvatarUploads();
 
+            // Entry Screen Navigation
             const enterBtn = document.getElementById('btn-enter-app');
             if (enterBtn) {
                 enterBtn.addEventListener('click', () => { 
                     try { if(typeof SFX !== 'undefined' && SFX.click) SFX.click(); } catch(e){}
                     switchScreen('screen-mode-select'); 
+                });
+            }
+
+            const modeBackBtn = document.getElementById('btn-mode-back');
+            if (modeBackBtn) {
+                modeBackBtn.addEventListener('click', () => {
+                    try { if(typeof SFX !== 'undefined' && SFX.click) SFX.click(); } catch(e){}
+                    switchScreen('screen-splash');
+                });
+            }
+
+            const splashHwBtn = document.getElementById('btn-splash-hw');
+            if (splashHwBtn) {
+                splashHwBtn.addEventListener('click', () => {
+                    try { if(typeof SFX !== 'undefined' && SFX.click) SFX.click(); } catch(e){}
+                    switchScreen('screen-homework');
+                    if (typeof renderHomeworkCreator === 'function') renderHomeworkCreator();
+                });
+            }
+
+            const modeGcBtn = document.getElementById('btn-mode-gc');
+            if (modeGcBtn) {
+                modeGcBtn.addEventListener('click', () => {
+                    try { if(typeof SFX !== 'undefined' && SFX.click) SFX.click(); } catch(e){}
+                    if (window.GC_UI && typeof window.GC_UI.openPortal === 'function') {
+                        window.GC_UI.openPortal();
+                    }
+                });
+            }
+
+            // Keyboard navigation for mode cards (Enter / Space)
+            document.querySelectorAll('.mode-card[role="button"]').forEach(card => {
+                card.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        card.click();
+                    }
+                });
+            });
+
+            // Accessibility & Preferences Toolbar
+            const btnToggleLang = document.getElementById('btn-toggle-lang');
+            const lblCurrLang = document.getElementById('lbl-curr-lang');
+            if (btnToggleLang && window.I18n) {
+                const updateLangLabel = () => {
+                    const curr = window.I18n.getLanguage();
+                    if (lblCurrLang) lblCurrLang.textContent = (curr === 'ar') ? 'English' : 'العربية';
+                };
+                updateLangLabel();
+                btnToggleLang.addEventListener('click', () => {
+                    const curr = window.I18n.getLanguage();
+                    window.I18n.setLanguage(curr === 'ar' ? 'en' : 'ar');
+                    updateLangLabel();
+                });
+                window.addEventListener('languageChanged', updateLangLabel);
+            }
+
+            const btnToggleContrast = document.getElementById('btn-toggle-contrast');
+            const lblContrast = document.getElementById('lbl-contrast');
+            if (btnToggleContrast) {
+                const savedContrast = localStorage.getItem('tajweed_contrast') || 'normal';
+                if (savedContrast === 'high') {
+                    document.documentElement.setAttribute('data-contrast', 'high');
+                    if (lblContrast) lblContrast.textContent = 'Normal';
+                }
+                btnToggleContrast.addEventListener('click', () => {
+                    const isHigh = document.documentElement.getAttribute('data-contrast') === 'high';
+                    if (isHigh) {
+                        document.documentElement.removeAttribute('data-contrast');
+                        localStorage.setItem('tajweed_contrast', 'normal');
+                        if (lblContrast) lblContrast.textContent = 'Contrast';
+                        if (typeof showToast === 'function') showToast('Contrast: Standard');
+                    } else {
+                        document.documentElement.setAttribute('data-contrast', 'high');
+                        localStorage.setItem('tajweed_contrast', 'high');
+                        if (lblContrast) lblContrast.textContent = 'Normal';
+                        if (typeof showToast === 'function') showToast('Contrast: High Contrast (WCAG AAA)');
+                    }
+                });
+            }
+
+            const btnToggleFont = document.getElementById('btn-toggle-font');
+            const lblFont = document.getElementById('lbl-font');
+            if (btnToggleFont) {
+                const fontSizes = ['normal', 'large', 'xl'];
+                const fontLabels = { normal: 'A+', large: 'A++', xl: 'A' };
+                let currentFont = localStorage.getItem('tajweed_font_size') || 'normal';
+                if (currentFont !== 'normal') {
+                    document.documentElement.setAttribute('data-font-size', currentFont);
+                }
+                if (lblFont) lblFont.textContent = fontLabels[currentFont] || 'A+';
+
+                btnToggleFont.addEventListener('click', () => {
+                    const curIdx = fontSizes.indexOf(currentFont);
+                    const nextIdx = (curIdx + 1) % fontSizes.length;
+                    currentFont = fontSizes[nextIdx];
+                    if (currentFont === 'normal') {
+                        document.documentElement.removeAttribute('data-font-size');
+                    } else {
+                        document.documentElement.setAttribute('data-font-size', currentFont);
+                    }
+                    localStorage.setItem('tajweed_font_size', currentFont);
+                    if (lblFont) lblFont.textContent = fontLabels[currentFont];
+                    if (typeof showToast === 'function') showToast('Text Size: ' + currentFont.toUpperCase());
                 });
             }
             
@@ -768,24 +887,7 @@ const appContainer = document.createElement('div');
                 }
             };
 
-            // Gateway & Game Center Events
-            const gateClassic = document.getElementById('gate-btn-classic');
-            if (gateClassic) {
-                gateClassic.onclick = () => {
-                    if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
-                    switchScreen('screen-splash');
-                };
-            }
-
-            const gateGC = document.getElementById('gate-btn-gamecenter');
-            if (gateGC) {
-                gateGC.onclick = () => {
-                    if (typeof SFX !== 'undefined' && SFX.click) SFX.click();
-                    if (window.GC_UI && typeof window.GC_UI.openPortal === 'function') {
-                        window.GC_UI.openPortal();
-                    }
-                };
-            }
+            // Gateway removed, Game Center accessible via mode card and splash icon
 
             const splashGC = document.getElementById('btn-goto-gamecenter');
             if (splashGC) {

@@ -1,4 +1,4 @@
-﻿/* Splash & Start Screens */
+/* Splash & Start Screens */
         .start-container { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; height: 100%; text-align: center; background: linear-gradient(135deg, #e8f7f9, #f8fafc); padding: 4vh 4vw; overflow-y: auto; }
         .splash-layout { display: flex; flex-direction: column; width: 100%; max-width: 900px; gap: 4vh; align-items: center; justify-content: center; height: 100%; }
         @media (min-width: 768px) { .splash-layout { flex-direction: row; text-align: left; justify-content: space-between; } }
@@ -17,9 +17,10 @@
         .name-error { color: var(--error); font-weight: 800; font-size: 0.9rem; margin: 0; min-height: 1.2em;}
 
         
-/* --- CREATIVE REDESIGN FOR SPLASH --- */
-#screen-splash {
-    background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f1f5f9 100%);
+/* --- CREATIVE REDESIGN FOR SPLASH & START --- */
+#screen-splash,
+#screen-mode-select {
+    background: var(--app-bg, radial-gradient(circle at 50% 30%, #ffffff 0%, #f1f5f9 100%));
 }
 
 .splash-left h1 {
@@ -32,17 +33,227 @@
 
 @keyframes floatTitle {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-8px); }
 }
 
 #btn-enter-app {
     background: linear-gradient(135deg, #10b981, #059669);
-    box-shadow: 0 10px 25px rgba(16,185,129,0.4), 0 8px 0 #047857;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    box-shadow: 0 10px 25px rgba(16,185,129,0.35), 0 6px 0 #047857;
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    width: 100%;
+    max-width: 380px;
+    padding: 16px 24px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+#btn-enter-app:hover {
+    filter: brightness(1.05);
+    transform: translateY(-2px);
 }
 #btn-enter-app:active {
-    transform: translateY(8px);
-    box-shadow: 0 2px 10px rgba(16,185,129,0.4), 0 0 0 transparent;
+    transform: translateY(4px);
+    box-shadow: 0 2px 10px rgba(16,185,129,0.3), 0 2px 0 #047857;
+}
+
+/* Compact Quick Action Buttons Row */
+.compact-actions-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 380px;
+    margin-top: 10px;
+}
+
+.compact-icon-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--card-bg, #ffffff);
+    border: 2px solid var(--card-border, #e2e8f0);
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-main);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.compact-icon-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12);
+}
+
+.compact-icon-btn:active {
+    transform: scale(0.97);
+}
+
+/* Visually Separated Teachers & Parents Section */
+.teacher-tools-section {
+    width: 100%;
+    max-width: 380px;
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1.5px solid #cbd5e1;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.teacher-tools-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+.teacher-tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.teacher-tool-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: white;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #334155;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.teacher-tool-btn:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+    transform: translateY(-1px);
+}
+
+/* Unified 5-Card Grid for Choose Learning Mode */
+.mode-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+.mode-card {
+    background: var(--card-bg, #ffffff);
+    border: 2px solid var(--card-border, #e2e8f0);
+    border-radius: var(--card-radius, 22px);
+    box-shadow: var(--card-shadow);
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+    color: var(--text-main);
+    width: 100%;
+    min-height: 185px;
+    justify-content: center;
+    position: relative;
+    border-top: 5px solid var(--card-accent, #3b82f6);
+}
+
+.mode-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--card-hover-shadow);
+    border-color: var(--card-accent, #3b82f6);
+}
+
+.mode-card:active {
+    transform: translateY(-1px) scale(0.99);
+}
+
+.mode-card-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    background: var(--card-accent-bg, rgba(37, 99, 235, 0.1));
+    border: 1.5px solid var(--card-accent, #3b82f6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.85rem;
+    transition: transform 0.2s ease;
+}
+
+.mode-card:hover .mode-card-icon {
+    transform: scale(1.1);
+}
+
+.mode-card-title {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.mode-card-desc {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Splash Top Bar Accessibility & Language Controls */
+.splash-top-bar {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 50;
+}
+[dir="rtl"] .splash-top-bar {
+    right: auto;
+    left: 20px;
+}
+.quick-ctrl-btn {
+    background: white;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 6px 10px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: #334155;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    transition: all 0.15s ease;
+}
+.quick-ctrl-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
 }

@@ -122,7 +122,7 @@ window.GC_UI = {
         document.body.classList.remove('gc-scrollable');
         document.documentElement.classList.remove('gc-scrollable');
         window.GC_AUDIO?.playClick();
-        window.switchScreen('screen-gateway');
+        window.switchScreen('screen-mode-select');
       };
     }
 
@@ -843,7 +843,7 @@ window.GC_UI = {
     };
 
     screen.querySelector('#gc-btn-home-gateway').onclick = () => {
-      window.switchScreen('screen-gateway');
+      window.switchScreen('screen-mode-select');
     };
   }
 };

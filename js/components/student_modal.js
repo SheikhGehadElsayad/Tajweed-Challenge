@@ -37,9 +37,15 @@
                 this.injectUI();
             }
 
-            // Listen to student changes to update topbar widgets
+            // Listen to student and workspace changes to update topbar widgets
             window.addEventListener('studentChanged', () => {
                 this.updateAllHeaderBadges();
+            });
+            window.addEventListener('workspaceChanged', () => {
+                this.updateAllHeaderBadges();
+                if (this.modalEl && this.modalEl.style.display !== 'none') {
+                    this.renderBody();
+                }
             });
         }
 
@@ -181,7 +187,31 @@
 
             const activeHws = (active && Array.isArray(active.homeworks)) ? active.homeworks : [];
 
+            const currentWorkspaces = (window.StudentEngine && typeof window.StudentEngine.getWorkspaces === 'function') ? window.StudentEngine.getWorkspaces() : [{ id: 'default', name: 'General Class' }];
+            const activeWorkspaceId = (window.StudentEngine && typeof window.StudentEngine.getActiveWorkspaceId === 'function') ? window.StudentEngine.getActiveWorkspaceId() : 'default';
+
             container.innerHTML = `
+                <!-- Class Workspace Switcher Bar -->
+                <div class="sm-workspace-selector" style="display:flex; justify-content:space-between; align-items:center; background:#f1f5f9; border:2px solid #cbd5e1; border-radius:14px; padding:10px 14px; margin-bottom:14px;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:1.4rem;">🏫</span>
+                        <div>
+                            <div style="font-size:0.75rem; color:#64748b; font-weight:800; text-transform:uppercase;">Class Workspace</div>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <select id="sm-workspace-select" style="font-size:0.92rem; font-weight:800; color:#1e293b; background:white; border:1.5px solid #94a3b8; border-radius:8px; padding:4px 10px; cursor:pointer;">
+                                    ${currentWorkspaces.map(ws => `
+                                        <option value="${ws.id}" ${ws.id === activeWorkspaceId ? 'selected' : ''}>${ws.name}</option>
+                                    `).join('')}
+                                </select>
+                                <span style="font-size:0.75rem; color:#64748b; font-weight:700;">(${students.length} students)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:6px;">
+                        <button type="button" id="sm-btn-new-workspace" class="sm-btn-small" style="background:#0f766e; color:white; border:none; border-radius:8px; padding:6px 12px; font-weight:800; font-size:0.8rem; cursor:pointer;">➕ New Class</button>
+                    </div>
+                </div>
+
                 <!-- Active Student Highlight Card -->
                 <div class="sm-active-card" style="border-color: ${active?.color || '#2563eb'};">
                     <div class="sm-active-left">
@@ -316,6 +346,32 @@
                     }).join('')}
                 </div>
             `;
+
+            // Workspace Switcher Events
+            const wsSelect = container.querySelector('#sm-workspace-select');
+            if (wsSelect) {
+                wsSelect.onchange = (e) => {
+                    if (window.StudentEngine) {
+                        window.StudentEngine.switchWorkspace(e.target.value);
+                        this.renderBody();
+                        if (typeof showToast === 'function') showToast(`Switched to: ${wsSelect.options[wsSelect.selectedIndex].text}`);
+                    }
+                };
+            }
+
+            const btnNewWs = container.querySelector('#sm-btn-new-workspace');
+            if (btnNewWs) {
+                btnNewWs.onclick = () => {
+                    const name = prompt("Enter new Class / Group name (e.g., Grade 4, Sunday Group):");
+                    if (name && name.trim() && window.StudentEngine) {
+                        const created = window.StudentEngine.createWorkspace(name.trim());
+                        if (created) {
+                            this.renderBody();
+                            if (typeof showToast === 'function') showToast(`Class created: ${created.name}`);
+                        }
+                    }
+                };
+            }
 
             // Bindings
             container.querySelector('#sm-btn-edit-active')?.addEventListener('click', () => {
@@ -959,7 +1015,7 @@
             // 4. Game Center Arena & Portal
             // 5. Quiz Top Bar
             const targets = [
-                { containerId: 'screen-gateway', selector: '.gc-gateway-header', prepend: false },
+                { containerId: 'screen-mode-select', selector: '.start-container', prepend: true },
                 { containerId: 'screen-start', selector: '.start-container', prepend: true },
                 { containerId: 'screen-progressive', selector: '.start-container', prepend: true },
                 { containerId: 'screen-game', selector: '.top-icons-group', prepend: false }

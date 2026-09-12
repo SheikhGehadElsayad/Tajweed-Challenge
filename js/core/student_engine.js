@@ -46,6 +46,11 @@
         }
 
         init() {
+            this.workspaces = this.loadWorkspaces();
+            this.activeWorkspaceId = localStorage.getItem('tajweed_active_workspace_id') || 'default';
+            if (!this.workspaces.some(w => w.id === this.activeWorkspaceId)) {
+                this.activeWorkspaceId = 'default';
+            }
             this.load();
             this.migrateLegacyIfNeeded();
             const active = this.getActiveStudent();
@@ -54,27 +59,130 @@
             }
         }
 
+        loadWorkspaces() {
+            try {
+                const raw = localStorage.getItem('tajweed_workspaces_index');
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        return parsed;
+                    }
+                }
+            } catch (e) {}
+            return [{ id: 'default', name: 'General Class', createdAt: Date.now() }];
+        }
+
+        saveWorkspaces() {
+            try {
+                localStorage.setItem('tajweed_workspaces_index', JSON.stringify(this.workspaces));
+            } catch (e) {}
+        }
+
+        getStorageKey() {
+            return (this.activeWorkspaceId === 'default') ? STORAGE_KEY : ('tajweed_app_state_' + this.activeWorkspaceId);
+        }
+
         load() {
             try {
-                const raw = localStorage.getItem(STORAGE_KEY);
+                const key = this.getStorageKey();
+                let raw = localStorage.getItem(key);
+                if (!raw && this.activeWorkspaceId === 'default') {
+                    raw = localStorage.getItem(STORAGE_KEY);
+                }
                 if (raw) {
                     const parsed = JSON.parse(raw);
                     if (parsed && typeof parsed === 'object' && parsed.students) {
                         this.state = parsed;
+                        return;
                     }
                 }
             } catch (e) {
                 console.warn('StudentEngine: Failed to load from localStorage', e);
             }
+            this.state = { activeStudentId: null, students: {} };
         }
 
         save() {
             try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state));
+                const key = this.getStorageKey();
+                const jsonStr = JSON.stringify(this.state);
+                localStorage.setItem(key, jsonStr);
+                if (this.activeWorkspaceId === 'default') {
+                    localStorage.setItem(STORAGE_KEY, jsonStr);
+                }
                 this.notify();
             } catch (e) {
                 console.error('StudentEngine: Failed to save to localStorage', e);
             }
+        }
+
+        getWorkspaces() {
+            return this.workspaces || [{ id: 'default', name: 'General Class' }];
+        }
+
+        getActiveWorkspaceId() {
+            return this.activeWorkspaceId || 'default';
+        }
+
+        getActiveWorkspace() {
+            const ws = this.getWorkspaces().find(w => w.id === this.getActiveWorkspaceId());
+            return ws || { id: 'default', name: 'General Class' };
+        }
+
+        createWorkspace(name) {
+            const cleanName = (name || '').trim();
+            if (!cleanName) return null;
+            const newId = 'ws_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6);
+            const ws = { id: newId, name: cleanName, createdAt: Date.now() };
+            this.workspaces.push(ws);
+            this.saveWorkspaces();
+            this.switchWorkspace(newId);
+            return ws;
+        }
+
+        switchWorkspace(workspaceId) {
+            const target = this.getWorkspaces().find(w => w.id === workspaceId);
+            if (!target) return false;
+            
+            this.save();
+            this.activeWorkspaceId = workspaceId;
+            localStorage.setItem('tajweed_active_workspace_id', workspaceId);
+            
+            this.load();
+            this.migrateLegacyIfNeeded();
+            
+            const active = this.getActiveStudent();
+            if (active && active.theme) {
+                this.applyTheme(active.theme);
+            }
+            
+            this.notify();
+            window.dispatchEvent(new CustomEvent('workspaceChanged', { detail: target }));
+            return true;
+        }
+
+        deleteWorkspace(workspaceId) {
+            if (workspaceId === 'default') return false;
+            this.workspaces = this.workspaces.filter(w => w.id !== workspaceId);
+            this.saveWorkspaces();
+            try {
+                localStorage.removeItem('tajweed_app_state_' + workspaceId);
+            } catch (e) {}
+            this.switchWorkspace('default');
+            return true;
+        }
+
+        renameWorkspace(workspaceId, newName) {
+            const clean = (newName || '').trim();
+            if (!clean) return false;
+            const ws = this.getWorkspaces().find(w => w.id === workspaceId);
+            if (ws) {
+                ws.name = clean;
+                this.saveWorkspaces();
+                window.dispatchEvent(new CustomEvent('workspaceChanged', { detail: ws }));
+                return true;
+            }
+            return false;
         }
 
         migrateLegacyIfNeeded() {
