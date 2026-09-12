@@ -66,7 +66,8 @@
                 { key: 'Iqlab', label: 'Iqlab (Conversion to Meem)' },
                 { key: 'Ikhfa', label: 'Ikhfaa Haqiqi (True Hiding)' },
                 { key: 'Izhar Mutlaq', label: 'Izhar Mutlaq (Absolute Clarity)' },
-                { key: 'Ikhfa Ghunnah', label: 'Ikhfaa Ghunnah (Heavy / Light)' }
+                { key: 'Ikhfa Ghunnah', label: 'Ikhfaa Ghunnah (Heavy / Light)' },
+                { key: 'Idgham Completeness', label: 'Idgham Completeness (Kamil / Naqis)' }
             ]
         },
         {
@@ -162,8 +163,11 @@
 
             // Built-in robust filtering
             if (catKey === 'tafkheem_tarqeeq') return qList.filter(q => q.subcat === subKey);
-            if (catKey === 'noon_sakinah_tanween' && subKey === 'Ikhfa Ghunnah') {
-                return qList.filter(q => (q.id && q.id.startsWith('ikhfa_gh')) || q.subcat === 'Ikhfa Ghunnah' || (q.prompt && q.prompt.includes('Ghunnah')));
+            if (catKey === 'noon_sakinah_tanween') {
+                if (subKey === 'Ikhfa Ghunnah') return qList.filter(q => (q.id && q.id.startsWith('ikhfa_gh')) || q.subcat === 'Ikhfa Ghunnah' || (q.prompt && q.prompt.includes('Ghunnah')));
+                if (subKey === 'Idgham Completeness') return qList.filter(q => (q.id && q.id.startsWith('idgham_comp')) || q.subcat === 'Idgham Completeness');
+                if (subKey === 'Idgham with Ghunnah') return qList.filter(q => q.subcat === 'Idgham with Ghunnah' || q.ans === 'Idgham with Ghunnah');
+                if (subKey === 'Idgham without Ghunnah') return qList.filter(q => q.subcat === 'Idgham without Ghunnah' || q.ans === 'Idgham without Ghunnah');
             }
             if (catKey === 'qalqalah') {
                 if (subKey === 'General Qalqalah') return qList.filter(q => q.subcat === 'General Qalqalah' || q.ans === 'Qalqalah' || q.ans === 'No Qalqalah');

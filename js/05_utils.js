@@ -1,16 +1,20 @@
         function getSubQuestions(catKey, subKey, qList) {
+            if (!Array.isArray(qList) || qList.length === 0) return [];
             if (catKey === 'tafkheem_tarqeeq') {
                 return qList.filter(q => q.subcat === subKey);
             }
-            if (catKey === 'noon_sakinah_tanween' && subKey === 'Ikhfa Ghunnah') {
-                return qList.filter(q => q.id.startsWith('ikhfa_gh') || q.subcat === 'Ikhfa Ghunnah' || (q.prompt && q.prompt.includes('Ghunnah')));
+            if (catKey === 'noon_sakinah_tanween') {
+                if (subKey === 'Ikhfa Ghunnah') return qList.filter(q => (q.id && q.id.startsWith('ikhfa_gh')) || q.subcat === 'Ikhfa Ghunnah' || (q.prompt && q.prompt.includes('Ghunnah')));
+                if (subKey === 'Idgham Completeness') return qList.filter(q => (q.id && q.id.startsWith('idgham_comp')) || q.subcat === 'Idgham Completeness');
+                if (subKey === 'Idgham with Ghunnah') return qList.filter(q => q.subcat === 'Idgham with Ghunnah' || q.ans === 'Idgham with Ghunnah');
+                if (subKey === 'Idgham without Ghunnah') return qList.filter(q => q.subcat === 'Idgham without Ghunnah' || q.ans === 'Idgham without Ghunnah');
             }
             if (catKey === 'qalqalah') {
                 if (subKey === 'General Qalqalah') return qList.filter(q => q.subcat === 'General Qalqalah' || q.ans === 'Qalqalah' || q.ans === 'No Qalqalah');
                 if (subKey === 'Qalqalah Degree') return qList.filter(q => q.subcat === 'Qalqalah Degree' || ['Minor', 'Medium', 'Major'].includes(q.ans));
             }
-            const mapping = SUB_CATEGORY_MAPPING[catKey];
-            if (!mapping || !mapping[subKey]) return qList.filter(q => q.subcat === subKey);
+            const mapping = (typeof SUB_CATEGORY_MAPPING !== 'undefined') ? SUB_CATEGORY_MAPPING[catKey] : null;
+            if (!mapping || !mapping[subKey]) return qList.filter(q => q.subcat === subKey || q.ans === subKey);
             const answers = mapping[subKey];
             return qList.filter(q => {
                 if (q.subcat === subKey) return true;
@@ -512,6 +516,8 @@
                     }
                 } else if (q.id && (q.id.startsWith('ikhfa_gh') || q.subcat === 'Ikhfa Ghunnah' || (q.prompt && q.prompt.includes('Ghunnah')))) {
                     categoryChoices = ["Heavy Ghunnah", "Light Ghunnah"];
+                } else if (q.id && (q.id.startsWith('idgham_comp') || q.subcat === 'Idgham Completeness' || (q.choicesList && q.choicesList.includes('Complete Idgham (Kamil)')))) {
+                    categoryChoices = ["Complete Idgham (Kamil)", "Incomplete Idgham (Naqis)"];
                 }
                 let choicesList = [q.ans];
                 let wrongOptions = shuffleArray(categoryChoices.filter(c => c !== q.ans));

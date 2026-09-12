@@ -58,7 +58,8 @@ const PROGRESSIVE_WORLDS = [
             { id: 'stg_4_4', name: 'Iqlab', desc: 'Converting Noon or Tanween into a Meem before Baa', subKey: 'Iqlab', qty: 8 },
             { id: 'stg_4_5', name: 'Ikhfaa Haqiqi', desc: 'Concealing the Noon sound before the 15 Ikhfaa letters', subKey: 'Ikhfa', qty: 10 },
             { id: 'stg_4_6', name: 'Izhar Mutlaq', desc: 'Noon Saakinah followed by Waw or Yaa in a single word', subKey: 'Izhar Mutlaq', qty: 4 },
-            { id: 'stg_4_7', name: 'Ikhfaa Ghunnah', desc: 'Distinguish between Heavy and Light Ghunnah of Ikhfaa', subKey: 'Ikhfa Ghunnah', qty: 10 }
+            { id: 'stg_4_7', name: 'Ikhfaa Ghunnah', desc: 'Distinguish between Heavy and Light Ghunnah of Ikhfaa', subKey: 'Ikhfa Ghunnah', qty: 10 },
+            { id: 'stg_4_8', name: 'Idgham Completeness', desc: 'Distinguish between Complete (Kamil) and Incomplete (Naqis) Idgham', subKey: 'Idgham Completeness', qty: 10 }
         ]
     },
     {

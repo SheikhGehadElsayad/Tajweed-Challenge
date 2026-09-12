@@ -2851,742 +2851,848 @@ const TAJWEED_BANK = {
                 "src": "images/mutlaq_1.png",
                 "ans": "Izhar Mutlaq",
                 "explanation": "Noon Sakinah followed by Yaa in the same word.",
-                "prompt": "What is the ruling of the Noon Saakinah?"
+                "prompt": "What is the ruling of the Noon Saakinah?",
+                "subcat": "Izhar Mutlaq"
             },
             {
                 "id": "mutlaq_2",
                 "src": "images/mutlaq_2.png",
                 "ans": "Izhar Mutlaq",
                 "explanation": "Noon Sakinah followed by Waw in the same word.",
-                "prompt": "What is the ruling of the Noon Saakinah?"
+                "prompt": "What is the ruling of the Noon Saakinah?",
+                "subcat": "Izhar Mutlaq"
             },
             {
                 "id": "mutlaq_3",
                 "src": "images/mutlaq_3.png",
                 "ans": "Izhar Mutlaq",
                 "explanation": "Noon Sakinah followed by Waw in the same word.",
-                "prompt": "What is the ruling of the Noon Saakinah?"
+                "prompt": "What is the ruling of the Noon Saakinah?",
+                "subcat": "Izhar Mutlaq"
             },
             {
                 "id": "mutlaq_4",
                 "src": "images/mutlaq_4.png",
                 "ans": "Izhar Mutlaq",
                 "explanation": "Noon Sakinah followed by Yaa in the same word.",
-                "prompt": "What is the ruling of the Noon Saakinah?"
+                "prompt": "What is the ruling of the Noon Saakinah?",
+                "subcat": "Izhar Mutlaq"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_1",
                 "src": "images/tanween_ikhfaa_Screenshot_1.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_10",
                 "src": "images/tanween_ikhfaa_Screenshot_10.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_11",
                 "src": "images/tanween_ikhfaa_Screenshot_11.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_12",
                 "src": "images/tanween_ikhfaa_Screenshot_12.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_13",
                 "src": "images/tanween_ikhfaa_Screenshot_13.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_14",
                 "src": "images/tanween_ikhfaa_Screenshot_14.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_15",
                 "src": "images/tanween_ikhfaa_Screenshot_15.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_16",
                 "src": "images/tanween_ikhfaa_Screenshot_16.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_2",
                 "src": "images/tanween_ikhfaa_Screenshot_2.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_3",
                 "src": "images/tanween_ikhfaa_Screenshot_3.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_4",
                 "src": "images/tanween_ikhfaa_Screenshot_4.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_5",
                 "src": "images/tanween_ikhfaa_Screenshot_5.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_6",
                 "src": "images/tanween_ikhfaa_Screenshot_6.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_7",
                 "src": "images/tanween_ikhfaa_Screenshot_7.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_8",
                 "src": "images/tanween_ikhfaa_Screenshot_8.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "tanween_ikhfaa_Screenshot_9",
                 "src": "images/tanween_ikhfaa_Screenshot_9.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "noon_ikhfaa_Screenshot_1",
                 "src": "images/noon_ikhfaa_Screenshot_1.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "noon_ikhfaa_Screenshot_10",
                 "src": "images/noon_ikhfaa_Screenshot_10.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "noon_ikhfaa_Screenshot_2",
                 "src": "images/noon_ikhfaa_Screenshot_2.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "noon_ikhfaa_Screenshot_3",
                 "src": "images/noon_ikhfaa_Screenshot_3.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "noon_ikhfaa_Screenshot_4",
                 "src": "images/noon_ikhfaa_Screenshot_4.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "noon_ikhfaa_Screenshot_5",
                 "src": "images/noon_ikhfaa_Screenshot_5.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "noon_ikhfaa_Screenshot_6",
                 "src": "images/noon_ikhfaa_Screenshot_6.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "noon_ikhfaa_Screenshot_7",
                 "src": "images/noon_ikhfaa_Screenshot_7.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "noon_ikhfaa_Screenshot_8",
                 "src": "images/noon_ikhfaa_Screenshot_8.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "noon_ikhfaa_Screenshot_9",
                 "src": "images/noon_ikhfaa_Screenshot_9.png",
                 "ans": "Ikhfa",
                 "explanation": "Noon Sakinah or Tanween followed by an Ikhfa letter → Hiding with Ghunnah (Ikhfa Haqiqi).",
-                "prompt": "What is the Tajweed rule here?"
+                "prompt": "What is the Tajweed rule here?",
+                "subcat": "Ikhfa"
             },
             {
                 "id": "noon_1",
                 "src": "images/img_0001.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_2",
                 "src": "images/img_0002.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_3",
                 "src": "images/img_0003.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_4",
                 "src": "images/img_0004.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_5",
                 "src": "images/img_0005.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_6",
                 "src": "images/img_0006.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_7",
                 "src": "images/img_0007.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_8",
                 "src": "images/img_0008.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_9",
                 "src": "images/img_0009.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_10",
                 "src": "images/img_0010.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_11",
                 "src": "images/img_0011.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_12",
                 "src": "images/img_0012.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_13",
                 "src": "images/img_0013.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_14",
                 "src": "images/img_0014.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_15",
                 "src": "images/img_0015.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_16",
                 "src": "images/img_0016.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_17",
                 "src": "images/img_0017.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_18",
                 "src": "images/img_0018.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_19",
                 "src": "images/img_0019.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_20",
                 "src": "images/img_0020.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_21",
                 "src": "images/img_0021.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_22",
                 "src": "images/img_0022.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_23",
                 "src": "images/img_0023.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_24",
                 "src": "images/img_0024.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_25",
                 "src": "images/img_0025.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_26",
                 "src": "images/img_0026.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_27",
                 "src": "images/img_0027.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_28",
                 "src": "images/img_0028.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_29",
                 "src": "images/img_0029.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_30",
                 "src": "images/img_0030.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_31",
                 "src": "images/img_0031.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_32",
                 "src": "images/img_0032.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_33",
                 "src": "images/img_0033.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_34",
                 "src": "images/img_0034.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_35",
                 "src": "images/img_0035.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_36",
                 "src": "images/img_0036.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_37",
                 "src": "images/img_0037.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_38",
                 "src": "images/img_0038.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_39",
                 "src": "images/img_0039.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_40",
                 "src": "images/img_0040.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_41",
                 "src": "images/img_0041.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_42",
                 "src": "images/img_0042.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_43",
                 "src": "images/img_0043.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_44",
                 "src": "images/img_0044.png",
                 "ans": "Izhar",
                 "explanation": "Noon Sakinah or Tanween followed by a throat letter (ء، هـ، ع، ح، غ، خ) → Clear pronunciation (Izhar).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Izhar"
             },
             {
                 "id": "noon_45",
                 "src": "images/img_0045.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_46",
                 "src": "images/img_0046.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_47",
                 "src": "images/img_0047.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_48",
                 "src": "images/img_0048.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_49",
                 "src": "images/img_0049.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_50",
                 "src": "images/img_0050.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_51",
                 "src": "images/img_0051.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_52",
                 "src": "images/img_0052.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_53",
                 "src": "images/img_0053.png",
                 "ans": "Idgham without Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by (ل، ر) → Merging without Ghunnah (Idgham bi-Ghayr Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham without Ghunnah"
             },
             {
                 "id": "noon_54",
                 "src": "images/img_0054.png",
                 "ans": "Iqlab",
                 "explanation": "Noon Sakinah or Tanween followed by Baa (ب) → Changed to Meem with Ghunnah (Iqlab).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Iqlab"
             },
             {
                 "id": "noon_55",
                 "src": "images/img_0055.png",
                 "ans": "Iqlab",
                 "explanation": "Noon Sakinah or Tanween followed by Baa (ب) → Changed to Meem with Ghunnah (Iqlab).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Iqlab"
             },
             {
                 "id": "noon_56",
                 "src": "images/img_0056.png",
                 "ans": "Iqlab",
                 "explanation": "Noon Sakinah or Tanween followed by Baa (ب) → Changed to Meem with Ghunnah (Iqlab).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Iqlab"
             },
             {
                 "id": "noon_57",
                 "src": "images/img_0057.png",
                 "ans": "Iqlab",
                 "explanation": "Noon Sakinah or Tanween followed by Baa (ب) → Changed to Meem with Ghunnah (Iqlab).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Iqlab"
             },
             {
                 "id": "noon_58",
                 "src": "images/img_0058.png",
                 "ans": "Iqlab",
                 "explanation": "Noon Sakinah or Tanween followed by Baa (ب) → Changed to Meem with Ghunnah (Iqlab).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Iqlab"
             },
             {
                 "id": "noon_59",
                 "src": "images/img_0059.png",
                 "ans": "Iqlab",
                 "explanation": "Noon Sakinah or Tanween followed by Baa (ب) → Changed to Meem with Ghunnah (Iqlab).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Iqlab"
             },
             {
                 "id": "noon_60",
                 "src": "images/img_0060.png",
                 "ans": "Iqlab",
                 "explanation": "Noon Sakinah or Tanween followed by Baa (ب) → Changed to Meem with Ghunnah (Iqlab).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Iqlab"
             },
             {
                 "id": "noon_61",
                 "src": "images/img_0061.png",
                 "ans": "Iqlab",
                 "explanation": "Noon Sakinah or Tanween followed by Baa (ب) → Changed to Meem with Ghunnah (Iqlab).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Iqlab"
             },
             {
                 "id": "noon_62",
                 "src": "images/img_0062.png",
                 "ans": "Iqlab",
                 "explanation": "Noon Sakinah or Tanween followed by Baa (ب) → Changed to Meem with Ghunnah (Iqlab).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Iqlab"
             },
             {
                 "id": "noon_63",
                 "src": "images/img_0063.png",
                 "ans": "Iqlab",
                 "explanation": "Noon Sakinah or Tanween followed by Baa (ب) → Changed to Meem with Ghunnah (Iqlab).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Iqlab"
             },
             {
                 "id": "noon_64",
                 "src": "images/img_0064.png",
                 "ans": "Iqlab",
                 "explanation": "Noon Sakinah or Tanween followed by Baa (ب) → Changed to Meem with Ghunnah (Iqlab).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Iqlab"
             },
             {
                 "id": "noon_65",
                 "src": "images/img_0065.png",
                 "ans": "Iqlab",
                 "explanation": "Noon Sakinah or Tanween followed by Baa (ب) → Changed to Meem with Ghunnah (Iqlab).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Iqlab"
             },
             {
                 "id": "noon_66",
                 "src": "images/img_0066.png",
                 "ans": "Iqlab",
                 "explanation": "Noon Sakinah or Tanween followed by Baa (ب) → Changed to Meem with Ghunnah (Iqlab).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Iqlab"
             },
             {
                 "id": "noon_67",
                 "src": "images/img_0067.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_68",
                 "src": "images/img_0068.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_69",
                 "src": "images/img_0069.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_70",
                 "src": "images/img_0070.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_71",
                 "src": "images/img_0071.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_72",
                 "src": "images/img_0072.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_73",
                 "src": "images/img_0073.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_74",
                 "src": "images/img_0074.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_75",
                 "src": "images/img_0075.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "noon_76",
                 "src": "images/img_0076.png",
                 "ans": "Idgham with Ghunnah",
                 "explanation": "Noon Sakinah or Tanween followed by one of (ي، ن، م، و) → Merging with Ghunnah (Idgham bi-Ghunnah).",
-                "prompt": "What is the rule?"
+                "prompt": "What is the rule?",
+                "subcat": "Idgham with Ghunnah"
             },
             {
                 "id": "ikhfa_gh_tanween_ikhfaa_Screenshot_1",
@@ -3899,6 +4005,450 @@ const TAJWEED_BANK = {
                     "Light Ghunnah"
                 ],
                 "subcat": "Ikhfa Ghunnah"
+            },
+            {
+                "id": "idgham_comp_noon_1",
+                "src": "images/img_0001.png",
+                "ans": "Incomplete Idgham (Naqis)",
+                "explanation": "Incomplete Idgham (Naqis): The Noon or Tanween merges into (و / ي) while preserving its nasal Ghunnah sound, so there is no Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_2",
+                "src": "images/img_0002.png",
+                "ans": "Incomplete Idgham (Naqis)",
+                "explanation": "Incomplete Idgham (Naqis): The Noon or Tanween merges into (و / ي) while preserving its nasal Ghunnah sound, so there is no Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_3",
+                "src": "images/img_0003.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween completely merges into the nasal letter (م / ن), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_4",
+                "src": "images/img_0004.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween completely merges into the nasal letter (م / ن), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_5",
+                "src": "images/img_0005.png",
+                "ans": "Incomplete Idgham (Naqis)",
+                "explanation": "Incomplete Idgham (Naqis): The Noon or Tanween merges into (و / ي) while preserving its nasal Ghunnah sound, so there is no Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_6",
+                "src": "images/img_0006.png",
+                "ans": "Incomplete Idgham (Naqis)",
+                "explanation": "Incomplete Idgham (Naqis): The Noon or Tanween merges into (و / ي) while preserving its nasal Ghunnah sound, so there is no Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_7",
+                "src": "images/img_0007.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween completely merges into the nasal letter (م / ن), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_8",
+                "src": "images/img_0008.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween completely merges into the nasal letter (م / ن), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_9",
+                "src": "images/img_0009.png",
+                "ans": "Incomplete Idgham (Naqis)",
+                "explanation": "Incomplete Idgham (Naqis): The Noon or Tanween merges into (و / ي) while preserving its nasal Ghunnah sound, so there is no Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_10",
+                "src": "images/img_0010.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_11",
+                "src": "images/img_0011.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_12",
+                "src": "images/img_0012.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_13",
+                "src": "images/img_0013.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_14",
+                "src": "images/img_0014.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_15",
+                "src": "images/img_0015.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_16",
+                "src": "images/img_0016.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_17",
+                "src": "images/img_0017.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_18",
+                "src": "images/img_0018.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_45",
+                "src": "images/img_0045.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_46",
+                "src": "images/img_0046.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_47",
+                "src": "images/img_0047.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_48",
+                "src": "images/img_0048.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_49",
+                "src": "images/img_0049.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_50",
+                "src": "images/img_0050.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_51",
+                "src": "images/img_0051.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_52",
+                "src": "images/img_0052.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_53",
+                "src": "images/img_0053.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween and its Ghunnah completely disappear into (ل / ر), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_67",
+                "src": "images/img_0067.png",
+                "ans": "Incomplete Idgham (Naqis)",
+                "explanation": "Incomplete Idgham (Naqis): The Noon or Tanween merges into (و / ي) while preserving its nasal Ghunnah sound, so there is no Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_68",
+                "src": "images/img_0068.png",
+                "ans": "Incomplete Idgham (Naqis)",
+                "explanation": "Incomplete Idgham (Naqis): The Noon or Tanween merges into (و / ي) while preserving its nasal Ghunnah sound, so there is no Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_69",
+                "src": "images/img_0069.png",
+                "ans": "Incomplete Idgham (Naqis)",
+                "explanation": "Incomplete Idgham (Naqis): The Noon or Tanween merges into (و / ي) while preserving its nasal Ghunnah sound, so there is no Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_70",
+                "src": "images/img_0070.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween completely merges into the nasal letter (م / ن), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_71",
+                "src": "images/img_0071.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween completely merges into the nasal letter (م / ن), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_72",
+                "src": "images/img_0072.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween completely merges into the nasal letter (م / ن), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_73",
+                "src": "images/img_0073.png",
+                "ans": "Incomplete Idgham (Naqis)",
+                "explanation": "Incomplete Idgham (Naqis): The Noon or Tanween merges into (و / ي) while preserving its nasal Ghunnah sound, so there is no Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_74",
+                "src": "images/img_0074.png",
+                "ans": "Incomplete Idgham (Naqis)",
+                "explanation": "Incomplete Idgham (Naqis): The Noon or Tanween merges into (و / ي) while preserving its nasal Ghunnah sound, so there is no Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_75",
+                "src": "images/img_0075.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween completely merges into the nasal letter (م / ن), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
+            },
+            {
+                "id": "idgham_comp_noon_76",
+                "src": "images/img_0076.png",
+                "ans": "Complete Idgham (Kamil)",
+                "explanation": "Complete Idgham (Kamil): The Noon or Tanween completely merges into the nasal letter (م / ن), receiving a Shaddah.",
+                "prompt": "What is the type of Idgham (Complete or Incomplete)?",
+                "choicesList": [
+                    "Complete Idgham (Kamil)",
+                    "Incomplete Idgham (Naqis)"
+                ],
+                "subcat": "Idgham Completeness"
             }
         ]
     },
@@ -5610,3 +6160,185 @@ const TAJWEED_BANK = {
         ]
     }
 };
+
+const SUB_CATEGORY_MAPPING = {
+    "hamzat_wasl": {
+        "Dropped": [
+            "Dropped"
+        ],
+        "Start with damma": [
+            "Start with damma"
+        ],
+        "Start with fatha": [
+            "Start with fatha"
+        ],
+        "Start with kasra": [
+            "Start with kasra"
+        ]
+    },
+    "letter_relations": {
+        "Identical": [
+            "Identical"
+        ],
+        "Similar": [
+            "Similar"
+        ],
+        "Close": [
+            "Close"
+        ]
+    },
+    "madd_rules": {
+        "Natural Madd": [
+            "Natural Madd"
+        ],
+        "Permanent Word Based Heavy": [
+            "Permanent Word Based Heavy"
+        ],
+        "Permanent Word Based Light": [
+            "Permanent Word Based Light"
+        ],
+        "Permanent Letter Based Heavy": [
+            "Permanent Letter Based Heavy"
+        ],
+        "Permanent Letter Based Light": [
+            "Permanent Letter Based Light"
+        ],
+        "Substitute": [
+            "Substitute"
+        ],
+        "Connected": [
+            "Connected"
+        ],
+        "Separated": [
+            "Separated"
+        ],
+        "Compensatory Madd": [
+            "Compensatory Madd"
+        ],
+        "Stabilizing Madd": [
+            "Stabilizing Madd"
+        ],
+        "Minor Sila Madd": [
+            "Minor Sila Madd"
+        ],
+        "Major Sila Madd": [
+            "Major Sila Madd"
+        ],
+        "Temporary Madd": [
+            "Temporary Madd"
+        ],
+        "Soft Madd": [
+            "Soft Madd"
+        ]
+    },
+    "meem_sakinah": {
+        "Oral + Hiding": [
+            "Oral + Hiding"
+        ],
+        "Oral + Merger": [
+            "Oral + Merger"
+        ],
+        "Oral + Clarity": [
+            "Oral + Clarity"
+        ]
+    },
+    "noon_sakinah_tanween": {
+        "Izhar": [
+            "Izhar"
+        ],
+        "Idgham with Ghunnah": [
+            "Idgham with Ghunnah"
+        ],
+        "Idgham without Ghunnah": [
+            "Idgham without Ghunnah"
+        ],
+        "Iqlab": [
+            "Iqlab"
+        ],
+        "Ikhfa": [
+            "Ikhfa"
+        ],
+        "Izhar Mutlaq": [
+            "Izhar Mutlaq"
+        ],
+        "Ikhfa Ghunnah": [
+            "Heavy Ghunnah",
+            "Light Ghunnah"
+        ],
+        "Idgham Completeness": [
+            "Complete Idgham (Kamil)",
+            "Incomplete Idgham (Naqis)"
+        ]
+    },
+    "qalqalah": {
+        "Minor": [
+            "Minor"
+        ],
+        "Medium": [
+            "Medium"
+        ],
+        "Major": [
+            "Major"
+        ],
+        "General Qalqalah": [
+            "Qalqalah",
+            "No Qalqalah"
+        ]
+    },
+    "image_bank": {
+        "Noon Mushaddad": [
+            "Noon Mushaddad"
+        ],
+        "Meem Mushaddad": [
+            "Meem Mushaddad"
+        ],
+        "Two counts of ghunna": [
+            "Two counts of ghunna"
+        ]
+    },
+    "tafkheem_tarqeeq": {
+        "Light Ra": [
+            "Light",
+            "Light Raa"
+        ],
+        "Heavy Ra": [
+            "Heavy",
+            "Heavy Raa"
+        ],
+        "Lam of Allah": [
+            "Heavy",
+            "Light",
+            "Heavy Laam",
+            "Light Laam"
+        ],
+        "Always Heavy": [
+            "Heavy",
+            "Heavy Letter"
+        ],
+        "Alif": [
+            "Heavy",
+            "Light",
+            "Heavy Alif",
+            "Light Alif"
+        ],
+        "Ra Both Options": [
+            "Both are permissible — Tarqeeq is preferred when stopping.",
+            "Both are permissible — Tafkheem is preferred when stopping."
+        ]
+    },
+    "lam_shamsiyyah_qamariyyah": {
+        "Lam Shamsiyyah": [
+            "Lam Shamsiyyah"
+        ],
+        "Lam Qamariyyah": [
+            "Lam Qamariyyah"
+        ]
+    }
+};
+
+if (typeof window !== 'undefined') {
+    window.SUB_CATEGORY_MAPPING = SUB_CATEGORY_MAPPING;
+}
+if (typeof global !== 'undefined') {
+    global.SUB_CATEGORY_MAPPING = SUB_CATEGORY_MAPPING;
+}
