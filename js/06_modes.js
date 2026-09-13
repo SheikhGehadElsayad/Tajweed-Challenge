@@ -1,6 +1,6 @@
 /* =========================================================
    PROGRESSIVE MODE & ROADMAP ENGINE
-   9 Worlds • 46 Gamified Stages
+   10 Worlds • 48 Gamified Stages
 ========================================================= */
 
 const PROGRESSIVE_WORLDS = [
@@ -126,6 +126,18 @@ const PROGRESSIVE_WORLDS = [
         stages: [
             { id: 'stg_8_1', name: 'Lam Shamsiyyah (Solar)', desc: 'Laam merges completely into the following solar letter (with Shaddah)', subKey: 'Lam Shamsiyyah', qty: 8 },
             { id: 'stg_8_2', name: 'Lam Qamariyyah (Lunar)', desc: 'Laam is clearly articulated before the 14 lunar letters', subKey: 'Lam Qamariyyah', qty: 8 }
+        ]
+    },
+    {
+        id: 'world_8b',
+        catKey: 'lam_harf',
+        title: 'Lam of Hal & Bal',
+        icon: '⚡',
+        color: '#0284c7',
+        desc: 'Rules of the Saakin Lam in particles Hal and Bal (Idgham & Izhar)',
+        stages: [
+            { id: 'stg_hb_1', name: 'Idgham (Merging in Lam & Raa)', desc: 'Lam merges completely when followed by Lam or Raa', subKey: 'Idgham', qty: 8 },
+            { id: 'stg_hb_2', name: 'Izhar (Clear Pronunciation)', desc: 'Lam is pronounced clearly when followed by any other letter', subKey: 'Izhar', qty: 10 }
         ]
     },
     {
@@ -624,6 +636,7 @@ const HW_RULE_CODES = {
     'md': 'madd_rules',
     'hw': 'hamzat_wasl',
     'lq': 'lam_shamsiyyah_qamariyyah',
+    'lh': 'lam_harf',
     'lr': 'letter_relations'
 };
 const HW_CODES_REVERSE = Object.fromEntries(Object.entries(HW_RULE_CODES).map(([k, v]) => [v, k]));
@@ -1271,6 +1284,15 @@ function parseURLModes() {
             }
         } catch(e) {}
     }
+}
+
+if (typeof window !== 'undefined') {
+    window.PROGRESSIVE_WORLDS = PROGRESSIVE_WORLDS;
+    window.getProgressiveStagePool = getProgressiveStagePool;
+}
+if (typeof global !== 'undefined') {
+    global.PROGRESSIVE_WORLDS = PROGRESSIVE_WORLDS;
+    global.getProgressiveStagePool = getProgressiveStagePool;
 }
 
         

@@ -133,6 +133,17 @@
             ]
         },
         {
+            id: 'lam_harf',
+            title: 'Lam of Hal & Bal',
+            subtitle: 'Rules of the Saakin Lam in particles Hal and Bal (Merging & Clarity)',
+            icon: '⚡',
+            color: '#0284c7',
+            subrules: [
+                { key: 'Idgham', label: 'Idgham (Merged in Laam & Raa)' },
+                { key: 'Izhar', label: 'Izhar (Clear Pronunciation)' }
+            ]
+        },
+        {
             id: 'letter_relations',
             title: 'Letter Relationships',
             subtitle: 'Identical, homogeneous, and close letter combinations',
@@ -179,6 +190,9 @@
                 if (subKey === 'Noon Mushaddad') return qList.filter(q => q.subcat === 'Noon Mushaddad');
                 if (subKey === 'Meem Mushaddad') return qList.filter(q => q.subcat === 'Meem Mushaddad');
                 return qList;
+            }
+            if (catKey === 'lam_harf') {
+                return qList.filter(q => q.subcat === subKey || q.ans === subKey || (q.ans && q.ans.startsWith(subKey)));
             }
             return qList.filter(q => (q.subcat === subKey || q.subRule === subKey || q.ans === subKey));
         },

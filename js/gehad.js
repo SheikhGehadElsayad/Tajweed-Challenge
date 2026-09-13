@@ -6158,6 +6158,255 @@ const TAJWEED_BANK = {
                 "prompt": "What is the rule of Lam?"
             }
         ]
+    },
+    "lam_harf": {
+        "title": "Lam of Hal & Bal",
+        "choices": [
+            "Idgham (Merging)",
+            "Izhar (Clarity)"
+        ],
+        "questions": [
+            {
+                "id": "lam_harf_1",
+                "src": "images/lam_harf_bal_rafaahu.png",
+                "ans": "Idgham (Merging)",
+                "explanation": "The Lam of \"Bal\" merges completely into the following letter Raa (Idgham).",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Idgham"
+            },
+            {
+                "id": "lam_harf_2",
+                "src": "images/lam_harf_bal_rabbukum.png",
+                "ans": "Idgham (Merging)",
+                "explanation": "The Lam of \"Bal\" merges completely into the following letter Raa (Idgham).",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Idgham"
+            },
+            {
+                "id": "lam_harf_3",
+                "src": "images/lam_harf_bal_laa_takhafoo.png",
+                "ans": "Idgham (Merging)",
+                "explanation": "The Lam of \"Bal\" merges into the identical letter Laam (Idgham Mutamathilayn).",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Idgham"
+            },
+            {
+                "id": "lam_harf_4",
+                "src": "images/lam_harf_bal_laa_yuminoon.png",
+                "ans": "Idgham (Merging)",
+                "explanation": "The Lam of \"Bal\" merges into the identical letter Laam (Idgham Mutamathilayn).",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Idgham"
+            },
+            {
+                "id": "lam_harf_5",
+                "src": "images/lam_harf_bal_lammaa.png",
+                "ans": "Idgham (Merging)",
+                "explanation": "The Lam of \"Bal\" merges into the identical letter Laam (Idgham Mutamathilayn).",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Idgham"
+            },
+            {
+                "id": "lam_harf_6",
+                "src": "images/lam_harf_hal_lakum.png",
+                "ans": "Idgham (Merging)",
+                "explanation": "The Lam of \"Hal\" merges into the identical letter Laam (Idgham Mutamathilayn).",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Idgham"
+            },
+            {
+                "id": "lam_harf_7",
+                "src": "images/lam_harf_hal_laka.png",
+                "ans": "Idgham (Merging)",
+                "explanation": "The Lam of \"Hal\" merges into the identical letter Laam (Idgham Mutamathilayn).",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Idgham"
+            },
+            {
+                "id": "lam_harf_8",
+                "src": "images/lam_harf_bal_lajjoo.png",
+                "ans": "Idgham (Merging)",
+                "explanation": "The Lam of \"Bal\" merges into the identical letter Laam (Idgham Mutamathilayn).",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Idgham"
+            },
+            {
+                "id": "lam_harf_9",
+                "src": "images/lam_harf_hal_ataaka.png",
+                "ans": "Izhar (Clarity)",
+                "explanation": "The Lam of \"Hal\" is pronounced clearly (Izhar) before the Hamzah.",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Izhar"
+            },
+            {
+                "id": "lam_harf_10",
+                "src": "images/lam_harf_hal_taraa.png",
+                "ans": "Izhar (Clarity)",
+                "explanation": "The Lam of \"Hal\" is pronounced clearly (Izhar) before the letter Taa.",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Izhar"
+            },
+            {
+                "id": "lam_harf_11",
+                "src": "images/lam_harf_hal_thuwwiba.png",
+                "ans": "Izhar (Clarity)",
+                "explanation": "The Lam of \"Hal\" is pronounced clearly (Izhar) before the letter Thaa.",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Izhar"
+            },
+            {
+                "id": "lam_harf_12",
+                "src": "images/lam_harf_hal_yastawi.png",
+                "ans": "Izhar (Clarity)",
+                "explanation": "The Lam of \"Hal\" is pronounced clearly (Izhar) before the letter Yaa.",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Izhar"
+            },
+            {
+                "id": "lam_harf_13",
+                "src": "images/lam_harf_hal_nunabbiukum.png",
+                "ans": "Izhar (Clarity)",
+                "explanation": "The Lam of \"Hal\" is pronounced clearly (Izhar) before the letter Noon.",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Izhar"
+            },
+            {
+                "id": "lam_harf_14",
+                "src": "images/lam_harf_bal_hum.png",
+                "ans": "Izhar (Clarity)",
+                "explanation": "The Lam of \"Bal\" is pronounced clearly (Izhar) before the letter Haa.",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Izhar"
+            },
+            {
+                "id": "lam_harf_15",
+                "src": "images/lam_harf_bal_faalahu.png",
+                "ans": "Izhar (Clarity)",
+                "explanation": "The Lam of \"Bal\" is pronounced clearly (Izhar) before the letter Faa.",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Izhar"
+            },
+            {
+                "id": "lam_harf_16",
+                "src": "images/lam_harf_bal_tabaa.png",
+                "ans": "Izhar (Clarity)",
+                "explanation": "The Lam of \"Bal\" is pronounced clearly (Izhar) before the letter Taa.",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Izhar"
+            },
+            {
+                "id": "lam_harf_17",
+                "src": "images/lam_harf_bal_sawwalat.png",
+                "ans": "Izhar (Clarity)",
+                "explanation": "The Lam of \"Bal\" is pronounced clearly (Izhar) before the letter Seen.",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Izhar"
+            },
+            {
+                "id": "lam_harf_18",
+                "src": "images/lam_harf_bal_zanantum.png",
+                "ans": "Izhar (Clarity)",
+                "explanation": "The Lam of \"Bal\" is pronounced clearly (Izhar) before the letter Zhaa.",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Izhar"
+            },
+            {
+                "id": "lam_harf_19",
+                "src": "images/lam_harf_bal_kazzaboo.png",
+                "ans": "Izhar (Clarity)",
+                "explanation": "The Lam of \"Bal\" is pronounced clearly (Izhar) before the letter Kaaf.",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Izhar"
+            },
+            {
+                "id": "lam_harf_20",
+                "src": "images/lam_harf_bal_jaaahum.png",
+                "ans": "Izhar (Clarity)",
+                "explanation": "The Lam of \"Bal\" is pronounced clearly (Izhar) before the letter Jeem.",
+                "prompt": "What is the rule of the Saakin Lam in Hal / Bal?",
+                "choicesList": [
+                    "Idgham (Merging)",
+                    "Izhar (Clarity)"
+                ],
+                "subcat": "Izhar"
+            }
+        ]
     }
 };
 
@@ -6333,12 +6582,22 @@ const SUB_CATEGORY_MAPPING = {
         "Lam Qamariyyah": [
             "Lam Qamariyyah"
         ]
+    },
+    "lam_harf": {
+        "Idgham": [
+            "Idgham (Merging)"
+        ],
+        "Izhar": [
+            "Izhar (Clarity)"
+        ]
     }
 };
 
 if (typeof window !== 'undefined') {
+    window.TAJWEED_BANK = TAJWEED_BANK;
     window.SUB_CATEGORY_MAPPING = SUB_CATEGORY_MAPPING;
 }
 if (typeof global !== 'undefined') {
+    global.TAJWEED_BANK = TAJWEED_BANK;
     global.SUB_CATEGORY_MAPPING = SUB_CATEGORY_MAPPING;
 }

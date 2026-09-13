@@ -31,6 +31,7 @@ window.GC_DATA = {
     { id: 'madd_rules', name: 'Madd Rules', nameAr: 'أحكام المدود', icon: '〰️' },
     { id: 'hamzat_wasl', name: 'Hamzat Al-Wasl', nameAr: 'همزة الوصل', icon: '🔗' },
     { id: 'lam_shamsiyyah_qamariyyah', name: 'Lam Shamsiyyah & Lam Qamariyyah', nameAr: 'اللام الشمسية والقمرية', icon: '☀️' },
+    { id: 'lam_harf', name: 'Lam of Hal & Bal', nameAr: 'لاما هل وبل', icon: '⚡' },
     { id: 'letter_relations', name: 'Relations Between Letters', nameAr: 'علاقات الحروف', icon: '🤝' }
   ],
 

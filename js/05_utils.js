@@ -13,6 +13,9 @@
                 if (subKey === 'General Qalqalah') return qList.filter(q => q.subcat === 'General Qalqalah' || q.ans === 'Qalqalah' || q.ans === 'No Qalqalah');
                 if (subKey === 'Qalqalah Degree') return qList.filter(q => q.subcat === 'Qalqalah Degree' || ['Minor', 'Medium', 'Major'].includes(q.ans));
             }
+            if (catKey === 'lam_harf') {
+                return qList.filter(q => q.subcat === subKey || q.ans === subKey || (q.ans && q.ans.startsWith(subKey)));
+            }
             const mapping = (typeof SUB_CATEGORY_MAPPING !== 'undefined') ? SUB_CATEGORY_MAPPING[catKey] : null;
             if (!mapping || !mapping[subKey]) return qList.filter(q => q.subcat === subKey || q.ans === subKey);
             const answers = mapping[subKey];
@@ -23,6 +26,8 @@
                 return answers.some(a => a.replace(/[\u2010-\u2015]/g, '-') === nAns);
             });
         }
+        if (typeof window !== 'undefined') window.getSubQuestions = getSubQuestions;
+        if (typeof global !== 'undefined') global.getSubQuestions = getSubQuestions;
 
         function getSelectedPool() {
             let pool = [];
@@ -126,7 +131,8 @@
             'madd_rules',                 // 6. Madd Rules
             'hamzat_wasl',                // 7. Hamzat Al-Wasl
             'lam_shamsiyyah_qamariyyah',  // 8. Lam Shamsiyyah & Lam Qamariyyah
-            'letter_relations'            // 9. Relations Between Letters
+            'lam_harf',                   // 9. Lam of Hal & Bal
+            'letter_relations'            // 10. Relations Between Letters
         ];
 
         let activeRseInstance = null;
@@ -415,6 +421,7 @@
                 if(q.categoryId === 'noon_sakinah_tanween') promptTxt = "What is the rule of noon sakin / tanween?";
                 else if(q.categoryId === 'meem_sakinah') promptTxt = "What is the rule of meem sakin?";
                 else if(q.categoryId === 'image_bank') promptTxt = "What is the rule of noon and meem mushaddad?";
+                else if(q.categoryId === 'lam_harf') promptTxt = "What is the rule of the Saakin Lam in Hal / Bal?";
                 else promptTxt = TAJWEED_BANK[q.categoryId]?.title || "Identify the Tajweed Rule";
             }
             
@@ -518,6 +525,8 @@
                     categoryChoices = ["Heavy Ghunnah", "Light Ghunnah"];
                 } else if (q.id && (q.id.startsWith('idgham_comp') || q.subcat === 'Idgham Completeness' || (q.choicesList && q.choicesList.includes('Complete Idgham (Kamil)')))) {
                     categoryChoices = ["Complete Idgham (Kamil)", "Incomplete Idgham (Naqis)"];
+                } else if (q.categoryId === 'lam_harf') {
+                    categoryChoices = ["Idgham (Merging)", "Izhar (Clarity)"];
                 }
                 let choicesList = [q.ans];
                 let wrongOptions = shuffleArray(categoryChoices.filter(c => c !== q.ans));
