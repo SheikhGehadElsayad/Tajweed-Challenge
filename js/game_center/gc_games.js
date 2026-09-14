@@ -287,6 +287,11 @@ class BaseGameEngine {
     // Wide Answers Row (matching .answers-row in System 1)
     const choicesBox = document.createElement('div');
     choicesBox.className = 'gc-quiz-answers-row';
+    if (choices.length <= 2) {
+      choicesBox.style.gridTemplateColumns = 'repeat(2, 1fr)';
+    } else if (choices.length === 3) {
+      choicesBox.style.gridTemplateColumns = 'repeat(3, 1fr)';
+    }
 
     // Dedicated Next Action Button Container (Hidden initially)
     const nextContainer = document.createElement('div');
@@ -308,9 +313,8 @@ class BaseGameEngine {
       btn.className = 'gc-quiz-ans-btn';
       btn.dataset.ans = choiceTxt;
 
-      const ruleData = (typeof ruleMeanings !== 'undefined' && ruleMeanings[choiceTxt])
-        ? ruleMeanings[choiceTxt]
-        : { en: choiceTxt, franco: choiceTxt };
+      const meanings = (typeof ruleMeanings !== 'undefined') ? ruleMeanings : ((typeof window !== 'undefined' && window.ruleMeanings) ? window.ruleMeanings : {});
+      const ruleData = meanings[choiceTxt] || { en: choiceTxt, franco: choiceTxt };
 
       const franco = ruleData.franco || ruleData.en;
       btn.innerHTML = `
@@ -585,14 +589,27 @@ class CardsEngine extends BaseGameEngine {
       : ['steal', 'bonus', 'swap', 'shield', 'lose_points', 'extra_turn', 'dud', 'double_points'];
 
     this.deckData = [];
-    const specialCount = Math.min(specialTypes.length, Math.max(4, Math.floor(totalQ * 0.35)));
 
+    // 1. Guarantee ALL selected questions are present in full
+    for (let qIdx = 0; qIdx < totalQ; qIdx++) {
+      this.deckData.push({ type: 'question', id: 'q_' + qIdx });
+    }
+
+    // 2. Add excitement / surprise tiles ON TOP of the chosen question count
+    // (User: "يبقو العدد اللى انا اختراته بلس الاوبشنز اللي بتزود الاثارة في اللعبة")
+    const specialCount = Math.min(specialTypes.length, Math.max(4, Math.round(totalQ * 0.35)));
     for (let s = 0; s < specialCount; s++) {
       this.deckData.push({ type: specialTypes[s % specialTypes.length], id: 'special_' + s });
     }
-    while (this.deckData.length < totalQ) {
-      this.deckData.push({ type: 'question', id: 'q_' + this.deckData.length });
+
+    // 3. Dynamic batch size: if total tiles fit nicely on one board (<= 32), display all in one batch!
+    if (this.deckData.length <= 32) {
+      this.batchSize = this.deckData.length;
+    } else {
+      this.batchSize = 24;
     }
+
+    // 4. Randomize the combined deck
     for (let i = this.deckData.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [this.deckData[i], this.deckData[j]] = [this.deckData[j], this.deckData[i]];
@@ -607,7 +624,19 @@ class CardsEngine extends BaseGameEngine {
     const start = this.batchIndex * this.batchSize;
     const currentBatch = this.deckData.slice(start, start + this.batchSize);
 
-    deckEl.dataset.count = currentBatch.length <= 12 ? '12' : '24';
+    if (currentBatch.length <= 12) {
+      deckEl.dataset.count = '12';
+    } else if (currentBatch.length <= 16) {
+      deckEl.dataset.count = '16';
+    } else if (currentBatch.length <= 20) {
+      deckEl.dataset.count = '20';
+    } else if (currentBatch.length <= 25) {
+      deckEl.dataset.count = '25';
+    } else if (currentBatch.length <= 30) {
+      deckEl.dataset.count = '30';
+    } else {
+      deckEl.dataset.count = '24';
+    }
     const colorClasses = ['bbz-color-blue', 'bbz-color-green', 'bbz-color-red', 'bbz-color-pink'];
 
     currentBatch.forEach((cardData, idx) => {
@@ -715,7 +744,7 @@ class CardsEngine extends BaseGameEngine {
 
     if (remaining.length === 0) {
       const nextBatchStart = (this.batchIndex + 1) * this.batchSize;
-      if (nextBatchStart < this.deckData.length && !window.GC_STATE.isGameOver()) {
+      if (nextBatchStart < this.deckData.length) {
         window.GC_AUDIO?.playFanfare();
         if (typeof confetti === 'function') confetti({ particleCount: 80, spread: 100 });
         
@@ -941,6 +970,11 @@ class BoxesEngine extends BaseGameEngine {
     for (let i = 0; i < totalBoxes; i++) {
       this.boxesData.push({ type: 'question', id: 'q_' + i });
     }
+    if (this.boxesData.length <= 32) {
+      this.batchSize = this.boxesData.length;
+    } else {
+      this.batchSize = 24;
+    }
   }
 
   renderCurrentBatch() {
@@ -951,7 +985,19 @@ class BoxesEngine extends BaseGameEngine {
     const start = this.batchIndex * this.batchSize;
     const currentBatch = this.boxesData.slice(start, start + this.batchSize);
 
-    grid.dataset.count = currentBatch.length <= 12 ? '12' : '24';
+    if (currentBatch.length <= 12) {
+      grid.dataset.count = '12';
+    } else if (currentBatch.length <= 16) {
+      grid.dataset.count = '16';
+    } else if (currentBatch.length <= 20) {
+      grid.dataset.count = '20';
+    } else if (currentBatch.length <= 25) {
+      grid.dataset.count = '25';
+    } else if (currentBatch.length <= 30) {
+      grid.dataset.count = '30';
+    } else {
+      grid.dataset.count = '24';
+    }
     const colorClasses = ['bbz-color-blue', 'bbz-color-green', 'bbz-color-red', 'bbz-color-pink'];
 
     currentBatch.forEach((boxItem, idx) => {
@@ -1256,6 +1302,11 @@ class BalloonEngine extends BaseGameEngine {
     `;
     this.batchIndex = 0;
     this.balloonsTotal = window.GC_STATE.questions.length || 24;
+    if (this.balloonsTotal <= 32) {
+      this.batchSize = this.balloonsTotal;
+    } else {
+      this.batchSize = 24;
+    }
     this.spawnBalloonsBatch();
   }
 

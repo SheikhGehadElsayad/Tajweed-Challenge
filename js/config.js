@@ -8,7 +8,7 @@
 
     const APP_CONFIG = {
         APP_NAME: 'Tajweed Challenge - Student Edition',
-        VERSION: '44',
+        VERSION: '45',
 
         DEFAULT_TEACHER: {
             name: 'Sheikh Gehad Elsayad',
