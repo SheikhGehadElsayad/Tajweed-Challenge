@@ -1071,14 +1071,14 @@
     flex-direction: column;
 }
 
-.arena-cmd-title-ar {
+.arena-cmd-title-en {
     font-size: 1.15rem;
     font-weight: 900;
     color: #0f172a;
     letter-spacing: -0.01em;
 }
 
-.arena-cmd-title-en {
+.arena-cmd-subtitle-en {
     font-size: 0.82rem;
     font-weight: 700;
     color: #64748b;
@@ -1124,348 +1124,221 @@
     border-color: #3b82f6;
 }
 
-/* 2. Full-Width Realm Dropdown Bar (Edge-to-edge from far right to far left, prominent & vibrant) */
-.arena-realm-dropdown-banner {
-    width: 100%;
-    padding: 16px 22px;
-    background: #f8fafc;
-    border-bottom: 2px solid #e2e8f0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    box-sizing: border-box;
-}
-
-.arena-dropdown-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.arena-dropdown-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-}
-
-.adh-icon {
-    font-size: 1.5rem;
-}
-
-.adh-text {
-    font-size: 1.15rem;
-    font-weight: 900;
-    color: #1e293b;
-}
-
-.arena-dropdown-nav {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.arena-nav-step-btn {
-    background: white;
-    border: 1.5px solid #cbd5e1;
-    border-radius: 10px;
-    padding: 6px 14px;
-    font-size: 0.92rem;
-    font-weight: 800;
-    color: #334155;
-    cursor: pointer;
-    transition: all 0.15s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.arena-nav-step-btn:hover {
-    background: #f1f5f9;
-    border-color: #94a3b8;
-    color: #0f172a;
-}
-
-.arena-dropdown-select-wrap {
-    width: 100%;
-}
-
-.arena-realm-dropdown {
-    width: 100% !important;
-    min-height: 56px;
-    padding: 10px 18px;
-    font-size: 1.25rem;
-    font-weight: 900;
-    color: #0f172a;
-    background: #ffffff;
-    border: 3.5px solid var(--world-color, #2563eb);
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-    cursor: pointer;
-    outline: none;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    box-sizing: border-box;
-    display: block;
-    line-height: 1.4;
-}
-
-.arena-realm-dropdown:hover,
-.arena-realm-dropdown:focus {
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.2);
-    border-color: var(--world-color, #2563eb);
-}
-
-.arena-realm-dropdown option {
-    font-size: 1.1rem;
-    font-weight: 800;
-    padding: 10px;
-    color: #0f172a;
-    background: white;
-}
-
-/* 3. Stage Deck & Missions Grid (Full Width) */
-.arena-stage-deck {
-    display: flex;
-    flex-direction: column;
-    padding: 20px 22px;
-    background: white;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.arena-empty-state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 48px 24px;
-    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-    border: 2.5px dashed #cbd5e1;
-    border-radius: 20px;
-    margin: 8px 0;
-    animation: fadeInEmpty 0.3s ease-in-out;
-}
-
-@keyframes fadeInEmpty {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.arena-empty-icon {
-    font-size: 3.5rem;
-    margin-bottom: 12px;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
-}
-
-.arena-empty-title {
-    font-size: 1.45rem;
-    font-weight: 900;
-    color: #1e293b;
-    margin: 0 0 8px 0;
-}
-
-.arena-empty-desc {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #64748b;
-    max-width: 520px;
-    margin: 0;
-    line-height: 1.5;
-}
-
-.stage-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 16px 22px;
-    border-radius: 16px;
-    border: 2px solid #e2e8f0;
-    flex-wrap: wrap;
-    gap: 16px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
-}
-
-.stage-title-wrap {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.stage-icon {
-    font-size: 2.8rem;
-    line-height: 1;
-}
-
-.stage-title-ar {
-    margin: 0;
-    font-size: 1.5rem;
-    font-weight: 900;
-    line-height: 1.25;
-}
-
-.stage-title-en {
-    font-size: 1rem;
-    font-weight: 800;
-    color: #334155;
-    margin-top: 2px;
-}
-
-.stage-subtitle {
-    margin: 4px 0 0 0;
-    font-size: 0.88rem;
-    color: #64748b;
-    font-weight: 700;
-}
-
-.stage-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.stage-action-btn {
-    background: white;
-    border: 2px solid #cbd5e1;
-    border-radius: 10px;
-    padding: 8px 16px;
-    font-weight: 900;
-    font-size: 0.88rem;
-    color: #334155;
-    cursor: pointer;
-    transition: all 0.15s ease;
-}
-
-.stage-action-btn:hover {
-    background: #f8fafc;
-    color: #0f172a;
-    border-color: #94a3b8;
-    transform: translateY(-1px);
-}
-
-.stage-action-btn.highlight {
-    background: #eff6ff;
-    color: #2563eb;
-    border-color: #93c5fd;
-}
-
-.stage-action-btn.highlight:hover {
-    background: #dbeafe;
-    border-color: #3b82f6;
-}
-
-/* Missions Grid (Spacious & Clean) */
-.stage-missions-grid {
+/* ==========================================================================
+   MODERN CARD-BASED RULE ARENA (OPTION 1: 100% ENGLISH, CLEAN ZERO-STATE)
+   ========================================================================== */
+.arena-realm-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 16px;
+    padding: 20px 22px;
+    background: #f8fafc;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.mission-card {
+@media (max-width: 640px) {
+    .arena-realm-grid {
+        grid-template-columns: 1fr;
+        padding: 12px 10px;
+    }
+}
+
+.realm-card {
     background: #ffffff;
-    border: 2.5px solid #e2e8f0;
-    border-radius: 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 18px;
     padding: 16px 18px;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     position: relative;
-    user-select: none;
+    border-top: 4px solid var(--world-color, #2563eb);
 }
 
-.mission-card:hover {
-    border-color: #cbd5e1;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
-    transform: translateY(-1px);
-}
-
-.mission-card.active {
+.realm-card:hover {
     border-color: var(--world-color, #2563eb);
-    background: linear-gradient(135deg, #ffffff 65%, rgba(37, 99, 235, 0.04));
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.1);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    transform: translateY(-2px);
 }
 
-.mc-header {
+.realm-card.active {
+    border-color: var(--world-color, #2563eb);
+    background: linear-gradient(135deg, #ffffff 75%, rgba(37, 99, 235, 0.04));
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.12);
+}
+
+.realm-card-top {
     display: flex;
-    align-items: flex-start;
     justify-content: space-between;
-    gap: 10px;
-    cursor: pointer;
-}
-
-.mc-title-wrap {
-    display: flex;
     align-items: flex-start;
     gap: 10px;
+}
+
+.realm-icon-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     flex: 1;
 }
 
-.mc-check-badge {
-    padding: 3px 8px;
-    border-radius: 9999px;
-    font-size: 0.8rem;
-    font-weight: 900;
-    background: #f1f5f9;
-    color: #64748b;
-    border: 1px solid #cbd5e1;
-    white-space: nowrap;
+.realm-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
     flex-shrink: 0;
-    margin-top: 2px;
 }
 
-.mc-check-badge.checked {
-    background: #dcfce7;
-    color: #15803d;
-    border-color: #86efac;
-}
-
-.mc-titles {
+.realm-text-wrap {
     display: flex;
     flex-direction: column;
     gap: 2px;
 }
 
-.mc-title-ar {
-    font-size: 1.12rem;
+.realm-title {
+    margin: 0;
+    font-size: 1.15rem;
     font-weight: 900;
     color: #0f172a;
+    line-height: 1.25;
+}
+
+.realm-desc {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748b;
     line-height: 1.3;
 }
 
-.mc-title-en {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #64748b;
-}
-
-.mc-bank-pill {
+.realm-bank-pill {
     font-size: 0.78rem;
-    font-weight: 800;
-    color: #0284c7;
+    font-weight: 900;
+    color: #0369a1;
     background: #e0f2fe;
-    padding: 3px 10px;
+    padding: 4px 10px;
     border-radius: 9999px;
     white-space: nowrap;
     flex-shrink: 0;
 }
 
-.mc-two-options-row {
+/* Control Bar (Toggle Switch & Sub-rules Button) */
+.realm-control-bar {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    align-items: center;
     padding-top: 10px;
-    border-top: 1.5px dashed #e2e8f0;
-    flex-wrap: wrap;
+    border-top: 1.5px solid #f1f5f9;
+    gap: 10px;
 }
 
-.mc-custom-qty-box {
+.realm-toggle-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Modern iOS/Android style toggle */
+.realm-toggle-switch {
+    display: none;
+}
+
+.realm-slider {
+    width: 46px;
+    height: 26px;
+    background: #cbd5e1;
+    border-radius: 9999px;
+    position: relative;
+    transition: background 0.2s ease;
+    display: inline-block;
+}
+
+.realm-slider::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.realm-toggle-switch:checked + .realm-slider {
+    background: var(--world-color, #10b981);
+}
+
+.realm-toggle-switch:checked + .realm-slider::after {
+    transform: translateX(20px);
+}
+
+.realm-status-badge {
+    font-size: 0.82rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+.realm-status-badge.off {
+    color: #94a3b8;
+    background: #f1f5f9;
+}
+
+.realm-status-badge.on {
+    color: #047857;
+    background: #d1fae5;
+}
+
+.realm-subrules-toggle {
+    background: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.realm-subrules-toggle:hover {
+    background: #eff6ff;
+    border-color: #93c5fd;
+    color: #2563eb;
+}
+
+.realm-subrules-toggle.open {
+    background: #dbeafe;
+    border-color: #3b82f6;
+    color: #1d4ed8;
+}
+
+/* Stepper Row */
+.realm-stepper-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    transition: opacity 0.2s ease;
+}
+
+.realm-stepper-row.disabled {
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.realm-stepper-box {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -1475,9 +1348,9 @@
     padding: 4px 8px;
 }
 
-.mc-step-btn {
-    width: 30px;
-    height: 30px;
+.realm-step-btn {
+    width: 28px;
+    height: 28px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1485,7 +1358,7 @@
     background: white;
     border: 1.5px solid #cbd5e1;
     color: #1e293b;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 900;
     cursor: pointer;
     transition: all 0.15s ease;
@@ -1494,78 +1367,191 @@
     padding: 0;
 }
 
-.mc-step-btn:hover {
+.realm-step-btn:hover:not(:disabled) {
     background: #eff6ff;
     border-color: #93c5fd;
     color: #2563eb;
     transform: scale(1.05);
 }
 
-.mc-step-btn:active {
-    transform: scale(0.95);
-}
-
-.mc-opt-label {
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: #475569;
-}
-
-.mc-qty-direct-input {
-    width: 52px;
-    height: 36px;
-    border: 2px solid #94a3b8;
-    border-radius: 8px;
+.realm-qty-input {
+    width: 48px;
+    height: 32px;
+    border: 1.5px solid #94a3b8;
+    border-radius: 6px;
     text-align: center;
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 900;
     color: #1e40af;
     background: white;
     outline: none;
-    padding: 0 4px;
-    box-sizing: border-box;
-    transition: border-color 0.15s;
+    padding: 0 2px;
 }
 
-.mc-qty-direct-input:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
-}
-
-.mc-opt-max {
-    font-size: 0.82rem;
+.realm-qty-max {
+    font-size: 0.8rem;
     font-weight: 800;
     color: #64748b;
     white-space: nowrap;
 }
 
-.mc-max-all-btn {
-    padding: 8px 18px;
-    border-radius: 10px;
-    border: 2px solid #cbd5e1;
+.realm-all-btn {
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1.5px solid #cbd5e1;
     background: white;
     font-weight: 900;
-    font-size: 0.92rem;
+    font-size: 0.85rem;
     color: #334155;
     cursor: pointer;
     transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.realm-all-btn:hover:not(:disabled) {
+    background: #eff6ff;
+    border-color: #93c5fd;
+    color: #2563eb;
+}
+
+.realm-all-btn.active {
+    background: var(--world-color, #2563eb);
+    color: white;
+    border-color: var(--world-color, #2563eb);
+}
+
+/* Sub-rules Drawer */
+.realm-subrules-drawer {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 10px;
+    border-top: 1px dashed #cbd5e1;
+    margin-top: 4px;
+}
+
+.realm-subrules-drawer.expanded {
+    display: flex;
+}
+
+.subrule-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+.subrule-item.active {
+    background: #f0fdf4;
+    border-color: #86efac;
+}
+
+.subrule-item-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.subrule-checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--world-color, #2563eb);
+    cursor: pointer;
+}
+
+.subrule-name {
+    flex: 1;
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.subrule-bank-mini {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #64748b;
+    background: #e2e8f0;
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+.subrule-item-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.subrule-item-controls.disabled {
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.subrule-mini-stepper {
     display: inline-flex;
     align-items: center;
     gap: 4px;
 }
 
-.mc-max-all-btn:hover {
-    background: #eff6ff;
-    border-color: #93c5fd;
-    color: #2563eb;
-    transform: translateY(-1px);
+.subrule-mini-btn {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: white;
+    border: 1px solid #cbd5e1;
+    font-size: 0.95rem;
+    font-weight: 900;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
 }
 
-.mc-max-all-btn.active {
+.subrule-mini-btn:hover:not(:disabled) {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.subrule-mini-input {
+    width: 40px;
+    height: 24px;
+    border: 1px solid #94a3b8;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 900;
+    color: #1e40af;
+    background: white;
+    outline: none;
+}
+
+.subrule-mini-all {
+    padding: 2px 8px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background: white;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #475569;
+    cursor: pointer;
+}
+
+.subrule-mini-all:hover:not(:disabled) {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.subrule-mini-all.active {
     background: var(--world-color, #2563eb);
     color: white;
     border-color: var(--world-color, #2563eb);
-    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
 }
 
 /* Arena HUD Footer (Displays Total Questions & Hero Start Button Only) */

@@ -338,62 +338,37 @@
                 // Clean zero-state start: no pre-selected rules
             }
 
-            // Determine initial active world: active category if initialSelection provided; otherwise null (clean empty state)
-            let activeWorldId = null;
-            if (options.initialSelection && typeof options.initialSelection === 'object') {
-                for (const catDef of CATEGORY_DEFINITIONS) {
-                    const catState = state[catDef.id] || {};
-                    if (Object.values(catState).some(s => s.enabled)) {
-                        activeWorldId = catDef.id;
-                        break;
-                    }
-                }
-            }
+            // Track expanded realms for sub-rules customization
+            const expandedRealms = new Set();
 
             // Create Root Arena Container
             const arena = document.createElement('div');
             arena.className = 'rule-arena-container';
 
-            // 1. Top Command Bar (Clean & Informative)
+            // 1. Top Command Bar (100% English)
             const cmdBar = document.createElement('div');
             cmdBar.className = 'arena-cmd-bar';
             cmdBar.innerHTML = `
                 <div class="arena-cmd-left">
                     <span class="arena-cmd-icon">🎯</span>
                     <div class="arena-cmd-titles">
-                        <span class="arena-cmd-title-ar">تخصيص قواعد التحدي</span>
-                        <span class="arena-cmd-title-en">Custom Challenge Setup</span>
+                        <span class="arena-cmd-title-en">Challenge Rule Selector</span>
+                        <span class="arena-cmd-subtitle-en">Toggle rules to practice and set question counts</span>
                     </div>
                 </div>
                 <div class="arena-cmd-actions">
-                    <button type="button" class="arena-btn-cmd highlight" id="arena-cmd-all" title="تحديد جميع الأسئلة في كافة الأبواب">🌟 تحديد الكل (Select All)</button>
-                    <button type="button" class="arena-btn-cmd" id="arena-cmd-clear" title="تفريغ كافة الخيارات والبدء من الصفر">🧹 مسح الكل (Clear All)</button>
+                    <button type="button" class="arena-btn-cmd highlight" id="arena-cmd-all" title="Select all questions across all rules">🌟 Select All (Max)</button>
+                    <button type="button" class="arena-btn-cmd" id="arena-cmd-clear" title="Reset all selections to zero">🧹 Clear All</button>
                 </div>
             `;
             arena.appendChild(cmdBar);
 
-            // 2. Full-Width Realm Dropdown Bar (Clean & focused)
-            const dropdownBanner = document.createElement('div');
-            dropdownBanner.className = 'arena-realm-dropdown-banner';
-            dropdownBanner.innerHTML = `
-                <div class="arena-dropdown-header">
-                    <label for="arena-realm-dropdown" class="arena-dropdown-label">
-                        <span class="adh-icon">📂</span>
-                        <span class="adh-text">اختر باب التجويد لتخصيص أسئلته / Select Realm:</span>
-                    </label>
-                </div>
-                <div class="arena-dropdown-select-wrap">
-                    <select id="arena-realm-dropdown" class="arena-realm-dropdown" aria-label="Select Realm"></select>
-                </div>
-            `;
-            arena.appendChild(dropdownBanner);
+            // 2. Modern Card Grid for all Realms
+            const realmGrid = document.createElement('div');
+            realmGrid.className = 'arena-realm-grid';
+            arena.appendChild(realmGrid);
 
-            // 3. Stage Deck (Full Width)
-            const stageDeck = document.createElement('div');
-            stageDeck.className = 'arena-stage-deck';
-            arena.appendChild(stageDeck);
-
-            // 4. Bottom Arena HUD Bar (Displays Total Selected Questions & Start Button)
+            // 3. Bottom Arena HUD Bar (100% English)
             const hudBar = document.createElement('div');
             hudBar.className = 'arena-hud-bar';
             hudBar.innerHTML = `
@@ -404,10 +379,11 @@
                     </div>
                     <div class="hud-metric">
                         <span class="hud-label">Active Rules:</span>
-                        <span class="hud-sub-val" id="arena-hud-subs-val">0 Sub-Rules</span>
+                        <span class="hud-sub-val" id="arena-hud-subs-val">0 Sub-Rules (0 Realms)</span>
                     </div>
                 </div>
-                <div id="arena-hud-action-slot" style="display: flex; align-items: center;">
+                <div class="arena-hud-actions" style="display: flex; align-items: center; gap: 10px;">
+                    <button type="button" class="arena-btn-cmd" id="arena-hud-reset" title="Reset all to zero">🧹 Reset</button>
                     ${options.showLaunchButton ? `
                         <button type="button" class="arena-hero-btn" id="arena-hero-launch-btn">
                             ${options.launchButtonText || '🚀 Start Challenge Now'}
@@ -433,7 +409,7 @@
                 let activeSubs = 0;
 
                 Object.entries(state).forEach(([catId, subMap]) => {
-                    const activeSubEntries = Object.entries(subMap).filter(([k, s]) => s.enabled);
+                    const activeSubEntries = Object.entries(subMap).filter(([k, s]) => s.enabled && s.qty > 0);
                     if (activeSubEntries.length > 0) {
                         activeWorlds++;
                         exported[catId] = {};
@@ -459,7 +435,7 @@
                 };
             };
 
-            // Main UI Refresh Function
+            // Main UI Refresh Function (Card-Based Option 1, 100% English)
             const updateUI = () => {
                 const { exported, pool, totalPoolCount, activeWorlds, activeSubs } = getExportedState();
 
@@ -469,185 +445,248 @@
                 if (totalValEl) totalValEl.textContent = totalPoolCount;
                 if (subsValEl) subsValEl.textContent = `${activeSubs} Sub-Rules (${activeWorlds} Realms)`;
 
-                // 2. Refresh Full-Width Dropdown
-                const dropdownEl = dropdownBanner.querySelector('#arena-realm-dropdown');
-                if (dropdownEl) {
-                    const activeDef = CATEGORY_DEFINITIONS.find(c => c.id === activeWorldId);
-                    if (activeDef) {
-                        dropdownEl.style.setProperty('--world-color', activeDef.color);
-                        dropdownEl.style.borderColor = activeDef.color;
-                    } else {
-                        dropdownEl.style.setProperty('--world-color', '#2563eb');
-                        dropdownEl.style.borderColor = '#cbd5e1';
-                    }
+                // 2. Render Modern Realm Cards
+                realmGrid.innerHTML = '';
+                CATEGORY_DEFINITIONS.forEach(catDef => {
+                    const qList = bank[catDef.id]?.questions || [];
+                    if (qList.length === 0) return;
 
-                    let optionsHtml = `<option value="" disabled ${!activeWorldId ? 'selected' : ''}>-- اضغط هنا لاختيار باب التجويد / Choose a Realm to Customize --</option>`;
-                    CATEGORY_DEFINITIONS.forEach(catDef => {
-                        const qList = bank[catDef.id]?.questions || [];
-                        if (qList.length === 0) return;
+                    const catState = state[catDef.id] || {};
+                    const subEntries = Object.entries(catState);
+                    const enabledSubs = subEntries.filter(([k, s]) => s.enabled && s.qty > 0);
 
-                        const catState = state[catDef.id] || {};
-                        const subEntries = Object.entries(catState);
-                        const enabledSubs = subEntries.filter(([k, s]) => s.enabled);
-
-                        let totalActiveCatQs = 0;
-                        enabledSubs.forEach(([k, s]) => {
+                    // Calculate bank and active counts for realm
+                    let totalBankQs = 0;
+                    let activeTotalCatQs = 0;
+                    subEntries.forEach(([k, s]) => {
+                        totalBankQs += s.maxAvailable;
+                        if (s.enabled) {
                             const count = (typeof s.qty === 'number') ? Math.min(s.qty, s.maxAvailable) : s.maxAvailable;
-                            totalActiveCatQs += count;
-                        });
-
-                        const isSel = catDef.id === activeWorldId;
-                        const statusBadge = enabledSubs.length > 0 
-                            ? `[✔️ ${enabledSubs.length}/${subEntries.length} مفعل • ${totalActiveCatQs} سؤال]` 
-                            : '[غير مفعل]';
-
-                        optionsHtml += `<option value="${catDef.id}" ${isSel ? 'selected' : ''}>
-                            ${catDef.icon} ${catDef.title} ${statusBadge}
-                        </option>`;
+                            activeTotalCatQs += count;
+                        }
                     });
-                    dropdownEl.innerHTML = optionsHtml;
 
-                    dropdownEl.onchange = (e) => {
-                        playClick();
-                        activeWorldId = e.target.value;
-                        updateUI();
-                    };
-                }
+                    const isRealmActive = enabledSubs.length > 0;
+                    const isAllMax = isRealmActive && (activeTotalCatQs === totalBankQs);
+                    const isExpanded = expandedRealms.has(catDef.id);
 
-                // 3. Render Active Realm Stage Deck (or Clean Empty State if no realm chosen)
-                if (!activeWorldId) {
-                    stageDeck.style.removeProperty('--world-color');
-                    stageDeck.innerHTML = `
-                        <div class="arena-empty-state">
-                            <div class="arena-empty-icon">📖</div>
-                            <h3 class="arena-empty-title">ابدأ باختيار باب التجويد</h3>
-                            <p class="arena-empty-desc">اختر الباب المطلوب من القائمة المنسدلة أعلاه لتخصيص أسئلته وقواعده الفرعية بحرية تامة.</p>
-                        </div>
-                    `;
-                } else {
-                    const activeDef = CATEGORY_DEFINITIONS.find(c => c.id === activeWorldId) || CATEGORY_DEFINITIONS[0];
-                    const activeCatState = state[activeDef.id] || {};
-                    const activeSubEntries = Object.entries(activeCatState);
-                    const activeEnabledCount = activeSubEntries.filter(([k, s]) => s.enabled).length;
-                    const isAllActiveInRealm = activeEnabledCount === activeSubEntries.length && activeSubEntries.length > 0;
+                    const card = document.createElement('div');
+                    card.className = `realm-card ${isRealmActive ? 'active' : ''}`;
+                    card.style.setProperty('--world-color', catDef.color);
 
-                    stageDeck.style.setProperty('--world-color', activeDef.color);
+                    // Build Subrules Drawer HTML
+                    let subRulesHtml = '';
+                    catDef.subrules.forEach(sub => {
+                        const subState = catState[sub.key] || { enabled: false, qty: 0, maxAvailable: 0 };
+                        if (subState.maxAvailable === 0) return;
+                        const isSubActive = subState.enabled && subState.qty > 0;
+                        const subDisplayQty = (subState.qty === 'ALL' || subState.qty >= subState.maxAvailable)
+                            ? subState.maxAvailable
+                            : (typeof subState.qty === 'number' ? subState.qty : subState.maxAvailable);
+                        const isSubAll = (subDisplayQty === subState.maxAvailable);
 
-                    stageDeck.innerHTML = `
-                        <div class="stage-header" style="border-left: 8px solid ${activeDef.color}; background: linear-gradient(135deg, ${activeDef.color}15, #ffffff 85%);">
-                            <div class="stage-title-wrap">
-                                <span class="stage-icon">${activeDef.icon}</span>
-                                <div>
-                                    <h3 class="stage-title-ar" style="color: ${activeDef.color};">${activeDef.title}</h3>
-                                    <p class="stage-subtitle">${activeDef.subtitle}</p>
+                        subRulesHtml += `
+                            <div class="subrule-item ${isSubActive ? 'active' : ''}" data-subkey="${sub.key}">
+                                <label class="subrule-item-header">
+                                    <input type="checkbox" class="subrule-checkbox" ${isSubActive ? 'checked' : ''}>
+                                    <span class="subrule-name">${sub.label}</span>
+                                    <span class="subrule-bank-mini">${subState.maxAvailable} Qs</span>
+                                </label>
+                                <div class="subrule-item-controls ${isSubActive ? '' : 'disabled'}">
+                                    <div class="subrule-mini-stepper">
+                                        <button type="button" class="subrule-mini-btn minus" ${!isSubActive ? 'disabled' : ''} aria-label="Decrease">−</button>
+                                        <input type="number" class="subrule-mini-input" min="1" max="${subState.maxAvailable}" value="${subDisplayQty}" ${!isSubActive ? 'disabled' : ''}>
+                                        <button type="button" class="subrule-mini-btn plus" ${!isSubActive ? 'disabled' : ''} aria-label="Increase">+</button>
+                                    </div>
+                                    <button type="button" class="subrule-mini-all ${isSubActive && isSubAll ? 'active' : ''}" ${!isSubActive ? 'disabled' : ''}>Max</button>
                                 </div>
                             </div>
-                            <div class="stage-actions">
-                                <button type="button" class="stage-action-btn highlight" id="stage-btn-toggle-all">
-                                    ${isAllActiveInRealm ? 'إلغاء تحديد هذا الباب (Deselect)' : 'تحديد كل أسئلة الباب (Select All)'}
-                                </button>
+                        `;
+                    });
+
+                    card.innerHTML = `
+                        <div class="realm-card-top">
+                            <div class="realm-icon-title">
+                                <div class="realm-icon-box" style="background: ${catDef.color}15; color: ${catDef.color}; border: 1.5px solid ${catDef.color}35;">
+                                    ${catDef.icon}
+                                </div>
+                                <div class="realm-text-wrap">
+                                    <h3 class="realm-title">${catDef.title}</h3>
+                                    <p class="realm-desc">${catDef.subtitle}</p>
+                                </div>
                             </div>
+                            <span class="realm-bank-pill">Bank: ${totalBankQs} Qs</span>
                         </div>
-                        <div class="stage-missions-grid" id="stage-missions-container"></div>
+
+                        <div class="realm-control-bar">
+                            <label class="realm-toggle-label" title="Toggle ${catDef.title}">
+                                <input type="checkbox" class="realm-toggle-switch" ${isRealmActive ? 'checked' : ''}>
+                                <span class="realm-slider"></span>
+                                <span class="realm-status-badge ${isRealmActive ? 'on' : 'off'}">${isRealmActive ? 'ACTIVE' : 'OFF'}</span>
+                            </label>
+
+                            <button type="button" class="realm-subrules-toggle ${isExpanded ? 'open' : ''}">
+                                ${isExpanded ? '▲ Hide Details' : '▼ Sub-Rules (' + enabledSubs.length + '/' + catDef.subrules.length + ')'}
+                            </button>
+                        </div>
+
+                        <div class="realm-stepper-row ${isRealmActive ? '' : 'disabled'}">
+                            <div class="realm-stepper-box">
+                                <button type="button" class="realm-step-btn minus" ${!isRealmActive ? 'disabled' : ''} aria-label="Decrease">−</button>
+                                <input type="number" class="realm-qty-input" min="1" max="${totalBankQs}" value="${activeTotalCatQs || totalBankQs}" ${!isRealmActive ? 'disabled' : ''}>
+                                <button type="button" class="realm-step-btn plus" ${!isRealmActive ? 'disabled' : ''} aria-label="Increase">+</button>
+                                <span class="realm-qty-max">/ ${totalBankQs} Qs</span>
+                            </div>
+                            <button type="button" class="realm-all-btn ${isRealmActive && isAllMax ? 'active' : ''}" ${!isRealmActive ? 'disabled' : ''}>
+                                All (${totalBankQs}) ⭐
+                            </button>
+                        </div>
+
+                        <div class="realm-subrules-drawer ${isExpanded ? 'expanded' : ''}">
+                            ${subRulesHtml}
+                        </div>
                     `;
 
-                    // Realm Header Actions
-                    const toggleAllBtn = stageDeck.querySelector('#stage-btn-toggle-all');
-                    if (toggleAllBtn) {
-                        toggleAllBtn.onclick = () => {
+                    // Wire Toggle Switch
+                    const toggleInput = card.querySelector('.realm-toggle-switch');
+                    if (toggleInput) {
+                        toggleInput.onchange = (e) => {
                             playClick();
-                            const nextState = !isAllActiveInRealm;
-                            Object.keys(activeCatState).forEach(k => {
-                                activeCatState[k].enabled = nextState;
-                                if (nextState) {
-                                    activeCatState[k].qty = activeCatState[k].maxAvailable;
+                            const willEnable = e.target.checked;
+                            Object.keys(catState).forEach(k => {
+                                catState[k].enabled = willEnable;
+                                if (willEnable) {
+                                    catState[k].qty = catState[k].maxAvailable;
                                 }
                             });
                             updateUI();
                         };
                     }
 
-                    // Render Sub-rule Mission Cards
-                    const missionsContainer = stageDeck.querySelector('#stage-missions-container');
-                    activeDef.subrules.forEach(sub => {
-                        const subState = activeCatState[sub.key] || { enabled: false, qty: 5, maxAvailable: 0 };
-                        if (subState.maxAvailable === 0) return;
-
-                        const isChecked = subState.enabled;
-                        const displayQty = (subState.qty === 'ALL' || subState.qty >= subState.maxAvailable) 
-                            ? subState.maxAvailable 
-                            : (typeof subState.qty === 'number' ? subState.qty : subState.maxAvailable);
-
-                        const isAllQty = (subState.qty === 'ALL' || subState.qty === subState.maxAvailable);
-
-                        const card = document.createElement('div');
-                        card.className = `mission-card ${isChecked ? 'active' : ''}`;
-                        card.style.setProperty('--world-color', activeDef.color);
-
-                        card.innerHTML = `
-                            <div class="mc-header">
-                                <div class="mc-title-wrap">
-                                    <span class="mc-check-badge ${isChecked ? 'checked' : ''}">
-                                        ${isChecked ? '✔️ مفعل' : '⭕ اضغط للتفعيل'}
-                                    </span>
-                                    <div class="mc-titles">
-                                        <div class="mc-title-ar">${sub.label}</div>
-                                    </div>
-                                </div>
-                                <span class="mc-bank-pill">المتاح: ${subState.maxAvailable}</span>
-                            </div>
-                            <div class="mc-two-options-row">
-                                <div class="mc-custom-qty-box">
-                                    <button type="button" class="mc-step-btn minus" aria-label="Decrease">−</button>
-                                    <input type="number" class="mc-qty-direct-input" min="1" max="${subState.maxAvailable}" value="${displayQty}">
-                                    <button type="button" class="mc-step-btn plus" aria-label="Increase">+</button>
-                                    <span class="mc-opt-max">/ ${subState.maxAvailable}</span>
-                                </div>
-
-                                <button type="button" class="mc-max-all-btn ${isChecked && isAllQty ? 'active' : ''}">
-                                    الكل (${subState.maxAvailable}) ⭐
-                                </button>
-                            </div>
-                        `;
-
-                        // Toggle when clicking header
-                        const headerEl = card.querySelector('.mc-header');
-                        headerEl.onclick = (e) => {
-                            e.stopPropagation();
+                    // Wire Sub-rules Expand/Collapse
+                    const subrulesBtn = card.querySelector('.realm-subrules-toggle');
+                    if (subrulesBtn) {
+                        subrulesBtn.onclick = () => {
                             playClick();
-                            subState.enabled = !subState.enabled;
-                            if (subState.enabled && (subState.qty === undefined || subState.qty === 0)) {
-                                subState.qty = subState.maxAvailable;
+                            if (expandedRealms.has(catDef.id)) {
+                                expandedRealms.delete(catDef.id);
+                            } else {
+                                expandedRealms.add(catDef.id);
                             }
                             updateUI();
                         };
+                    }
 
-                        // Direct number input
-                        const inputEl = card.querySelector('.mc-qty-direct-input');
-                        inputEl.onclick = (e) => e.stopPropagation();
-                        inputEl.onfocus = () => { inputEl.select(); };
-                        inputEl.onchange = (e) => {
+                    // Wire Steppers for Realm
+                    const realmMinus = card.querySelector('.realm-step-btn.minus');
+                    const realmPlus = card.querySelector('.realm-step-btn.plus');
+                    const realmQtyInput = card.querySelector('.realm-qty-input');
+                    const realmAllBtn = card.querySelector('.realm-all-btn');
+
+                    if (realmMinus) {
+                        realmMinus.onclick = () => {
                             playClick();
-                            let val = parseInt(e.target.value, 10);
-                            if (isNaN(val) || val < 1) val = 1;
-                            if (val > subState.maxAvailable) val = subState.maxAvailable;
-                            e.target.value = val;
-                            subState.enabled = true;
-                            subState.qty = val;
+                            if (activeTotalCatQs <= 1) {
+                                Object.keys(catState).forEach(k => { catState[k].enabled = false; });
+                            } else {
+                                const targetSub = Object.values(catState).filter(s => s.enabled && s.qty > 1).sort((a, b) => b.qty - a.qty)[0];
+                                if (targetSub) {
+                                    targetSub.qty--;
+                                } else {
+                                    const oneSub = Object.values(catState).find(s => s.enabled);
+                                    if (oneSub) oneSub.enabled = false;
+                                }
+                            }
                             updateUI();
                         };
+                    }
 
-                        // Plus & Minus Steppers
-                        const minusBtn = card.querySelector('.mc-step-btn.minus');
-                        if (minusBtn) {
-                            minusBtn.onclick = (e) => {
+                    if (realmPlus) {
+                        realmPlus.onclick = () => {
+                            playClick();
+                            if (!isRealmActive) {
+                                Object.keys(catState).forEach(k => {
+                                    catState[k].enabled = true;
+                                    catState[k].qty = catState[k].maxAvailable;
+                                });
+                            } else {
+                                const targetSub = Object.values(catState).find(s => s.enabled && s.qty < s.maxAvailable);
+                                if (targetSub) {
+                                    targetSub.qty++;
+                                } else {
+                                    const disabledSub = Object.values(catState).find(s => !s.enabled);
+                                    if (disabledSub) {
+                                        disabledSub.enabled = true;
+                                        disabledSub.qty = 1;
+                                    }
+                                }
+                            }
+                            updateUI();
+                        };
+                    }
+
+                    if (realmQtyInput) {
+                        realmQtyInput.onfocus = () => realmQtyInput.select();
+                        realmQtyInput.onchange = (e) => {
+                            playClick();
+                            let val = parseInt(e.target.value, 10);
+                            if (isNaN(val) || val <= 0) {
+                                Object.keys(catState).forEach(k => { catState[k].enabled = false; });
+                            } else {
+                                if (val > totalBankQs) val = totalBankQs;
+                                let remaining = val;
+                                Object.keys(catState).forEach(k => {
+                                    const sub = catState[k];
+                                    if (remaining > 0) {
+                                        sub.enabled = true;
+                                        sub.qty = Math.min(remaining, sub.maxAvailable);
+                                        remaining -= sub.qty;
+                                    } else {
+                                        sub.enabled = false;
+                                        sub.qty = 0;
+                                    }
+                                });
+                            }
+                            updateUI();
+                        };
+                    }
+
+                    if (realmAllBtn) {
+                        realmAllBtn.onclick = () => {
+                            playClick();
+                            Object.keys(catState).forEach(k => {
+                                catState[k].enabled = true;
+                                catState[k].qty = catState[k].maxAvailable;
+                            });
+                            updateUI();
+                        };
+                    }
+
+                    // Wire Individual Subrules inside drawer
+                    card.querySelectorAll('.subrule-item').forEach(subItem => {
+                        const subKey = subItem.getAttribute('data-subkey');
+                        const subState = catState[subKey];
+                        if (!subState) return;
+
+                        const chk = subItem.querySelector('.subrule-checkbox');
+                        if (chk) {
+                            chk.onchange = (e) => {
+                                playClick();
+                                subState.enabled = e.target.checked;
+                                if (subState.enabled && (!subState.qty || subState.qty <= 0)) {
+                                    subState.qty = subState.maxAvailable;
+                                }
+                                updateUI();
+                            };
+                        }
+
+                        const subMinus = subItem.querySelector('.subrule-mini-btn.minus');
+                        if (subMinus) {
+                            subMinus.onclick = (e) => {
                                 e.stopPropagation();
                                 playClick();
-                                let currentVal = parseInt(inputEl.value, 10) || subState.maxAvailable;
-                                if (currentVal > 1) {
-                                    currentVal--;
-                                    subState.qty = currentVal;
-                                    subState.enabled = true;
+                                if (subState.qty > 1) {
+                                    subState.qty--;
                                 } else {
                                     subState.enabled = false;
                                 }
@@ -655,34 +694,50 @@
                             };
                         }
 
-                        const plusBtn = card.querySelector('.mc-step-btn.plus');
-                        if (plusBtn) {
-                            plusBtn.onclick = (e) => {
+                        const subPlus = subItem.querySelector('.subrule-mini-btn.plus');
+                        if (subPlus) {
+                            subPlus.onclick = (e) => {
                                 e.stopPropagation();
                                 playClick();
-                                let currentVal = parseInt(inputEl.value, 10) || 0;
-                                if (currentVal < subState.maxAvailable) {
-                                    currentVal++;
-                                    subState.qty = currentVal;
+                                if (subState.qty < subState.maxAvailable) {
+                                    subState.qty++;
                                     subState.enabled = true;
                                     updateUI();
                                 }
                             };
                         }
 
-                        // Max All Button
-                        const maxAllBtn = card.querySelector('.mc-max-all-btn');
-                        maxAllBtn.onclick = (e) => {
-                            e.stopPropagation();
-                            playClick();
-                            subState.enabled = true;
-                            subState.qty = subState.maxAvailable;
-                            updateUI();
-                        };
+                        const subInput = subItem.querySelector('.subrule-mini-input');
+                        if (subInput) {
+                            subInput.onfocus = () => subInput.select();
+                            subInput.onchange = (e) => {
+                                playClick();
+                                let val = parseInt(e.target.value, 10);
+                                if (isNaN(val) || val <= 0) {
+                                    subState.enabled = false;
+                                } else {
+                                    if (val > subState.maxAvailable) val = subState.maxAvailable;
+                                    subState.qty = val;
+                                    subState.enabled = true;
+                                }
+                                updateUI();
+                            };
+                        }
 
-                        missionsContainer.appendChild(card);
+                        const subMax = subItem.querySelector('.subrule-mini-all');
+                        if (subMax) {
+                            subMax.onclick = (e) => {
+                                e.stopPropagation();
+                                playClick();
+                                subState.enabled = true;
+                                subState.qty = subState.maxAvailable;
+                                updateUI();
+                            };
+                        }
                     });
-                }
+
+                    realmGrid.appendChild(card);
+                });
 
                 // Notify callback
                 if (typeof options.onChange === 'function') {
@@ -710,9 +765,6 @@
                             catState[subKey].qty = catState[subKey].maxAvailable;
                         });
                     });
-                    if (!activeWorldId) {
-                        activeWorldId = CATEGORY_DEFINITIONS[0].id;
-                    }
                     updateUI();
                 };
             }
@@ -729,38 +781,15 @@
                             catState[subKey].enabled = false;
                         });
                     });
-                    activeWorldId = null;
                     updateUI();
                 };
             }
 
-            // 3. Dropdown Prev / Next Navigation Buttons
-            const prevBtn = arena.querySelector('#arena-realm-prev');
-            const nextBtn = arena.querySelector('#arena-realm-next');
-
-            if (prevBtn) {
-                prevBtn.onclick = () => {
-                    playClick();
-                    const idx = CATEGORY_DEFINITIONS.findIndex(c => c.id === activeWorldId);
-                    if (idx > 0) {
-                        activeWorldId = CATEGORY_DEFINITIONS[idx - 1].id;
-                    } else {
-                        activeWorldId = CATEGORY_DEFINITIONS[CATEGORY_DEFINITIONS.length - 1].id;
-                    }
-                    updateUI();
-                };
-            }
-
-            if (nextBtn) {
-                nextBtn.onclick = () => {
-                    playClick();
-                    const idx = CATEGORY_DEFINITIONS.findIndex(c => c.id === activeWorldId);
-                    if (idx < CATEGORY_DEFINITIONS.length - 1) {
-                        activeWorldId = CATEGORY_DEFINITIONS[idx + 1].id;
-                    } else {
-                        activeWorldId = CATEGORY_DEFINITIONS[0].id;
-                    }
-                    updateUI();
+            // 3. Reset Button in HUD
+            const hudResetBtn = arena.querySelector('#arena-hud-reset');
+            if (hudResetBtn) {
+                hudResetBtn.onclick = () => {
+                    if (cmdClearBtn) cmdClearBtn.click();
                 };
             }
 
@@ -774,7 +803,7 @@
                 };
             }
 
-            // Initial render
+            // Initial render (Clean 0-state)
             updateUI();
 
             return {
@@ -782,10 +811,7 @@
                 getPool: () => getExportedState().pool,
                 getTotalCount: () => getExportedState().totalPoolCount,
                 update: () => updateUI(),
-                selectWorld: (catId) => {
-                    activeWorldId = catId;
-                    updateUI();
-                }
+                reset: () => { if (cmdClearBtn) cmdClearBtn.click(); }
             };
         }
     };
