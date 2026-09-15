@@ -5,7 +5,7 @@
         
         .splash-left { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2vh; border-bottom: 2px solid #e2e8f0; text-align: center;}
         @media (min-width: 768px) { .splash-left { align-items: flex-start; border-bottom: none; border-right: 2px solid #e2e8f0; padding-right: 4vw; text-align: left;} }
-        .splash-right { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2vh; padding: 2vh; }
+        .splash-right { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 16px; padding: 2vh; width: 100%; max-width: 420px; }
 
         .splash-link { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 1.5vh 2vw; border-radius: 99px; text-decoration: none; font-weight: 800; font-size: 1.1rem; width: 100%; max-width: 300px; transition: transform 0.1s, box-shadow 0.1s; }
         .splash-link:active { transform: scale(0.98); }
@@ -36,118 +36,105 @@
     50% { transform: translateY(-8px); }
 }
 
-#btn-enter-app {
-    background: linear-gradient(135deg, #10b981, #059669);
-    box-shadow: 0 10px 25px rgba(16,185,129,0.35), 0 6px 0 #047857;
-    font-size: 1.35rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-    width: 100%;
-    max-width: 380px;
-    padding: 16px 24px;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-#btn-enter-app:hover {
-    filter: brightness(1.05);
-    transform: translateY(-2px);
-}
-#btn-enter-app:active {
-    transform: translateY(4px);
-    box-shadow: 0 2px 10px rgba(16,185,129,0.3), 0 2px 0 #047857;
-}
-
-/* Compact Quick Action Buttons Row */
-.compact-actions-row {
+/* Large Splash Action Hero Buttons */
+.splash-hero-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
     width: 100%;
     max-width: 380px;
-    margin-top: 10px;
-}
-
-.compact-icon-btn {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: var(--card-bg, #ffffff);
-    border: 2px solid var(--card-border, #e2e8f0);
-    border-radius: 14px;
-    padding: 10px 14px;
-    font-size: 0.95rem;
-    font-weight: 800;
-    color: var(--text-main);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    cursor: pointer;
-    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-.compact-icon-btn:hover {
-    transform: translateY(-2px);
-    border-color: var(--primary);
-    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12);
-}
-
-.compact-icon-btn:active {
-    transform: scale(0.97);
-}
-
-/* Visually Separated Teachers & Parents Section */
-.teacher-tools-section {
-    width: 100%;
-    max-width: 380px;
-    margin-top: 20px;
-    padding: 14px 16px;
-    background: rgba(255, 255, 255, 0.75);
-    border: 1.5px solid #cbd5e1;
+    padding: 16px 24px;
     border-radius: 16px;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-}
-
-.teacher-tools-title {
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: #475569;
-    text-transform: uppercase;
+    font-size: 1.35rem;
+    font-weight: 900;
     letter-spacing: 0.5px;
-    margin: 0 0 10px 0;
-    text-align: center;
-}
-
-.teacher-tools-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-}
-
-.teacher-tool-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    background: white;
-    border: 1.5px solid #cbd5e1;
-    border-radius: 10px;
-    padding: 8px 10px;
-    font-size: 0.78rem;
-    font-weight: 800;
-    color: #334155;
+    color: #ffffff;
     text-decoration: none;
     cursor: pointer;
-    transition: all 0.15s ease;
-    white-space: nowrap;
+    border: none;
+    user-select: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
 
-.teacher-tool-btn:hover {
-    background: #f1f5f9;
+.splash-btn-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+#btn-enter-app,
+.btn-enter-app {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 10px 25px rgba(16,185,129,0.35), 0 6px 0 #047857;
+}
+#btn-enter-app:hover,
+.btn-enter-app:hover {
+    filter: brightness(1.06);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(16,185,129,0.4), 0 6px 0 #047857;
+}
+#btn-enter-app:active,
+.btn-enter-app:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 10px rgba(16,185,129,0.3), 0 2px 0 #047857;
+}
+
+.btn-splash-wa {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    box-shadow: 0 10px 25px rgba(37,211,102,0.35), 0 6px 0 #0e6b60;
+}
+.btn-splash-wa:hover {
+    filter: brightness(1.06);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(37,211,102,0.4), 0 6px 0 #0e6b60;
+}
+.btn-splash-wa:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 10px rgba(37,211,102,0.3), 0 2px 0 #0e6b60;
+}
+
+.btn-splash-linktree {
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
+    box-shadow: 0 10px 25px rgba(37,99,235,0.35), 0 6px 0 #1d4ed8;
+}
+.btn-splash-linktree:hover {
+    filter: brightness(1.06);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(37,99,235,0.4), 0 6px 0 #1d4ed8;
+}
+.btn-splash-linktree:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 10px rgba(37,99,235,0.3), 0 2px 0 #1d4ed8;
+}
+
+/* Audio Review Button (Retained on splash for verification) */
+.splash-review-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 99px;
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    color: #475569;
+    font-weight: 800;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: all 0.15s ease;
+    margin-top: 6px;
+    cursor: pointer;
+}
+.splash-review-btn:hover {
+    background: #f8fafc;
     border-color: #94a3b8;
-    transform: translateY(-1px);
+    color: #0f172a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+.splash-review-btn:active {
+    transform: translateY(1px);
 }
 
 /* Unified 5-Card Grid for Choose Learning Mode */

@@ -33,7 +33,7 @@
             freePractice: "Free Practice",
             freePracticeDesc: "Custom practical cards",
             theoreticalQuiz: "Theoretical Quiz",
-            theoreticalQuizDesc: "340 Questions • T/F & MC",
+            theoreticalQuizDesc: "231 Questions • T/F & MC",
             gameCenterMode: "Game Center",
             gameCenterDesc: "7 Interactive arcade games",
             
@@ -113,7 +113,7 @@
             freePractice: "الممارسة الحرة",
             freePracticeDesc: "بطاقات عملية مخصصة",
             theoreticalQuiz: "الاختبار النظري",
-            theoreticalQuizDesc: "٣٤٠ سؤال نظري • صح/خطأ واختيارات",
+            theoreticalQuizDesc: "٢٣١ سؤال نظري • صح/خطأ واختيارات",
             gameCenterMode: "مركز الألعاب",
             gameCenterDesc: "٧ ألعاب تفاعلية حماسية",
             

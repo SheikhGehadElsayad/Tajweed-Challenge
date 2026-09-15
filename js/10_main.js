@@ -23,38 +23,24 @@ const appContainer = document.createElement('div');
                 
                 <div class="splash-right">
                     <!-- Primary Large Action Button -->
-                    <button id="btn-enter-app" class="btn-start" aria-label="Enter App" style="margin-top: 0;">
+                    <button id="btn-enter-app" class="splash-hero-btn btn-enter-app" aria-label="Enter App">
                         <span data-i18n="enterApp">Enter App</span> ➡️
                     </button>
 
-                    <!-- Compact Secondary Action Row -->
-                    <div class="compact-actions-row" role="group" aria-label="Quick Navigation">
-                        <button id="btn-show-lb-splash" class="compact-icon-btn" type="button" aria-label="View Leaderboard">
-                            <span aria-hidden="true">🏆</span> <span data-i18n="leaderboard">Leaderboard</span>
-                        </button>
-                        <button id="btn-goto-gamecenter" class="compact-icon-btn" type="button" aria-label="Open Game Center Arcade">
-                            <span aria-hidden="true">🎲</span> <span data-i18n="gameCenter">Game Center</span>
-                        </button>
-                    </div>
+                    <!-- WhatsApp Large Button -->
+                    <a href="https://wa.me/201147992249" target="_blank" rel="noopener noreferrer" class="splash-hero-btn btn-splash-wa" aria-label="Contact Sheikh Gehad on WhatsApp">
+                        <span class="splash-btn-icon" aria-hidden="true">💬</span> <span data-i18n="whatsAppContact">WhatsApp</span>
+                    </a>
 
-                    <!-- Visually Separated Teachers & Parents Section -->
-                    <section class="teacher-tools-section" aria-labelledby="teacher-tools-heading">
-                        <h4 id="teacher-tools-heading" class="teacher-tools-title" data-i18n="teachersAndParents">Teachers & Parents</h4>
-                        <div class="teacher-tools-grid">
-                            <button id="btn-splash-hw" class="teacher-tool-btn" type="button" aria-label="Assign Homework">
-                                <span aria-hidden="true">📝</span> <span data-i18n="assignHomework">Assign HW</span>
-                            </button>
-                            <a href="review.html" target="_blank" rel="noopener noreferrer" class="teacher-tool-btn" aria-label="Recitation Audio Review">
-                                <span aria-hidden="true">🔍</span> <span data-i18n="recitationReview">Audio Review</span>
-                            </a>
-                            <a href="https://wa.me/201147992249" target="_blank" rel="noopener noreferrer" class="teacher-tool-btn" aria-label="Contact Sheikh Gehad on WhatsApp">
-                                <span aria-hidden="true">💬</span> <span data-i18n="whatsAppContact">WhatsApp</span>
-                            </a>
-                            <a href="https://linktr.ee/GehadNagah789" target="_blank" rel="noopener noreferrer" class="teacher-tool-btn" aria-label="Visit Linktree Profile">
-                                <span aria-hidden="true">🔗</span> <span data-i18n="linktree">Linktree</span>
-                            </a>
-                        </div>
-                    </section>
+                    <!-- Linktree Large Button -->
+                    <a href="https://linktr.ee/GehadNagah789" target="_blank" rel="noopener noreferrer" class="splash-hero-btn btn-splash-linktree" aria-label="Sheikh Gehad Linktree Profile">
+                        <span class="splash-btn-icon" aria-hidden="true">🔗</span> <span data-i18n="linktree">Linktree</span>
+                    </a>
+
+                    <!-- Recitation Audio Review (Retained for ongoing verification) -->
+                    <a href="review.html" target="_blank" rel="noopener noreferrer" class="splash-review-btn" aria-label="Recitation Audio Review">
+                        <span aria-hidden="true">🔍</span> <span data-i18n="recitationReview">Audio Review</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -98,7 +84,7 @@ const appContainer = document.createElement('div');
                 <div id="btn-mode-theory" class="mode-card" style="--card-accent: var(--accent-theory); --card-accent-bg: var(--accent-theory-bg);" role="button" tabindex="0" aria-label="Theoretical Quiz">
                     <div class="mode-card-icon">📚</div>
                     <h2 class="mode-card-title" data-i18n="theoreticalQuiz">Theoretical Quiz</h2>
-                    <p class="mode-card-desc" data-i18n="theoreticalQuizDesc">340 Questions • T/F & MC</p>
+                    <p class="mode-card-desc" data-i18n="theoreticalQuizDesc">231 Questions • T/F & MC</p>
                 </div>
 
                 <!-- 5. Game Center -->
@@ -109,9 +95,12 @@ const appContainer = document.createElement('div');
                 </div>
             </div>
 
-            <!-- Teachers & Parents Assign HW shortcut -->
-            <div style="margin-top: 3.5vh; text-align: center; width: 100%;">
-                <button id="btn-mode-hw" class="btn-secondary" style="margin: 0 auto; padding: 10px 24px; font-weight: 800; border-radius: 12px; background: white; border: 1.5px solid #cbd5e1; color: #475569;" aria-label="Teachers & Parents: Assign HW">
+            <!-- Teachers & Parents Tools / Quick Links -->
+            <div style="margin-top: 3.5vh; display: flex; justify-content: center; gap: 14px; width: 100%; flex-wrap: wrap;">
+                <button id="btn-mode-lb" class="btn-secondary" style="padding: 10px 22px; font-weight: 800; border-radius: 12px; background: white; border: 1.5px solid #cbd5e1; color: #475569;" aria-label="Leaderboard">
+                    🏆 <span data-i18n="leaderboard">Leaderboard</span>
+                </button>
+                <button id="btn-mode-hw" class="btn-secondary" style="padding: 10px 22px; font-weight: 800; border-radius: 12px; background: white; border: 1.5px solid #cbd5e1; color: #475569;" aria-label="Teachers & Parents: Assign HW">
                     📝 <span data-i18n="assignHomework">Assign HW</span>
                 </button>
             </div>
@@ -700,7 +689,8 @@ const appContainer = document.createElement('div');
             });
             
             parseURLModes();
-            document.getElementById('btn-show-lb-splash').addEventListener('click', () => { SFX.click(); showLeaderboard('screen-splash'); });
+            document.getElementById('btn-show-lb-splash')?.addEventListener('click', () => { SFX.click(); showLeaderboard('screen-splash'); });
+            document.getElementById('btn-mode-lb')?.addEventListener('click', () => { SFX.click(); showLeaderboard('screen-mode-select'); });
             
             document.getElementById('btn-mode-theory')?.addEventListener('click', () => {
                 SFX.click(); switchScreen('screen-theory-setup');
