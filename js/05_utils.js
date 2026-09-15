@@ -30,16 +30,7 @@
 
             if (typeof window.RuleSelectorEngine !== 'undefined') {
                 activeRseInstance = window.RuleSelectorEngine.render(container, {
-                    initialSelection: {
-                        'qalqalah': {
-                            'Minor': { enabled: true, qty: 5 },
-                            'Medium': { enabled: true, qty: 5 },
-                            'Major': { enabled: true, qty: 5 }
-                        },
-                        'madd_rules': {
-                            'Connected': { enabled: true, qty: 5 }
-                        }
-                    },
+                    initialSelection: {}, // Clean zero-state: no rules pre-selected
                     showLaunchButton: false,
                     onChange: (data) => {
                         const totalCount = data.totalCount;

@@ -1235,6 +1235,47 @@
     box-sizing: border-box;
 }
 
+.arena-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 48px 24px;
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    border: 2.5px dashed #cbd5e1;
+    border-radius: 20px;
+    margin: 8px 0;
+    animation: fadeInEmpty 0.3s ease-in-out;
+}
+
+@keyframes fadeInEmpty {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.arena-empty-icon {
+    font-size: 3.5rem;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
+}
+
+.arena-empty-title {
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: #1e293b;
+    margin: 0 0 8px 0;
+}
+
+.arena-empty-desc {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #64748b;
+    max-width: 520px;
+    margin: 0;
+    line-height: 1.5;
+}
+
 .stage-header {
     display: flex;
     justify-content: space-between;
@@ -1431,7 +1472,37 @@
     background: #f8fafc;
     border: 1.5px solid #cbd5e1;
     border-radius: 10px;
-    padding: 4px 10px;
+    padding: 4px 8px;
+}
+
+.mc-step-btn {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: white;
+    border: 1.5px solid #cbd5e1;
+    color: #1e293b;
+    font-size: 1.15rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+    line-height: 1;
+    padding: 0;
+}
+
+.mc-step-btn:hover {
+    background: #eff6ff;
+    border-color: #93c5fd;
+    color: #2563eb;
+    transform: scale(1.05);
+}
+
+.mc-step-btn:active {
+    transform: scale(0.95);
 }
 
 .mc-opt-label {
