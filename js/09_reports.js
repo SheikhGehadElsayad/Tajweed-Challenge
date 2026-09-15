@@ -298,7 +298,9 @@ ${magicSyncLink}`;
                     pBtn.onclick = () => {
                         let practicePlay = [];
                         missedQs.forEach(m => {
-                            let qObj = (TAJWEED_BANK[m.categoryId]?.questions || (typeof THEORETICAL_BANK !== 'undefined' && THEORETICAL_BANK[m.categoryId]?.questions) || []).find(q => q.id === m.qId);
+                            let qObj = (typeof window.QuestionRepository !== 'undefined')
+                                ? window.QuestionRepository.findQuestionById(m.qId)
+                                : ((TAJWEED_BANK[m.categoryId]?.questions || (typeof THEORETICAL_BANK !== 'undefined' && THEORETICAL_BANK[m.categoryId]?.questions) || []).find(q => q.id === m.qId));
                             if(qObj) practicePlay.push({...qObj, categoryId: m.categoryId, categoryTitle: m.categoryTitle, isTheory: m.isTheory});
                         });
                         if(practicePlay.length > 0) {

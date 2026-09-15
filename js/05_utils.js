@@ -1,126 +1,12 @@
         function getSubQuestions(catKey, subKey, qList) {
+            if (typeof window !== 'undefined' && window.QuestionRepository) {
+                return window.QuestionRepository.getBySubRule(catKey, subKey, qList);
+            }
             if (!Array.isArray(qList) || qList.length === 0) return [];
-            if (catKey === 'tafkheem_tarqeeq') {
-                return qList.filter(q => q.subcat === subKey);
-            }
-            if (catKey === 'noon_sakinah_tanween') {
-                if (subKey === 'Ikhfa Ghunnah') return qList.filter(q => (q.id && q.id.startsWith('ikhfa_gh')) || q.subcat === 'Ikhfa Ghunnah' || (q.prompt && q.prompt.includes('Ghunnah')));
-                if (subKey === 'Idgham Completeness') return qList.filter(q => (q.id && q.id.startsWith('idgham_comp')) || q.subcat === 'Idgham Completeness');
-                if (subKey === 'Idgham with Ghunnah') return qList.filter(q => q.subcat === 'Idgham with Ghunnah' || q.ans === 'Idgham with Ghunnah');
-                if (subKey === 'Idgham without Ghunnah') return qList.filter(q => q.subcat === 'Idgham without Ghunnah' || q.ans === 'Idgham without Ghunnah');
-            }
-            if (catKey === 'qalqalah') {
-                if (subKey === 'General Qalqalah') return qList.filter(q => q.subcat === 'General Qalqalah' || q.ans === 'Qalqalah' || q.ans === 'No Qalqalah');
-                if (subKey === 'Qalqalah Degree') return qList.filter(q => q.subcat === 'Qalqalah Degree' || ['Minor', 'Medium', 'Major'].includes(q.ans));
-            }
-            if (catKey === 'lam_harf') {
-                return qList.filter(q => q.subcat === subKey || q.ans === subKey || (q.ans && q.ans.startsWith(subKey)));
-            }
-            const mapping = (typeof SUB_CATEGORY_MAPPING !== 'undefined') ? SUB_CATEGORY_MAPPING[catKey] : null;
-            if (!mapping || !mapping[subKey]) return qList.filter(q => q.subcat === subKey || q.ans === subKey);
-            const answers = mapping[subKey];
-            return qList.filter(q => {
-                if (q.subcat === subKey) return true;
-                if (answers.includes(q.ans)) return true;
-                const nAns = (q.ans || '').replace(/[\u2010-\u2015]/g, '-');
-                return answers.some(a => a.replace(/[\u2010-\u2015]/g, '-') === nAns);
-            });
+            return qList.filter(q => q.subcat === subKey || q.subRule === subKey || q.ans === subKey);
         }
         if (typeof window !== 'undefined') window.getSubQuestions = getSubQuestions;
         if (typeof global !== 'undefined') global.getSubQuestions = getSubQuestions;
-
-        function getSelectedPool() {
-            let pool = [];
-
-            document.querySelectorAll('.rule-card').forEach(card => {
-                const catKey = card.dataset.cat;
-                const catObj = TAJWEED_BANK[catKey];
-                if (!catObj || !catObj.questions || catObj.questions.length === 0) return;
-
-                const catCb = card.querySelector('.cat-cb');
-                const catQtyInput = card.querySelector('.cat-qty');
-                const subCbs = Array.from(card.querySelectorAll('.sub-cb'));
-
-                const isCatChecked = catCb && catCb.checked;
-                const checkedSubs = subCbs.filter(s => s.checked);
-
-                if (!isCatChecked && checkedSubs.length === 0) return;
-
-                if (subCbs.length > 0) {
-                    const catVal = catQtyInput && catQtyInput.value.trim() !== '' ? parseInt(catQtyInput.value) : null;
-                    const hasIndividualSubQty = checkedSubs.some(s => {
-                        const sq = s.closest('.sub-rule-row')?.querySelector('.sub-qty');
-                        return sq && sq.value.trim() !== '';
-                    });
-
-                    // If user set a quantity at the main category level without overriding per-subrule
-                    if (isCatChecked && catVal !== null && !isNaN(catVal) && catVal > 0 && !hasIndividualSubQty) {
-                        let catPool = [];
-                        checkedSubs.forEach(subCb => {
-                            const subKey = subCb.value;
-                            const subQs = getSubQuestions(catKey, subKey, catObj.questions);
-                            catPool = catPool.concat(subQs);
-                        });
-                        let unique = [];
-                        let seen = new Set();
-                        for (let q of catPool) {
-                            if (!seen.has(q.id)) {
-                                seen.add(q.id);
-                                unique.push({ ...q, categoryId: catKey });
-                            }
-                        }
-                        const targetQty = Math.min(catVal, unique.length);
-                        pool = pool.concat(unique.slice(0, targetQty));
-                    } else {
-                        // Gather per checked sub-rule
-                        let catPool = [];
-                        checkedSubs.forEach(subCb => {
-                            const subKey = subCb.value;
-                            const subQtyInput = subCb.closest('.sub-rule-row')?.querySelector('.sub-qty');
-                            const subQs = getSubQuestions(catKey, subKey, catObj.questions);
-
-                            let qty = subQs.length;
-                            if (subQtyInput && subQtyInput.value.trim() !== '') {
-                                const parsed = parseInt(subQtyInput.value);
-                                if (!isNaN(parsed) && parsed > 0) {
-                                    qty = Math.min(parsed, subQs.length);
-                                }
-                            }
-                            catPool = catPool.concat(subQs.slice(0, qty));
-                        });
-                        let seen = new Set();
-                        for (let q of catPool) {
-                            if (!seen.has(q.id)) {
-                                seen.add(q.id);
-                                pool.push({ ...q, categoryId: catKey });
-                            }
-                        }
-                    }
-                } else {
-                    if (isCatChecked) {
-                        let catQs = [...catObj.questions];
-                        let qty = catQs.length;
-                        if (catQtyInput && catQtyInput.value.trim() !== '') {
-                            const parsed = parseInt(catQtyInput.value);
-                            if (!isNaN(parsed) && parsed > 0) {
-                                qty = Math.min(parsed, catQs.length);
-                            }
-                        }
-                        pool = pool.concat(catQs.slice(0, qty).map(q => ({ ...q, categoryId: catKey })));
-                    }
-                }
-            });
-
-            let uniquePool = [];
-            let seenIds = new Set();
-            for (let q of pool) {
-                if (!seenIds.has(q.id)) {
-                    seenIds.add(q.id);
-                    uniquePool.push(q);
-                }
-            }
-            return uniquePool;
-        }
 
         const MAIN_RULES_ORDER = [
             'image_bank',                 // 1. Noon & Meem Mushaddad
@@ -163,27 +49,7 @@
                         if (qtyInput) qtyInput.value = totalCount;
                     }
                 });
-                return;
             }
-
-            // Fallback if RuleSelectorEngine not found
-            MAIN_RULES_ORDER.forEach(catKey => {
-                const cat = TAJWEED_BANK[catKey];
-                if (!cat) return;
-                const totalCount = cat.questions ? cat.questions.length : 0;
-                if (totalCount === 0) return;
-
-                const card = document.createElement('div');
-                card.className = 'rule-card';
-                card.dataset.cat = catKey;
-                card.style.cssText = 'background: white; border: 2px solid #e2e8f0; border-radius: 14px; padding: 14px 18px;';
-                card.innerHTML = `
-                  <label style="cursor: pointer; display: flex; align-items: center; gap: 10px;">
-                    <input type="checkbox" class="cat-cb" value="${catKey}" checked style="width: 20px; height: 20px;">
-                    <span style="font-size: 1.05rem; font-weight: 800;">${cat.title}</span>
-                  </label>`;
-                container.appendChild(card);
-            });
         }
 
         /* =========================================================
@@ -219,8 +85,8 @@
                 pool = activeRseInstance.getPool();
             } else if (typeof window.RuleSelectorEngine !== 'undefined') {
                 pool = window.RuleSelectorEngine.buildPool();
-            } else {
-                pool = getSelectedPool();
+            } else if (typeof window.QuestionRepository !== 'undefined') {
+                pool = window.QuestionRepository.queryQuestions();
             }
 
             if (!pool || pool.length === 0) {
@@ -250,14 +116,7 @@
         function smartMix(pool) {
             if (!pool || pool.length <= 1) return pool ? [...pool] : [];
 
-            const shuffle = arr => {
-                const a = [...arr];
-                for (let i = a.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [a[i], a[j]] = [a[j], a[i]];
-                }
-                return a;
-            };
+            const shuffle = (typeof shuffleArray === 'function') ? shuffleArray : ((typeof window !== 'undefined' && window.shuffleArray) ? window.shuffleArray : (arr => [...arr].sort(() => Math.random() - 0.5)));
 
             const getRule = q => q.subcat || q.ans || q.categoryId;
             const getCat = q => q.categoryId;

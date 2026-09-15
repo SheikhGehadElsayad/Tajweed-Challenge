@@ -263,23 +263,18 @@ function resetProgressiveData() {
 }
 
 function getProgressiveStagePool(world, stage) {
-    const cat = TAJWEED_BANK[world.catKey];
-    if (!cat || !cat.questions) return [];
-    if (stage.subcat) {
-        return cat.questions.filter(q => q.subcat === stage.subcat).map(q => ({
-            ...q,
-            categoryId: world.catKey,
-            categoryTitle: world.title
-        }));
+    const sub = stage.subcat || stage.subKey || null;
+    let list = [];
+    if (typeof window.QuestionRepository !== 'undefined') {
+        list = window.QuestionRepository.getBySubRule(world.catKey, sub);
+    } else {
+        const cat = typeof TAJWEED_BANK !== 'undefined' ? TAJWEED_BANK[world.catKey] : null;
+        list = cat?.questions || [];
+        if (sub && typeof getSubQuestions === 'function') {
+            list = getSubQuestions(world.catKey, sub, list);
+        }
     }
-    if (stage.subKey) {
-        return getSubQuestions(world.catKey, stage.subKey, cat.questions).map(q => ({
-            ...q,
-            categoryId: world.catKey,
-            categoryTitle: world.title
-        }));
-    }
-    return cat.questions.map(q => ({
+    return list.map(q => ({
         ...q,
         categoryId: world.catKey,
         categoryTitle: world.title

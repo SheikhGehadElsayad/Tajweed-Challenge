@@ -165,42 +165,21 @@
          */
         filterSubQuestions(catKey, subKey, qList) {
             if (!Array.isArray(qList) || qList.length === 0) return [];
+            if (typeof window !== 'undefined' && window.QuestionRepository) {
+                return window.QuestionRepository.getBySubRule(catKey, subKey, qList);
+            }
             if (typeof window !== 'undefined' && typeof window.getSubQuestions === 'function') {
-                try {
-                    const res = window.getSubQuestions(catKey, subKey, qList);
-                    if (Array.isArray(res) && res.length > 0) return res;
-                } catch (e) {}
-            }
-
-            // Built-in robust filtering
-            if (catKey === 'tafkheem_tarqeeq') return qList.filter(q => q.subcat === subKey);
-            if (catKey === 'noon_sakinah_tanween') {
-                if (subKey === 'Ikhfa Ghunnah') return qList.filter(q => (q.id && q.id.startsWith('ikhfa_gh')) || q.subcat === 'Ikhfa Ghunnah' || (q.prompt && q.prompt.includes('Ghunnah')));
-                if (subKey === 'Idgham Completeness') return qList.filter(q => (q.id && q.id.startsWith('idgham_comp')) || q.subcat === 'Idgham Completeness');
-                if (subKey === 'Idgham with Ghunnah') return qList.filter(q => q.subcat === 'Idgham with Ghunnah' || q.ans === 'Idgham with Ghunnah');
-                if (subKey === 'Idgham without Ghunnah') return qList.filter(q => q.subcat === 'Idgham without Ghunnah' || q.ans === 'Idgham without Ghunnah');
-            }
-            if (catKey === 'qalqalah') {
-                if (subKey === 'General Qalqalah') return qList.filter(q => q.subcat === 'General Qalqalah' || q.ans === 'Qalqalah' || q.ans === 'No Qalqalah');
-                if (subKey === 'Minor') return qList.filter(q => q.ans === 'Minor');
-                if (subKey === 'Medium') return qList.filter(q => q.ans === 'Medium');
-                if (subKey === 'Major') return qList.filter(q => q.ans === 'Major');
-            }
-            if (catKey === 'image_bank') {
-                if (subKey === 'Noon Mushaddad') return qList.filter(q => q.subcat === 'Noon Mushaddad');
-                if (subKey === 'Meem Mushaddad') return qList.filter(q => q.subcat === 'Meem Mushaddad');
-                return qList;
-            }
-            if (catKey === 'lam_harf') {
-                return qList.filter(q => q.subcat === subKey || q.ans === subKey || (q.ans && q.ans.startsWith(subKey)));
+                return window.getSubQuestions(catKey, subKey, qList);
             }
             return qList.filter(q => (q.subcat === subKey || q.subRule === subKey || q.ans === subKey));
         },
 
         /**
-         * Helper: Fisher-Yates shuffle
+         * Helper: Unified shuffle
          */
         shuffle(arr) {
+            if (typeof shuffleArray === 'function') return shuffleArray(arr);
+            if (typeof window !== 'undefined' && typeof window.shuffleArray === 'function') return window.shuffleArray(arr);
             const a = [...arr];
             for (let i = a.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
