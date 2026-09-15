@@ -406,44 +406,45 @@
                         btn.innerHTML = `
                             <div style="display:flex; align-items:center; justify-content:center; gap: 10px; width:100%;">
                                 <span style="font-size:1.5rem;">${isT ? '✅' : '❌'}</span>
-                                <span style="font-size:clamp(1.15rem, 2vw, 1.45rem); font-weight:900;">${isT ? 'True' : 'False'}</span>
+                                <span style="font-size:clamp(1.15rem, 2vw, 1.45rem); font-weight:900; color:#ffffff;">${isT ? 'True' : 'False'}</span>
                             </div>`;
                     } else {
-                        btn.innerHTML = `
-                            <div style="display:flex; align-items:center; justify-content:center; width:100%; padding:4px 8px; text-align:center;">
-                                <span style="font-size:clamp(0.95rem, 1.5vw, 1.15rem); font-weight:800; line-height:1.3; text-align:center;">${choiceTxt}</span>
-                            </div>`;
+                        const meaningData = (typeof ruleMeanings !== 'undefined' && ruleMeanings[choiceTxt]) ? ruleMeanings[choiceTxt] : null;
+                        if (meaningData && meaningData.franco && meaningData.franco !== meaningData.en) {
+                            const maxLen = Math.max(meaningData.en.length, meaningData.franco.length);
+                            let fs = 'clamp(1.10rem, 1.85vw, 1.35rem)';
+                            if (maxLen > 24) fs = 'clamp(0.90rem, 1.4vw, 1.08rem)';
+                            else if (maxLen > 15) fs = 'clamp(1.0rem, 1.6vw, 1.22rem)';
+                            btn.innerHTML = `
+                                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; gap: 2px; text-align:center;">
+                                    <span class="ans-text-en" style="font-size:${fs}; font-weight:900; line-height:1.2; text-align:center; color:#ffffff; max-width:100%; word-break:break-word; display:block;">${meaningData.en}</span>
+                                    <span class="ans-text-franco" style="font-size:${fs}; font-weight:900; line-height:1.2; text-align:center; color:#fde047; max-width:100%; word-break:break-word; display:block; margin-top:2px;">${meaningData.franco}</span>
+                                </div>`;
+                        } else {
+                            btn.innerHTML = `
+                                <div style="display:flex; align-items:center; justify-content:center; width:100%; padding:4px 8px; text-align:center;">
+                                    <span style="font-size:clamp(0.95rem, 1.55vw, 1.18rem); font-weight:800; line-height:1.3; text-align:center; color:#ffffff;">${choiceTxt}</span>
+                                </div>`;
+                        }
                     }
                 } else {
-                    let meaningData = (typeof ruleMeanings !== 'undefined' && ruleMeanings[choiceTxt]) ? ruleMeanings[choiceTxt] : { en: choiceTxt, franco: choiceTxt };
-                    let francoText = meaningData.franco || meaningData.en;
+                    const meaningData = (typeof ruleMeanings !== 'undefined' && ruleMeanings[choiceTxt]) ? ruleMeanings[choiceTxt] : { en: choiceTxt, franco: choiceTxt };
+                    const francoText = meaningData.franco || meaningData.en;
                     
-                    // Responsive proportional sizing for choices so long rules never blow up card height
+                    // Equal large responsive sizing for both English & Franco lines
                     const maxLen = Math.max(meaningData.en.length, (francoText || '').length);
-                    let fsEn = 'clamp(0.98rem, 1.55vw, 1.18rem)';
-                    let fsFranco = 'clamp(0.94rem, 1.45vw, 1.12rem)';
-                    if (maxLen > 22) {
-                        fsEn = 'clamp(0.82rem, 1.2vw, 0.95rem)';
-                        fsFranco = 'clamp(0.78rem, 1.15vw, 0.90rem)';
-                    } else if (maxLen > 14) {
-                        fsEn = 'clamp(0.90rem, 1.35vw, 1.06rem)';
-                        fsFranco = 'clamp(0.86rem, 1.3vw, 1.0rem)';
+                    let fs = 'clamp(1.10rem, 1.85vw, 1.35rem)';
+                    if (maxLen > 24) {
+                        fs = 'clamp(0.90rem, 1.4vw, 1.08rem)';
+                    } else if (maxLen > 15) {
+                        fs = 'clamp(1.0rem, 1.6vw, 1.22rem)';
                     }
 
-                    if (meaningData.top && meaningData.sub && meaningData.ar) {
-                        btn.innerHTML = `
-                            <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; gap: 3px; text-align:center;">
-                                <span style="font-size:clamp(0.85rem, 1.6vw, 1.08rem); font-weight:800; line-height:1.2; text-align:center; opacity:0.95;">${meaningData.top}</span>
-                                <span style="font-size:clamp(1.15rem, 2.2vw, 1.45rem); font-weight:900; line-height:1.2; text-align:center; color:#fde047; text-shadow:0 1px 2px rgba(0,0,0,0.3); letter-spacing:0.5px;">${meaningData.sub}</span>
-                                <span style="font-size:clamp(0.95rem, 1.8vw, 1.22rem); font-weight:800; line-height:1.2; text-align:center;">${meaningData.ar}</span>
-                            </div>`;
-                    } else {
-                        btn.innerHTML = `
-                            <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; gap: 2px; text-align:center;">
-                                <span style="font-size:${fsEn}; font-weight:900; line-height:1.15; text-align:center;">${meaningData.en}</span>
-                                <span style="font-size:${fsFranco}; font-weight:800; line-height:1.15; text-align:center; opacity:0.9;">${francoText}</span>
-                            </div>`;
-                    }
+                    btn.innerHTML = `
+                        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; gap: 2px; text-align:center;">
+                            <span class="ans-text-en" style="font-size:${fs}; font-weight:900; line-height:1.2; text-align:center; color:#ffffff; max-width:100%; word-break:break-word; display:block;">${meaningData.en}</span>
+                            <span class="ans-text-franco" style="font-size:${fs}; font-weight:900; line-height:1.2; text-align:center; color:#fde047; max-width:100%; word-break:break-word; display:block; margin-top:2px;">${francoText}</span>
+                        </div>`;
                 }
                 
                 if (q.userAnswer) {

@@ -758,5 +758,153 @@
         ])
     };
 
+    const ruleMeanings = {
+        // Madd Rules
+        "Natural Madd": { en: "Natural Madd", franco: "Madd Tabe'e", ar: "مد طبيعي" },
+        "Madd Natural – 2 counts": { en: "Natural Madd", franco: "Madd Tabe'e", ar: "مد طبيعي" },
+        "Substitute": { en: "Substitute Madd", franco: "Madd Badal", ar: "مد بدل" },
+        "Badal": { en: "Substitute Madd", franco: "Madd Badal", ar: "مد بدل" },
+        "Connected": { en: "Connected Madd", franco: "Madd Muttasil", ar: "مد متصل" },
+        "Muttasil": { en: "Connected Madd", franco: "Madd Muttasil", ar: "مد متصل" },
+        "Separated": { en: "Separated Madd", franco: "Madd Munfasil", ar: "مد منفصل" },
+        "Munfasil": { en: "Separated Madd", franco: "Madd Munfasil", ar: "مد منفصل" },
+        "Compensatory Madd": { en: "Compensatory Madd", franco: "Madd 'Iwad", ar: "مد عوض" },
+        "Stabilizing Madd": { en: "Stabilizing Madd", franco: "Madd At-Tamkeen", ar: "مد تمكين" },
+        "Minor Sila Madd": { en: "Minor Sila Madd", franco: "Silah Sughra", ar: "صلة صغرى" },
+        "Major Sila Madd": { en: "Major Sila Madd", franco: "Silah Kubra", ar: "صلة كبرى" },
+        "Permanent Word Based Heavy": { en: "Permanent Word Heavy", franco: "Lazem Kalemi Moshaqqal", ar: "لازم كلمي مثقل" },
+        "Permanent Word Based Light": { en: "Permanent Word Light", franco: "Lazem Kalemi Mukhaffaf", ar: "لازم كلمي مخفف" },
+        "Permanent Letter Based Heavy": { en: "Permanent Letter Heavy", franco: "Lazem Harfi Moshaqqal", ar: "لازم حرفي مثقل" },
+        "Permanent Letter Based Light": { en: "Permanent Letter Light", franco: "Lazem Harfi Mukhaffaf", ar: "لازم حرفي مخفف" },
+        "Permanent Madd — Word-Based": { en: "Permanent Word Madd", franco: "Lazem Kalemi", ar: "لازم كلمي" },
+        "Permanent Madd — Letter-Based": { en: "Permanent Letter Madd", franco: "Lazem Harfi", ar: "لازم حرفي" },
+        "Madd Lazim Kalimi Muthaqqal": { en: "Permanent Word Heavy", franco: "Lazem Kalemi Moshaqqal", ar: "لازم كلمي مثقل" },
+        "Madd Lazim Kalimi Mukhaffaf": { en: "Permanent Word Light", franco: "Lazem Kalemi Mukhaffaf", ar: "لازم كلمي مخفف" },
+        "Madd Lazim Harfi Muthaqqal": { en: "Permanent Letter Heavy", franco: "Lazem Harfi Moshaqqal", ar: "لازم حرفي مثقل" },
+        "Madd Lazim Harfi Mukhaffaf": { en: "Permanent Letter Light", franco: "Lazem Harfi Mukhaffaf", ar: "لازم حرفي مخفف" },
+        "Temporary Madd": { en: "Temporary Madd", franco: "Madd 'Aridh", ar: "مد عارض للسكون" },
+        "Soft Madd": { en: "Soft Madd", franco: "Madd Leen", ar: "مد لين" },
+
+        // Noon Sakinah & Tanween
+        "Izhar": { en: "Throat Clarity", franco: "Izhar Halqi", ar: "إظهار حلقي" },
+        "Clarity (Izhar)": { en: "Throat Clarity", franco: "Izhar Halqi", ar: "إظهار حلقي" },
+        "Iqlab": { en: "Conversion (Iqlab)", franco: "Iqlab", ar: "إقلاب" },
+        "Conversion (Iqlab)": { en: "Conversion (Iqlab)", franco: "Iqlab", ar: "إقلاب" },
+        "Ikhfa": { en: "Real Hiding", franco: "Ikhfa Haqiqi", ar: "إخفاء حقيقي" },
+        "Ikhfaa": { en: "Real Hiding", franco: "Ikhfa Haqiqi", ar: "إخفاء حقيقي" },
+        "Ikhfa Haqiqi": { en: "Real Hiding", franco: "Ikhfa Haqiqi", ar: "إخفاء حقيقي" },
+        "Hiding (Ikhfa)": { en: "Real Hiding", franco: "Ikhfa Haqiqi", ar: "إخفاء حقيقي" },
+        "Izhar Mutlaq": { en: "Absolute Clarity", franco: "Izhar Mutlaq", ar: "إظهار مطلق" },
+        "Idgham with Ghunnah": { en: "Merging with Ghunnah", franco: "Idgham bi-Ghunnah", ar: "إدغام بغنة" },
+        "Merging with Ghunnah": { en: "Merging with Ghunnah", franco: "Idgham bi-Ghunnah", ar: "إدغام بغنة" },
+        "Idgham without Ghunnah": { en: "Merging without Ghunnah", franco: "Idgham bi-Ghayr Ghunnah", ar: "إدغام بغير غنة" },
+        "Merging without Ghunnah": { en: "Merging without Ghunnah", franco: "Idgham bi-Ghayr Ghunnah", ar: "إدغام بغير غنة" },
+        "Complete Idgham (Kamil)": { en: "Complete Merging", franco: "Idgham Kamil", ar: "إدغام كامل" },
+        "Incomplete Idgham (Naqis)": { en: "Incomplete Merging", franco: "Idgham Naqis", ar: "إدغام ناقص" },
+
+        // Meem Sakinah
+        "Oral + Hiding": { en: "Oral Hiding", franco: "Ikhfa Shafawi", ar: "إخفاء شفوي" },
+        "Oral + Merger": { en: "Oral Merging", franco: "Idgham Shafawi", ar: "إدغام شفوي" },
+        "Oral + Clarity": { en: "Oral Clarity", franco: "Izhar Shafawi", ar: "إظهار شفوي" },
+        "Izhar Shafawi": { en: "Oral Clarity", franco: "Izhar Shafawi", ar: "إظهار شفوي" },
+        "Idgham Shafawi": { en: "Oral Merging", franco: "Idgham Shafawi", ar: "إدغام شفوي" },
+        "Ikhfa Shafawi": { en: "Oral Hiding", franco: "Ikhfa Shafawi", ar: "إخفاء شفوي" },
+
+        // Qalqalah
+        "Minor": { en: "Minor Qalqalah", franco: "Qalqalah Sughra", ar: "قلقلة صغرى" },
+        "Medium": { en: "Medium Qalqalah", franco: "Qalqalah Wusta", ar: "قلقلة وسطى" },
+        "Major": { en: "Major Qalqalah", franco: "Qalqalah Kubra", ar: "قلقلة كبرى" },
+        "Minor Qalqalah": { en: "Minor Qalqalah", franco: "Qalqalah Sughra", ar: "قلقلة صغرى" },
+        "Medium Qalqalah": { en: "Medium Qalqalah", franco: "Qalqalah Wusta", ar: "قلقلة وسطى" },
+        "Major Qalqalah": { en: "Major Qalqalah", franco: "Qalqalah Kubra", ar: "قلقلة كبرى" },
+        "Qalqalah": { en: "Qalqalah", franco: "Echoing", ar: "قلقلة" },
+        "No Qalqalah": { en: "No Qalqalah", franco: "No Echoing", ar: "بدون قلقلة" },
+
+        // Hamzat Al-Wasl
+        "Dropped": { en: "Dropped in Speech", franco: "Saqitah Waslan", ar: "ساقطة وصلاً" },
+        "Start with damma": { en: "Start with Dammah", franco: "Ibtida' bi-Dammah", ar: "ابتداء بالضم" },
+        "Start with fatha": { en: "Start with Fathah", franco: "Ibtida' bi-Fathah", ar: "ابتداء بالفتح" },
+        "Start with kasra": { en: "Start with Kasrah", franco: "Ibtida' bi-Kasrah", ar: "ابتداء بالكسر" },
+
+        // Letter Relations
+        "Identical": { en: "Identical Letters", franco: "Mutamathilayn", ar: "متماثلين" },
+        "Similar": { en: "Similar Letters", franco: "Mutajanisayn", ar: "متجانسين" },
+        "Close": { en: "Close Letters", franco: "Mutaqaribayn", ar: "متقاربين" },
+
+        // Tafkheem & Tarqeeq
+        "Heavy": { en: "Heavy (Tafkheem)", franco: "Mufakhkham", ar: "مفخم" },
+        "Light": { en: "Light (Tarqeeq)", franco: "Muraqqaq", ar: "مرقق" },
+        "Heavy Raa": { en: "Heavy Raa", franco: "Raa Mufakhkhamah", ar: "راء مفخمة" },
+        "Light Raa": { en: "Light Raa", franco: "Raa Muraqqaqah", ar: "راء مرققة" },
+        "Heavy Letter": { en: "Heavy Letter", franco: "Harf Mufakhkham", ar: "حرف مفخم" },
+        "Light Letter": { en: "Light Letter", franco: "Harf Muraqqaq", ar: "حرف مرقق" },
+        "Heavy Laam": { en: "Heavy Laam", franco: "Laam Mufakhkhamah", ar: "لام مفخمة" },
+        "Light Laam": { en: "Light Laam", franco: "Laam Muraqqaqah", ar: "لام مرققة" },
+        "Heavy Alif": { en: "Heavy Alif", franco: "Alif Mufakhkhamah", ar: "ألف مفخمة" },
+        "Light Alif": { en: "Light Alif", franco: "Alif Muraqqaqah", ar: "ألف مرققة" },
+        "Both are permissible — Tarqeeq is preferred when stopping.": { en: "Both Allowed (Light Preferred)", franco: "Yajuz Al-Wajhan (Tarqeeq Awla)", ar: "يجوز الوجهان - الترقيق أولى" },
+        "Both are permissible — Tafkheem is preferred when stopping.": { en: "Both Allowed (Heavy Preferred)", franco: "Yajuz Al-Wajhan (Tafkheem Awla)", ar: "يجوز الوجهان - التفخيم أولى" },
+        "Heavy Ghunnah": { en: "Heavy Ghunnah", franco: "Ghunnah Mufakhkhamah", ar: "غنة مفخمة" },
+        "Light Ghunnah": { en: "Light Ghunnah", franco: "Ghunnah Muraqqaqah", ar: "غنة مرققة" },
+
+        // Lam Shamsiyyah & Qamariyyah & Lam Harf
+        "Lam Shamsiyyah": { en: "Solar Lam", franco: "Lam Shamsiyyah (Idgham)", ar: "لام شمسية" },
+        "Lam Qamariyyah": { en: "Lunar Lam", franco: "Lam Qamariyyah (Izhar)", ar: "لام قمرية" },
+        "Idgham (Merging)": { en: "Merging", franco: "Idgham", ar: "إدغام" },
+        "Izhar (Clarity)": { en: "Clarity", franco: "Izhar", ar: "إظهار" },
+
+        // Image Bank / Ghunnah
+        "Two counts of ghunna": { en: "Two Counts Ghunnah", franco: "Ghunnah Harakatayn", ar: "غنة حركتان" },
+        "Four counts of ghunna": { en: "Four Counts Ghunnah", franco: "Ghunnah Arba' Harakat", ar: "غنة أربع حركات" },
+
+        // Makharij
+        "Jawf": { en: "Oral Cavity", franco: "Al-Jawf", ar: "الجوف" },
+        "Halq": { en: "Throat", franco: "Al-Halq", ar: "الحلق" },
+        "Lisan": { en: "Tongue", franco: "Al-Lisan", ar: "اللسان" },
+        "Shafatain": { en: "Lips", franco: "Ash-Shafatayn", ar: "الشفتان" },
+        "Khaishum": { en: "Nasal Cavity", franco: "Al-Khayshum", ar: "الخيشوم" },
+
+        // Sifaat
+        "Hams": { en: "Whispering", franco: "Al-Hams", ar: "الهمس" },
+        "Jahr": { en: "Audibility", franco: "Al-Jahr", ar: "الجهر" },
+        "Shiddah": { en: "Strength", franco: "Ash-Shiddah", ar: "الشدة" },
+        "Rakhawah": { en: "Softness", franco: "Ar-Rakhawah", ar: "الرخاوة" },
+        "Tawassut": { en: "In-Between", franco: "At-Tawassut", ar: "التوسط" }
+    };
+
+    const maddCounts = {
+        "Natural Madd": "2 Counts (Harakat)",
+        "Madd Natural – 2 counts": "2 Counts (Harakat)",
+        "Substitute": "2 Counts (Harakat)",
+        "Badal": "2 Counts (Harakat)",
+        "Connected": "4 or 5 Counts (Harakat)",
+        "Muttasil": "4 or 5 Counts (Harakat)",
+        "Separated": "4 or 5 Counts (Harakat)",
+        "Munfasil": "4 or 5 Counts (Harakat)",
+        "Compensatory Madd": "2 Counts (Harakat)",
+        "Stabilizing Madd": "2 Counts (Harakat)",
+        "Minor Sila Madd": "2 Counts (Harakat)",
+        "Major Sila Madd": "4 or 5 Counts (Harakat)",
+        "Permanent Word Based Heavy": "6 Counts (Harakat)",
+        "Permanent Word Based Light": "6 Counts (Harakat)",
+        "Permanent Letter Based Heavy": "6 Counts (Harakat)",
+        "Permanent Letter Based Light": "6 Counts (Harakat)",
+        "Permanent Madd — Word-Based": "6 Counts (Harakat)",
+        "Permanent Madd — Letter-Based": "6 Counts (Harakat)",
+        "Madd Lazim Kalimi Muthaqqal": "6 Counts (Harakat)",
+        "Madd Lazim Kalimi Mukhaffaf": "6 Counts (Harakat)",
+        "Madd Lazim Harfi Muthaqqal": "6 Counts (Harakat)",
+        "Madd Lazim Harfi Mukhaffaf": "6 Counts (Harakat)",
+        "Temporary Madd": "2, 4, or 6 Counts (Harakat)",
+        "Soft Madd": "2, 4, or 6 Counts (Harakat)"
+    };
+
     window.TAJWEED_BANK = TAJWEED_BANK;
+    window.ruleMeanings = ruleMeanings;
+    window.maddCounts = maddCounts;
+    if (typeof global !== "undefined") {
+        global.TAJWEED_BANK = TAJWEED_BANK;
+        global.ruleMeanings = ruleMeanings;
+        global.maddCounts = maddCounts;
+    }
 })(typeof globalThis !== "undefined" ? globalThis : (typeof window !== "undefined" ? window : this));

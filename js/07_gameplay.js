@@ -19,8 +19,11 @@
                     if(isFrozen || isGamePaused) return; 
                     timeLeft--; 
                     updateTimerUI();
-                    if(timeLeft <= 5 && timeLeft > 0) SFX.alarm();
-                    else if(timeLeft > 5 && timeLeft < TIME_LIMIT) SFX.tickTock();
+                    const soundThreshold = Math.ceil(TIME_LIMIT / 3);
+                    if(timeLeft <= soundThreshold && timeLeft > 0) {
+                        if(timeLeft <= 5) SFX.alarm();
+                        else SFX.tickTock();
+                    }
                     if(timeLeft <= 0) { clearInterval(timerInterval); handleTimeout(session.playlist[session.playHead]); }
                 }, 1000);
             }
@@ -47,8 +50,11 @@
                 if(isFrozen || isGamePaused) return; 
                 timeLeft--; 
                 updateTimerUI();
-                if(timeLeft <= 5 && timeLeft > 0) SFX.alarm();
-                else if(timeLeft > 5 && timeLeft < TIME_LIMIT) SFX.tickTock();
+                const soundThreshold = Math.ceil(TIME_LIMIT / 3);
+                if(timeLeft <= soundThreshold && timeLeft > 0) {
+                    if(timeLeft <= 5) SFX.alarm();
+                    else SFX.tickTock();
+                }
                 if(timeLeft <= 0) { clearInterval(timerInterval); handleTimeout(session.playlist[session.playHead]); }
             }, 1000);
         }
