@@ -114,7 +114,7 @@ const LicenseManager = (function() {
         }
     }
 
-    function handleActivation() {
+    async function handleActivation() {
         const overlay = document.getElementById('license-modal-overlay');
         if (!overlay) return;
 
