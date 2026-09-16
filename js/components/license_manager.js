@@ -37,6 +37,11 @@ const LicenseManager = (function() {
         const info = getLicenseInfo();
         if (info && info.code && typeof FirebaseSync !== 'undefined') {
             setTimeout(() => FirebaseSync.pullRosterFromCloud(info.code), 500);
+        } else if (!isActivated()) {
+            // إظهار نافذة قفل الترخيص فوراً فور فتح الموقع
+            setTimeout(() => {
+                showModal();
+            }, 300);
         }
     }
 
