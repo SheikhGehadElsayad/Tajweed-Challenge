@@ -1,4 +1,4 @@
-﻿# OS metadata
+# OS metadata
 .DS_Store
 Thumbs.db
 desktop.ini
@@ -9,3 +9,7 @@ desktop.ini
 
 # Temp
 *.log
+
+# Private License Files
+*.csv
+قائمة_تراخيص*.txt

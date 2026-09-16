@@ -1,0 +1,240 @@
+/* License Modal & Gate Styles */
+.license-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 16px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.license-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.license-card {
+    background: #ffffff;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 480px;
+    padding: 32px 28px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(15, 118, 110, 0.15);
+    text-align: center;
+    position: relative;
+    transform: scale(0.92) translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    direction: rtl;
+    font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+}
+
+.license-overlay.active .license-card {
+    transform: scale(1) translateY(0);
+}
+
+.license-badge-icon {
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+    color: white;
+    font-size: 34px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    box-shadow: 0 10px 20px -5px rgba(13, 148, 136, 0.4);
+    animation: licensePulse 2s infinite alternate ease-in-out;
+}
+
+@keyframes licensePulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.06); }
+}
+
+.license-title {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.license-desc {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.license-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: right;
+}
+
+.license-input-group label {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.license-input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 2px solid #e2e8f0;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    outline: none;
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+.license-input:focus {
+    border-color: #0d9488;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.15);
+}
+
+.license-input.code-input {
+    letter-spacing: 2px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.15rem;
+}
+
+.license-submit-btn {
+    background: linear-gradient(135deg, #0d9488 0%, #047857 100%);
+    color: #ffffff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 10px 20px -5px rgba(4, 120, 87, 0.4);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.license-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 25px -5px rgba(4, 120, 87, 0.5);
+}
+
+.license-submit-btn:active {
+    transform: translateY(0);
+}
+
+.license-msg {
+    margin-top: 14px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.license-msg.error {
+    display: block;
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+.license-msg.success {
+    display: block;
+    background: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+.license-footer {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+    font-size: 0.88rem;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.license-help-btn {
+    color: #0d9488;
+    text-decoration: none;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+}
+
+.license-help-btn:hover {
+    color: #0f766e;
+    text-decoration: underline;
+}
+
+/* Licensed Teacher Top Bar Status Badge */
+.license-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(13, 148, 136, 0.1);
+    border: 1px solid rgba(13, 148, 136, 0.3);
+    color: #0f766e;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 0.88rem;
+    font-weight: 800;
+    margin: 8px auto;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.license-status-badge:hover {
+    background: rgba(13, 148, 136, 0.2);
+    transform: scale(1.02);
+}
+
+.license-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+}
+
+.btn-deactivate-license {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0 4px;
+    text-decoration: underline;
+}
+
+.btn-deactivate-license:hover {
+    color: #dc2626;
+}

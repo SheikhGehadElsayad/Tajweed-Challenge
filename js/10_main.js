@@ -558,6 +558,7 @@ const appContainer = document.createElement('div');
         
         function initApp() {
             injectAppUI();
+            if (typeof LicenseManager !== 'undefined') LicenseManager.updateBadgeUI();
             renderSetupUI();
             if(typeof bindAvatarUploads === 'function') bindAvatarUploads();
 

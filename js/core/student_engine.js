@@ -111,6 +111,12 @@
                     localStorage.setItem(STORAGE_KEY, jsonStr);
                 }
                 this.notify();
+                if (typeof FirebaseSync !== 'undefined' && typeof LicenseManager !== 'undefined' && LicenseManager.isActivated()) {
+                    const lic = LicenseManager.getLicenseInfo();
+                    if (lic && lic.code) {
+                        FirebaseSync.syncRosterToCloud(lic.code);
+                    }
+                }
             } catch (e) {
                 console.error('StudentEngine: Failed to save to localStorage', e);
             }

@@ -1,4 +1,10 @@
 function switchScreen(id) {
+    if (id !== 'screen-splash' && typeof LicenseManager !== 'undefined' && !LicenseManager.isActivated()) {
+        LicenseManager.showModal(() => {
+            switchScreen(id);
+        });
+        return;
+    }
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const target = document.getElementById(id);
     if (target) {
